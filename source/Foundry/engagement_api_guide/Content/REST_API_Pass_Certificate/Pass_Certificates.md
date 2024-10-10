@@ -14,6 +14,6 @@ Pass Certificates includes the following REST APIs:
 *   [Apple Pass Intermediate Certificates](Apple_Pass_Intermediate_Certificates.md)
 
 
-**Revsions**
+**Revisions**
 
 *   9.2 Changeset-1
