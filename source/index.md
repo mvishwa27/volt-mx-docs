@@ -3,7 +3,6 @@ hide:
   - toc
 ---
 
-
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1"></p>
@@ -213,4 +212,4 @@ display:none;
 </table>
 
 </body>
-</html>
+</html> 

@@ -20,13 +20,12 @@ To create a new developer portal, do the following:
 3.  Under the **Definition** tab, in **Name**, type the name for your portal.  
     ![](Resources/Images/Dev_Portal_3_NameNewPortal_696x385.png)
 
-> **_Note:_** As you type a name for your portal in the **Name** field, the **URL** field populates the name to create the URL for the new portal, by default. You can edit the URL while creating the portal. Once the portal is created you cannot change the URL. Any special characters in the Name field will be ignored for the URL.  
-> While editing the Dev portal, you cannot change the URL.
+    > **_Note:_** As you type a name for your portal in the **Name** field, the **URL** field populates the name to create the URL for the new portal, by default. You can edit the URL while creating the portal. Once the portal is created you cannot change the URL. Any special characters in the Name field will be ignored for the URL. While editing the Dev portal, you cannot change the URL.
 
 1.  If you want a custom logo for your Dev Portal, click on **Logo**, select the image file containing your logo, and then click **Open**.
 2.  If you want your Dev Portal to have a different font color or header color, click **Header Color** and **Font Color**.
 
-> **_Note:_** The logo, header color, and font color can all be changed after the Dev Portal is created. For more information, see the Customizing a Developer Portal section later in this topic.
+    > **_Note:_** The logo, header color, and font color can all be changed after the Dev Portal is created. For more information, see the Customizing a Developer Portal section later in this topic.
 
 1.  In Description, type a short description of your Developer Portal.
 2.  Click **Next**.
@@ -36,24 +35,23 @@ To create a new developer portal, do the following:
 3.  To **add specific apps** to Developer portal, do the following:
 
     1.  Go to the **Apps** tab.
-
     2.  Select the required check boxes for **the apps** that you want to add to the Dev Portal.
 
-        > **_Note:_** To select **all apps** that you want to add to the Dev Portal, select the **Include all current and future apps** check box.
+        > **_Note:_** To select **all apps** that you want to add to the Dev Portal, select the **Include all current and future apps** check box
 
     3.  click **SAVE** to add the selected apps with services to Developer portal.
 
-4.  (From Volt MX Foundry V8 SP4 onwards) To **add specific services** of an app to Developer portal, do the following: 
+5.  (From Volt MX Foundry V8 SP4 onwards) To **add specific services** of an app to Developer portal, do the following: 
 
-    1.  Go to the **Apps** tab
+    1.  Go to the **Apps** tab.
 
         2.  Select the required check box for **the app**. If you want to add **multiple versions of the app**, you can select the available app versions from the **Version** list. The **Manage APIs** link is enabled for the selected app
 
             ![](Resources/Images/SelectAppVersion-Apps_272x222.png)
 
-        1.  Click the **Manage APIs** link. The **API Services** dialog appears and displays services tabs such as Identity, Integration, Orchestration and Objects tabs for the selected app version. By default all the configured services for each app version are selected in each service tab
+        1.  Click the **Manage APIs** link. The **API Services** dialog appears and displays services tabs such as Identity, Integration, Orchestration and Objects tabs for the selected app version. By default all the configured services for each app version are selected in each service tab.
 
-            You can view the services from each version by selecting the required version
+            You can view the services from each version by selecting the required version.
 
             ![](Resources/Images/SelectServices-Apps_421x277.png)
 
@@ -91,9 +89,7 @@ To edit a Dev Portal, do the following:
 3.  If you want to add a custom logo to your Dev Portal, click on **Logo**, select the image file containing your logo, and then click **Open**.
 1.  If you want your Dev Portal to have a different font color or header color, click **Header Color** and **Font Color**.
 
-> **_Note:_** You can view the header color and font color in the preview section before saving.
-
-The logo, header color, and font color can all be changed after the Dev Portal is created.
+    > **_Note:_** You can view the header color and font color in the preview section before saving. The logo, header color, and font color can all be changed after the Dev Portal is created.
 
 1.  If you want to modify the description of the portal, type a description in the **Description** field.
 
@@ -176,9 +172,7 @@ To invite a new user to access the Developer Portal, do the following:
 1.  In **Settings**, and click the **INVITE** button.
 2.  In the Invite User window, type the user's email address, and under **Account Role**, click the drop-down box and select **Developer Portal Only**.
 3.  In **Environment Permissions**, select the environment or environments to grant the user access to.
-
-> **_Note:_** The user can access all Dev Portals in Volt MX account that they have been granted access.
-
+    > **_Note:_** The user can access all Dev Portals in Volt MX account that they have been granted access.
 1.  Click **INVITE**.
 
 The user will receive an email notification of access, along with a link to the Dev Portal.

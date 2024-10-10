@@ -230,8 +230,8 @@ Defining Sync Objects
 9.  On the **Filters** tab, provide the following details:
     
     ![](Resources/Images/FS_Filters_501x339.png)
-    <!-- dummy comment -->
-    > **_Note:_**  [OAuth 2.0](Identity10_VoltMX_OAuth2.md#foundry-oauth-2-0-identity-service) provides ability to retrieve and save user attributes in Volt Foundry Identity Sessions after a successful login response and uses them as client filters during Legacy Sync calls. For example, User Role (one of the attributes of the user profile) received as part of User Profile after a successful [OAuth 2.0](Identity10_VoltMX_OAuth2.md#OAuth2ID) login can be used as client-side filter for Legacy Sync. For more details, refer to [Synchronization > client-side filters](#filters).
+    
+    > **_Note:_**   [OAuth 2.0](Identity10_VoltMX_OAuth2.md) provides ability to retrieve and save user attributes in VoltMX Foundry  Identity Sessions after a successful login response and uses them as client filters during Legacy Sync calls. For example, User Role (one of the attributes of the user profile) received as part of User Profile after a successful [OAuth 2.0](Identity10_VoltMX_OAuth2.md) login can be used as client-side filter for Legacy Sync. For more details, refer to [Synchronization > client-side filters](#filters).
     
     <p id="filters"></p>
 
@@ -279,7 +279,7 @@ Defining Sync Objects
         | To modify data from a device (client) to a server | Update | updateAccount |
         | To delete a record from a device (client) to a server | Delete | deleteAccount |
         | To get sync data from a server to a device (client)> **_Note:_**  This is specifically used for clearing the conflict policies. | Get | getAccount |
-        | For Salesforce apps, to send a query request from a device (client), add the **Sync Service Input parameter**  as  **LAST\_SYNC\_TIMESTAMP**  to getUpdated sync action.It is not mandatory to add the input parameter LAST\_SYNC\_TIMESTAMP. Sync Service creates a CONTEXT object to hold certain data about that sync session. You can use the CONTEXT attribute LAST\_SYNC\_TIMESTAMP in your input mapping query.For example, add a query to get any changed records since the last time the device did a sync. Create an input that maps to the **select** input parameter, of source type **Template**, and with a **Source Value** of:Select Id, AccountNumber, Name, Type, Rating, Phone, Fax, IsDeleted, LastModifiedDate from Account Where $CONTEXT.LAST\_SYNC\_TIMESTAMP and Id = '$FILTER.get('Account.Id')'If the sync scope type is **OTA** or **Persistent** and change tracking policy is provided by data source, **getUpdated** is called.If the sync scope type is **Persistent** and change tracking policy is **VoltMX Server**, **getAll** is called. |
+        | For Salesforce apps, to send a query request from a device (client), add the **Sync Service Input parameter**  as  **LAST\_SYNC\_TIMESTAMP**  to getUpdated sync action.It is not mandatory to add the input parameter LAST\_SYNC\_TIMESTAMP. Sync Service creates a CONTEXT object to hold certain data about that sync session. You can use the CONTEXT attribute LAST\_SYNC\_TIMESTAMP in your input mapping query.For example, add a query to get any changed records since the last time the device did a sync. Create an input that maps to the **select** input parameter, of source type **Template**, and with a **Source Value** of:Select Id, AccountNumber, Name, Type, Rating, Phone, Fax, IsDeleted, LastModifiedDate from Account Where $CONTEXT.LAST\_SYNC\_TIMESTAMP and Id = '$FILTER.get('Account.Id')'If the sync scope type is **OTA** or **Persistent** and change tracking policy is provided by data source, **getUpdated** is called.If the sync scope type is **Persistent** and change tracking policy is **VoltMX Server**, **getAll** is called. | getUpdated | queryAllAccount |
         | To get the deleted records from the enterprise to the application if the getUpdated doesn't return the deleted records. You can add the queryAll operation and modify the name of the operation to avoid conflict, and modify the input and output to match the getDeleted functionality. | getDeleted | queryAll |
         | To download any new or changed records in batches from the backend to the local device. | getBatch | queryMoreAccount |
         | Similar to getUpdated, getAllPKs sync action is called to get the primary keys from server. This life cycle method is used to support Data Reconciliation feature on Offline Sync (Legacy Sync). | getAllPKs | queryAllAccount |
@@ -360,10 +360,9 @@ Note that the upload batch size used by the client SDK takes a value closer to t
 Download the Sync Configuration
 -------------------------------
 
-To download the Sync configuration file `Syncconfig.xml` file on your computer, click on the **Synchronization** page, click the Settings button, and then click **Export all**.
+To download the `Syncconfig.xml` Sync configuration file on your computer, click the **Synchronization** page, click the Settings button, and then click **Export all**.
 
 ![](Resources/Images/Sync_Valid.png)
-
 
 
 Volt MX  Foundry Sync Console
@@ -378,5 +377,4 @@ To view your Sync Console, click **Sync Services** from your cloud account Envir
 ![](Resources/Images/Sync_Cosole_630x258.png)
 
 ![](Resources/Images/OnPrem/SyncServer-Onpremises_632x227.png)
-
 

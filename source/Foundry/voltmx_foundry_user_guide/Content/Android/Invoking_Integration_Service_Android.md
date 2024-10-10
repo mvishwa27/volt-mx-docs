@@ -1,6 +1,6 @@
                               
 
-User Guide: [SDKs](../Foundry_SDKs.md) > [Android SDK](Installing_Android_SDK.md) > Invoking an Integration Service
+User Guide: [SDKs](../Foundry_SDKs.md) > [Android SDK](Installing_Android_SDK.md) > Invoking an Integration Service 
 
 Invoking an Integration Service
 ===============================

@@ -71,7 +71,7 @@ Import the following Libraries:
 ### Sample Code
 
 ```
-  // Sample code to log in using Oauth/SAML type provider
+ // Sample code to log in using Oauth/SAML type provider
 String providerName = "<your-provider-name>";
 String loginOptions = {};
 Context context = getApplicationContext();
@@ -93,6 +93,7 @@ authClient.loginInBackground(context, webview, new WebViewCallback() {
         Log.d("Login Failure", identityServiceException.getErrorMessage());
     }
 });
+
 ```
 
 Custom OAuth / Custom Login
@@ -152,6 +153,7 @@ Import the following Libraries:
 ### Sample Code
 
 ```
+ 
 // Sample code to get user profile details
 KonyUser user = < object - returned - in -login - success - callback > ;
 String firstName = user.getFirstName();

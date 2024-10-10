@@ -236,7 +236,7 @@ The following are the important considerations for the SPA platform:
 
 Supported devices and video formats for SPA platform.
 
-| Category and Device | OS | Browser | Video Format(WebM, OGG, MP4, OGV) | XHTML Mandatory Attributes Height/Width | Comments |
+| Category and Device | OS | Browser | Video Format](WebM, OGG, MP4, OGV) | .md Mandatory Attributes Height/Width | Comments |
 | --- | --- | --- | --- | --- | --- |
 | Samsung Galaxy S2 - amsung I9100 | Android 2.3.3 | Native Android Webkit | MP4 | na |   |
 | Samsung Galaxy S2 - Samsung I9100 | Android 4.0.4 | Native Android Webkit | MP4 | na |   |

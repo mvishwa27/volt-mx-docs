@@ -93,17 +93,25 @@ Create an Android GCM Key (Via Google Old Console)
 To create a GCM Authorization Key, follow these steps:
 
 1.  In a browser, go to [https://code.google.com/apis/console](https://code.google.com/apis/console), and log in. If you do not have an account, create one. Do not use a personal account.
-
 2.  Enter your credentials, and click **Sign in** to continue.
 3.  Click the **Create Project** button.
+    
 4.  On the left side of the API’s Dashboard page, click the drop-down menu and select **Create**.
-5.  Enter a name, and click **Create project**. Your browser refreshes and displays a new URL. 
+    
+5.  Enter a name, and click **Create project**. Your browser refreshes and displays a new URL.
+    
 6.  The number after #project (example, 214267376347) should be noted. This is your **Sender ID**.
+    
 7.  Scroll down the page to Google Cloud Messaging for Android and set the **ON/OFF** widget to **ON**.
+    
 8.  Agree to the terms and conditions, and click **Accep**t.
+    
 9.  At the bottom of the API’s home page, click the **Create new Server key** button.
+    
 10. Specify a server or servers that can use GCM. Click **Create**.
+    
 11. Two **GCM Keys** are now displayed on the **API Access** page.
+    
 12. Enter the **GCM key** and click **Save**.
 
 Create an Android GCM Key (Via Google New Console)
@@ -113,6 +121,7 @@ To create a GCM Authorization Key, follow these steps:
 
 1.  Open Google Developers Console.
 2.  If you have not created an API project, then click **Create Project**.
+    
     
     > **_Note:_** The project name is used only in the console. The project ID is used to uniquely identify project name. The identifier cannot be changed.
     
@@ -157,8 +166,6 @@ To create a FCM Project URL and Service Account Key, follow these steps:
 6.  Create **Service Account Key**
     
     In Project Settings click on Service Accounts and select the java then **Generate new private key**
-   
-    ![](../Resources/Images/Overview/Apps/New GCM Key/no. 11.png)
 
 Create a JPush App Key and Master Secret
 ----------------------------------------

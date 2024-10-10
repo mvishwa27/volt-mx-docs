@@ -51,6 +51,7 @@ Frequently Asked Questions (FAQs)
     
     Based on the Azure subscription, user can customize the polling time according to requirement.
     
+    <a id="Installa"></a>
 8.  **How can I use a custom domain name to access my VoltMX Foundry installation?**
     
     You can use the Azure DNS Service for installing VoltMX Foundry.  

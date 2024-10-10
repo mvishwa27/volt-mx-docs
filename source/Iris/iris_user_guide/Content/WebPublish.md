@@ -37,8 +37,6 @@ When you try to publish the app without logging into Volt MX Foundry, the login 
 
 If you try to publish the app, even when you do not have an associated Volt MX Foundry app, you will get a prompt to link a Volt MX Foundry app.
 
-![](Resources/Images/LinkFoundry_451x165.png)
-
 To change the selected Cloud account or Environment, go to **Project Settings** > **VoltMX Foundry**. hen, click the **VoltMX Foundry** tab. At the top of this tab, under Volt MX Foundry Environment, select an environment from the drop-down list. Click **Done**. If you do not see any environments listed, you need to create one. For more information, refer [Environments](../../../Foundry/voltmx_foundry_user_guide/Content/Environments.md) in the Volt MX Foundry Console User Guide.
 
 To publish the Volt MX Iris web app to Volt MX Foundry, the app needs to be associated with a Volt MX Foundry app.
@@ -68,7 +66,7 @@ The Build and Publish Web app option also publishes the Volt MX Foundry app to t
 
 To publish an app to the Volt MX Cloud, logging in to your Volt MX Account is mandatory.
 
-<img src="Resources/Images/publishWebApp_389x413.png" alt="" style="width:85%">
+<!-- <img src="Resources/Images/publishWebApp_389x413.png" alt="" style="width:85%"> vm-->
 
 ### Publish to my App Store
 
@@ -100,8 +98,8 @@ Before you publish a web app, ensure that you have a project in which you have a
 5. Click either **Create New App** or **Link to Existing App**. The Volt MX Foundry console appears.
 6. If you have not already, sign in to your Volt MX Foundry account by using your cloud credentials.
 7. If you choose:
-   * **Create New App**, a new Foundry app with the same name as the Iris Project is created.
-   * **Link to Existing App**, a list of existing apps from your Volt MX Foundry account are displayed.
+       * **Create New App**, a new Foundry app with the same name as the Iris Project is created.
+       * **Link to Existing App**, a list of existing apps from your Volt MX Foundry account are displayed.
 8. To select the Volt MX Foundry app that you want to associate your Volt MX Iris app with, click **Associate** beside the App Name.
 
    ![](Resources/Images/AssociateFoundryApp_638x384.png) 
@@ -113,7 +111,8 @@ Before you publish a web app, ensure that you have a project in which you have a
 10.  From the main menu of Volt MX Iris, select **Build** > **Build and Publish Web**.  
     The Build and Publish Web window appears.  
 
-   ![](Resources/Images/publishWebApp_389x413.png)
+   <!-- ![](Resources/Images/publishWebApp_389x413.png) VM -->
+   ![](Resources/Images/Build_and_Publish_Web_App.png)
     
 11.  Select the required Platforms and Channels for which you want to build and publish your web app.
 12.  From the **Post Build Action** drop-down menu, select the desired **Post Build Action**. For more details about the Post Build Action, click [here](#post-build-actions).
@@ -126,6 +125,10 @@ Before you publish a web app, ensure that you have a project in which you have a
 
 14.  You can choose to change the cloud environment on which your app will be published. To do so click on **Change** beside the **Environment** option.
 
+15. You can select the **Vanity Domain** from the drop down. The base domain is identified by appended text “[Base]” in the displayed domain name.
+
+    > **_Note:_** Change to vanity domain made in the popup is not persisted.
+
 15. If you do not want to use the SHA1, MD2, MD4, and MD5 hashing algorithms in your application, check **Strict Mode**. If you do use any of those algorithms, leave **Strict Mode** unchecked. Otherwise, you will receive an "Unsupported algorithm" error message.
 
 16.  Once all the required settings are ready, click **Build**.  
@@ -137,3 +140,25 @@ Before you publish a web app, ensure that you have a project in which you have a
     ![](Resources/Images/WebPublishURL_603x200.png)
 19.  Click on **View Logs** to access the logs of the publish process.
 20.  An **Application was deployed mail** will also be sent to your registered e-mail account. This mail will contain the App details along with the App URL. Click on the URL in the mail to open the web app in your default web browser.
+
+### Enable Node Build for Responsive Web Apps
+
+From the V9 ServicePack4 Fixpack 21, the build performance of Responsive Web Apps (that use the CSS Library mode) has been enhanced to use Node builds. With the introduction of Node builds, the time taken to build a Responsive Web App has reduced significantly.
+
+Follow these steps to enable Node Builds for Responsive Web Apps:
+
+1. Navigate to the location of your project. For example, `<your workspace folder>/<appid>/`.
+
+2. Create a New Folder with the name **custombuild** (if it doesn’t already exist).
+
+3. In the custombuild folder, create a new file, **spadw.properties**.
+
+4. In the spadw.properties file, add the following entry:
+
+    **desktopwebNodeBuild=true**
+
+5. Save and close the file.
+
+6. Build and Publish the project as usual.
+
+Observe the time taken to build the app is less than half the time it used to take.

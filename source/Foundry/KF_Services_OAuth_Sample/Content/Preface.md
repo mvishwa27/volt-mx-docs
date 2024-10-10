@@ -1,12 +1,12 @@
-# Preface
+# Preface                                     
 
-Volt MX Iris enables you to create highly interactive designs for mobile and tablet devices. It contains a large number of built-in designing elements that help in creating your application designs specific to a device and its operating system. This WYSIWYG tool provides an instant preview of your design, thereby, helping you make necessary changes to the design quickly.
+Volt MX  Iris enables you to create highly interactive designs for mobile and tablet devices. It contains a large number of built-in designing elements that help in creating your application designs specific to a device and its operating system. This WYSIWYG tool provides an instant preview of your design, thereby, helping you make necessary changes to the design quickly.
 
 Manipulating a widget’s look and feel, changing its skin, ensuring a property is available for a specific platform or assigning an action event is easily achieved without requiring you to write even a single line of code!
 
 Your team can reuse the user-defined designing elements and skins by importing and exporting them. And not only the designing elements and skins, but the complete project can be shared easily. You can upload the project directly to your cloud and allow your team to download the project. This helps in saving lot of effort in designing duplicates, and in maintaining consistent look and feel across the projects.
 
-One of the unique features of Volt MX Iris is its ability to provide a functional preview of your design. Similar to how an end-user would view the User Interface (UI) of an application, you can generate a functional preview that allows your team to view application UI and execute any action events attached.
+One of the unique features of Volt MX Irisis its ability to provide a functional preview of your design. Similar to how an end-user would view the User Interface (UI) of an application, you can generate a functional preview that allows your team to view application UI and execute any action events attached.
 
 Seamless integration with Volt MX Studio allows you to export (or import) your designs effortlessly.
 
@@ -27,7 +27,7 @@ Formatting Conventions
 
 The following are the formatting conventions used throughout the document:
 
-
+  
 | Conventions | Explanation |
 | --- | --- |
 | Monospace | User input text, system prompts, and responses File Path Commands Program Code File Names |

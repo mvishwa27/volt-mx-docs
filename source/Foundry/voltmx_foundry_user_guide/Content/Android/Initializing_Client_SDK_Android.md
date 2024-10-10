@@ -23,7 +23,7 @@ init
 ----
 
 ```
-  //Sample code to initialize  ClientKonyClient myClient = new KonyClient();
+ //Sample code to initialize  ClientKonyClient myClient = new KonyClient();
 String appkey = "<your-app-key>";
 String appsecret = "<your-app-secret>";
 String serviceURL = "<your-service-url>";

@@ -21,7 +21,6 @@ HTML Code:
   <source src="Resources/Images/DeepLinkUri_1.mp4" type="video/mp4">
 </video>
 
-
 Web links
 -----------
 

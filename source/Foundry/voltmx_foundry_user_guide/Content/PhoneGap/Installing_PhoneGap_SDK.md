@@ -28,7 +28,7 @@ Download Android SDK [http://developer.android.com/sdk/index.html](http://develo
 </details>
 <details close markdown="block"><summary>Installing Cordova</summary>
     
-Install Cordova by following the steps from [https://cordova.apache.org/docs/en/3.5.0/guide/cli/index.html#The_Command-Line_Interface](https://cordova.apache.org/docs/en/3.5.0/guide/cli/index.html#The_Command-Line_Interface)
+Install Cordova by following the steps from [https://cordova.apache.org/docs/en/3.5.0/guide/cli/index.html#The_Command-Line_Interface](https://cordova.apache.org/docs/en/3.5.0/guide/cli/index.md#The_Command-Line_Interface)
 </details>
     
 *   [Creating a Cordova App](Creating_Cordova_App.md)

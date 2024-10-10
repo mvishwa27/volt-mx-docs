@@ -14,7 +14,6 @@ For example, you can download the following free components developed by the HCL
 *   **Floating Action**: Represents and promotes the primary action in an application.
 *   **Employee Directory**: Provides standard features associated with an employee directory.
 
-
 ![](Resources/Images/CompMarketplaceComps_671x287.png)
 
 You can also import masters created in an earlier version of Volt MX Iris into a Free Form JavaScript project. You can continue to use the masters in your applications, or make them available as reusable components that can be published to HCL Forge by converting them to components. A master is similar to a component without a contract, except that a component includes a controller module.
@@ -295,7 +294,7 @@ To add a component to a form:
 1.  On the Project tab of the Project Explorer, locate and open the form where you want to add the component. The form displays on the Iris Canvas and has the focus.
 2.  If you have added the component to a collection, open the library and collection that contains the component in Library Explorer. Then drag and drop the component onto the form.
 
-> **_Note:_** From Volt Quantum V8 SP4  onwards, the Default Library filter has been enhanced to segregate components according to their respective channels. As a result, mobile-only components are displayed in the Default Library when a Mobile form or a Tablet form is open at that time on the Project Canvas. Similarly, web-only components are displayed Default Library when a Web form is open on the Project Canvas. However, when there is no form open on the Project Canvas, all the available components are displayed in the Default Library.
+> **_Note:_** From Volt Quantum V8 SP4 onwards, the Default Library filter has been enhanced to segregate components according to their respective channels. As a result, mobile-only components are displayed in the Default Library when a Mobile form or a Tablet form is open at that time on the Project Canvas. Similarly, web-only components are displayed Default Library when a Web form is open on the Project Canvas. However, when there is no form open on the Project Canvas, all the available components are displayed in the Default Library.
 
 If the component is added to the project and appears on the **Templates** tab, you can also do one of the following:
 

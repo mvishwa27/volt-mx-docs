@@ -14,6 +14,7 @@ To configure a screen for both portrait and landscape orientations, do the follo
 
     ![](Resources/Images/FormOrientationBoth.png)
 
+
 6.  Change the orientation of the screen on the Iris Canvas by clicking the **Orientation** toggle button. When you click this button, the orientation selected on the **Look** tab changes to match it.
 
      ![](Resources/Images/ToggleOrientation.png)

@@ -9,7 +9,7 @@ Learn how to build your first web app by completing a set of Volt MX Iris Hikes.
 ### [Responsive Web Design](https://youtu.be/qfdRonVOStU)
 Watch this Web Enablement Tutorial video to understand the intricacies of developing Responsive Web applications.
 
-### [Responsive Grid Layout](../../../Iris/iris_user_guide/Content/ResponsiveGridLayout.html)
+### [Responsive Grid Layout](../../../Iris/iris_user_guide/Content/ResponsiveGridLayout.md)
 Gain an understanding on how to implement and use the Responsive Grid Layout for the Mobile, Tablet, and Responsive Web apps.
 
 ### [Volt MX PWA: Building a Basic Web App](https://www.youtube.com/watch?v=RwncG6Jx6-g&t=36s)

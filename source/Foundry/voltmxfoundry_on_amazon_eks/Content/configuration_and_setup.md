@@ -28,11 +28,9 @@ For more information about the properties, refer to the following section.
 <details close markdown="block"><summary>config.properties</summary>
 
 1.  **INSTALL_ENV_NAME**: The install environment name must be a in string value in lowercase. For example: `dev`, `qa`, `prod`, or `eastusprod`.
-
-    * **IMAGE_REGISTRY_USERNAME** - This is the email ID you use to log in.
-    * **IMAGE_REGISTRY_PASSWORD** -  This is the CLI secret found under your User
-Profile in HCL Harbor.
-
+  
+    * **IMAGE_REGISTRY_USERNAME:** - This is the email ID you use to log in.
+    * **IMAGE_REGISTRY_PASSWORD:** - This is the CLI secret found under your User Profile in HCL.
 
 2.  **VOLTMX_FOUNDRY_BUILD_VER**: The build version of Foundry that you want to install. While upgrading, this specifies the build version to which you want to upgrade.
 3.  **VOLTMX_FOUNDRY_BUILD_TYPE**: The type of Foundry environment that must be created. For production environments, the value must be `PRODUCTION`. For dev, QA, or other non-production environments, the value must be `NON-PRODUCTION`.  
@@ -48,7 +46,7 @@ Profile in HCL Harbor.
 5.  **Application Server Details**
     *   **SERVER_DOMAIN_NAME**: The **Domain Name** for Volt MX Foundry. This value should be the hostname of the LoadBalancer. For example: abc.companyname (DNS name).
     *   **COM_PROTOCOL**: The communication protocol for Volt MX Foundry. This value can be either http or https.
-6.  **Database Details** <a href="#Database"></a>
+6.  **Database Details** <a id="Database"></a>
     *   **DB_TYPE** - The Database type that is used to host Volt MX Foundry. The possible values are:
         *   For MySQL DB server: `mysql`
         *   For Azure MSSQL or SQL Server: `sqlserver`
@@ -152,7 +150,7 @@ After you update the `config.properties` file, follow these steps to deploy Volt
   <li>
     <p>Create the ingress controller and the internet facing application load balancer (ALB). For more information, refer to the following blog post: <a href="https://aws.amazon.com/blogs/opensource/kubernetes-ingress-aws-alb-ingress-controller/">Kubernetes Ingress with AWS ALB Ingress Controller</a></p>
     <p>Use the <code>foundry-ingress.yml</code> file, which will map the created services to the load balancer paths.</p>
-    <p>The specified process generates a load balancer domain name. Volt MX recommends that you use a custom domain name and terminate your SSL connection at the public load balancer. You need to obtain a custom domain name from a DNS provider and an SSL certificate. To generate a certificate for your custom domain name and the corresponding ARN (Amazon Resource Name), refer to <a href="https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-request-public.html">Requesting a public certificate</a>.</p>
+    <p>The specified process generates a load balancer domain name. Volt MX recommends that you use a custom domain name and terminate your SSL connection at the public load balancer. You need to obtain a custom domain name from a DNS provider and an SSL certificate. To generate a certificate for your custom domain name and the corresponding ARN ](Amazon Resource Name), refer to <a href="https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-request-public.md">Requesting a public certificate</a>.</p>
     <p>The generated ARN needs to be updated in the annotations section of the <code>foundry-ingress.yml</code> file as shown in the following screenshot:</p><img src="Resources/Images/FoundryOnEKS_Ingress.png" alt="FoundryOnEKS_Ingress">
   </li>
 </ol>  

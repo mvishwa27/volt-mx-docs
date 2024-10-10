@@ -447,7 +447,7 @@ Specifies a background skin for Form widget.
 
 > **_Note:_** Server side Mobile Web (basic ) and SPA (BB NTH) devices does not support Vertical gradient and Vertical split skins. Transparent skin is not supported on SPA (Windows) platform.
 
-> **_Note:_** Server side Mobile Web (BB .html) does not support Image skin.
+> **_Note:_** Server side Mobile Web ](BB .md) does not support Image skin.
 
 Syntax
 

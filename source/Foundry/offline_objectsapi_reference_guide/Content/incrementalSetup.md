@@ -1,25 +1,19 @@
 
-Volt MX Foundry console User Guide: [Application-level APIs](Application_Level_APIs.md) > VMXFoundry.OfflineObjects.incrementalSetup
 
 # VMXFoundry.OfflineObjects.incrementalSetup
 
 The Offline Objects **incrementalSetup** API allows the client application to consume the latest changes made to Volt MX Foundry app’s object services schema after a particular timestamp, without breaking the existing functionality. Similar to setup API, **incrementalSetup** API is also an application-level API with same method arguments.
 
-> **_Note:_** Either **setup** or **incrementalSetup** API must be invoked on first time launch of the app.  
-
-> **_Note:_** End users should have the latest schema (for the currently installed version) in the device before doing an app upgrade. To fetch the latest schema, the app needs to call an incremental setup API.
+> **_Note:_** Either **setup** or **incrementalSetup** API must be invoked on first time launch of the app.
 
 **Scenarios that are supported in incrementalSetup:**
 
-- Addition and deletion of the objects in an Object Service.
-- Update operations on objects in an Object Service as:
-
-  - Addition and deletion of new non-primary key columns.
-  - Update properties like nullable, unique, and auto generated on non-primary key attributes.
-  - Update change tracking parameters like attributes for identifying a soft delete and change tracking timeStamp field.
-
-    > **_Note:_** If the **timeStamp** attribute is not linked to an object field, the incremental sync and delete operations will fail for records associated with that object.   
-
+-   Addition and deletion of the objects in an Object Service.
+-   Update operations on objects in an Object Service as:
+    - Addition and deletion of new non-primary key columns.
+    - Update properties like nullable, unique, and auto generated on non-primary key attributes.
+    - Update change tracking parameters like attributes for identifying a soft delete and change tracking timeStamp field.
+    > **_Note:_** If the **timeStamp** attribute is not linked to an object field, the incremental sync and delete operations will fail for records associated with that object.
 
 Unsupported scenarios include:
 
@@ -83,7 +77,7 @@ void <OfflineObjects>.incrementalSetup(final HashMap<String, Object> options, fi
 
 | Parameter    | Type                    | Description                                           | Required |
 | ------------ | ----------------------- | ----------------------------------------------------- | -------- |
-| options      | Hashmap<String, Object> | Options based on which incrementalSetup is performed. | Yes      |
+| options      | Hashmap<String, Object\> | Options based on which incrementalSetup is performed. | Yes      |
 | syncCallback | VMXCallback             | Takes onSuccess and onFailure methods.                | Yes      |
 
 #### incrementalSetup Options
@@ -152,7 +146,7 @@ onFailure: (VMXFailureCompletionHandler) onFailure
 ```
 NSError _ error;
 VMXClient _ client = [VMXClient sharedClient];
-VMXApplicationSync \* applicationSync = [client getOfflineObjects];
+VMXApplicationSync * applicationSync = [client getOfflineObjects];
 
 VMXSuccessCompletionHandler onSuccess = ^ void(id object) {
 NSLog(@"incremental Setup successful");

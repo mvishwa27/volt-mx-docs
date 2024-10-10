@@ -2,7 +2,7 @@
 
 
 Integrate a React Native App to Volt MX App
-=========================================== 
+===========================================
 
 Using this feature, you can integrate a React Native app (which is developed in React Native framework) to an app (which is developed in Volt MX Iris framework). The React Native app is embedded into the Volt MX Iris form through a container, called as the React Native Container. Furthermore, some APIs are used to communicate between the React Native app's JavaScript framework and the Volt MX app's Volt MX Iris framework.
 
@@ -70,7 +70,7 @@ In this section, you will learn how to integrate a React Native app to a Volt MX
     
     *   For iOS:  
         **react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ios/&lt;AppName&gt;/main.jsbundle --assets-dest ios**
-
+    
     > **_Note:_** Replace &lt;AppName&gt; with the app's **name** key value that is available in the app.json file, which is located at the root folder of the each ReactNative project.
     
 
@@ -87,7 +87,7 @@ The manual steps to enable the React Native feature for iOS are as follows:
 3.  Click the link. The KAR file location opens.
 4.  Rename the **voltmxappiphone.KAR** file to **voltmxappiphone.zip**
 5.  Unzip the voltmxappiphone.zip file, and then paste the ReactNativeProjects folder (which is present at root folder of app. workspace) in the unzipped folder.
-6.  Include the following key in the **application.properties** file of the project:<br> `enableReactNative = true`
+6.  Include the following key in the **application.properties** file of the project:<br>`enableReactNative = true`
 6.  Compress the contents of the unzipped folder to create an archive (zip).
 7.  Rename the zip with extension as KAR; this creates a KAR file that contains React Native apps.
 8.  Navigate back to Iris, go to **Product** > **Run As**, and then select the iOS emulator. The relevant logs in the Console are generated.

@@ -32,7 +32,7 @@ Most of the effort in preparing a headless build involves configuring these file
 
 - **Mode 0** - The application is built, and all the binaries are generated.
 - **Mode 1** - The application is published on Volt MX Foundry.
-- **Mode 2** - Application will be built for selected build platforms and Foundry app publish will be performed, Binary upload conditional on "web.binary.upload" flag"
+- **Mode 2** - Application will be built for selected build platforms and Foundry app publish will be performed, Binary upload conditional on "web.binary.upload" flag".
 - **Mode 3** - This mode generates a web archive file that is combined with the Volt MX Foundry archive and also generates either a `.war` or `.ear` file, depending on what you specify. You must manually deploy the app on the server, or use a separate script.
 - **Mode 4.** A combination of modes 0 and 3. The application is built and a web archive file that is combined with the Volt MX Foundry archive also is generated, along with either a `.war` or `.ear` file, depending on what you specify. You must manually deploy the app on the server, or use a separate script.
 
@@ -315,6 +315,7 @@ environment.name=
 
 #web.binary.upload = true by default. Set to false to stop web binary upload to Foundry.
 web.binary.upload = true
+
 
 ```
 

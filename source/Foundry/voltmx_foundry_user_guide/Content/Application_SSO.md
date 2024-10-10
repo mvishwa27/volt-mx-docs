@@ -44,7 +44,7 @@ The following describes two different scenarios for implementing the SSO functio
 
 **Scenario 1**: If the identity service is the same for both apps.
 
-Let us assume both apps use the same identity service **[User Store](Identity12_VoltMXUR.md#Identity.html#UserRepository)** in their Volt MX Foundry backend.
+Let us assume both apps use the same identity service **[User Store](Identity12_VoltMXUR.md#Identity.md#UserRepository)** in their Volt MX Foundry backend.
 
 **BankApp**
 
@@ -85,7 +85,7 @@ function bankapp_logout() {
 
 **Scenario 2**: The identity service is different for the apps.
 
-Assume the BankApp uses the**User Store** identity service and the TradeApp uses the **[Open LDAP](Identity4_LDAP.md#Identity.html#OpenLDAP)** identity service in their Volt MX Foundry backend.
+Assume the BankApp uses the**User Store** identity service and the TradeApp uses the **[Open LDAP](Identity4_LDAP.md#Identity.md#OpenLDAP)** identity service in their Volt MX Foundry backend.
 
 **BankApp with Volt MX userstore as identity service**
 

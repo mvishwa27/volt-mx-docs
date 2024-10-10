@@ -1,8 +1,8 @@
                                
 
 
-Button Events
-=============
+## <a id="Button Events"></a> Button Events
+
 
 Button has the following events associated with it:
 
@@ -52,6 +52,55 @@ Platform Availability
 *   Android
 *   Windows
 *   SPA
+
+* * *
+
+</details>
+<details close markdown="block"><summary>onBlur Event</summary>
+
+* * *
+
+An event that accepts a callback function as an input and executes the functionality defined in the callback function when the widget is blurred.
+
+### Syntax
+
+```
+onBlur ()
+```
+
+### Input Parameters
+
+Callback function
+
+A function that contains the logic to be implemented when the widget is blurred
+
+### Read/Write
+
+Read + Write
+
+### Remarks
+
+Assign a null value to the onBlur event of a widget to remove the blur effect on the widget.
+
+### Example
+
+```
+//This is a generic event that is applicable for various widgets.
+/*Here, we have shown how to use the onBlur event for a Button widget. 
+  You need to make a corresponding use of the onBlur event for other 
+  applicable widgets.*/
+
+frmButton.myButton.onBlur = onBlurCallBack;
+
+function onBlurCallBack(widget) {
+    console.log('onBlur event triggered');
+}
+```
+
+Platform Availability
+
+*   Available in the IDE
+*   Available on the Responsive Web platform
 
 * * *
 
@@ -122,7 +171,6 @@ An event that accepts a callback function as an input and executes the functiona
 ### Syntax
 
 ```
-
 onFocus()
 ```
 
@@ -145,9 +193,11 @@ Assign a null value to the onFocus event of a widget to remove focus from the wi
 ### Example
 
 ```
-//This is a generic event that is applicable for various widgets.
-/*Here, we have shown how to use the onFocus event for a Button widget. You need to make a corresponding use of the onFocus event for other applicable widgets.*/
-
+ //This is a generic event that is applicable for various widgets.
+/* Here, we have shown how to use the onFocus event for a Button widget. 
+   You need to make a corresponding use of the onFocus event for other 
+   applicable widgets.*/
+   
 frmButton.myButton.onFocus = onFocusCallBack;
 
 function onFocusCallBack(widget, activeElement) {

@@ -2,10 +2,10 @@
 
 Volt MX  Iris Suppported Devices, OSes, and Browsers Guide: iOS Platform
 
-Supported Devices by Volt MX AppPlatform
-========================================
+Supported Devices by Volt MX AppPlatform 9.5
+=============================================
 
-> **_Note:_** Volt MX 9.2 does not support the building of Windows native applications. Please disregard all references to Windows in this topic.
+> **_Note:_** Volt MX 9.5 does not support the building of Windows native applications. Please disregard all references to Windows in this topic.
 
 The following sections provide a list of devices supported by Volt MX Iris for native apps.
 
@@ -56,6 +56,7 @@ The following is a list of supported devices for the iOS platform along with the
 
 
 
+
 ### Volt MX Iris supported versions for iOS
 
   
@@ -69,7 +70,8 @@ The following is a list of supported devices for the iOS platform along with the
 | iOS 12.x | ![](Resources/Images/yes_17x17.png) | 
 | iOS 13.x | ![](Resources/Images/yes_17x17.png) | 
 | iOS 14.x | ![](Resources/Images/yes_17x17.png)  | 
-| iOS 15.x | ![](Resources/Images/yes_17x17.png) V9 Service Pack 2 Fix Pack 5  |
+| iOS 15.x | ![](Resources/Images/yes_17x17.png) V9 Service Pack 2 |
+| iOS 16.x | ![](Resources/Images/yes_17x17.png) V9 Service Pack 5   |
 
 
 #### App submission with iOS 12
@@ -85,7 +87,7 @@ Android Platform
 
  
 
-Google provides an [Android CDD](https://source.android.com/compatibility/cdd.md) (Compatibility Definition Document) though there is no validation process for Android device compatibility from Google. For more information please refer to: [https://source.android.com/source/faqs.html#compatibility](https://source.android.com/source/faqs.md#compatibility)
+Google provides an [Android CDD](https://source.android.com/compatibility/cdd.md) (Compatibility Definition Document) though there is no validation process for Android device compatibility from Google. For more information please refer to: [https://source.android.com/source/faqs.md#compatibility](https://source.android.com/source/faqs.md#compatibility)
 
 All devices, which are CDD compliant are supported. All those devices with default Play Store client software can be assumed as CDD compatible devices.
 
@@ -93,22 +95,22 @@ Volt MX  Iris supported versions for Android OS
 
 | Android Versions |   | Volt MX Iris Release Versions |
 | --- | --- | --- | 
-|  | 8.4 |  V9|   | 
-| 4.0 - 4.0.2 | ![](Resources/Images/no.png) | ![](Resources/Images/no.png) | 
-| 4.0.3 - 4.0.4 | ![](Resources/Images/no.png) | ![](Resources/Images/no.png) | 
-| 4.1 | ![](Resources/Images/no.png)| ![](Resources/Images/no.png) | 
-| 4.2 | ![](Resources/Images/no.png) | ![](Resources/Images/no.png) | 
-| 4.3 | ![](Resources/Images/no.png) | ![](Resources/Images/no.png) |
-| 4.4 | ![](Resources/Images/no.png) | ![](Resources/Images/no.png) |
-| 5.0 | ![](Resources/Images/yes.png) | ![](Resources/Images/yes.png) |
-| 6.0 | ![](Resources/Images/yes.png) | ![](Resources/Images/yes.png) |
-| 7.0 | ![](Resources/Images/yes.png) | ![](Resources/Images/yes.png) |
-| 8.0 | ![](Resources/Images/yes.png) | ![](Resources/Images/yes.png) |
-| 9.0 | ![](Resources/Images/yes.png) | ![](Resources/Images/yes.png) |
-| 10.0 | ![](Resources/Images/yes.png) Compatibility Support | ![](Resources/Images/yes.png)
-| 11.0 | ![](Resources/Images/yes.png)  | ![](Resources/Images/yes.png) 
-| 12.0 | ![](Resources/Images/yes.png)  | ![](Resources/Images/yes.png) 
-| 13.0 | ![](Resources/Images/yes.png)  | ![](Resources/Images/yes.png) 
+|  |  |  9.x|   | 
+| 4.0 - 4.0.2 | | ![](Resources/Images/no.png) | 
+| 4.0.3 - 4.0.4 | | ![](Resources/Images/no.png) | 
+| 4.1 | | ![](Resources/Images/no.png) | 
+| 4.2 | | ![](Resources/Images/no.png) | 
+| 4.3 |  | ![](Resources/Images/no.png) |
+| 4.4 |  | ![](Resources/Images/no.png) |
+| 5.0 |  | ![](Resources/Images/yes.png) |
+| 6.0 | | ![](Resources/Images/yes.png) |
+| 7.0 | | ![](Resources/Images/yes.png) |
+| 8.0 | | ![](Resources/Images/yes.png) |
+| 9.0 |  | ![](Resources/Images/yes.png) |
+| 10.0 |  | ![](Resources/Images/yes.png)
+| 11.0 | | ![](Resources/Images/yes.png) 
+| 12.0 |  | ![](Resources/Images/yes.png) 
+| 13.0 |  | ![](Resources/Images/yes.png) 
 | 14.0 |  | ![](Resources/Images/yes.png) 
 
 
@@ -125,12 +127,12 @@ Volt MX  Iris supported versions for Windows
 
 | Windows Phone Versions | Volt MX Iris Release Versions |   |
 | --- | --- | --- |
-| | V8  | V9 |
-| --- | --- |
-| Windows Desktop | ![](Resources/Images/yes.png) | ![](Resources/Images/no.png) |
-| Windows 8.1 Tablets | ![](Resources/Images/yes.png) | ![](Resources/Images/no.png) |
-| Windows 10 Tablets | ![](Resources/Images/yes.png) | ![](Resources/Images/yes.png) |
-| Windows 10 Mobile | ![](Resources/Images/yes.png) | ![](Resources/Images/yes.png) |
+| |  | 9.x |
+|  |  |
+| Windows Desktop | | ![](Resources/Images/no.png) |
+| Windows 8.1 Tablets | | ![](Resources/Images/no.png) |
+| Windows 10 Tablets | | ![](Resources/Images/yes.png) |
+| Windows 10 Mobile |  | ![](Resources/Images/yes.png) |
 
 Features for Windows Tablet/Desktop
 

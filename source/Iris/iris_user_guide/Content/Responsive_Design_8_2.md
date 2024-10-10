@@ -12,7 +12,7 @@ Responsive design enables developers to create applications that can fit their c
 Responsive Web Design Overview
 ------------------------------
 
-Responsive Web Design is an approach to web-page creation that makes use of flexible layouts, flexible images, and cascading style sheet (CSS) media queries. The goal of Responsive Web Design is to build web pages that can detect a user's screen size and orientation, and then change the layout accordingly. Responsive Web Design is about using HTML and CSS to automatically resize, hide, shrink, or enlarge a website, to make it look good on all devices (desktops, tablets, and phones).
+Responsive Web Design is an approach to web-page creation that makes use of flexible layouts, flexible images, and cascading style sheet ](CSS) media queries. The goal of Responsive Web Design is to build web pages that can detect a user's screen size and orientation, and then change the layout accordingly. Responsive Web Design is about using.md and CSS to automatically resize, hide, shrink, or enlarge a website, to make it look good on all devices (desktops, tablets, and phones).
 
 The Responsive Web Design feature has been implemented in Volt MX Iris. When you resize a web browser screen, content in the browser resizes based on the resizing design. Using Responsive design, you can design a web page for different form factors in a single FlexForm.
 
@@ -288,7 +288,7 @@ The fix or workaround for having precedence for `component level properties sett
 
 The solution mentioned in this document is for covering a scenario wherein if a customer(s) expects component level properties setting to be having precedence over form level properties settings.  
 
-In VoltMX 9.2 IRIS, there has been a design change (use case) implemented wherein form level properties settings would take precedence over component level properties settings in below scenarios or cases: 
+In VoltMX 9.2 IRIS (and in 9.5 as well), there has been a design change (use case) implemented wherein form level properties settings would take precedence over component level properties settings in below scenarios or cases: 
 
 1. If the channel selected is responsive web & 
 

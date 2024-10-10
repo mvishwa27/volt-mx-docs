@@ -1,8 +1,8 @@
                              
 
 
-voltmx.automation Namespace
-=========================
+## <a id="voltmxautomation-namespace"></a> voltmx.automation Namespace
+
 
 The voltmx.automation Namespace consists of the following API groups.
 
@@ -69,9 +69,9 @@ voltmx.automation.button.click(["Login Page", "userwidget1", "btnLogin"]);
 *   Windows
 *   SPA and ResponsiveWeb
 
-The voltmx.automation Namespace comprises of the following Widget APIs.
+The voltmx.automation Namespace comprises the following Widget APIs.
 
-<details close markdown="block"><summary>voltmx.automation.actionSheet.click</summary> 
+<details close markdown="block"><summary id="actionSheetclick">voltmx.automation.actionSheet.click</summary> 
 
 * * *
 
@@ -107,7 +107,7 @@ None
 
 Support for the record and playback features for this API is available from the V9 Service Pack 2 Fixpack 16 version of Volt MX Iris.
 
-### <a id=“Platform Availability”></a> Platform Availability
+<b>Platform Availability</b>
 
 *   iOS
 
@@ -1015,7 +1015,8 @@ None
 * * *
 </details>
 
-### <a id=“low-level-touch-and-gesture-apis”></a> Low-level Touch and Gesture APIs
+## <a id="low-level-touch-and-gesture-apis"></a> Low-level Touch and Gesture APIs
+
 
 The voltmx.automation Namespace comprises of the following Low-level Touch and Gesture APIs.
 
@@ -1073,7 +1074,7 @@ None
 * * *
 </details>
 
-<details close markdown="block"><summary>voltmx.automation.gesture.swipe</summary>
+<details close markdown="block"><summary id="gesture.swipe">voltmx.automation.gesture.swipe</summary>
 
 * * *
 
@@ -1145,7 +1146,7 @@ voltmx.automation.gesture.swipe(["Home Page", "appMenuOption2"], {
 * * *
 </details>
 
-<details close markdown="block"><summary>voltmx.automation.gesture.tap</summary>
+<details close markdown="block"><summary id="gesture.tap">voltmx.automation.gesture.tap</summary>
 
 * * *
 
@@ -1347,7 +1348,7 @@ For Example, `[ [“Form1”, “bnt1”], [“Form2”, “btn2”] ]`
 * * *
 
 </details>
-<details close markdown="block"><summary>voltmx.automation.playback.isLoadingScreenVisible</summary>
+<details close markdown="block"><summary id="isLoadingScreenVisible">voltmx.automation.playback.isLoadingScreenVisible</summary>
 
 * * *
 
@@ -1478,17 +1479,16 @@ Returns false if the wdget is not found within the timeout period.
 * * *
 
 </details>
-<details close markdown="block"><summary>voltmx.automation.playback.waitForLoadingScreenToBeDismissed</summary>
+<details close markdown="block"><summary id="waitForLoadingScreenToDismiss">voltmx.automation.playback.waitForLoadingScreenToDismiss</summary>
 
 * * *
 
-Waits for the loading screen to be dismissed or disappear. It is an awaitable API.
+This API blocks user action until the loading screen is dismissed (or disappears). This is an awaitable API.
 
 <b>Syntax</b>
 
 ```
-
-voltmx.automation.playback.waitForLoadingScreenToBeDismissed(<timeout in ms>);
+voltmx.automation.playback.waitForLoadingScreenToDismiss(<timeout in ms>);
 ```
 
 <b>Input Parameters</b>
@@ -1496,29 +1496,30 @@ voltmx.automation.playback.waitForLoadingScreenToBeDismissed(<timeout in ms>);
   
 | Parameters | Description |
 | --- | --- |
-| timeout \[number\] | It is an optional parameter. The timeout parameter must be specified in milliseconds. If the timeout is not specified, the API waits until the widget appears. |
+| timeout \[number\] | It is an optional parameter. The timeout parameter must be specified in milliseconds. If the timeout is not specified, the API waits until the loading screen disappears. |
 
  
 
 <b>Example</b>
 
 ```
-await voltmx.automation.playback.waitForLoadingScreenToBeDismissed("amountSpentLabel");
+await voltmx.automation.playback.waitForLoadingScreenToDismiss("amountSpentLabel");
 ```
 
 <b>Return Values</b>
 
 Boolean
 
-Returns true if there is no loading screen or the loading screen has disappeared.
+Returns true if the loading screen has disappeared or the loading screen has not been rendered.
 
-Returns false if the loading screen is visible on the screen.
+Returns false when the timeout is reached.
 
 <b>Platform Availability</b>
 
 *   Android
 *   iOS
-*   SPA and ResponsiveWeb
+*   SPA
+*   ResponsiveWeb
 
 * * *
 
@@ -1715,7 +1716,7 @@ Boolean
 
 
 
-### <a id=“cross-app-testing-apis”></a> Cross App Testing APIs
+## <a id="cross-app-testing-apis"></a> Cross App Testing APIs
 
 
 From the V9 Service Pack 2 Fixpack 16 release, Volt MX Iris introduces support for the following APIs for cross-app testing:
@@ -1731,7 +1732,6 @@ This API returns a JSON Object (dictionary) that contains the details of the app
 ```
 
 voltmx.automation.getParentInfo();
-
 ```
 
 <b>Return Values</b>  
@@ -1992,9 +1992,9 @@ voltmx.automation.webSocket.sendMessage(options);
   
   |Parameters|Description|
   | --- | --- |
-  |eventName [String]|The name of the event that must be executed in Temenos App Factory.|
+  |eventName [String]|The name of the event that must be executed in App Factory.|
   |data [String/Number/Object]|Additional data that must be passed in the message.|
-  |to [String] - Optional|The Selenium client receiver of the non-voltmx app that uses the same WebSocket for communication.<br>The default value of this parameter is the clientID of the app from Temenos App Factory.<br>To send a message to a client app that is not on App Factory, set the value of this parameter as the clientID of the app.|
+  |to [String] - Optional|The Selenium client receiver of the non-voltmx app that uses the same WebSocket for communication.<br>The default value of this parameter is the clientID of the app from App Factory.<br>To send a message to a client app that is not on App Factory, set the value of this parameter as the clientID of the app.|
 
 
 <b>Example</b>
@@ -2065,7 +2065,7 @@ await voltmx.automation.webSocket.waitForMessage(
 
 
 
-<!-- ## <a name="pom"></a> Page Object Model APIs
+## <a name="pom"></a> Page Object Model APIs
 
 From the V9 Service Pack 5 release, Volt MX Iris introduces support for the following APIs to support the Page Object Model approach in Jasmine Test Automation:
 
@@ -2079,7 +2079,6 @@ Use this API to retrieve and return the Page Objects for a specified Page.
 <b>Syntax</b>
 
 ```
-
 voltmx.automation.pageObjectModel.getPageObjects();
 ```
 
@@ -2158,8 +2157,6 @@ it("testCase1", async function () {
 
 * * *
 </details>
- -->
-
 
 
 Existing Volt MX Iris APIs

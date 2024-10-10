@@ -1,6 +1,6 @@
 
-FlexForm Properties
-===================
+## <a id="flexform-properties"></a> FlexForm Properties
+
 
 The properties for FlexForm widget are as follows.
 
@@ -236,6 +236,56 @@ Form1.widget1.anchorPoint = {
 * * *
 
 </details>
+<details close markdown="block"><summary id="appLevelWidgetConfig">appLevelWidgetConfig Property</summary>
+
+* * *
+
+This property provides users with the capability to enable or disable the header or footer of the app for that particular Form.
+
+Syntax
+
+```
+appLevelWidgetConfig
+```
+
+Type
+
+JavaScript Object that contains the following keys:
+
+| Key | Value |
+| --- | --- |
+| enabled [Boolean] | A Boolean value that enables the app level widget for the specified Form. The default value for this parameter is **false**. |
+| adjustFormHeight [Boolean] | A Boolean value that specifies if the height of the Form must be adjusted based on the position of the app level widget. When the value of this parameter is set as **false**, the height of the Form will not be adjusted, and the app level widget appears at the top of the Form. The default value for this parameter is **true**. |
+
+Read/Write
+
+Read + Write
+
+Example
+
+```
+Form1.appLevelWidgetConfig = {
+                             "header":
+                             {
+                             "enabled":false,
+                             "adjustFormHeight":false
+                             },
+                             "footer":
+                             {
+                             "enabled":true,
+                             "adjustFormHeight":true
+                             }
+                             };
+```
+
+Platform Availability
+
+* Android
+* iOS
+
+* * *
+
+</details>
 <details close markdown="block"><summary>backgroundColor Property</summary>
 
 * * *
@@ -292,7 +342,7 @@ Form1.btn1.backgroundColor = "ea5075";
 * * *
 
 </details>
-<details close markdown="block"><summary>bounces Property</summary>
+<details close markdown="block"><summary id = "bounces">bounces Property</summary>
 
 * * *
 
@@ -338,7 +388,7 @@ myForm.bounces=true;
 * * *
 
 </details>
-<details close markdown="block"><summary>captureGPS Property</summary>
+<details close markdown="block"><summary id="captureG">captureGPS Property</summary>
 
 * * *
 
@@ -387,7 +437,7 @@ This property is available on Mobile Web (advanced)
 * * *
 
 </details>
-<details close markdown="block"><summary>configureExtendBottom Property</summary>
+<details close markdown="block"><summary id="configur2">configureExtendBottom Property</summary>
 
 * * *
 
@@ -418,7 +468,7 @@ The default value for this property is false. If set to _true,_ the property ext
 * * *
 
 </details>
-<details close markdown="block"><summary>configureExtendTop Property</summary>
+<details close markdown="block"><summary id="configur">configureExtendTop Property</summary>
 
 * * *
 
@@ -449,7 +499,7 @@ The default value for this property is false. If set to _true,_ the property ext
 * * *
 
 </details>
-<details close markdown="block"><summary>configureStatusBarStyle Property</summary>
+<details close markdown="block"><summary id="configur3">configureStatusBarStyle Property</summary>
 
 * * *
 
@@ -594,7 +644,7 @@ myForm.contentSize = {
 * * *
 
 </details>
-<details close markdown="block"><summary>defaultIndicatorColor Property</summary>
+<details close markdown="block"><summary id="defaultI">defaultIndicatorColor Property</summary>
 
 * * *
 
@@ -682,6 +732,62 @@ Windows
 * * *
 
 </details>
+
+<details close markdown="block"><summary>displayOrientationClassifier Property</summary>
+
+* * *
+
+A sub-level property of the **displayOrientation** property of a form, that provides screen orientation modes at a granular-level for the particular Form. 
+
+### Syntax
+
+```
+
+displayOrientationClassifier
+```
+
+### Type
+
+String
+
+### Read/Write
+
+Read + Write
+
+### Remarks
+
+Based on the value of the displayOrientation property , the values of the displayOrientationClassifier property are as follows:
+
+<table style="border-top-left-radius: 0px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;border-left-style: solid;border-left-width: 2px;border-left-color: #a9a9a9;border-right-style: solid;border-right-width: 2px;border-right-color: #a9a9a9;border-top-style: solid;border-top-width: 2px;border-top-color: #a9a9a9;border-bottom-style: solid;border-bottom-width: 2px;border-bottom-color: #a9a9a9;width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('Resources/TableStyles/Basic.css');" class="TableStyle-TemenosTables" cellspacing="0"><colgroup><col style="width: 35%;" class="TableStyle-TemenosTables-Column-Column1"><col style="width: 70%;" class="TableStyle-TemenosTables-Column-Column1"></colgroup><thead><tr class="TableStyle-TemenosTables-Head-Header1" data-mc-conditions=""><th class="TableStyle-TemenosTables-HeadE-Column1-Header1" style="text-align: center;" scope="col" valign="middle"><b>displayOrientation</b></th><th class="TableStyle-TemenosTables-HeadD-Column1-Header1" style="text-align: center;" scope="col" valign="middle"><b>displayOrientationClassifier </b></th></tr></thead><tbody><tr class="TableStyle-TemenosTables-Body-Body1" style="height: 56px;" data-mc-conditions=""><td class="TableStyle-TemenosTables-BodyE-Column1-Body1">FORM_DISPLAY_ORIENTATION_LANDSCAPE</td><td class="TableStyle-TemenosTables-BodyD-Column1-Body1"><p><a href="#LANDSCAPE">SCREEN_ORIENTATION_LANDSCAPE</a></p><p><a href="#REVERSE_LANDSCAPE">SCREEN_ORIENTATION_REVERSE_LANDSCAPE</a></p><p><a href="#SENSOR_LANDSCAPE">SCREEN_ORIENTATION_SENSOR_LANDSCAPE</a></p><p><a href="#USER_LANDSCAPE">SCREEN_ORIENTATION_USER_LANDSCAPE</a></p></td></tr><tr class="TableStyle-TemenosTables-Body-Body1" style="height: 56px;" data-mc-conditions=""><td class="TableStyle-TemenosTables-BodyE-Column1-Body1">FORM_DISPLAY_ORIENTATION_PORTRAIT</td><td class="TableStyle-TemenosTables-BodyD-Column1-Body1"><p><a href="#PORTRAIT">SCREEN_ORIENTATION_PORTRAIT</a></p><p><a href="#REVERSE_PORTRAIT">SCREEN_ORIENTATION_REVERSE_PORTRAIT</a></p><p><a href="#SENSOR_PORTRAIT">SCREEN_ORIENTATION_SENSOR_PORTRAIT</a></p><p><a href="#USER_PORTRAIT">SCREEN_ORIENTATION_USER_PORTRAIT</a></p></td></tr><tr class="TableStyle-TemenosTables-Body-Body1" style="height: 56px;" data-mc-conditions=""><td class="TableStyle-TemenosTables-BodyB-Column1-Body1">FORM_DISPLAY_ORIENTATION_BOTH</td><td class="TableStyle-TemenosTables-BodyA-Column1-Body1"><p><a href="#UNSPECIFIED">SCREEN_ORIENTATION_UNSPECIFIED</a></p><p><a href="#BEHIND">SCREEN_ORIENTATION_BEHIND</a></p><p><a href="#FULL_SENSOR">SCREEN_ORIENTATION_FULL_SENSOR</a></p><p><a href="#FULL_SENSOR"></a><a href="#FULL_USER">SCREEN_ORIENTATION_FULL_USER</a></p><p><a href="#LOCKED">SCREEN_ORIENTATION_LOCKED</a></p><p><a href="#NOSENSOR">SCREEN_ORIENTATION_NOSENSOR</a></p><p><a href="#SENSOR">SCREEN_ORIENTATION_SENSOR</a></p><p><a href="#USER">SCREEN_ORIENTATION_USER</a></p></td></tr></tbody></table>
+
+> **_Note:_** 
+>* The value of the **displayOrientationClassifier** property is only respected when you provide a valid value corresponding to a particular **displayOrientation** (as specified in the table). For example, if you are using the **FORM_DISPLAY_ORIENTATION_PORTRAIT** Display Orientation, you can only provide a value for the displayOrientationClassifier property from the following:
+>
+>   *   SCREEN_ORIENTATION_PORTRAIT
+>   *   SCREEN_ORIENTATION_REVERSE_PORTRAIT
+>   *   SCREEN_ORIENTATION_SENSOR_PORTRAIT
+>   *   SCREEN_ORIENTATION_USER_PORTRAIT.
+>
+>* The displayOrientationClassifier property is ignored if the Form is assigned to a Camera widget as an Overlay Form.
+
+### Example
+
+```
+
+//Sample code to disable zoom in a FlexForm.  
+  
+Form1.disableZoom = true;
+```
+
+### Platform Availability
+
+* Android
+
+* * *
+
+</details>
+
+
 <details close markdown="block"><summary>drawerLayout Property</summary>
 
 * * *
@@ -1181,7 +1287,7 @@ myForm.enableScrolling = true;
 * * *
 
 </details>
-<details close markdown="block"><summary>extendBottom Property</summary>
+<details close markdown="block"><summary id="extendBo">extendBottom Property</summary>
 
 * * *
 
@@ -1227,7 +1333,7 @@ myForm.extendBottom= true;
 * * *
 
 </details>
-<details close markdown="block"><summary>extendTop Property</summary>
+<details close markdown="block"><summary id="extendTo">extendTop Property</summary>
 
 * * *
 
@@ -1273,7 +1379,7 @@ myForm.extendTop= true;
 * * *
 
 </details>
-<details close markdown="block"><summary>footerOverlap Property</summary> 
+<details close markdown="block"><summary id="footerOv">footerOverlap Property</summary> 
 
 * * *
 
@@ -1318,7 +1424,7 @@ myForm.footerOverlap= true;
 * * *
 
 </details>
-<details close markdown="block"><summary>formTransparencyDuringPostShow Property</summary>
+<details close markdown="block"><summary id="formTran">formTransparencyDuringPostShow Property</summary>
 
 * * *
 
@@ -1368,7 +1474,7 @@ myForm.formTransparencyDuringPostShow= 10;
 * * *
 
 </details>
-<details close markdown="block"><summary>headerOverlap Property</summary> 
+<details close markdown="block"><summary id="headerOv">headerOverlap Property</summary> 
 
 * * *
 
@@ -1557,7 +1663,7 @@ voltmx.print("FlexForm info ::" +myForm.info);
 * * *
 
 </details>
-<details close markdown="block"><summary>inputAccessoryViewType Property</summary>
+<details close markdown="block"><summary id="inputAcc">inputAccessoryViewType Property</summary>
 
 * * *
 
@@ -1632,7 +1738,7 @@ myForm.inputAccessoryViewType=constants.FORM_INPUTACCESSORYVIEW_DEFAULT;
 * * *
 
 </details>
-<details close markdown="block"><summary>inTransitionConfig Property</summary>
+<details close markdown="block"><summary id="inTransi">inTransitionConfig Property</summary>
 
 * * *
 
@@ -1817,6 +1923,8 @@ transitionMode: "Default",
 };  
 
 ```
+> **_Note:_** enableDefaultBackSwipe flag in infoplist_configuration.json will stop the version 1.0 transition effects configured for your forms and uses default transition behaviour. For more details check [here](https://github01.hclpnp.com/pages/phoenix-temenos/volt-mx-doc-opnsrc/95/docs/documentation/Iris/iris_user_guide/Content/BuildAnAppForiOS.html#enable-default-back-swipe)
+
 
 ### Platform Availability
 
@@ -1827,7 +1935,7 @@ transitionMode: "Default",
 * * *
 
 </details>
-<details close markdown="block"><summary>layout Property</summary>
+<details close markdown="block"><summary id="layout">layout Property</summary>
 
 * * *
 
@@ -1958,7 +2066,7 @@ voltmx.print("The layout type of myForm FlexForm is:"+myLayout);
 * * *
 
 </details>
-<details close markdown="block"><summary>maxAppMenuButtons Property</summary>
+<details close markdown="block"><summary id="maxAppMe">maxAppMenuButtons Property</summary>
 
 * * *
 
@@ -2177,7 +2285,7 @@ frm1.menuNormalSkin = "menuSkin";
 * * *
 
 </details>
-<details close markdown="block"><summary>menuPosition Property</summary>
+<details close markdown="block"><summary id="menuPosi">menuPosition Property</summary>
 
 * * *
 
@@ -2400,7 +2508,7 @@ Form1.navigationDrawerListerners = {
 * * *
 
 </details>
-<details close markdown="block"><summary>needsIndicatorDuringPostShow Property</summary>
+<details close markdown="block"><summary id="needsInd">needsIndicatorDuringPostShow Property</summary>
 
 * * *
 
@@ -2450,11 +2558,11 @@ myForm.needsIndicatorDuringPostShow=true;
 * * *
 
 </details>
-<details close markdown="block"><summary>noCache Property</summary>
+<details close markdown="block"><summary id="noCache">noCache Property</summary>
 
 * * *
 
-A web cache is a mechanism for the temporary storage (caching) of web documents, such as HTML pages and images, to reduce bandwidth usage, server load, and perceived lag. This property indicates that if the form is enabled for caching on the device browser.
+A web cache is a mechanism for the temporary storage ](caching) of web documents, such as.md pages and images, to reduce bandwidth usage, server load, and perceived lag. This property indicates that if the form is enabled for caching on the device browser.
 
 ### Syntax
 
@@ -2540,7 +2648,7 @@ frmHome.widgetID.opacity = 1;
 * * *
 
 </details>
-<details close markdown="block"><summary>outTransitionConfig Property</summary>
+<details close markdown="block"><summary id="outTrans">outTransitionConfig Property</summary>
 
 * * *
 
@@ -2723,6 +2831,8 @@ myForm.outTransitionConfig = {
 };  
 
 ```
+> **_Note:_** enableDefaultBackSwipe flag in infoplist_configuration.json will stop the version 1.0 transition effects configured for your forms and uses default transition behaviour. For more details check [here](https://github01.hclpnp.com/pages/phoenix-temenos/volt-mx-doc-opnsrc/95/docs/documentation/Iris/iris_user_guide/Content/BuildAnAppForiOS.html#enable-default-back-swipe)
+
 
 ### Platform Availability
 
@@ -3296,7 +3406,7 @@ var btn = new voltmx.ui.Button({
 * * *
 
 </details>
-<details close markdown="block"><summary>retainScrollPosition Property</summary>
+<details close markdown="block"><summary id="retainSc">retainScrollPosition Property</summary>
 
 * * *
 
@@ -3339,7 +3449,7 @@ myForm.retainScrollPosition=true;
 * * *
 
 </details>
-<details close markdown="block"><summary>scrollDirection Property</summary>
+<details close markdown="block"><summary id="scrollDi">scrollDirection Property</summary>
 
 * * *
 
@@ -3393,7 +3503,7 @@ frmFlxScroll.myFlxScroll.scrollDirection=voltmx.flex.SCROLL_BOTH;
 * * *
 
 </details>
-<details close markdown="block"><summary>secureData Property</summary>
+<details close markdown="block"><summary id="secureDa">secureData Property</summary>
 
 * * *
 
@@ -3439,7 +3549,7 @@ myForm.secureData=true;
 * * *
 
 </details>
-<details close markdown="block"><summary>showActionBar Property</summary>
+<details close markdown="block"><summary id="showActi">showActionBar Property</summary>
 
 * * *
 
@@ -3484,7 +3594,7 @@ myForm.showActionBar=true;
 * * *
 
 </details>
-<details close markdown="block"><summary>showActionBarIcon Property</summary>
+<details close markdown="block"><summary id="showActi2">showActionBarIcon Property</summary>
 
 * * *
 
@@ -3714,7 +3824,7 @@ Form1.statusBarHidden = true;
 * * *
 
 </details>
-<details close markdown="block"><summary>statusBarStyle Property</summary>
+<details close markdown="block"><summary id="statusBa">statusBarStyle Property</summary>
 
 * * *
 
@@ -3760,7 +3870,7 @@ Form1.statusBarStyle = constants.STATUS_BAR_STYLE_LIGHT_CONTENT;
 * * *
 
 </details>
-<details close markdown="block"><summary>submitSecure Property</summary>
+<details close markdown="block"><summary id="submitSe">submitSecure Property</summary>
 
 * * *
 
@@ -3940,7 +4050,7 @@ myForm.title="Hello World";
 * * *
 
 </details>
-<details close markdown="block"><summary>titleBar Property</summary>
+<details close markdown="block"><summary id="titleBar">titleBar Property</summary>
 
 * * *
 
@@ -4076,6 +4186,8 @@ var newAttributes = {
 };
 myForm.titleBarAttributes = newAttributes;
 ```
+> **_Note:_** To enable default back swipe in your forms, configure enableDefaultBackSwipe  in infoplist_configuration.json. Check  [here](https://github01.hclpnp.com/pages/phoenix-temenos/volt-mx-doc-opnsrc/95/docs/documentation/Iris/iris_user_guide/Content/BuildAnAppForiOS.html#enable-default-back-swipe) to how to configure. 
+
 
 ### Platform Availability
 
@@ -4086,7 +4198,7 @@ myForm.titleBarAttributes = newAttributes;
 * * *
 
 </details>
-<details close markdown="block"><summary>titleBarConfig Property</summary>
+<details close markdown="block"><summary id="titleBar2">titleBarConfig Property</summary>
 
 * * *
 
@@ -4160,7 +4272,7 @@ myForm.titleBarConfig = {
 * * *
 
 </details>
-<details close markdown="block"><summary>titleBarSkin Property</summary>
+<details close markdown="block"><summary id="titleBar3">titleBarSkin Property</summary>
 
 * * *
 
@@ -4242,6 +4354,8 @@ newTransform.translate3D(223, 12, 56);
 //translates by 223 xAxis,12 in yAxis,56 in zAxis
 widget.transform = newTransform;
 ```
+
+
 
 ### Platform Availability
 
@@ -4362,7 +4476,7 @@ myForm.viewConfig = {
 * * *
 
 </details>
-<details close markdown="block"><summary>windowSoftInputMode Property</summary>
+<details close markdown="block"><summary id="windowSo">windowSoftInputMode Property</summary>
 
 * * *
 

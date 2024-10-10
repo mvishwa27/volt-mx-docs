@@ -1,6 +1,6 @@
                               
 
-
+ 
 RadioButtonGroup Events
 =======================
 
@@ -67,7 +67,6 @@ An event that accepts a callback function as an input and executes the functiona
 ### Syntax
 
 ```
-
 onFocus()
 ```
 
@@ -435,7 +434,7 @@ This is applicable only for Mobile Web channel. The function must exist in a jav
 
 This event should return true, to continue with execution of onSelection and postOnclickJS events.
 
-In for the events preOnclickJS and postOnclickJS you will not be able to access application model or APIs, as these functions are executed in browser whereas the remaining JS modules are executed in server. For these events you can access browser objects ( window, document etc..) to change UI or perform some validation before server event. If the event preOnclickJS returns true, only then the request is sent to server for subsequent action. You have to specify the modules to be loaded in browser using import JS tab, only then these files get included in.html script tag otherwise you will not be able to access the objects defined in those modules.
+In for the events preOnclickJS and postOnclickJS you will not be able to access application model or APIs, as these functions are executed in browser whereas the remaining JS modules are executed in server. For these events you can access browser objects ]( window, document etc..) to change UI or perform some validation before server event. If the event preOnclickJS returns true, only then the request is sent to server for subsequent action. You have to specify the modules to be loaded in browser using import JS tab, only then these files get included in.md script tag otherwise you will not be able to access the objects defined in those modules.
 
 <b>Example</b>
 

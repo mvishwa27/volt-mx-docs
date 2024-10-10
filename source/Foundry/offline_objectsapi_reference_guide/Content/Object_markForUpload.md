@@ -1,6 +1,6 @@
 
 
-\<object\>.markForUpload
+<object\>.markForUpload
 ======================
 
 The **<object\>.markForUpload API** selects the changes made to the records and sent to the server. If the **markForUpload** flag is not enabled, the changes made are deferred from uploading to the server until marked for upload using specific markForUpload APIs.
@@ -37,11 +37,6 @@ var primaryKeys["CategoryID"] = "1";
 options["primaryKeys"] = primaryKeys;
 //mark the deferred record for upload with primary key 1
 category.markForUpload(options, successCallback, failureCallback);
-
-var category = new voltmx.sdk.VMXObj("CATEGORY");
-//mark all the deferred records in the object for upload
-category.markForUpload(null, successCallback, failureCallback);
-
 
 function successCallback() {
     voltmx.print("markForUpload successful");
@@ -89,20 +84,6 @@ category.markForUpload(options, new VMXCallback() {
             Log.d("Object markforupload", "Object markforupload Successful ");
         }
 
-        @Override
-        public void onFailure(object error) {
-            OfflineObjectsException e = (OfflineObjectsException) error;
-            Log.e("Object markforupload", "Object markforupload unsuccessful for category with Error :" + e.getMessage());
-        }
-    }
-
-VMXObj category = new VMXObj("CATEGORY");
-//mark all the deferred records in the object for upload
-category.markForUpload(null, new VMXCallback() {
-        @Override
-        public void onSuccess(Object object) {
-            Log.d("Object markforupload", "Object markforupload Successful");
-        }
         @Override
         public void onFailure(object error) {
             OfflineObjectsException e = (OfflineObjectsException) error;
@@ -160,24 +141,6 @@ NSDictionary * options = @ {
         ]);
     }
 ];
-
-NSError error = nil;
-VMXObj * _categories = [
-    [VMXObj alloc] initWithName: @"CATEGORY"
-    error: & error
-];
-//mark all the deferred records in the object for upload
-[_categories markForUpload: null
-    onSuccess: ^ () {
-        NSLog(@"Object markforupload");
-    }
-    onFailure: ^ (id object) {
-        OfflineObjectsError * error = (OfflineObjectsError) object;
-        NSLog(@"Object markforupload unsuccessful because of error:%@", [error.userInfo
-            localizedDescription
-        ]);
-    }
-];
 ```
 
 Utility API
@@ -227,7 +190,7 @@ VMXObj category = new VMXObj("CATEGORY");
 category.getUploadDeferredRecordKeys(new VMXCallback() {
         @Override
         public void onSuccess(Object result) {
-            List < HashMap < String, Object >> pksList = (List < HashMap < String, Object >> ) result;
+            List < HashMap < String, Object >> pksList = (List < HashMap < String, Object > ) result;
             for (HashMap < String, Object > pks: pksList) {
                 for (Map.Entry < String, Object > e: pks.entrySet()) {
                     Log.d("deferred record with key : " + e.getKey() + "value: "+e.getValue());
@@ -279,3 +242,4 @@ VMXFailureCompletionHandler onFailure = ^ void(id error) {
     NSLog("failed with error " + error.code);
 }
 ```
+

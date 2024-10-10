@@ -3062,7 +3062,7 @@ Read only
 
 ```
 
-//Defining the properties for CheckBox with selectedKeyValues:[["key1","value1"],["key2","value2"]]
+//Defining the properties for CheckBox with selectedKeyValues:[["key1","value1"],["key2","value2"]
 var chkBasic = {
     id: "checkBox",
     isVisible: true,

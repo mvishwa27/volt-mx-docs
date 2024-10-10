@@ -60,7 +60,7 @@ Now do the same thing from JavaScript in Iris.
 
 ### The JavaScript Project
 
-1.  [Create a New Project](../../../Iris/iris_user_guide/Content/CreateNewProject.html?Highlight=Create a project) in Iris.   
+1.  [Create a New Project](../../../Iris/iris_user_guide/Content/CreateNewProject.md?Highlight=Create a project) in Iris.   
 2.  Add the iOS **Foundation** framework for to the project.
 3.  Add a form to your project.
 4.  Add a **button** and a **label** to the form.

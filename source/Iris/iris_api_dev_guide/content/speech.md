@@ -14,7 +14,7 @@ The Text-to-speech functionality allows you to create applications that can conv
 APIs
 ----
 
-Click [here](https://github.com/HCL-TECH-SOFTWARE/volt-mx-native-function-docs/blob/main/docs/Android/android.speech.tts-Android-10.0/index.html) to view Speech APIs.
+Click [here](https://github.com/HCL-TECH-SOFTWARE/volt-mx-native-function-docs/blob/main/docs/Android/android.speech.tts-Android-10.0/index.md) to view Speech APIs.
 
 Sample Application
 ------------------

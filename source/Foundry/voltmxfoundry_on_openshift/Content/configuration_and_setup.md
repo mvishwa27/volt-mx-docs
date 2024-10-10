@@ -23,12 +23,12 @@
 For more information about the properties, refer to the following section.
 
 
-<details close markdown="block"><summary>config.properties</summary>
+<details close markdown="block"><summary id="config-properties">config.properties</summary>
 
 1.  **INSTALL_ENV_NAME**: The install environment name must be a in string value in lowercase. For example: `dev`, `qa`, `prod`, or `eastusprod`.
 
-    * **IMAGE_REGISTRY_USERNAME** - This is the email ID you use to log in.
-    * **IMAGE_REGISTRY_PASSWORD** -  This is the CLI secret found under your User Profile in HCL Harbor.
+    * **IMAGE_REGISTRY_USERNAME:** - This is the email ID you use to log in.
+    * **IMAGE_REGISTRY_PASSWORD:** - This is the CLI secret found under your User Profile in HCL.
 
 2.  **VOLTMX_FOUNDRY_BUILD_VER**: The build version of Foundry that you want to install. While upgrading, this specifies the build version to which you want to upgrade.
 3.  **VOLTMX_FOUNDRY_BUILD_TYPE**: The type of Foundry environment that must be created. For production environments, the value must be `PRODUCTION`. For dev, QA, or other non-production environments, the value must be `NON-PRODUCTION`.  
@@ -41,14 +41,14 @@ For more information about the properties, refer to the following section.
     *   MESSAGING_ENABLED
     *   CONSOLE_ENABLED
     *   APIPORTAL_ENABLED
-5.  **Application Server Details**
+5.  **Application Server Details**  <a id="Application-Server-Details"></a> 
     *   **SERVER_DOMAIN_NAME**: The **Domain Name** for Volt MX Foundry. This value should be the hostname of the LoadBalancer. For example: abc.companyname (DNS name).
     *   **COM_PROTOCOL**: The communication protocol for Volt MX Foundry. This value can be either http or https.
     *   **PASSTHROUGH_ENABLED**: Enables HTTPS passthrough mode while creating routes from the OpenShift Console.    
     *   **KEYSTORE_FILE**: The path to an existing keystore file, which must be a valid jks file. This parameter can be left empty for HTTP and HTTPS without passthrough.   
     *   **KEYSTORE_FILE_PASS**: The password for the jks file that is specified in the KEYSTORE_FILE parameter.  
     *   **KEYSTORE_FILE_PASS_SECRET_KEY**: The secret key for the Keystore password. This parameter is required if you are using an encrypted Keystore password.
-6.  **Database Details** <a href="#Database"></a>
+6.  **Database Details** <a id="Database"></a>
     *   **DB_TYPE** - The Database type that is used to host Volt MX Foundry. The possible values are:
         *   For MySQL DB server: `mysql`
         *   For Azure MSSQL or SQL Server: `sqlserver`
@@ -180,6 +180,25 @@ After you update the `config.properties` file, follow these steps to deploy Volt
     </ul>
   </li>
 </ol>  
+
+
+### <a name="ConfigurePassthroughRoutes"></a>Configure Passthrough Routes
+
+To configure the passthrough, you need to create a secure route for the Foundry component. To do so, follow these steps:
+
+1. On the **Create Route** page, configure details for the Foundry component.
+   ![](Resources/Images/createRoute_field.png)
+
+    > **_Note:_** The details in the screenshot are specific to the API Portal component and use a specific domain. Make sure that you change the details for other routes. For more information, refer to [Context paths and Service Names for Fabric components](#Context).  
+
+
+2. Under **Security**, select the **Secure Route** check box.
+
+3. From the **TLS termination** list, select **Passthrough**. <br/>
+
+    ![](Resources/Images/createRoute_security.png)
+
+4. Provide the required values in the [Application Server Details](#Application-Server-Details) section of the [config.properties](#config-properties) file.
 
 
 ### <a name="Context"></a>Context paths and Service Names for Foundry components
@@ -367,6 +386,52 @@ The &lt;INSTALL_ENV_NAME&gt; is the name of the install environment that you pro
   </li>
 </ol>
 
+## Deploy Fabric using Helm Charts
+
+To deploy Fabric by using Helm charts, make sure that you have installed Helm, and then follow these steps:
+
+1. Open a terminal console and navigate to the extracted folder.
+
+2. Generate the Fabric services by running the following command:
+
+    ```
+    ./generate-kube-artifacts.sh config.properties svcs
+    ```
+
+    To generate the services configuration, you only need to fill the `INSTALL_ENV_NAME` property and the ## Install Components ### section in the `config.properties` file.
+
+3. Navigate to the `helm_charts` folder by executing the following command.
+
+    ```
+    cd helm_charts
+    ```
+
+4. Create the `fabricdb` and `fabricapp` Helm charts by executing the following commands.
+
+    ```
+    helm package fabric_db/
+    ```
+
+    ```
+    helm package fabric_app/
+    ```
+
+5. Install the `fabricdb` Helm chart by executing the following command.
+
+    ```
+    helm install fabricdb  fabric-db-<Version>.tgz
+    ```
+
+6. Install the fabricapp Helm chart by executing the following command.
+
+    ```
+    helm install fabricapp  fabric-app-<Version>.tgz
+    ```
+
+> **IMPORTANT:**
+>
+> * Make sure that you generate the artifacts (generate-artifacts.sh) before creating the Helm charts.
+> * Make sure that the fabricdb Helm chart installation is complete before installing the fabricapp Helm chart.
 
 ## <a name="Launching"></a>Launch the Foundry Console
 
@@ -377,9 +442,9 @@ The &lt;INSTALL_ENV_NAME&gt; is the name of the install environment that you pro
     The <code>&lt;scheme&gt;</code> is <code>&lt;http&gt;</code> or <code>&lt;https&gt;</code> based on your domain. The <code>&lt;foundry-hostname&gt;</code> is the host name of your publicly accessible Foundry domain.
 
 2.  After you launch the Foundry Console, create an administrator account by providing the appropriate details.
-
+<!--
     ![](Resources/Images/OpenShift_FoundryAccount.png)
-
+-->
 After you create an administrator account, you can sign-in to the Foundry Console by using the credentials that you provided.
 
 ## Logging Considerations

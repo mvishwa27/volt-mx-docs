@@ -38,4 +38,4 @@ You may need to modify Web platform details for various reasons.
 
 ![](../Resources/Images/Overview/Apps/ModifyWebpl_634x506.png)
 
-For more details about how to update the Web platform details, refer to [Web Platform](Web.md#Apps/Windows.html)
+For more details about how to update the Web platform details, refer to [Web Platform](Web.md#Apps/Windows.md)

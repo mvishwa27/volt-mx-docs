@@ -22,7 +22,7 @@ For more information on JobScheduler APIs, [click here](https://developer.androi
 
 ### APIs
 
-Click [here](https://developer.android.com/reference/android/app/job/JobScheduler.html) to view JobScheduler APIs.
+Click [here](https://developer.android.com/reference/android/app/job/JobScheduler.md) to view JobScheduler APIs.
 
 ### Limitations
 

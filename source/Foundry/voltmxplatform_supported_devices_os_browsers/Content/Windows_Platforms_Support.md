@@ -1,4 +1,4 @@
-
+                            
 ### Windows Desktop
 
 The apps built for this platform work on Windows 7, Windows 8/8.1, and Windows 10.
@@ -74,7 +74,7 @@ The following are the development and runtime environment compatibility matrices
 
 ### Windows 8.1 Tablet
 
-These are Windows Store apps. Forms are created under the **tablet** section in [Volt Iris].
+These are Windows Store apps. Forms are created under the **tablet** section in Volt Iris.
 
 #### Environment
 
@@ -148,7 +148,7 @@ The following are the development and runtime environment compatibility matrices
 
 ### Windows 10 Tablet
 
-These are Windows Store apps. Forms are created under the **tablet** section in [Volt Iris].
+These are Windows Store apps. Forms are created under the **tablet** section in Volt Iris.
 
 #### Environment
 
@@ -194,7 +194,7 @@ These are Windows Store apps. Forms are created under the **tablet** section in 
 
 ### Windows 10 Mobile
 
-These are Windows Store apps. Forms are created under the **mobile** section in [Volt Iris].
+These are Windows Store apps. Forms are created under the **mobile** section in Volt Iris.
 
 #### Environment
 

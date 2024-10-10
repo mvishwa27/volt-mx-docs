@@ -18,7 +18,7 @@ Service Driven Objects
 4.  Under the Objects tab, click **CONFIGURE NEW**. A New Object Service page appears.
 5.  Type a name for your object service and select **Integration & Orchestration Services** from the Endpoint Type list.
 
-6.  Select the Offline enabled check box. Upon selecting this check box, options to set **[Conflict Resolution Policy]**(../../../Foundry/offline_objects_user_guide/Content/Conflict_Resolution.html) and **[Enable Upload Cache]**(../../../Foundry/offline_objects_user_guide/Content/Upload_Cache.md) are enabled.
+6.  Select the Offline enabled check box. Upon selecting this check box, options to set **[Conflict Resolution Policy]**](../../../Foundry/offline_objects_user_guide/Content/Conflict_Resolution.md) and **[Enable Upload Cache]**(../../../Foundry/offline_objects_user_guide/Content/Upload_Cache.md) are enabled.
     
     ![](Resources/Images/SDO_661x410.png)
     

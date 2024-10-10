@@ -336,10 +336,10 @@ To add Custom CSS or Custom HTML code to a Splash Screen, follow these steps:
 
 *   The Custom CSS or Custom HTML based splash screen is only supported on the Responsive Web channel.
 *   The Responsive Web app must be published on the Volt MX Foundry V9 Service Pack 2 version, for the Custom CSS or Custom HTML code to be effective.
-*   You cannot access Local Resources (such as local images or fonts) in both the Custom CSS and Custom HTML codes.
+*   You cannot access Local Resources ](such as local images or fonts) in both the Custom CSS and Custom.md codes.
 *   The Custom CSS or Custom HTML code does not support locale-based splash screens.
 
-> **_Note:_** You can use either the image-based splash screen or implement a splash screen by using Custom CSS (or Custom HTML) code. If you use an image and add custom code, the splash screen is implemented based on the custom code.
+> **_Note:_** You can use either the image-based splash screen or implement a splash screen by using Custom CSS ](or Custom.md) code. If you use an image and add custom code, the splash screen is implemented based on the custom code.
 
 Clear the Splash Screen of a Channel
 ------------------------------------

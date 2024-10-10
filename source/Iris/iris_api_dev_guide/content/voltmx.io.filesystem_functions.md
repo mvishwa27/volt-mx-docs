@@ -28,7 +28,7 @@ voltmx.io.FileSystem.browse(browseConfig,browseCallBack);
   
 | Parameter | Description |
 | --- | --- |
-| browseConfig \[String\] - Mandatory | Configuration params which is a simple JSON object of key value pairs, that drive the possible options during the browse. Currently the following keys are supported in the configuration:**selectMultipleFiles**: (Boolean) - Default (true)**filter**: An array indicates what file Filters should be applied to the file selection dialog. The file Filters need to follow the conventions specified in the IANAMediaTypes specification. For more information, see [https://www.iana.org/assignments/media-types/media-types.xhtml](https://www.iana.org/assignments/media-types/media-types..md). |
+| browseConfig \[String\] - Mandatory | Configuration params which is a simple JSON object of key value pairs, that drive the possible options during the browse. Currently the following keys are supported in the configuration:**selectMultipleFiles**: ](Boolean) - Default (true)**filter**: An array indicates what file Filters should be applied to the file selection dialog. The file Filters need to follow the conventions specified in the IANAMediaTypes specification. For more information, see [https://www.iana.org/assignments/media-types/media-types..md](https://www.iana.org/assignments/media-types/media-types..md). |
 | browseCallBack \[Object\] - Mandatory |   |
 
 <b>Example</b>
@@ -114,7 +114,7 @@ VoltMX.io.File returns a handle to the File object pointing to the destination f
 *   Android
 *   Windows
 
-### voltmx.io.FileSystem.getAppGroupDirectoryPath
+### <a name="getAppGroupDirectoryPath"></a>voltmx.io.FileSystem.getAppGroupDirectoryPath
 
 This API retrieves the root path of an app group.
 

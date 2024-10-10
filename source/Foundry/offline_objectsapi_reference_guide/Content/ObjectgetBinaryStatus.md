@@ -1,17 +1,18 @@
 
 
-\<object\>.getBinaryStatus
+<object\>.getBinaryStatus
 ========================
 
-The **\<object\>.getBinaryStatus** returns an array of primary keys based on the query for status.
+The **<object\>.getBinaryStatus** returns an array of primary keys based on the query for status.
 
-> **Note:**  
-*   For the \<object\>.getBinaryStatus API to work, ensure that the object definition in Volt MX Foundry has a defined binary column.  
+> **Note:**  For the <object\>.getBinaryStatus API to work, ensure that the object definition in Volt MX Foundry has a defined binary column.  
+
 
 Volt MX  Iris (JavaScript)
 -------------------------------
 
-> **_Note:_** Not supported for Mobile Web, Windows, and Desktop Web channels.
+> **_Note:_** Not supported for Mobile Web, Windows, Desktop Web and Desktop Native channels.
+
 
 ### Signature
 
@@ -34,7 +35,7 @@ Volt MX  Iris (JavaScript)
   
 | Key | Type | Description | Required |
 | --- | --- | --- | --- |
-| download | JSON | To get the binary download status of a particular binary column, provide the following variables as inputs: **columnName (String)**: The binary column name of the required object. **queryType (Number)**:A combination of the following values:{`voltmx.sdk.OfflineObjects.BinaryStatus.pending`, `voltmx.sdk.OfflineObjects.BinaryStatus.completed`, `voltmx.sdk.OfflineObjects.BinaryStatus.errored` } > **_Note:_** Use bitwise OR ("|") between the queryTypes to use the combination of the values. | Yes |
+| download | JSON | To get the binary download status of a particular binary column, provide the following variables as inputs:<br>- **columnName (String)**: The binary column name of the required object.<br>- **queryType (Number)**: A combination of the following values:{`voltmx.sdk.OfflineObjects.BinaryStatus.pending`, `voltmx.sdk.OfflineObjects.BinaryStatus.completed`, `voltmx.sdk.OfflineObjects.BinaryStatus.errored` }<br>**_Note:_** Use bitwise OR \("\|"\) between the queryTypes to use the combination of the values. | Yes |
 
 ### Return Type
 
@@ -68,12 +69,13 @@ function onFailure(error) {
 }
 ```
 
-<!-- Android (Java)
+Android (Java)
 --------------
 
 > **_Note:_** Not supported in the current version.
 
+
 iOS (Objective C)
 -----------------
 
-> **_Note:_** Not supported in the current version. -->
+> **_Note:_** Not supported in the current version.

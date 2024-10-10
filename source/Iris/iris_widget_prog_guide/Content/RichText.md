@@ -295,7 +295,7 @@ You can customize the appearance of the RichText widget using the following prop
 
 The RichText widget has the following considerations:
 
-*   **All Platforms**: If you specify a skin for the RichText widget, all the font level settings (color style, or size etc.) is applied to the complete content in RichText widget. You can use the label style [HTML formatting tag](#supported.md-formatting-tags) to override the text color specified at the skin level.
+*   **All Platforms**: If you specify a skin for the RichText widget, all the font level settings ](color style, or size etc.) is applied to the complete content in RichText widget. You can use the label style .md formatting tag](#supported.md-formatting-tags) to override the text color specified at the skin level.
 *   The onclick attribute of the `<a href>` tag does not invoke in native applications. The onclick attribute is respected only on browser-based applications(such as Mobile Web, SPA, etc). For example, in the code below, when you click **Click here** , the javascript confirm function does not invoke on a native application. The function invokes only in Mobile Web and SPA applications.  
 
     <a href="#" onclick=confirm("Do you want to proceed")>Click here</a>

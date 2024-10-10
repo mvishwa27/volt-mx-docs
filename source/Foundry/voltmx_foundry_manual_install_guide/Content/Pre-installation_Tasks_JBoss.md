@@ -234,7 +234,8 @@ To install Volt MX Foundry on an existing standalone JBoss, follow the steps to 
 3.  Configure JBoss to listen for remote management requests as below:
     *   Add `<socket-binding name="management-native" interface="management" port="${jboss.management.native.port:9999}"/>` under the `<socket-binding-group>`
     *   Add following section under the `<management-interfaces>
-````
+`
+```
 <native-interface security-realm="ManagementRealm">  
         <socket-binding native="management-native"/>  
         </native-interface>

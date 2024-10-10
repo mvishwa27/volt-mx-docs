@@ -94,7 +94,7 @@ Example
  NSDictionary * userInfo = [
     [NSDictionary alloc] init
 ];
-[userInfo initWithObjects: @[@"text"] forKeys: @[@"Mail is Edited”]];
+[userInfo initWithObjects: @[@"text"] forKeys: @[@"Mail is Edited”];
 - (void) fetchDataWithRequestID: @“EditMail”
         userInfo: userInfo
         onCompletion: nil
@@ -174,7 +174,7 @@ ExampleInterfaceController * myController = [
 NSDictionary * userInfo = [
     [NSDictionary alloc] init
 ];
-[userInfo initWithObjects: @[@"text"] forKeys: @[@"Mail is Deleted"]];
+[userInfo initWithObjects: @[@"text"] forKeys: @[@"Mail is Deleted"];
 void( ^ callback)(NSError * err, id data) = ^ (NSError * err, id data) {
     if (err) {
         NSLog(@"%@", err); //(To check what caused the error)

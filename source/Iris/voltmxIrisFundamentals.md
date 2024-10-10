@@ -6,10 +6,12 @@ Learn about HCL Volt MX products, sub-products and their features. Further, lear
 
 Learn about the various parts that come together to help design the user-facing interface of your application
 
-
 ### [Widgets and API reference](../Iris/iris_widget_prog_guide/Content/widgetApiReference.md)
 
 Learn about various widgets and Application Programming Interfaces (APIs) to better understand which will work best for the solution you are working on.
+
+### [Micro Apps](../Iris/iris_microapps/Content/MicroApp.md)
+Large applications can now be modularized into smaller applications using the Micro apps architecture.
 
 ### [Data and Backend Integration](../Iris/iris_user_guide/Content/dataBackEndIntergration.md)
 

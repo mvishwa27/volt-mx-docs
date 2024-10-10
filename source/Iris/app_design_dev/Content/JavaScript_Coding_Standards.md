@@ -340,7 +340,7 @@ Example 1:
                *	Purpose : Deletes the session  
                *	Input	: @param id Session identification.  
                *****************************************************  
-    –]]  
+    –]  
       
     function delete (id)  
                remove (filename (id))  

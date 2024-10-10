@@ -65,7 +65,7 @@ The CordovaBrowser widget capabilities can be broadly categorized into the follo
 | [minHeight](CordovaBrowser_Properties.md#minHeigh) | Specifies the minimum height of the widget and is applicable only when the height property is not specified. |
 | [minWidth](CordovaBrowser_Properties.md#minWidth) | Specifies the minimum width of the widget and is applicable only when the width property is not specified. |
 | [right](CordovaBrowser_Properties.md#right) | Determines the lower right corner of the widget and is measured from the right bounds of the parent container. |
-| [screenLevelWidget](CordovaBrowser_Properties.md#screenLevelWidget) | Specifies whether the widget should occupy the whole container or not when your Browser widget has a large HTML content to display. |
+| [screenLevelWidget](CordovaBrowser_Properties.md#screenLevelWidget) | Specifies whether the widget should occupy the whole container or not when your Browser widget has a large.md content to display. |
 | [showProgressIndicator](CordovaBrowser_Properties.md#showProg) | Specifies if the progress indicator must be displayed before loading the URL or executing an event. |
 | [top](CordovaBrowser_Properties.md#top) | Determines the top edge of the widget and measured from the top bounds of the parent container. |
 | [width](CordovaBrowser_Properties.md#width) | Determines the width of the widget and is measured along the x-axis. |
@@ -181,10 +181,10 @@ The CordovaBrowser widget capabilities can be broadly categorized into the follo
 | --- | --- |
 | [evaluateJavaScript](CordovaBrowser_Methods.md#evaluate) | Accepts a JavaScript snippet in the form of a string. |
 | [evaluateJavaScriptAsync](CordovaBrowser_Methods.md#evaluate2) | Accepts a JavaScript snippet and a callback function as inputs. |
-| [getHTMLFilesInWebFolder](CordovaBrowser_Methods.md#getHTMLFilesInWebFolder) | Retrieves a list of the HTML files of the specified type. |
+| [getHTMLFilesInWebFolder](CordovaBrowser_Methods.md#ge.mdFilesInWebFolder) | Retrieves a list of the HTML files of the specified type. |
 | [getBadge](CordovaBrowser_Methods.md#getBadge) | Enables you to read the badge value (if any) attached to the specified widget. |
 | [isCordovaAppsEnabled](CordovaBrowser_Methods.md#isCordovaAppsEnabled) | Retrieves a Boolean value that indicates whether Apache Cordova apps are enabled. |
-| [isHtmlPreviewEnabled](CordovaBrowser_Methods.md#isHtmlPreviewEnabled) | Retrieves a Boolean value that indicates whether your app can open an HTML preview. |
+| [isHtmlPreviewEnabled](CordovaBrowser_Methods.md#i.mdPreviewEnabled) | Retrieves a Boolean value that indicates whether your app can open an HTML preview. |
 | [isWebAppDevelopmentEnabled](CordovaBrowser_Methods.md#isWebAppDevelopmentEnabled) | Retrieves a Boolean value indicating whether web app development is enabled in the app. |
 | [setBadge](CordovaBrowser_Methods.md#setBadge) | Enables you to set the badge value to the given widget at the upper, right corner of the widget. |
 

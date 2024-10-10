@@ -66,7 +66,6 @@ An event that accepts a callback function as an input and executes the functiona
 ### Syntax
 
 ```
-
 onFocus()
 ```
 
@@ -89,9 +88,11 @@ Assign a null value to the onFocus event of a widget to remove focus from the wi
 ### Example
 
 ```
-//This is a generic event that is applicable for various widgets.
-/*Here, we have shown how to use the onFocus event for a Button widget. You need to make a corresponding use of the onFocus event for other applicable widgets.*/
-
+ //This is a generic event that is applicable for various widgets.
+/* Here, we have shown how to use the onFocus event for a Button widget. 
+   You need to make a corresponding use of the onFocus event for other 
+   applicable widgets.*/
+   
 frmButton.myButton.onFocus = onFocusCallBack;
 
 function onFocusCallBack(widget, activeElement) {
@@ -392,7 +393,7 @@ Read + Write
 
 Remarks
 
-In for the events preOnclickJS and postOnclickJS you cannot access application model or APIs, as these functions are executed in browser whereas the remaining JavaScript modules are executed in server. For these events you can access browser objects ( window, document etc..) to change UI or perform some validation before server event. If the event preOnclickJS returns true, only then the request is sent to server for subsequent action. You have to specify the modules to be loaded in browser using import JavaScript tab, only then these files get included in.html script tag otherwise you will not be able to access the objects defined in those modules.
+In for the events preOnclickJS and postOnclickJS you cannot access application model or APIs, as these functions are executed in browser whereas the remaining JavaScript modules are executed in server. For these events you can access browser objects ]( window, document etc..) to change UI or perform some validation before server event. If the event preOnclickJS returns true, only then the request is sent to server for subsequent action. You have to specify the modules to be loaded in browser using import JavaScript tab, only then these files get included in.md script tag otherwise you will not be able to access the objects defined in those modules.
 
 Example
 
@@ -435,7 +436,7 @@ Read + Write
 
 Remarks
 
-In for the events preOnclickJS and postOnclickJS you cannot access application model or APIs, as these functions are executed in browser whereas the remaining JavaScript modules are executed in server. For these events you can access browser objects ( window, document etc..) to change UI or perform some validation before server event. If the event preOnclickJS returns true, only then the request is sent to server for subsequent action. You have to specify the modules to be loaded in browser using import JavaScript tab, only then these files get included in.html script tag otherwise you will not be able to access the objects defined in those modules.
+In for the events preOnclickJS and postOnclickJS you cannot access application model or APIs, as these functions are executed in browser whereas the remaining JavaScript modules are executed in server. For these events you can access browser objects ]( window, document etc..) to change UI or perform some validation before server event. If the event preOnclickJS returns true, only then the request is sent to server for subsequent action. You have to specify the modules to be loaded in browser using import JavaScript tab, only then these files get included in.md script tag otherwise you will not be able to access the objects defined in those modules.
 
 Example
 

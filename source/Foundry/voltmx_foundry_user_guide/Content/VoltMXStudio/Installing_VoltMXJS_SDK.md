@@ -1,3 +1,8 @@
+---
+layout: "documentation"
+category: "voltmx_foundry_user_guide"
+---                             
+
 User Guide: [SDKs](../Foundry_SDKs.md) > Prerequisites
 
 
@@ -9,7 +14,7 @@ These steps show how to add the VoltMX-IDE-SDK to your project and set up Volt M
 *   <details close markdown="block"><summary>Prerequisites</summary>Volt MX Iris 7.0 and higher versions.
 *   [](Downloading_VoltMX_SDK_Files_Iris.md)[Downloading Volt MX IDE SDK](Downloading_VoltMX_SDK_Files_Iris.md)
 *   [](Initializing_VoltMX_JS_Client_SDK_Iris.md)[Initializing the Volt MX SDK Client SDK](Initializing_VoltMX_JS_Client_SDK_Iris.md)
-*   [](Setting_User_ID_Iris.md)[Setting User ID](Setting_User_ID_Iris.md)
+*   [Setting User ID](Setting_User_ID_Iris.md) 
 *   [](HTTP_Message_Body_Integrity_Iris.md)[HTTP Message Body Integrity](HTTP_Message_Body_Integrity_Iris.md)
 *   [Server Event APIs](ServerEventAPIs.md)
 *   [](Invoking_Identity_Service_Iris.md)[Invoking an Identity Service](Invoking_Identity_Service_Iris.md)
@@ -26,5 +31,5 @@ These steps show how to add the VoltMX-IDE-SDK to your project and set up Volt M
 *   [](../VoltMX_Logger.md)[Using Log SDK](../VoltMX_Logger.md)
 *   [](Binary_APIs.md)[Binary APIs](Binary_APIs.md)
 
-*   <details close markdown="block"><summary>API Reference</summary>To view the API Reference for Volt MX JS, click <a href="http://docs.voltmx.com/8_x_PDFs/voltmxfoundry/voltmx_docsets/voltmx/voltmx-sdk.doc/index.html" target="_blank">VoltMX IDE docset.</a>
+*   <details close markdown="block"><summary>API Reference</summary>To view the API Reference for Volt MX JS, click <a href="https://opensource.hcltechsw.com/volt-mx-docs/95/docs/documentation/javascript_docs_apis/jsdocs/index.html" target="_blank">VoltMX IDE docset.</a>
    

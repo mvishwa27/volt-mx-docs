@@ -1,13 +1,11 @@
 Volt MX Iris V9 Windows Install Guide (Prerequisites)
-===============================================
+=======================================================
 
 This document provides details of how to install Volt MX Iris on a Windows machine.
 
-
 *   [Downloading Volt MX Iris](#downloading-volt-mx-iris)
-*   [Install Iris](Installing VoltMX Iris.html#installing)
-*   [Post Installation Tasks](Launching VoltMX Iris.html#post-installation-tasks)
-
+*   [Install Iris](Installing VoltMX Iris.md#installing)
+*   [Post Installation Tasks](Launching VoltMX Iris.md#post-installation-tasks)
 
 Following are the prerequisites to install and run Volt MX Iris:
 
@@ -77,7 +75,7 @@ To download Volt MX Iris, follow these steps:
 
 ## What to do next
 
-* [Run the Volt MX Iris installer and configure Iris](Installing VoltMX Iris.html#installing)
+* [Run the Volt MX Iris installer and configure Iris](Installing VoltMX Iris.md#installing)
 * Visit [https://support.hcltechsw.com/csm?id=kb_article&sysparm_article=KB0094403](https://support.hcltechsw.com/csm?id=kb_article&sysparm_article=KB0094403) for more important configuration information about trial and paid versions of Iris.
-* [Activate your license](https://opensource.hcltechsw.com/volt-mx-docs/docs/documentation/Foundry/voltmx_licensing_guide/Content/Homepage.html)
+* [Activate your license](https://opensource.hcltechsw.com/volt-mx-docs/docs/documentation/Foundry/voltmx_licensing_guide/Content/Homepage.md)
 

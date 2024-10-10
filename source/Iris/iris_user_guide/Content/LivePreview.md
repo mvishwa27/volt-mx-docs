@@ -37,6 +37,7 @@ Preview your Web App with Iris
     The **Live Preview Settings** window appears.  
       
     ![](Resources/Images/Live_Preview_Settings_01_323x431.png)
+
 3.  Select the **Adaptive Web** channel for all the required platforms.  
     
 4.  Click **Save & Run** or click **Save** and press **Ctrl+R** (**CMD+R** on Mac) on your keyboard to launch the Live Preview.  
@@ -44,9 +45,9 @@ Preview your Web App with Iris
     Once the build for the selected platforms is completed, a new **Iris Preview** window appears.
 5.  From the Iris Preview window, you can select specific platform models from the drop-down menu and adjust their dimensions as required.  
       
-    ![](Resources/Images/LivePreview_707x373.png)  
+    <!-- ![](Resources/Images/LivePreview_707x373.png)  VM -->
       
-    In Iris, you can see a **Live Preview is ready** window. The window contains App Details and QR code for the web app. Using the details, you can preview the web app on your device. For more details on how to view the app on your device, go to [Preview an App on a Device](../../../Iris/iris_app_viewer/Content/PreviewAnAppOnADevice.md).  
+    In Iris, you can see a **Live Preview is ready** window. The window contains App Details and QR code for the web app. Using the details, you can preview the web app on your device. For more details on how to view the app on your device, go to [Preview an App on a Device](../../../Iris/iris_app_viewer/Content/FunctionalPreviewStarter.md).  
       
     ![](Resources/Images/wifi-qr-preview_528x378.png)  
       
@@ -76,8 +77,8 @@ You can then use the in-app Google Chrome debugger to debug the application. For
 
 To understand how to Debug an application for iOS and Android platforms you can refer to:
 
-*   [](#SettingAndroid)[Debug JavaScript for iOS in Volt MX Iris](Inline_Debugger.md#debug-javascript-for-ios-in)
-*   [](#SettingAndroid)[Debug JavaScript for Android in Volt MX Iris](Inline_Debugger.md#debug-javascript-for-android-in)
+*   [](#SettingAndroid)[Debug JavaScript for iOS in Volt MX Iris](Inline_Debugger.md#debug-javascript-for-ios-in-volt-mx-iris)
+*   [](#SettingAndroid)[Debug JavaScript for Android in Volt MX Iris](Inline_Debugger.md#debug-javascript-for-android-in-volt-mx-iris)
 
 ![](Resources/Images/Live_Preview/Debugger_Window_446x487.png)
 

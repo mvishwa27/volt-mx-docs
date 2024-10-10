@@ -12,8 +12,8 @@ Let us create a simple Loan application Workflow that is invoked whenever an eve
 In this example, the loan application process will have the following steps:
 
 *   In the example provided, the Signal Start node – “Start – submit application” is configured to listen to an event topic name – “LoanProcess/startProcess”. This event will be fired whenever an object “LoanObject’s POST verb is called and it raises an event to topic “LoanProcess/startProcess” on the incoming request.
-    
-    [![](Resources/Images/EventsWorkflow_thumb_0_48.png)](Resources/Images/EventsWorkflow.png)
+
+    ![](Resources/Images/EventsWorkflow.png)
     
 
 *   When a loan application is submitted, the object POST fires an event “LoanProcess/startProcess” on the incoming request. In turn, the Signal Start node of the workflow that is listening to this event is triggered asynchronously and the workflow starts execution.
@@ -185,7 +185,7 @@ To create the Loan Application workflow, do the following:
             
         *   Click **Save**.
         
-        ![](Resources/Images/Throw_loan_rejected.png)
+            ![](Resources/Images/Throw_loan_rejected.png)
         
 *   Place an **End** node after the **Loan Application Rejected** Throw Signal Event to finish the **Ineligible** flow path.
 
@@ -230,23 +230,28 @@ The Workflow Services screen lists all the workflows that were created and publi
 2.  From the left-side menu, click Object Services.
 3.  Locate the loanApplicationSvc Object service. From the App Data Model Objects column select the operation, LoanObject.
 4.  From the Operations list, select create (POST). The Request Input screen of the selected operation appears.
-5.  Provide the input request body here. The request input will contain fields like the following:
-```
-{
-  "applicationId": "",
-  "SSN": "",
-  "loanAmount": "",
-  "emailId": "",
-  "phoneNo": ""
-}
-```7.  Click **Get Response**. The response will have the following parameters:
-```
-{
-    "applicationId":1,"opstatus":0,"httpStatusCode":0
-}
+5.  Provide the input request body here. The request input will contain fields like the following:  
+    
+    <pre><code>
+    {
+        "applicationId": "",
+        "SSN": "",
+        "loanAmount": "",
+        "emailId": "",
+        "phoneNo": ""
+    }
+    </code></pre>
 
-```9.  Now you can check the status of the LoanEligibilityProcess workflow from the Workflow service tab. The workflow would have been started due to the Event triggered from the object CREATE and now the Workflow status will be Paused at the **Document Verification** catch signal task.
-    *   In order to resume the workflow from the Catch signal, it needs to receive another event which will get fired on the Update operation of the object.
+7.  Click **Get Response**. The response will have the following parameters:  
+
+    <pre><code>
+    {
+        "applicationId":1,"opstatus":0,"httpStatusCode":0
+    }
+    </code></pre>
+
+9.  Now you can check the status of the LoanEligibilityProcess workflow from the Workflow service tab. The workflow would have been started due to the Event triggered from the object CREATE and now the Workflow status will be Paused at the **Document Verification** catch signal task.
+    In order to resume the workflow from the Catch signal, it needs to receive another event which will get fired on the Update operation of the object.
         
 10.  Repeat Step 2 and Step 3.
 11.  From the Operations list, select `update` operation. The Request Input screen of the selected operation appears.
@@ -256,24 +261,26 @@ The Workflow Services screen lists all the workflows that were created and publi
     
     > **_Important:_** You must send all the following **mandatory** Correlation ID parameters (SSN, applicationID) in the update operation, as below:
     
-```
-{
-      "applicationId": "",
-      "SSN": "",
-      "loanAmount": "",
-      "emailId": "",
-      "phoneNo": ""
-      "ID_doc_status": "",
-      "payslip_doc_status": "",
-      "w2tax_doc_status": "",  
+    <pre><code>
+    {
+        "applicationId": "",
+        "SSN": "",
+        "loanAmount": "",
+        "emailId": "",
+        "phoneNo": ""
+         "ID_doc_status": "",
+        "payslip_doc_status": "",
+        "w2tax_doc_status": "",  
     }
-```
-13.  Click **Get Response**.
-```
-{
-        "totalRecords":1,"updatedRecords":1,"applicationId":12,"opstatus":0,"httpStatusCode":0
+    </code></pre>
+
+13. Click **Get Response**.  
+
+    <pre><code>
+    {
+            "totalRecords":1,"updatedRecords":1,"applicationId":12,"opstatus":0,"httpStatusCode":0
     }
-```
+    </code></pre>
     
     > **_Important:_** If the Exclusive Gateway condition is not satisfied, the workflow again goes to a paused state in Catch Signal. Refer to Step 7 in this procedure.
     

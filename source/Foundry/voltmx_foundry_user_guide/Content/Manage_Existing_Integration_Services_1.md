@@ -7,7 +7,7 @@ How to Save or Use a Version of a Service
 
 You can save an integration service to a new version. Saving a new version of an integration service unlinks the current version of the service from the Volt MX Foundry application, and links the new version. A Volt MX Foundry app can be associated with only one version of an integration service.
 
-> **_Note:_** For more details on API Versioning Use Cases, refer to [VoltMX Foundry API Versioning](API_Versioning.md#API_Versioning.html)
+> **_Note:_** For more details on API Versioning Use Cases, refer to [VoltMX Foundry API Versioning](API_Versioning.md#API_Versioning.md)
 
 To create a new version of an Integration service, follow these steps:
 

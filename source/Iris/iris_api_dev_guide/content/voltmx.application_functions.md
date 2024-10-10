@@ -1,10 +1,10 @@
                               
 
 
-voltmx.application Namespace
-==========================
+## <a id="voltmxapplication-namespace"></a>voltmx.application Namespace
 
-The voltmx.application namespace contains the following constants and functions that you can use to manage many aspects of your applications. 
+
+The voltmx.application namespace contains the following constants and functions that you can use to manage many aspects of your applications.
 
 Constants
 ---------
@@ -449,7 +449,7 @@ Available on iPhone and iPad.
 
 * * *
 
-Checks and returns the permission status of one or more resources.
+Checks and returns the permission status of one or more resources. Checks the calendar permission status.
 
 ### Syntax
 
@@ -2168,7 +2168,7 @@ None
 * * *
 
 </details>
-<details close markdown="block"><summary>voltmx.application.openURL</summary>
+<details close markdown="block"><summary id="voltmx.app4">voltmx.application.openURL</summary>
 
 * * *
 
@@ -2212,9 +2212,9 @@ When you use this API, the behavior of the application is as follows on differen
 
 | Platform | Behavior |
 | --- | --- |
-| iPhone | On 4.0 and above versions, the application opens the specified URL in the native browser and the application goes into background On versions below 4.0, the application opens the specified URL in the native browser and the application exits For opening the maps application of iOS, please using following URLs: For iOS 5 :[http://maps.google.com/maps](http://maps.google.com/maps) For iOS 6:[http://maps.apple.com/maps](http://maps.google.com/maps) > **_Note:_** Support for the openURL API has been deprecated for the iPhone platform. To achieve the functionality of the voltmx.application.openURL API in Volt MX Iris V9, use the [voltmx.application.openURLAsync](#openURLAsync) API. |
-| Android | The application opens the specified URL in the native browser and the application goes into background |
-| SPA | The URL opens in the browser The application redirects the existing browser instance to the new URL |
+| iPhone | <ul><li>On 4.0 and above versions, the application opens the specified URL in the native browser and the application goes into background.</li><li>On versions below 4.0, the application opens the specified URL in the native browser and the application exits.</li><li>For opening the maps application of iOS, please using following URLs:<ul><li>For iOS 5: <a href="http://maps.google.com/maps">http://maps.google.com/maps</a></li><li>For iOS 6: <a href="http://maps.apple.com/maps">http://maps.google.com/maps</a></li></ul></li></ul>**_Note:_** Support for the openURL API has been deprecated for the iPhone platform. To achieve the functionality of the voltmx.application.openURL API in Volt MX Iris V9, use the [voltmx.application.openURLAsync](#openURLAsync) API. |
+| Android | The application opens the specified URL in the native browser and the application goes into background. |
+| SPA | The URL opens in the browser and the application redirects the existing browser instance to the new URL. |
 
 
 ### Platform Availability
@@ -3319,6 +3319,151 @@ None.
 * * *
 
 </details>
+<details close markdown="block"><summary>voltmx.application.setAppLevelWidget</summary>
+
+* * *
+
+This API configures a container widget at the application level that can either be used as a header or a footer throughout the app.
+
+### Syntax
+
+```
+voltmx.application.setAppLevelWidget(object);
+```
+
+### Input Parameters
+
+**object**: A JavaScript object that contains the following key-value pairs:
+
+<table>
+    <colgroup><col>
+    <col>
+    </colgroup><thead>
+        <tr>
+            <th>Key</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><i>type</i> [Integer]</td>
+            <td>
+                <p>Specifies the type or position of the widget. The type key can have the following values:</p>
+                <ul>
+                    <li><b>voltmx.application.APP_LEVEL_HEADER</b></li>
+                    <li><b>voltmx.application.APP_LEVEL_FOOTER</b></li>
+                </ul>
+                <p>The default value for the type key is voltmx.application.APP_LEVEL_FOOTER.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><i>container</i> [LuaWidget/ String]</td>
+            <td>
+                <p>A JavaScript FlexContainer object that is to be displayed as the app level widget.</p>
+                <p>You can provide a String value if you are using the MVC architecture.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><i>appName</i> [String]</td>
+            <td>The name of the app in the project. The appName is a mandatory parameter in case of inter-app template access. This is an optional parameter in case of intra-app template access.</td>
+        </tr>
+    </tbody>
+</table>
+
+Example 1
+
+```
+//Sample code to set the Header:
+kony.application.setAppLevelWidget({​​​"type":kony.application.APP_LEVEL_HEADER,"container":FlexHeaderTemplate}​​);
+
+//Sample code to set the Footer:
+kony.application.setAppLevelWidget({​"type":kony.application.APP_LEVEL_FOOTER,"container":FlexFooterTemplate}​​​);
+
+//Sample code for inter-app access:
+var params = {"type": Constant, "container": "", "appName" : "" }
+kony.application.setAppLevelWidget(params);
+```
+
+Example 2 - MVC Project
+
+```
+//Sample code to set the Header:
+kony.application.setAppLevelWidget({​​​"type":kony.application.APP_LEVEL_HEADER,"container":”FlexHeaderTemplateString”}​​);
+
+//Sample code to set the Footer:
+kony.application.setAppLevelWidget({​"type":kony.application.APP_LEVEL_FOOTER,"container":”FlexFooterTemplateString”}​​​);
+```
+
+Return Values
+
+This API may return the following values when invoked:
+
+* 8000 - This constant is returned on successful execution of the API.
+* 8001 - This constant is returned when the API call has invalid number of arguments.
+* 8002 - This constant is returned when the API call has invalid type of arguments.
+* 8003 - This constant is returned when the API call has invalid values for the container.
+* 8004 - This constant is returned when the API call has an invalid Widget Identifier (Incase of MVC project).
+
+Remarks
+
+In MVC projects, you must use the APIs to communicate between the Form and the App Level Widget.
+
+_Communication from the Form to the App Level Widget_
+
+To communicate with the app level widget from the Form, you can use the **executeOnAppLevelWidget** function in the **FormController**:
+
+```
+var param = {
+    "container" : "flxSampleTemplate",
+    "eventName" : "testMethod", 
+    "params" : {"test" : "data"}
+}
+this.executeOnAppLevelWidget(param);
+```
+
+In the code snippet, provide values for the following keys:
+
+* **container**: The Template ID of the App Level Widget
+* **eventName**: The function name of the App Level Widget TemplateController to be executed
+* **params**: Any additional parameters to be passed to the function
+
+_Communication from the App Level Widget to the Form_
+
+To communicate with the Form from the App level widget, you can use the executeOnCurrentForm function in the TemplateController:
+
+```
+var param = {
+   "eventName" : "testMethodInForm", 
+   "params" : {"test" : "data"}
+}
+this.executeOnCurrentForm(param);
+```
+
+In the code snippet, provide values for the following keys:
+
+* **eventName**: The function name of the FormController to be executed.
+* **params**: Any additional parameters to be passed to the function.
+
+Limitations
+
+* The same Template cannot be used for both the Header and Footer in an app.
+* The option to destroy an app level widget is currently not available.
+* The height of the Form cannot be adjusted after the app level widget is rendered.
+* In iOS apps, you must invoke the forcelayout method when you update the UI properties of an app level widget.
+* In iOS apps, when the value of the adjustFormHeight parameter is set as false, you cannot perform actions on the UI that is present behind the app level widget (in cases where the UI overlaps with the app level widget).
+*On Android devices that use OS API levels earlier than version 21, when the value of the adjustFormHeight parameter is set as false, users may observe flickering in the app level widget while navigating between the forms.
+* In Android apps with a FlexContainer widget configured as a popup (the isModalContainer property of the FlexContainer widget is set as true), the app level widget is interact-able. If the area of the FlexContainer widget overlaps with the area of the app level widget, the app level widget appears over the FlexContainer widget.
+
+Platform Availability
+
+* Android
+* iOS
+
+
+* * *
+
+</details>
+
 <details close markdown="block"><summary>voltmx.application.setApplicationBehaviors</summary>
 
 * * *
@@ -3631,19 +3776,17 @@ The callbacks ondpichange, onsizechange, and onvisibleboundschange are called wi
 
 Callbacks specific to iOS
 
-|   |   |
+| Key | Description |
 | --- | --- |
+| onScreenCapture | This state is invoked when a user takes a screenshot. |
 | onactive | This state occurs when there is an incoming SMS, phone call, or anything else that interrupts the automatic lock of the mobile device. |
 | oninactive | This state occurs when the application is idle for a specific time interval |
-| shouldAllowExtensions | You can use extensions to enable a specific task beyond your app functionality and make available to users while they are using other apps or the system. This callback provides a mechanism to enable or disable the extensions in iOS framework. Following are the input parameter and return values of this callback:**string - \[Mandatory** - Specifies the entensionID that contains the identifier to identify the extension.**Return values** - Returns a boolean value. If true is returned, the extension is enabled. If false is returned, the extension is disabled. By default, all the extensions are enabled.> **_Note:_** Extensions are available from iOS8 and above versions.//Sample codefunction shouldAllowExtensions(extensionID) { if (extensionID == "com.apple.keyboard - service") { return true; //will allow the keyboard extension to be accessed }     return false; } |
+| shouldAllowExtensions | You can use extensions to enable a specific task beyond your app functionality and make available to users while they are using other apps or the system. This callback provides a mechanism to enable or disable the extensions in iOS framework. Following are the input parameter and return values of this callback:<br>**string - \[Mandatory** - Specifies the entensionID that contains the identifier to identify the extension.<br>**Return values** - Returns a boolean value. If true is returned, the extension is enabled. If false is returned, the extension is disabled. By default, all the extensions are enabled.<br> **_Note:_** Extensions are available from iOS8 and above versions.<br>//Sample code<br>function shouldAllowExtensions(extensionID)<br> {<br> if (extensionID == "com.apple.keyboard - service")<br> {<br> return true; //will allow the keyboard extension to be accessed }<br>     return false;<br> } |
 | onlowmemory | This state indicates that the app received a memory warning from the system. |
-| onapplicationopenurl | To support interprocess communication (IPC) message authentication, Volt MX Iris provides an application callback `onapplicationopenurl`. The `onapplicationopenurl` callback helps a developer do some authentication when an app is opened from an already running app. To use this callback, applications must register with it. The `onapplicationopenurl` callback takes `sourceApplication`, `url`, and `annotation (via UIDocumentInteractionController)`as input parameters. If the developer processes the commands/information, `True` must be returned. If the developer ignores the commands/information passed, then `False` must be returned.
-This callback accepts the following arguments: **sourceApplication - String – Mandatory** - The application that requests to open a URL. **url - String – Mandatory** - The URL that is to be opened. **annotation - Dictionary - Mandatory** - If the URL refers to a file that is opened through a document interaction controller, then the source application can send information contained in this dictionary. Otherwise, this value is nil. The receiving app must know about the keys of the dictionary sent. **Return Value** - True or False.  
-
- |
-| onwatchrequest | This method is used to handle the requests coming from Apple WatchKit Extension. The dictionary object is a dictionary of value pairs and represents the context for request to be processed.This callback accepts the following arguments:**userInfo**\- **\[Dictionary\]** This parameter is mandatory. A dictionary of key value pairs.**replyObject**\- **\[JSObject\]**\- This parameter is mandatory. This object is used to send the response asynchronously. To send the response we should call a method (executeWithReply) on this JSObject. The method accepts a key value pairs that form the response to be sent back.//Sample code for onwatchrequest callback method.function jsfunction(userInfo, replyObj) {    if (userInfo.requestName == "getData"){      var responseDict={ "key1":"value1", "key2":"value2" };      replyObj.executeWithReply(responseDict);   }}> **_Note:_** It is possible to that execution of this call back might happen while the application is in the background. It is suggested to check the application state and perform UI updates in the phone application only when the application is running in the foreground.You may use getapplicationstate APIs. |
-| onactivityrequest | This method is used to handle the handoff activity request that are sent to the application.This callback accepts the following arguments:**activityName** - **\[String\]** This parameter is mandatory. A string that represents the name of the activity.**activityInfo** - **\[Dictionary\]** This parameter is mandatory. A dictionary containing custom user information.This callback method returns a boolean (true/false) value that indicates the request handle status.//Sample code for onactivityrequest callback method. function jsfunction(activityName, activityInfo) {    if (activityName == "continueActivity") {       // use activityInfo dictionary to continue the past activity on the iPhone       return true;      }   return false; }  |
-| onpreactivityrequest | This method is used to ask the receiving application, whether it wants to continue the handed off activity. If this callback method returns true, then the onactivityrequest callback method gets invoked where the receiving app gets a chance to continue the handed off activity.This callback accepts the following arguments:**activityName** - **\[String\]** This parameter is mandatory. A string that represents the name of the activity.If this callback method returns _true_, then the you notify the user that the receiving app wants to continue the activity on the device. If the callback method returns _false_, then iOS notifies the user to continue activity on the device.//Sample code for onpreactivityrequest callback method. function jsfunction(activityName) {    if (activityName == "continueActivity") {             return true;      }    return false; } |
+| onapplicationopenurl | To support interprocess communication (IPC) message authentication, Volt MX Iris provides an application callback `onapplicationopenurl`. The `onapplicationopenurl` callback helps a developer do some authentication when an app is opened from an already running app. To use this callback, applications must register with it. The `onapplicationopenurl` callback takes `sourceApplication`, `url`, and `annotation (via UIDocumentInteractionController)`as input parameters. If the developer processes the commands/information, `True` must be returned. If the developer ignores the commands/information passed, then `False` must be returned.<br>This callback accepts the following arguments:<br>**sourceApplication - String – Mandatory** - The application that requests to open a URL.<br>**url - String – Mandatory** - The URL that is to be opened.<br>**annotation - Dictionary - Mandatory** - If the URL refers to a file that is opened through a document interaction controller, then the source application can send information contained in this dictionary. Otherwise, this value is nil. The receiving app must know about the keys of the dictionary sent.<br>**Return Value** - True or False.|
+| onwatchrequest | This method is used to handle the requests coming from Apple WatchKit Extension. The dictionary object is a dictionary of value pairs and represents the context for request to be processed.<br>This callback accepts the following arguments:<br>**userInfo**\- **\[Dictionary\]** This parameter is mandatory. A dictionary of key value pairs.<br>**replyObject**\- **\[JSObject\]**\- This parameter is mandatory. This object is used to send the response asynchronously. To send the response we should call a method (executeWithReply) on this JSObject. The method accepts a key value pairs that form the response to be sent back.<br>//Sample code for onwatchrequest callback method.<br>function jsfunction(userInfo, replyObj)<br> { <br>   if (userInfo.requestName == "getData"){ <br>     var responseDict={ <br>"key1":"value1",<br> "key2":"value2"<br> }; <br>     replyObj.executeWithReply(responseDict);<br>   }<br>}<br> **_Note:_** It is possible to that execution of this call back might happen while the application is in the background. It is suggested to check the application state and perform UI updates in the phone application only when the application is running in the foreground.You may use getapplicationstate APIs.|
+| onactivityrequest | This method is used to handle the handoff activity request that are sent to the application.<br>This callback accepts the following arguments:<br>**activityName** - **\[String\]** This parameter is mandatory. A string that represents the name of the activity.<br>**activityInfo** - **\[Dictionary\]** This parameter is mandatory. A dictionary containing custom user information.<br>This callback method returns a boolean (true/false) value that indicates the request handle status.<br>//Sample code for onactivityrequest callback method.<br> function jsfunction(activityName, activityInfo) { <br>   if (activityName == "continueActivity") { <br>      // use activityInfo dictionary to continue the past activity on the iPhone<br>       return true; <br>     } <br>  return false;<br> }  |
+| onpreactivityrequest | This method is used to ask the receiving application, whether it wants to continue the handed off activity. If this callback method returns true, then the onactivityrequest callback method gets invoked where the receiving app gets a chance to continue the handed off activity.<br>This callback accepts the following arguments:<br>**activityName** - **\[String\]** This parameter is mandatory. A string that represents the name of the activity.<br>If this callback method returns _true_, then the you notify the user that the receiving app wants to continue the activity on the device. If the callback method returns _false_, then iOS notifies the user to continue activity on the device.<br>//Sample code for onpreactivityrequest callback method.<br> function jsfunction(activityName)<br> { <br>   if (activityName == "continueActivity") { <br>            return true;<br>      } <br>   return false; <br>} |
 
 ### Example
 
@@ -4793,17 +4936,19 @@ Foreground service can be started in scenarios which require your app to be acti
 
 Some sample use cases include navigation while driving, tracing the path while running, and playing music. For more information, refer [here](https://developer.android.com/training/location/receive-location-updates#continue-user-initiated-action).
 
+
 <blockquote>
     <em><b>Note: </b></em>Ensure that you have done the following: 
     <ul>
         <li>In the <b>androidbuild.properties</b> file, set the value of the <code>locationListenerType</code> property to <code>always</code>.  
       Appropriate entries are added to the <b>AndroidManifest.xml</b> file depending on the type of the location listener. </li>        
         <li> Enable the <b>Use Google Play Location Services</b> checkbox in the <b>Project Settings</b> > <b>Native</b> > <b>Android</b> section.</li>        
-        <li>For Android if Target SDK version is 33 and above, below permissions is required in IRIS project setting -> Native-> Android Mobile/Tablet -> Tags (Child tag entries under < manifest > tag)<br>
+        <li>For Android if the target SDK version is 33 and higher, below media permission is required in tags section under Application tags attributes inside android project settings to get the notifications.<br>
         <code> &lt;uses-permission android:name="android.permission.POST_NOTIFICATIONS"/&gt;</code>
         </li>
     </ul>
 </blockquote>
+
 
 
 ### Syntax
@@ -4815,7 +4960,7 @@ voltmx.application.startForegroundService(foregroundServiceType,notificationConf
 
 ### Input Parameters
 
-<table style="width: 100%;mc-table-style: url('resources/tablestyles/basic.css');" class="TableStyle-Basic" cellspacing="0"><colgroup><col class="TableStyle-Basic-Column-Column1"> <col class="TableStyle-Basic-Column-Column1"></colgroup><tbody><tr class="TableStyle-Basic-Body-Body1" data-mc-conditions=""><th class="TableStyle-Basic-BodyE-Column1-Body1">Parameter</th><th class="TableStyle-Basic-BodyD-Column1-Body1">Description</th></tr><tr class="TableStyle-Basic-Body-Body1" data-mc-conditions=""><td class="TableStyle-Basic-BodyE-Column1-Body1">foregroundServiceType[Constant] - Mandatory</td><td class="TableStyle-Basic-BodyD-Column1-Body1">Specifies the type of the foreground service. The available foreground service type constant is voltmx.service.LOCATION.</td></tr><tr class="TableStyle-Basic-Body-Body1" data-mc-conditions=""><td class="TableStyle-Basic-BodyB-Column1-Body1">notificationConfig- Mandatory</td><td class="TableStyle-Basic-BodyA-Column1-Body1">An object with notification properties. Following are the properties: title[String]- Mandatory: Specifies the title of the notification, i18n Strings can be used. body[String]: Specifies the content body of the notification, i18n Strings can be used. autoHideNotificationInForeground: Specifies whether the notification must be hidden when activity comes to the foreground. The property works until the foreground service is stopped. Notification is always shown when the activity goes to background irrespective of this property while service is running. onNotificationClick: An event callback is invoked by the platform when the user performs a click action on the foreground service notification. actions[JSObject[]]: Specifies a list of actions to be shown to the user in the notification. Each action object in the list contains the following keys: actionType [Constant]- Specifies the type of the action, The available actions type constants are voltmx.application.FGSERVICE_ACTION_LAUNCH_ACTIVITY and voltmx.application.FGSERVICE_ACTION_CUSTOM actionText [String]- A text describing the action. i18n Strings can be used. If this is set to null or an empty string, the action is not populated in notification. actionCallback[Function]- An action callback is invoked by the platform when the user performs a click action on the button in notification.</td></tr></tbody></table>
+<table style="width: 100%;mc-table-style: url('resources/tablestyles/basic.css');" class="TableStyle-Basic" cellspacing="0"><colgroup><col class="TableStyle-Basic-Column-Column1"> <col class="TableStyle-Basic-Column-Column1"></colgroup><tbody><tr class="TableStyle-Basic-Body-Body1" data-mc-conditions=""><th class="TableStyle-Basic-BodyE-Column1-Body1">Parameter</th><th class="TableStyle-Basic-BodyD-Column1-Body1">Description</th></tr><tr class="TableStyle-Basic-Body-Body1" data-mc-conditions=""><td class="TableStyle-Basic-BodyE-Column1-Body1">foregroundServiceType[Constant] - Mandatory</td><td class="TableStyle-Basic-BodyD-Column1-Body1">Specifies the type of the foreground service. The available foreground service type constant is voltmx.service.LOCATION.</td></tr><tr class="TableStyle-Basic-Body-Body1" data-mc-conditions=""><td class="TableStyle-Basic-BodyB-Column1-Body1">notificationConfig- Mandatory</td><td class="TableStyle-Basic-BodyA-Column1-Body1">An object with notification properties. Following are the properties: title[String]- Mandatory: Specifies the title of the notification, i18n Strings can be used. body[String]: Specifies the content body of the notification, i18n Strings can be used. autoHideNotificationInForeground: Specifies whether the notification must be hidden when activity comes to the foreground. The property works until the foreground service is stopped. Notification is always shown when the activity goes to background irrespective of this property while service is running. onNotificationClick: An event callback is invoked by the platform when the user performs a click action on the foreground service notification. actions[JSObject[]: Specifies a list of actions to be shown to the user in the notification. Each action object in the list contains the following keys: actionType [Constant]- Specifies the type of the action, The available actions type constants are voltmx.application.FGSERVICE_ACTION_LAUNCH_ACTIVITY and voltmx.application.FGSERVICE_ACTION_CUSTOM actionText [String]- A text describing the action. i18n Strings can be used. If this is set to null or an empty string, the action is not populated in notification. actionCallback[Function]- An action callback is invoked by the platform when the user performs a click action on the button in notification.</td></tr></tbody></table>
 
 ### Example
 
@@ -4955,7 +5100,7 @@ voltmx.application.updateForegroundNotification(\[foregroundServiceType,notifica
 
 ### Input Parameters
 
-<table style="width: 100%;mc-table-style: url('resources/tablestyles/basic.css');" class="TableStyle-Basic" cellspacing="0"><colgroup><col class="TableStyle-Basic-Column-Column1"> <col class="TableStyle-Basic-Column-Column1"></colgroup><tbody><tr class="TableStyle-Basic-Body-Body1" data-mc-conditions=""><th class="TableStyle-Basic-BodyE-Column1-Body1">Parameter</th><th class="TableStyle-Basic-BodyD-Column1-Body1">Description</th></tr><tr class="TableStyle-Basic-Body-Body1" data-mc-conditions=""><td class="TableStyle-Basic-BodyE-Column1-Body1">foregroundServiceType[Constant] - Mandatory</td><td class="TableStyle-Basic-BodyD-Column1-Body1">Specifies the type of the foreground service. The available foreground service type constant is voltmx.service.LOCATION.</td></tr><tr class="TableStyle-Basic-Body-Body1" data-mc-conditions=""><td class="TableStyle-Basic-BodyB-Column1-Body1">notificationConfig- Mandatory</td><td class="TableStyle-Basic-BodyA-Column1-Body1">An object with notification properties. Following are the properties: title[String]- Mandatory: Specifies the title of the notification, i18n Strings can be used. body[String]: Specifies the content body of the notification, i18n Strings can be used. autoHideNotificationInForeground: Specifies whether the notification must be hidden when activity comes to the foreground. The property works until the foreground service is stopped. Notification is always shown when the activity goes to background irrespective of this property while service is running. onNotificationClick: An event callback is invoked by the platform when the user performs a click action on the foreground service notification. actions[JSObject[]]: Specifies a list of actions to be shown to the user in the notification. Each action object in the list contains the following keys: actionType [Constant]- Specifies the type of the action, The available actions type constants are voltmx.application.FGSERVICE_ACTION_LAUNCH_ACTIVITY and voltmx.application.FGSERVICE_ACTION_CUSTOM actionText [String]- A text describing the action. i18n Strings can be used. If this is set to null or an empty string, the action is not populated in notification. actionCallback[Function]- An action callback is invoked by the platform when the user performs a click action on the button in notification.</td></tr></tbody></table>
+<table style="width: 100%;mc-table-style: url('resources/tablestyles/basic.css');" class="TableStyle-Basic" cellspacing="0"><colgroup><col class="TableStyle-Basic-Column-Column1"> <col class="TableStyle-Basic-Column-Column1"></colgroup><tbody><tr class="TableStyle-Basic-Body-Body1" data-mc-conditions=""><th class="TableStyle-Basic-BodyE-Column1-Body1">Parameter</th><th class="TableStyle-Basic-BodyD-Column1-Body1">Description</th></tr><tr class="TableStyle-Basic-Body-Body1" data-mc-conditions=""><td class="TableStyle-Basic-BodyE-Column1-Body1">foregroundServiceType[Constant] - Mandatory</td><td class="TableStyle-Basic-BodyD-Column1-Body1">Specifies the type of the foreground service. The available foreground service type constant is voltmx.service.LOCATION.</td></tr><tr class="TableStyle-Basic-Body-Body1" data-mc-conditions=""><td class="TableStyle-Basic-BodyB-Column1-Body1">notificationConfig- Mandatory</td><td class="TableStyle-Basic-BodyA-Column1-Body1">An object with notification properties. Following are the properties: title[String]- Mandatory: Specifies the title of the notification, i18n Strings can be used. body[String]: Specifies the content body of the notification, i18n Strings can be used. autoHideNotificationInForeground: Specifies whether the notification must be hidden when activity comes to the foreground. The property works until the foreground service is stopped. Notification is always shown when the activity goes to background irrespective of this property while service is running. onNotificationClick: An event callback is invoked by the platform when the user performs a click action on the foreground service notification. actions[JSObject[]: Specifies a list of actions to be shown to the user in the notification. Each action object in the list contains the following keys: actionType [Constant]- Specifies the type of the action, The available actions type constants are voltmx.application.FGSERVICE_ACTION_LAUNCH_ACTIVITY and voltmx.application.FGSERVICE_ACTION_CUSTOM actionText [String]- A text describing the action. i18n Strings can be used. If this is set to null or an empty string, the action is not populated in notification. actionCallback[Function]- An action callback is invoked by the platform when the user performs a click action on the button in notification.</td></tr></tbody></table>
 
 Example
 

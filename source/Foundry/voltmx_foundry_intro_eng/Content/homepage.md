@@ -1,7 +1,6 @@
-                    
+# Introduction to Volt Foundry Engagement Services
 
+Volt Foundry Engagement Services provides a generic notification service that allows you to send push notifications, email, SMS and passes to mobile devices running on different platforms (for example, iPhone, Android, and Windows).
 
-# Introduction to Volt MX Engagement Services
-
-This module will introduce you to the basics of Volt MX Engagement Services and also explain you how to install the Engagement demo application and receive notifications.
+This module will introduce you to the basics of Volt Foundry Engagement Services and also explain how to install the Engagement demo application and receive notifications.
 

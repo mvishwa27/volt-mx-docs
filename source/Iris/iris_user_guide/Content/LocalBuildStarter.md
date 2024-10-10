@@ -19,13 +19,13 @@ After you develop an application, you must build the application to do the follo
 *   Test the application for its performance and appearance on a device or on emulators.
 *   Install the application on devices.
 
-> **_Note:_** The plugins for the native builds will be downloaded when you build the app for the first time. Hence, it may take longer to build the app for the first time. Any subsequent builds will be [incremental](#Incremen) and faster.
+> **_Note:_** The plugins for the native builds will be downloaded when you build the app for the first time. Hence, it may take longer to build the app for the first time. Any subsequent builds will be [incremental](#incremental-build) and faster.
 
 If you add an external asset or library to the Iris project after a full build, you must clean up the project using the **Clean Build** option. The **Clean Build** option erases files that were generated during the previous build and makes the project ready for the subsequent build. Once the project is cleaned, Iris will perform a full build the next time you trigger a build.
 
 If you do not clean the project and perform a build, Iris will not take into consideration the assets and libraries added while performing the build.
 
-Incremental Build
+### Incremental Build
 
 When an app is built for the first time, a full build is performed. The subsequent builds are incremental. In an incremental build, the previously built state of the project is used and only those resources that are changed since the last build are regenerated.
 
@@ -41,11 +41,11 @@ Prerequisites
 
 **Following are the prerequisites to build a native app on a local machine within Volt MX Iris**:
 
-*   Access to a Volt MX Foundry Environment. You must sign in to Volt MX Iris using the login credentials of either your Volt MX Foundry Cloud or on-premise environments.  If you want to use the Volt MX Foundry on-premise environment, you must [configure Volt MX Iris to connect to the Volt MX Foundry URL](LogInUsingCustAuth.md#ConfigureVoltMXFoundryInIrisEnterprise).
+*   Access to a Volt MX Foundry Environment. You must sign in to Volt MX Iris using the login credentials of either your Volt MX Foundry Cloud or on-premise environments.  If you want to use the Volt MX Foundry on-premise environment, you must [configure Volt MX Iris to connect to the Volt MX Foundry URL](LogInUsingCustAuth.md)	.
 
 *   For publishing to the Enterprise App Store, you must have Volt MX Foundry V8 SP4 or later.
 *   Configure the various Project Settings.  
-    Go to **Project** > **Settings** and configure the build settings for each Native platform. For more information on Project Settings, click [here](Project_Properties_in_VoltMX_Iris.md#project-settings-in).
+    Go to **Project** > **Settings** and configure the build settings for each Native platform. For more information on Project Settings, click [here](Project_Properties_in_VoltMX_Iris.md#project-settings-in-volt-mx-iris).
 *   Platform specific prerequisites:
     *   If you choose to build an application for the **iOS** platform, you must provide the Development method, Development Team ID and Keychain password. To do so, go to **Project Settings** > **Native** > **iPhone/iPad**. For more details on the iOS configurations, click [here](iOS_Automatic_Output_Generation.md).
     
@@ -53,7 +53,8 @@ Prerequisites
     
     *   If you choose to build an application for the **Android** platform, you must provide the paths of the Android Home and Java Home. To do so, go to **Edit** > **Preferences** > **Build**. Under the Android section, provide the location of the **Android Home** and **Java Home**.
         
-        > **_Note:_** <br>1. From Iris versions 9.2.69/9.5.21 and above, Java Home should point to Java version 11. Java version 8 is no longer supported.<br>2. On Mac machines, while browsing for Iris Preferences, you can use Command + Shift + . to view hidden folders such as the Library, System, etc.
+        > **_Note:_** 
+        <br>1. From Iris versions 9.2.69/9.5.21 and above, Java Home should point to Java version 11. Java version 8 is no longer supported.<br>2. On Mac machines, while browsing for Iris Preferences, you can use Command + Shift + . to view hidden folders such as the Library, System, etc.
         
     *   If you choose to build an application for the **Android** platform in **Release mode**, then the Android signing details are mandatory. To do so, go to **Project Settings** > **Native** > **Android Mobile/Tablet**. For more details on Android signing details, click [here](https://support.hcltechsw.com/csm?id=kb_article&sysparm_article=KB0083782).
     *   If you choose to build an application for the **Windows** platform, you must ensure that you have [Setup the Development Environment](BuildApplicationsForWindows10.md#development-environment-setup) on your machine, and provide the windows application settings at ****Project Settings** > **Native** > **Windows****. For more details, click [here](Project_Properties_in_VoltMX_Iris.md#windows).
@@ -95,6 +96,8 @@ To understand any build failures, you can go through the log file. To understand
 The Publish to my App Store action generates native app binaries and publishes the application to your Enterprise App Store. After a successful publish, a confirmation window appears, which shares a link to view the Enterprise app store on your device.
 
 To publish an app to the Enterprise App Store, logging in to your Volt MX Account is mandatory.
+
+<img src="Resources/Images/LocalBuild_EASPub_345x431.png" alt="" style="width: 85%">
 
 > **_Note:_** You cannot build apps for the universal channel using this option.
 

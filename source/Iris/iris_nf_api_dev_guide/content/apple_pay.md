@@ -23,10 +23,10 @@ Some benefits of Apple Pay are:
 
 For more information on Apple Pay, follow the links:
 
-*   [Configuring Your Environment](https://developer.apple.com/library/archive/ApplePay_Guide/Configuration.html#//apple_ref/doc/uid/TP40014764-CH2-SW1)
-*   [Creating a Payment Request](https://developer.apple.com/library/archive/ApplePay_Guide/CreateRequest.html#//apple_ref/doc/uid/TP40014764-CH3-SW2)
-*   [Authorizing a Payment](https://developer.apple.com/library/archive/ApplePay_Guide/Authorization.html#//apple_ref/doc/uid/TP40014764-CH4-SW3)
-*   [Payment Processing](https://developer.apple.com/library/archive/ApplePay_Guide/ProcessPayment.html#//apple_ref/doc/uid/TP40014764-CH5-SW4)
+*   [Configuring Your Environment](https://developer.apple.com/library/archive/ApplePay_Guide/Configuration.md#//apple_ref/doc/uid/TP40014764-CH2-SW1)
+*   [Creating a Payment Request](https://developer.apple.com/library/archive/ApplePay_Guide/CreateRequest.md#//apple_ref/doc/uid/TP40014764-CH3-SW2)
+*   [Authorizing a Payment](https://developer.apple.com/library/archive/ApplePay_Guide/Authorization.md#//apple_ref/doc/uid/TP40014764-CH4-SW3)
+*   [Payment Processing](https://developer.apple.com/library/archive/ApplePay_Guide/ProcessPayment.md#//apple_ref/doc/uid/TP40014764-CH5-SW4)
 
 > **_Note:_** The PKPaymentButton class is not available in JavaScript. Alternatively, you have to download the Apple Pay button resources and use them on a Volt MX button to achieve the look desired for an Apple Pay button.
 

@@ -1,8 +1,5 @@
-                            
+## <a id="voltmxlocalauthentication-namespace"></a> voltmx.localAuthentication Namespace
 
-
-voltmx.localAuthentication Namespace
-==================================
 
 The voltmx.localAuthentication namespace provides the functions to authenticate, get the status of the authentication, and cancel authentication.
 
@@ -13,8 +10,7 @@ The voltmx.localAuthentication namespace provides the functions to authenticate,
 
 This namespace contains the following API elements.
 
-Functions
----------
+### Functions
 
 The voltmx.localAuthentication namespace provides the following functions.
 
@@ -327,8 +323,104 @@ Even when the `getStatusForAuthenticationMode(constants.LOCAL_AUTHENTICATION_MOD
 
 * * *
 
-Authentication Modes
---------------------
+</details>
+<details close markdown="block"><summary>voltmx.localAuthentication.requestBiometricsEnroll</summary>
+
+* * *
+
+When biometrics are not enrolled on the device, and you invoke the authenticate() API, the **5007** (Authentication does not start because biometrics are not enrolled on the device) error code is returned. In such cases, developers can use the requestBiometricsEnroll API to direct app users to the device settings page, where they can enroll for biometrics and setup device credentials such as PIN/Pattern/Password, if necessary.
+
+<b>Syntax</b>
+
+```
+voltmx.localAuthentication.requestBiometricsEnroll(statusCallback,configMap);
+```
+
+<b>Input Parameters</b>
+
+<table>
+    <colgroup><col >
+    <col >
+    </colgroup><thead>
+        <tr >
+            <th>Parameter</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr >
+            <td >statusCallBack (status, message, info) [function]</td>
+            <td >
+                <p>A callback function that conveys the status of the authentication with an appropriate status code. The API returns one of the following status codes:</p>
+                <ul>
+                    <li><b>5018</b>: This is returned when any of the specified authenticators is already enrolled.</li>
+                    <li><b>5019</b>: This is returned when all the specified authenticators are not supported.</li>
+                    <li><b>5020</b>: This is returned on successful enrollment of the given authenticator.</li>
+                    <li><b>5021</b>: This is returned on failure in the enrollment of the given authenticator.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr >
+            <td >configMap [dictionary]</td>
+            <td >
+                <p>Specifies the configuration dictionary for the API. The configMap parameter uses the following keys:</p>
+                <ul>
+                    <li>
+                        <p><b><a name="authenticators"></a>authenticators</b>: Use this key to specify the type of <a href="#authenticators">authenticators</a> required in the device. You can also specify multiple (a combination of) authenticators as a list. When the specified authenticators are present in the device but the device has not been enrolled for biometrics, the system displays the biometric enrollment settings screen to the user.</p>
+                        <p> If authenticators are not specified, the device picks the default value for the authenticator, DEVICE_CREDENTIAL. This is an optional key applicable only for the Android platform. </p>
+                    </li>
+                </ul>
+                <div  data-mc-autonum="<b><span style=&quot;color: #293276;&quot; class=&quot;mcFormatColor&quot;>NOTE: </span></b>"><span ><span><b><span style="color: #293276;" >NOTE: </span></b></span></span>
+                    <ul>
+                        <li>On Android 11 (API level 30, or later) devices, the API supports the voltmx.localAuthentication.BIOMETRIC_STRONG, voltmx.localAuthentication.BIOMETRIC_WEAK, and the voltmx.localAuthentication.DEVICE_CREDENTIAL authenticators.</li>
+                        <li> On Android 9 and Android 10 (API level 28 and 29) devices, the API supports the voltmx.localAuthentication.BIOMETRIC_WEAK and the voltmx.localAuthentication.DEVICE_CREDENTIAL authenticators.</li>
+                        <li> On devices that use Android versions prior to Android 8.1 (API level 27), the API supports only the  voltmx.localAuthentication.DEVICE_CREDENTIAL authenticator.</li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<b>Example</b>
+
+```
+resultCallback: function(info) {
+      alert("status code : "+ info.status);
+},
+enrommBiometric : function(){
+      var configMap = {
+          "authenticators": [voltmx.localAuthentication.BIOMETRIC_WEAK, voltmx.localAuthentication DEVICE_CREDENTIAL],
+          "callback" : this.resultCallback
+      };
+      voltmx.localAuthentication.enrollBiometrics(configMap);
+}
+```
+
+<b>Return Values</b>
+
+None
+
+<b>API Behavior</b>
+
+Based on the authenticator specified in the configMap parameter, and the configuration status of device credentials, the behavior of the API varies as follows:
+
+<table><colgroup><col ><col ><col ></colgroup><thead><tr ><th>Input Authenticator<br/>(voltmx.localAuthentication.xxx)</th><th>Output Behavior when Device Credentials are not set </th><th>Output Behavior when Device Credentials are already set </th></tr></thead><tbody><tr ><td >[DEVICE_CREDENTIAL]</td><td ><p>The user is directed to the settings screen to register for device credentials such as PIN, Pattern, or Password.</p><p><img src="resources/images/devcred.png" style="width: 177;height: 115;"></p></td><td ><p>The API returns the 5018 status code.</p></td></tr><tr ><td >[BIOMETRIC_WEAK]</td><td ><p> In devices that use Android API levels less than or equal to 27 (&lt;= 27), the API returns the 5019 status code.</p><p> In devices that use Android API levels greater than or equal to 28 (&gt;=28), the following system prompt appears.</p><p><img src="resources/images/biometric+devcred.png"></p><p>If the device does not support the BIOMETRIC_WEAK authenticator, the API returns the 5019 status code.</p></td><td ><p> In devices that use Android API levels less than or equal to 27 (&lt;= 27), the API returns the 5019 status code.</p><p> In devices that use Android API levels greater than or equal to 28 (&gt;=28), the user must first authenticate with the current credential (such as PIN, pattern, or password) used on the device. After confirmation, the user is directed to register for biometrics on the device.</p><p><img src="resources/images/reenterpin.png"></p><p><img src="resources/images/fingerprint.png"></p><p><img src="resources/images/configurebiometric.png"></p><p>If the device does not support the BIOMETRIC_WEAK authenticator, the API returns the 5019 status code.</p></td></tr><tr ><td >[BIOMETRIC_STRONG]</td><td ><p> In devices that use Android API levels less than or equal to 29 (&lt;= 29), the API returns the 5019 status code.</p><p> In devices that use Android API levels greater than or equal to 30 (&gt;=30), the following system prompt appears.</p><p><img src="resources/images/biometric+devcred.png"></p><p>If the device does not support the BIOMETRIC_STRONG authenticator, the API returns the 5019 status code.</p></td><td ><p> In devices that use Android API levels less than or equal to 29 (&lt;= 29), the API returns the 5019 status code.</p><p> In devices that use Android API levels greater than or equal to 30 (&gt;=30), the user must first authenticate with the current credential (such as PIN, pattern, or password) used on the device. After confirmation, the user is directed to register for biometrics on the device.</p><p><img src="resources/images/reenterpin.png"></p><p><img src="resources/images/fingerprint.png"></p><p><img src="resources/images/configurebiometric.png"></p><p>If the device does not support the BIOMETRIC_STRONG authenticator, the API returns the 5019 status code.</p></td></tr><tr ><td ><p>[BIOMETRIC_WEAK,  BIOMETRIC_STRONG, DEVICE_CREDENTIAL]
+
+</p><p  data-mc-autonum="<b><span style=&quot;color: #293276;&quot; class=&quot;mcFormatColor&quot;>NOTE: </span></b>"><span ><span><b><span style="color: #293276;" >NOTE: </span></b></span></span>BIOMETRIC_WEAK is a superset of BIOMETRIC_STRONG and is defined such that BIOMETRIC_STRONG | BIOMETRIC_WEAK == BIOMETRIC_WEAK</p></td><td ><p> In devices that use Android API levels less than or equal to 27 (&lt;= 27), the API only considers the DEVICE_CREDENTIAL authenticator.</p><p> In devices that use Android API levels greater than or equal to 28 (&gt;=30), the following system prompt appears.</p><p><img src="resources/images/biometric+devcred.png"></p><p>If the device does not support the BIOMETRIC_WEAK or BIOMETRIC_STRONG authenticators, the user is directed to the settings screen to register for device credentials such as PIN, Pattern, or Password.</p><p><img src="resources/images/devcred.png" style="width: 177;height: 115;"></p></td><td ><p>The API displays the following message:</p><p>One of the specified authenticator (DEVICE_CREDENTIAL) is already enrolled.</p><p>If the device does not support the BIOMETRIC_WEAK or BIOMETRIC_STRONG authenticators, the API returns the 5018 status code.</p></td></tr><tr ><td ><p>[BIOMETRIC_WEAK, BIOMETRIC_STRONG]</p><p  data-mc-autonum="<b><span style=&quot;color: #293276;&quot; class=&quot;mcFormatColor&quot;>NOTE: </span></b>"><span ><span><b><span style="color: #293276;" >NOTE: </span></b></span></span>BIOMETRIC_WEAK is a superset of BIOMETRIC_STRONG and is defined such that BIOMETRIC_STRONG | BIOMETRIC_WEAK == BIOMETRIC_WEAK</p></td><td ><p> In devices that use Android API levels less than or equal to 27 (&lt;= 27), the API returns the 5019 status code.</p><p> In devices that use Android API levels greater than or equal to 28 (&gt;=28), the following system prompt appears.</p><p><img src="resources/images/biometric+devcred.png"></p><p>If the device does not support the BIOMETRIC_WEAK or BIOMETRIC_STRONG authenticators, the user is directed to the settings screen to register for device credentials such as PIN, Pattern, or Password.</p><p><img src="resources/images/devcred.png" style="width: 177;height: 115;"></p></td><td ><p> In devices that use Android API levels less than or equal to 27 (&lt;= 27), the API returns the 5019 status code.</p><p> In devices that use Android API levels greater than or equal to 28 (&gt;=28), the user must first authenticate with the current credential (such as PIN, pattern, or password) used on the device. After confirmation, the user is directed to register for biometrics on the device.</p><p><img src="resources/images/reenterpin.png"></p><p><img src="resources/images/fingerprint.png"></p><p><img src="resources/images/configurebiometric.png"></p></td></tr><tr ><td >[BIOMETRIC_WEAK, DEVICE_CREDENTIAL] </td><td ><p> In devices that use Android API levels less than or equal to 27 (&lt;= 27), the API only considers the DEVICE_CREDENTIAL authenticator.</p><p> In devices that use Android API levels greater than or equal to 28 (&gt;=28), the following system prompt appears.</p><p><img src="resources/images/biometric+devcred.png"></p><p>If the device does not support the BIOMETRIC_WEAK authenticator, the user is directed to the settings screen to register for device credentials such as PIN, Pattern, or Password.</p><p><img src="resources/images/devcred.png" style="width: 177;height: 115;"></p></td><td ><p>The API displays the following message:</p><p>One of the specified authenticator (DEVICE_CREDENTIAL) is already enrolled.</p><p>If the device does not support the BIOMETRIC_WEAK or BIOMETRIC_STRONG authenticators, the API returns the 5018 status code.</p></td></tr><tr ><td >[BIOMETRIC_STRONG, DEVICE_CREDENTIAL]</td><td ><p> In devices that use Android API levels less than or equal to 29 (&lt;= 29), the API only considers the DEVICE_CREDENTIAL authenticator.</p><p> In devices that use Android API levels greater than or equal to 30 (&gt;=30), the following system prompt appears.</p><p><img src="resources/images/biometric+devcred.png"></p><p>If the device does not support the BIOMETRIC_STRONG authenticator, the user is directed to the settings screen to register for device credentials such as PIN, Pattern, or Password.</p><p><img src="resources/images/devcred.png" style="width: 177;height: 115;"></p></td><td ><p>The API displays the following message:</p><p>One of the specified authenticator (DEVICE_CREDENTIAL) is already enrolled.</p><p>If the device does not support the BIOMETRIC_WEAK or BIOMETRIC_STRONG authenticators, the API returns the 5018 status code.</p></td></tr></tbody></table>
+
+> NOTE: The screens are only for the purpose of illustration, and may differ from device to device.
+> The screenshots displayed in the table have been captured on an Android emulator that uses Android API level 30.
+
+<b>Platform Availability</b>
+
+*   Android
+
+* * *
+
+</details>
+
+### Authentication Modes
 
 Following are the supported constants for authentication mode.
 
@@ -347,8 +439,23 @@ Following are the supported constants for authentication mode.
     *   **5000**: Indicates that a passcode (either PIN, PATTERN, or PASSWORD) is set on the device.
     *   **5005**: Indicates that the passcode is not set on the device.
 
-Status Codes
-------------
+### Authenticators
+
+Authenticators specify an acceptable list of authenticator types that the device supports. Authenticators are of the following three types:
+
+* **voltmx.localAuthentication.BIOMETRIC_STRONG**: Authentication by using biometric credentials (such as fingerprint, iris, or face) that satisfy (meets or exceeds) the requirements for the Strong strength level (Class 3) as defined by the [Android Compatibility Definition](https://source.android.com/compatibility/11/android-11-cdd#7_3_10_biometric_sensors). This is only supported on Android 11 (API level 30, and later) devices.
+
+* **voltmx.localAuthentication.BIOMETRIC_WEAK**: Authentication by using biometric credentials (such as fingerprint, iris, or face) that satisfy (meets or exceeds) the requirements for the Weak strength level (Class 2) as defined by the [Android Compatibility Definition](https://source.android.com/compatibility/11/android-11-cdd#7_3_10_biometric_sensors). This is only supported on Android (API level 28, and later) devices.
+
+    > **NOTE:** BIOMETRIC_WEAK is a superset that can imply either BIOMETRIC_WEAK or BIOMETRIC_STRONG. For more information about Biometric classes , refer to [Biometric sensors](https://source.android.com/compatibility/11/android-11-cdd#7_3_10_biometric_sensors).
+
+* **voltmx.localAuthentication.DEVICE_CREDENTIAL**: Authentication by using non-biometric or device credentials, such as PIN, pattern, or password.
+
+For example, if you specify a combination of the BIOMETRIC_WEAK and DEVICE_CREDENTIAL authenticators, devices that support the BIOMETRIC_WEAK authenticator display a system prompt with the biometric and device credential (PIN/PATTERN/PASSWORD) options. In devices that do not support the BIOMETRIC_WEAK authenticator, the system displays only the device credential (PIN/PATTERN/PASSWORD) options, provided that a device credential (PIN/PATTERN/PASSWORD) is configured on the device.
+
+> **NOTE:** In devices that use Android versions prior to Android 11 (API level 30), a few combinations of authenticators are not supported. For example, using only DEVICE_CREDENTIAL is not supported prior to API level 30, and using BIOMETRIC_STRONG with DEVICE_CREDENTIAL is not supported in API level 28 to 29. If you invoke the API with unsupported authenticators, the API returns an appropriate error code. 
+
+### Status Codes
 
 The following table provides a list of status codes and their descriptions.
 

@@ -1,5 +1,4 @@
-                                  
-FlexScrollContainer Properties
+﻿FlexScrollContainer Properties
 ==============================
 
 The FlexScrollContainer widget provides the following properties.
@@ -14,22 +13,22 @@ Enables you to control accessibility behavior and alternative text for the widge
 
 For more information on using accessibility features in your app, see the [Accessibility](../../../Iris/app_design_dev/Content/Accessibility_Overview.md) appendix in the Volt MX IrisUser Guide.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 accessibilityConfig
 ```
 
-### Type
+<b>Type</b>
 
 Object
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 *   The accessibilityConfig property is enabled for all the widgets which are supported under the Flex Layout.
 
@@ -41,24 +40,24 @@ The accessibilityConfig property is a JavaScript object which can contain the fo
 | Key | Type | Description | ARIA Equivalent |
 | --- | --- | --- | --- |
 | a11yIndex | Integer with no floating or decimal number. | This is an optional parameter. Specifies the order in which the widgets are focused on a screen. | For all widgets, this parameter maps to the `aria-index`, `index`, or `taborder` properties. |
-| a11yLabel | String | This is an optional parameter. Specifies alternate text to identify the widget. Generally the label should be the text that is displayed on the screen. | For all widgets, this parameter maps to the `aria-labelledby` property of ARIA in HTML. > **_Note:_** For the Image widget, this parameter maps to the **alt** attribute of ARIA in HTML. |
+| a11yLabel | String | This is an optional parameter. Specifies alternate text to identify the widget. Generally the label should be the text that is displayed on the screen. | For all widgets, this parameter maps to the `aria-labelledby` property of ARIA in HTML. **_Note:_** For the Image widget, this parameter maps to the **alt** attribute of ARIA in HTML. |
 | a11yValue | String | This is an optional parameter. Specifies the descriptive text that explains the action associated with the widget. On the Android platform, the text specified for a11yValue is prefixed to the a11yHint. | This parameter is similar to the a11yLabel parameter. If the a11yValue is defined, the value of a11yValue is appended to the value of a11yLabel. These values are separated by a space. |
 | a11yHint | String | This is an optional parameter. Specifies the descriptive text that explains the action associated with the widget. On the Android platform, the text specified for a11yValue is prefixed to the a11yHint. | For all widgets, this parameter maps to the `aria-describedby` property of ARIA in HTML. |
 | a11yHidden | Boolean | This is an optional parameter. Specifies if the widget should be ignored by assistive technology. The default option is set to _false_. This option is supported on iOS 5.0 and above, Android 4.1 and above, and SPA | For all widgets, this parameter maps to the `aria-hidden` property of ARIA in HTML. |
 | a11yARIA | Object | This is an optional parameter. For each widget, the key and value provided in this object are added as the attribute and value of the HTML tags respectively. Any values provided for attributes such as `aria-labelledby` and `aria-describedby` using this attribute, takes precedence over values given in `a11yLabel` and `a11yHint` fields. When a widget is provided with the following key value pair or attribute using the a11yARIA object, the tabIndex of the widget is automatically appended as zero.`{"role": "main"}``aria-label` | This parameter is only available on the Desktop Web platform. |
 
-### Android limitations
+<b>Android limitations</b>
 
 *   If the results of the concatenation of a11y fields result in an empty string, then `accessibilityConfig` is ignored and the text that is on widget is read out.
 *   The soft keypad does not gain accessibility focus during the right/left swipe gesture when the keypad appears.
 
-### SPA/Desktop Web limitations
+<b>SPA/Desktop Web limitations</b>
 
 *   When `accessibilityConfig` property is configured for any widget, the `tabIndex` attribute is added automatically to the `accessibilityConfig` property.
 *   The behavior of accessibility depends on the Web browser, Web browser version, Voice Over Assistant, and Voice Over Assistant version.
 *   Currently SPA/Desktop web applications support only a few ARIA tags. To achieve more accessibility features, use the attribute a11yARIA. The corresponding tags will be added to the DOM as per these configurations.
 
-### Example 1
+<b>Example 1</b>
 
 This example uses the button widget, but the principle remains the same for all widgets that have an accessibilityConfig property.
 
@@ -75,7 +74,7 @@ Form1.myButton.accessibilityConfig = {
 };
 ```
 
-### Example 2
+<b>Example</b> 2
 
 This example uses the button widget to implement internationalization in `accessibilityConfig` property, but the principle remains the same for all widgets.
 
@@ -93,7 +92,7 @@ Form1.myButton.accessibilityConfig = {
 };
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE
 *   iOS, Android, SPA, and Desktop Web
@@ -101,7 +100,56 @@ Form1.myButton.accessibilityConfig = {
 * * *
 
 </details>
-<details close markdown="block"><summary>allowHorizontalBounce Property</summary>
+<details close markdown="block"><summary>activeStateSkin Property</summary>
+
+* * *
+
+Specifies the look and feel of a widget when the widget is in focus.
+When the activeStateSkin property is configured for a widget, the activeStateSkin is applied to the widget when a user focuses on the widget (either by using the TAB key, mouse-click, or by using the setActive API programmatically).
+
+<b>Syntax</b>
+
+```
+
+activeStateSkin
+```
+
+<b>Type</b>
+
+String
+
+<b>Read/Write</b>
+
+Read + Write
+
+<b>Remarks</b>
+
+If a widget has the activeStateSkin, focusSkin, and the hoverSkin properties configured, the skins are applied based on the mouse-action performed on the widget:
+
+*   The focusSkin is applied on the mouse-down action on the widget.
+*   The hoverSkin is applied on the mouse-over action on the widget.
+*   The activeStateSkin is applied on the mouse-release action on the widget.
+
+
+
+<b>Example</b>
+
+Setting the activeStateSkin property on an existing widget
+
+```
+//The Active State Skin is a skin created under the Skins tabfrmButton.myButton.activeStateSkin= 'btnActiveStateSkin';
+```
+
+
+<b>Platform Availability</b>
+
+*   Available in the IDE
+*   Available on the Responsive Web platform
+
+* * *
+
+</details>
+<details close markdown="block"><summary id="allowHor">allowHorizontalBounce Property</summary>
 
 * * *
 
@@ -109,28 +157,28 @@ Specifies whether the scroll bounce is enabled or disabled in the horizontal dir
 
 From V9 SP1 release, this property is supported in the Android platform. To use this property in Android platform, you must set the value of [overScrollX](#overScrollX) property as `constants.OVER_SCROLL_ENABLE` or `constants.OVER_SCROLL_DISABLE`.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 allowHorizontalBounce
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 The default value for this property is true (the scroll bounce is enabled in horizontal direction).
 
 > **_Note:_** The **bounces** property takes precedence over this property.
 
-### Example
+<b>Example</b>
 
 Setting the allowHorizontalBounce property on an existing widget:
 
@@ -139,7 +187,7 @@ Setting the allowHorizontalBounce property on an existing widget:
 Form1.flxScroll.allowHorizontalBounce = true;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Available in the IDE.
 
@@ -156,28 +204,28 @@ Specifies whether the scroll bounce is enabled or disabled in the vertical direc
 
 From V9 SP1 release, this property is supported in the Android platform. To use this property in Android platform, you must the value of [overScrollY](#overScrollY) property as `constants.OVER_SCROLL_ENABLE` or `constants.OVER_SCROLL_DISABLE`.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 allowVerticalBounce
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 The default value for this property is true (the scroll bounce is enabled in vertical direction).
 
 > **_Note:_** The **bounces** property takes precedence over this property.
 
-### Example
+<b>Example</b>
 
 Setting the allowVerticalBounce property on an existing widget:
 
@@ -186,7 +234,7 @@ Setting the allowVerticalBounce property on an existing widget:
 Form1.flxScroll.allowVerticalBounce = true;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Available in the IDE.
 
@@ -201,26 +249,26 @@ Available in the IDE.
 
 When the value of this property is set as **true**, the **[pullToRefreshIcon](#pullToRefreshIcon)** and **[pushToRefreshIcon](#pushToRefreshIcon)** icons rotate by 180 degrees.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 animateIcons
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 The default value for this property is false.
 
-### Example
+<b>Example</b>
 
 Setting the animateIcons property on an existing widget:
 
@@ -229,7 +277,7 @@ Setting the animateIcons property on an existing widget:
 Form1.flxScroll.animateIcons= true;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android
 *   iOS
@@ -245,28 +293,28 @@ Form1.flxScroll.animateIcons= true;
 
 Specifies the anchor point of the widget bounds rectangle using the widget's coordinate space.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 anchorPoint
 ```
 
-### Type
+<b>Type</b>
 
 JSObject
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 The value for this property is a JavaScript dictionary object with the keys "x" and "y". The values for the "x" and "y" keys are floating-point numbers ranging from 0 to 1. All geometric manipulations to the widget occur about the specified point. For example, applying a rotation transform to a widget with the default anchor point causes the widget to rotate around its center.
 
 The default value for this property is center ( {"x":0.5, "y":0.5} ), that represents the center of the widgets bounds rectangle. The behavior is undefined if the values are outside the range zero (0) to one (1).
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -276,7 +324,7 @@ Form1.widget1.anchorPoint = {
 };
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   iOS, Android, Windows, and SPA
 
@@ -289,22 +337,22 @@ Form1.widget1.anchorPoint = {
 
 Specifies the background color of the widget.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 backgroundColor
 ```
 
-### Type
+<b>Type</b>
 
 Color constant or Hexadecimal number
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 *   The initial value of backgroundColor has to be specified explicitly. If not, Iris will not deduce the values from the existing skin
     and this will lead to undefined behavior.
@@ -320,7 +368,7 @@ Read + Write
 *   The backgroundColor, backgroundColorTwoStepGradient, backgroundColoMultiStepGradient, and backgroundImage properties are mutually
     exclusive. The property that was set most recently is given higher priority over other properties.
 
-### Example
+<b>Example</b>
 
 This example uses the button widget, but the principle remains the same for all widgets that have the backgroundColor property.
 
@@ -330,7 +378,7 @@ Form1.btn1.backgroundColor = "ea5075";
 
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android
 *   iOS
@@ -345,7 +393,7 @@ Form1.btn1.backgroundColor = "ea5075";
 
 You can enable or disable a blur-effect for a widget(for example, a FlexContainer) by making use of a constructor-level property, called **blur**. The **blur** property accepts a dictionary that contains the following keys: enabled, value and style. You must specify an appropriate value for the dictionary keys, otherwise the property will not be valid.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
@@ -369,11 +417,11 @@ blur
     *   constants.BLUR\_EFFECT\_PROMINENT
         
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 *   If you set _enabled_ as true, the blur-effect for the widget is enabled.
 *   If you set _enabled_ as false, the blur-effect for the widget is disabled.
@@ -381,7 +429,7 @@ Read + Write
     
 *   If you specify _value_ as greater than 100, the value is taken as 100.
 
-### Limitations
+<b>Limitations</b>
 
 *   For Android:
     *   If a FlexContainer or a FlexScrollContainer contains a Map widget, the blur-effect is not applied to the map.
@@ -391,7 +439,7 @@ Read + Write
     *   Even if you apply 100% blur for widgets that display any text( such as Label or Calendar widgets), the text on these widgets is not blurred. This is a Native Android limitation. To generate the blur effect for the text, apply a skin with darker background to the Label or Calendar widget. This is true even when the widgets are placed in a FlexContainer with blur effect and the widgets do not have a skin.
     *   Blur effect will not work on widgets added inside BOX containers.
 
-### Example 1
+<b>Example</b> 1
 
 To dynamically set the blur-effect for any widget, such as a FlexContainer, use the following code.
 
@@ -409,7 +457,7 @@ Form1.myFlexContainer.blur = {
 
 ```
 
-### Example 2
+<b>Example</b> 2
 
 To dynamically set the blur-effect for any widget, such as a FlexContainer in iOS, use the following code.
 
@@ -422,7 +470,7 @@ Form1.widget1.blur = {
 };
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android, iOS, Windows, SPA , and Desktop web
 
@@ -441,28 +489,28 @@ The bottom property determines the position of the bottom edge of the widget’s
 
 The bottom property is used only if the Height property is not provided.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 bottom
 ```
 
-### Type
+<b>Type</b>
 
 String
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 The property determines the bottom edge of the widget and is measured from the bottom bounds of the parent container.
 
 If the layoutType is set as voltmx.flex.FLOW\_VERTICAL, the bottom property is measured from the top edge of bottom sibling widget. The vertical space between two widgets is measured from bottom of the top sibling widget and the top of the bottom sibling widget.
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -474,7 +522,7 @@ frmHome.widgetID.bottom = "10%";
 frmHome.widgetID.bottom = "10px";
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE
 *   iOS, Android, Windows, SPA , and Desktop Web
@@ -482,7 +530,7 @@ frmHome.widgetID.bottom = "10px";
 * * *
 
 </details>
-<details close markdown="block"><summary>bounces Property</summary>
+<details close markdown="block"><summary id="bounces">bounces Property</summary>
 
 * * *
 
@@ -491,33 +539,33 @@ Specifies whether the scroll bounce is enabled or disabled.
 From V9 SP1 release, this property is supported in the Android platform.  
 To enable the rubber band effect in a FlexScrollContainer widget while scrolling horizontally, in Android platform , set the value of `bounce` property as `true` and the value of [overScrollX](#overScrollX) property as `constants.OVER_SCROLL_ENABLE` or `constants.OVER_SCROLL_DISABLE`.Similarly, to enable the rubber band effect in a FlexScrollContainer widget while scrolling vertically, in Android platform, set the value of `bounce` property as true and the value of [overScrollY](#overScrollY) as `constants.OVER_SCROLL_ENABLE` or `constants.OVER_SCROLL_DISABLE`.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 bounces
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 The default value for this property is true (the scroll bounce is enabled).
 
-### Example
+<b>Example</b>
 
 ```
 
 Form1.flxScroll.bounces = true;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Available in the IDE.
 
@@ -532,33 +580,33 @@ Available in the IDE.
 
 Specifies whether the scroll view animates the content scaling when the scaling exceeds the maximum or minimum limits. If the value is set to true, and zooming exceeds either the minimum or maximum limits for scaling, the scroll view temporarily animates the content scaling just past these limits before returning to them. If the property is set to false, zooming stops immediately as it reaches scaling limits.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 bouncesZoom
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 The default value for this property is true.
 
-### Example
+<b>Example</b>
 
 ```
 
 Form1.flxScroll.bouncesZoom = true;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Available in the IDE.
 
@@ -575,26 +623,26 @@ This property determines the center of a widget measured from the left bounds of
 
 The centerX property determines the horizontal center of the widget’s bounding box. The value may be set using DP (Device Independent Pixels), Percentage, or Pixels. In freeform layout, the distance is measured from the left edge of the parent container. In flow-vertical layout, the distance is measured from the left edge of the parent container. In flow-horizontal layout, the distance is measured from the right edge of the previous sibling widget in the hierarchy.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 centerX
 ```
 
-### Type
+<b>Type</b>
 
 String
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 If the layoutType is set as voltmx.flex.FLOW\_HORIZONTAL, the centerX property is measured from right edge of the left sibling widget.
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -606,7 +654,7 @@ frmHome.widgetID.centerX = "10%";
 frmHome.widgetID.centerX = "10px";
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE
 *   iOS, Android, Windows, SPA, and Desktop Web
@@ -622,26 +670,26 @@ This property determines the center of a widget measured from the top bounds of 
 
 The centerY property determines the vertical center of the widget’s bounding box. The value may be set using DP (Device Independent Pixels), Percentage, or Pixels. In freeform layout, the distance is measured from the top edge of the parent container. In flow-horizontal layout, the distance is measured from the top edge of the parent container. In flow-vertical layout, the distance is measured from the bottom edge of the previous sibling widget in the hierarchy.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 centerY
 ```
 
-### Type
+<b>Type</b>
 
 String
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 If the layoutType is set as voltmx.flex.FLOW\_VERTICAL, the centerY property is measured from bottom edge of the top sibling widget.
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -653,7 +701,7 @@ frmHome.widgetID.centerY = "10%";
 frmHome.widgetID.centerY = "10px";
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE
 *   iOS, Android, Windows, SPA, and Desktop Web
@@ -667,22 +715,22 @@ frmHome.widgetID.centerY = "10px";
 
 Child widgets will be clipped to the bounds of the FlexScrollContainer if this property is set to true.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 clipBounds
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 The default value for this property is True.
 
@@ -693,7 +741,7 @@ This behavior can be used to achieve a “Peek view” in the following way:
 *   Set “pagingEnabled” to true for FlexScrollContainer widget.
 *   Set the width of child widgets to exceed that of the FlexScrollContainer when you wish Peek view to be enabled.
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -706,7 +754,7 @@ frmHome.flexScrContainer1.clipBounds = false;
 
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Available in the IDE.
 
@@ -722,22 +770,22 @@ Available in the IDE.
 
 This property returns the current coordinates of the top left corner of the scrollable region in the item.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 contentOffset
 ```
 
-### Type
+<b>Type</b>
 
 JavaScript Object
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 Returns the following key:value pairs:
 
@@ -747,7 +795,7 @@ The values are numbers that represent device pixels (DP).
 
 For android this property is disabled if any templates are marked as autogrow.
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -757,7 +805,7 @@ Form1.widgetID.contentOffset = {
 };
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE
 *   iOS, Android, and Windows
@@ -771,22 +819,22 @@ Form1.widgetID.contentOffset = {
 
 Specifies the x and y coordinates of the top-left of the scrollable region measured in dp.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 contentOffsetMeasured
 ```
 
-### Type
+<b>Type</b>
 
 JSObject ( possible keys x, y and the values are numbers specified in dp)
 
-### Read/Write
+<b>Read/Write</b>
 
 Read only
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -794,7 +842,7 @@ var offset = Form1.flxScroll.contentOffsetMeasured;
   voltmx.print("The content offset measured is:"+offset);
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Not available in the IDE.
 
@@ -811,22 +859,22 @@ Not available in the IDE.
 
 Specifies the width and height of the container to accommodate all the widgets placed in it. This will returns the values that developer has set, but never reflects the actual computed content size.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 contentSize
 ```
 
-### Type
+<b>Type</b>
 
 JSObject (x and y values can be specified in dp, px, and %)
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -836,7 +884,7 @@ Form1.flxScroll.contentSize={
  };
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Available in the IDE.
 
@@ -853,22 +901,22 @@ Available in the IDE.
 
 Specifies the width and height of the container measured in dp.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 contentSizeMeasured
 ```
 
-### Type
+<b>Type</b>
 
 JSObject (width and height values are numbers specified in dp)
 
-### Read/Write
+<b>Read/Write</b>
 
 Read only
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -876,7 +924,7 @@ var contentSize1 = Form1.flxScroll.contentSizeMeasured;
 alert("content size measured of flex scroll container" + contentSize1);
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Not available in the IDE.
 
@@ -894,24 +942,24 @@ Not available in the IDE.
 
 In Desktop Web applications, when you hover the mouse over any widget, a mouse pointer appears. Using the cursorType property in Iris, you can specify the type of the mouse pointer.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 cursorType
 ```
 
-### Type
+<b>Type</b>
 
 String.
 
 You must provide valid CSS cursor value such as wait, grab, help, etc. to the cursorType property.
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 To add the `cursorType` property using Volt MX Iris in a Desktop Web application, follow these steps.
 
@@ -928,7 +976,7 @@ To add the `cursorType` property using Volt MX Iris in a Desktop Web application
     You can see that the **Cursor Type** property has been added under the **General** section.
 8.  Select a value from the drop-down list to set the **Cursor Type** for the widget.
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -940,7 +988,7 @@ frmButton.myButton.cursorType = "wait";
 
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in IDE
 *   Desktop Web
@@ -954,29 +1002,29 @@ frmButton.myButton.cursorType = "wait";
 
 Returns whether the content is moving in the scroll view after the user lifted their finger. True is returned, if the scroll container is decelerating as a result of flick gesture.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 decelerating
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 Read only
 
-### Example
+<b>Example</b>
 
 ```
 
 Form1.flxScroll.decelerating = true;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Not available in the IDE.
 
@@ -991,33 +1039,33 @@ This property is available on iOS platform.
 
 This property allows you to enable or disable zooming the FlexScrollContainer.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 disableZoom
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 The default value for this property is true. If set to _true,_ the zooming action on FlexScrollContainer is disabled. User cannot zoom the FlexScrollContainer. If set to _false,_ the zooming action on FlexScrollContainer is enabled. User can zoom the FlexScrollContainer.
 
-### Example
+<b>Example</b>
 
 ```
 
 Form1.flxScroll.disableZoom = false;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Available in the IDE.
 
@@ -1032,29 +1080,29 @@ Windows Tablet
 
 Specify whether the user has begun scrolling the content. True is returned, if the user's finger is in contact with the device screen and has moved.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 dragging
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 Read only
 
-### Example
+<b>Example</b>
 
 ```
 
 Form1.flxScroll.dragging = true;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Not available in the IDE.
 
@@ -1071,22 +1119,22 @@ The `enable` property is used to control the actionability of the widgets. In a 
 
 This is a constructor level property and applicable for all widgets in Volt MX Iris.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 enable
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 The default value of this property is true.
 
@@ -1094,7 +1142,7 @@ When `enable` property is configured to true, the action associated with a widge
 
 When `enable` property is configured to false, the action associated with a widget cannot be invoked by the user in the application.
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -1105,7 +1153,7 @@ When `enable` property is configured to false, the action associated with a widg
 frmButton.myBtn.enable= true;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android, iOS, Windows, SPA, and Desktop web
 
@@ -1118,35 +1166,35 @@ frmButton.myBtn.enable= true;
 
 The property enables you to improve the performance of Positional Dimension Animations.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 enableCache
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 The default value for this property is true.
 
 > **_Note:_** When the property is used, application consumes more memory. The usage of the property enables tradeoff between performance and visual quality of the content. Use the property cautiously.
 
-### Example
+<b>Example</b>
 
 ```
 
 Form1.widgetID.enableCache = true;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE.
 *   Windows
@@ -1164,28 +1212,28 @@ When the enableGpuScrolling property is set to true, the system handles the scro
 
 When this property is set to false, the scrolling events are handled by the widget. In this scenario, all events are generated with exact property updates. However, scrolling may not be as smooth as when the property is set to true. Set this property to false, when fine control on scrolling is required.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 enableGpuScrolling
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 The default value for this property is true.
 
 > **_Note:_** This property must be set in the Form's init or preshow. When the widget is created dynamically, this property must be set before the widget is added to the Form.
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -1193,7 +1241,7 @@ The default value for this property is true.
 myForm.myflexScroll.enableGpuScrolling = true;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Available in the IDE.
 
@@ -1208,22 +1256,22 @@ Windows
 
 This property enables the FlexScrollContainer widget to iterate into all the widgets that make use of the onScrollWidgetPosition event. The property is available for FlexForm and FlexScrollContainer widgets.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 enableOnScrollWidgetPositionForSubwidgets
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -1231,7 +1279,7 @@ Read + Write
 myForm.myfleScroll.enableOnScrollWidgetPositionForSubwidgets = true;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Not available in the IDE
 *   iOS
@@ -1242,41 +1290,41 @@ myForm.myfleScroll.enableOnScrollWidgetPositionForSubwidgets = true;
 * * *
 
 </details>
-<details close markdown="block"><summary>enableScrolling Property</summary>
+<details close markdown="block"><summary id="enableSc">enableScrolling Property</summary>
 
 * * *
 
 Specifies whether the scrolling is enabled on the container or not.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 enableScrolling
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 The default value for this property is true.
 
 > **_Note:_** This property does not restrict the scrolling programmatically through scroll container properties and APIs.
 
-### Example
+<b>Example</b>
 
 ```
 
 Form1.flxScroll.enableScrolling = true;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Available in the IDE.
 
@@ -1293,22 +1341,22 @@ It determines the height of the widget and measured along the y-axis.
 
 The height property determines the height of the widget’s bounding box. The value may be set using DP (Device Independent Pixels), Percentage, or Pixels. For supported widgets, the height may be derived from either the widget or container’s contents by setting the height to “preferred”.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 height
 ```
 
-### Type
+<b>Type</b>
 
 Number, String, and Constant
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 Following are the available measurement options:
 
@@ -1318,7 +1366,7 @@ Following are the available measurement options:
 *   default: Specifies the default value of the widget.
 *   voltmx.flex.USE\_PREFERED\_SIZE: When this option is specified, the layout uses preferred height of the widget as height and preferred size of the widget is determined by the widget and may varies between platforms.
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -1331,7 +1379,7 @@ frmFlexContainer.myFlexScrollContainer.height="10px";
 
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE
 *   iOS
@@ -1348,35 +1396,35 @@ frmFlexContainer.myFlexScrollContainer.height="10px";
 
 Specifies whether the scroll indicator to be shown or not in the horizontal direction.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 horizontalScrollIndicator
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 The default value for this property is true.
 
 > **_Note:_** Scroll Indicators may not be shown permanently. But depending on the platform scroll indicators may appear only during scrolling.
 
-### Example
+<b>Example</b>
 
 ```
 
 Formtest.flxScroll.horizontalScrollIndicator = true;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Available in the IDE.
 
@@ -1394,22 +1442,22 @@ Available in the IDE.
 
 id is a unique identifier of form consisting of alpha numeric characters. Every FlexScrollContainer should have a unique id within an application.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 id
 ```
 
-### Type
+<b>Type</b>
 
 String - \[Mandatory\]
 
-### Read/Write
+<b>Read/Write</b>
 
 Read only
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -1435,7 +1483,7 @@ function addWidgetstestfrm() {
 }
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Available in the IDE.
 
@@ -1453,22 +1501,22 @@ Available in the IDE.
 
 A custom JSObject with the key value pairs that a developer can use to store the context with the widget. This will help in avoiding the globals to most part of the programming.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 info
 ```
 
-### Type
+<b>Type</b>
 
 JSObject
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 > **_Note:_** This is a **non-Constructor** property. You cannot set this property through widget constructor. But you can read and write data to it.
 
@@ -1485,7 +1533,7 @@ widget.info.a = "hello world";
 //widget.info.a will have old value as hello.
 ```
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -1499,7 +1547,7 @@ frmFlexContainer.myFlexScrContainer.info = {
 voltmx.print("FlexScrollContainer widget info:" +frmFlexContainer.myFlexScrContainer.info);
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Not available in the IDE.
 
@@ -1517,28 +1565,28 @@ Not available in the IDE.
 
 Specifies whether the container is a master container.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 isMaster
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 Read Only after initialization.
 
-### Remarks
+<b>Remarks</b>
 
 If the `isMaster` property is true, the current widget is a master container and all of the rules and limitations of master containers apply to it. For more information, please see [Masters](Masters.md) in the Overviews section of this guide, as well as [Using Masters](../../../Iris/iris_user_guide/Content/Introduction.md) in the [Iris User Guide](../../../Iris/iris_user_guide/Content/Introduction.md).
 
 Your app can set the `isMaster` property in this container's constructor. After that, this property is read-only.
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -1554,29 +1602,29 @@ Form1.flexScrollContainer1.isMaster = true;
 
 This property controls the visibility of a widget on the FlexScrollContainer.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 isVisible
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 Read only
 
-### Example
+<b>Example</b>
 
 ```
 
 Form1.flexScrollContainer1.isVisible = true;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Available in the IDE.
 
@@ -1594,22 +1642,22 @@ Available in the IDE.
 
 Specifies if the arrangement of the widgets either in free form or horizontal or vertical direction.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 layoutType
 ```
 
-### Type
+<b>Type</b>
 
 Number
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 The default value for this property is voltmx.flex.FREE\_FORM.
 
@@ -1641,14 +1689,14 @@ The available options are:
     *   The FlexScrollContainer cell respects height, minHeight, maxHeight property only.
     *   If the width of a child widget exceeds the width of the container widget, the next child widget is wrapped and placed in the next row.
 
-### Example
+<b>Example</b>
 
 ```
 
 Form1.flexScrollContainer1.layoutType = voltmx.flex.FREE_FORM;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Available in the IDE.
 
@@ -1668,26 +1716,26 @@ This property determines the lower left corner edge of the widget and is measure
 
 The left property determines the position of the left edge of the widget’s bounding box. The value may be set using DP (Device Independent Pixels), Percentage, or Pixels. In freeform layout, the distance is measured from the left edge of the parent container. In flow-vertical layout, the distance is measured from the left edge of the parent container. In flow-horizontal layout, the distance is measured from the right edge of the previous sibling widget in the hierarchy.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 left
 ```
 
-### Type
+<b>Type</b>
 
 String
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 If the layoutType is set as voltmx.flex.FLOW\_HORIZONTAL, the left property is measured from right edge of the left sibling widget.
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -1699,7 +1747,7 @@ frmHome.widgetID.left = "10%";
 frmHome.widgetID.left = "10px";
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE
 *   iOS, Android, Windows, SPA, and Desktop Web
@@ -1715,22 +1763,22 @@ This property specifies the maximum height of the widget and is applicable only 
 
 The maxHeight property determines the maximum height of the widget’s bounding box. The value may be set using DP (Device Independent Pixels), Percentage, or Pixels. The maxHeight value overrides the preferred, or “autogrow” height, if the maxHeight is less than the derived content height of the widget.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 maxHeight
 ```
 
-### Type
+<b>Type</b>
 
 Number
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -1742,7 +1790,7 @@ frmHome.widgetID.maxHeight = "10%";
 frmHome.widgetID.maxHeight = "10px";
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE
 *   iOS, Android, Windows, SPA, and Desktop Web
@@ -1758,22 +1806,22 @@ This property specifies the maximum width of the widget and is applicable only w
 
 The Width property determines the maximum width of the widget’s bounding box. The value may be set using DP (Device Independent Pixels), Percentage, or Pixels. The maxWidth value overrides the preferred, or “autogrow” width, if the maxWidth is less than the derived content width of the widget.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 maxWidth
 ```
 
-### Type
+<b>Type</b>
 
 Number
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -1785,7 +1833,7 @@ frmHome.widgetID.maxWidth = "10%";
 frmHome.widgetID.maxWidth = "10px";
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE
 *   iOS, Android, Windows, SPA, and Desktop Web
@@ -1799,22 +1847,22 @@ frmHome.widgetID.maxWidth = "10px";
 
 Specifies the maximum scale factor that can be applied to the scroll view's content. The widgets cannot be zoomed beyond the maximum zoom value. The default value is 1.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 maxZoomScale
 ```
 
-### Type
+<b>Type</b>
 
 Number
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 For example, If you have a form with a flexScrollContainer and an image widget inside flexScrollContainer, when you pinch the screen on flexScrollContainer it will call the function configured using widgetToZoom event. If the function returns image, the image will be zoomed.
 
@@ -1824,7 +1872,7 @@ myForm.myflexScrollContainer.maxZoomScale = 10;
 
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Available in the IDE.
 
@@ -1841,22 +1889,22 @@ This property specifies the minimum height of the widget and is applicable only 
 
 The minHeight property determines the minimum height of the widget’s bounding box. The value may be set using DP (Device Independent Pixels), Percentage, or Pixels. The minHeight value overrides the preferred, or “autogrow” height, if the minHeight is larger than the derived content height of the widget.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 minHeight
 ```
 
-### Type
+<b>Type</b>
 
 Number
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -1868,7 +1916,7 @@ frmHome.widgetID.minHeight = "10%";
 frmHome.widgetID.minHeight = "10px";
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE
 *   iOS, Android, Windows, SPA, and Desktop Web
@@ -1884,22 +1932,22 @@ This property specifies the minimum width of the widget and is applicable only w
 
 The minWidth property determines the minimum width of the widget’s bounding box. The value may be set using DP (Device Independent Pixels), Percentage, or Pixels. The minWidth value overrides the preferred, or “autogrow” width, if the minWidth is larger than the derived content width of the widget.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 minWidth
 ```
 
-### Type
+<b>Type</b>
 
 Number
 
-### Read/Write
+<b>Read/Write</b>
 
 Read only
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -1911,7 +1959,7 @@ frmHome.widgetID.minWidth = "10%";
 frmHome.widgetID.minWidth = "10px";
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE
 *   iOS, Android, Windows, SPA, and Desktop Web
@@ -1925,22 +1973,22 @@ frmHome.widgetID.minWidth = "10px";
 
 Specifies the minimum scale factor that can be applied to the scroll view's content. The widgets cannot be zoomed below the minimum zoom value. The default value is 1.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 minZoomScale
 ```
 
-### Type
+<b>Type</b>
 
 Number
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 For example, If you have a form with a FlexScrollContainer and an image widget inside FlexScrollContainer, when you pinch the screen on FlexScrollContainer it will call the function configured using widgetToZoom event. If the function returns image, the image will be zoomed.
 
@@ -1949,7 +1997,7 @@ For example, If you have a form with a FlexScrollContainer and an image widget i
 myForm.myflexScrollContainer.minZoomScale = 1;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Available in the IDE.
 
@@ -1966,26 +2014,26 @@ Specifies the opacity of the widget. The value of this property must be in the r
 
 Specifies the opacity of the widget. Valid opacity values range from 0.0 (transparent), to 1.0 (opaque). Values set to less than zero will default to zero. Values more than 1.0 will default to 1. Interaction events set on a transparent widget will still be fired. To disable the events, also set the “isVisible” property to “false”.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 opacity
 ```
 
-### Type
+<b>Type</b>
 
 Number
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 > **_Note:_** This property has more priority compared to the values coming from the configured skin.
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -1996,7 +2044,7 @@ frmHome.widgetID.opacity = 0;
 frmHome.widgetID.opacity = 1;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Not available in the IDE.
 *   iOS, Android, Windows, SPA, and Desktop Web
@@ -2004,7 +2052,7 @@ frmHome.widgetID.opacity = 1;
 * * *
 
 </details>
-<details close markdown="block"><summary>overScrollX Property</summary>
+<details close markdown="block"><summary id="overScrollX">overScrollX Property</summary>
 
 * * *
 
@@ -2016,14 +2064,14 @@ By default in Android platform, the parent FlexScrollContainer widget automatica
 
 > **_Note:_** `overScrollX` property is supported only when you set [enableScrolling](#enableSc) property to true.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 overScrollX
 ```
 
-### Type
+<b>Type</b>
 
 Constants
 
@@ -2038,11 +2086,11 @@ The available options that you can assign to this property are:
 
 > **_Note:_** To get the rubber band effect in a FlexScrollContainer widget in the horizontal direction, you must set the value of overScrollX property to `constants.OVER_SCROLL_ENABLE` or `constants.OVER_SCROLL_DISABLE` and enable either the [bounces](#bounces) property or [allowHorizontalBounce](#allowHor) property.
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -2051,14 +2099,14 @@ frmSegment.mySegment.overScrollX=constants.OVER_SCROLL_ENABLE;
    
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android
 
 * * *
 
 </details>
-<details close markdown="block"><summary>overScrollY Property</summary>
+<details close markdown="block"><summary id="overScrollY">overScrollY Property</summary>
 
 * * *
 
@@ -2070,14 +2118,14 @@ By default in Android platform, the parent FlexScrollContainer widget automatica
 
 > **_Note:_** `overScrollY` property is supported only when you set [enableScrolling](#enableSc) property to true.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 overScrollY
 ```
 
-### Type
+<b>Type</b>
 
 Constants
 
@@ -2091,11 +2139,11 @@ The available options that you can assign to this property are:
 
 > **_Note:_** To get the rubber band effect in a FlexScrollContainer widget in the vertical direction, you must set the value of `overScrollY` property to `constants.OVER_SCROLL_ENABLE` or `constants.OVER_SCROLL_DISABLE` and enable either the [bounces](#bounces) property or [allowVerticalBounce](#allowVer) property.
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -2104,7 +2152,7 @@ frmSegment.mySegment.overScrollY=constants.OVER_SCROLL_ENABLE;
    
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android
 
@@ -2117,33 +2165,33 @@ frmSegment.mySegment.overScrollY=constants.OVER_SCROLL_ENABLE;
 
 Specifies the whether the paging is enabled for the scroll container. If this property is set to true, the scroll view stops on multiples of the scroll view's bounds when the user scrolls.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 pagingEnabled
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Example
+<b>Example</b>
 
 ```
 
 Form1.flxScroll.pagingEnabled = true;
 ```
 
-### Remarks
+<b>Remarks</b>
 
 The default value for this property is false.
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Available in the IDE.
 
@@ -2160,22 +2208,22 @@ Available in the IDE.
 
 Helps you access the parent of the widget. If the widget is not part of the widget hierarchy, the parent property returns null.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 parent
 ```
 
-### Read/Write
+<b>Read/Write</b>
 
 Read only
 
-### Remarks
+<b>Remarks</b>
 
 > **_Note:_** The property works for all the widgets inside a FlexForm, FlexContainer or FlexScrollContainer.
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -2186,7 +2234,7 @@ function func() {
 }
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Not available in the IDE
 *   iOS, Android, Windows, SPA, and Desktop Web
@@ -2194,42 +2242,42 @@ function func() {
 * * *
 
 </details>
-<details close markdown="block"><summary>pullToRefreshI18NKey Property</summary>
+<details close markdown="block"><summary id="pullToRefreshI18NKey">pullToRefreshI18NKey Property</summary>
 
 * * *
 
 This property specifies the i18N key for the "Pull to refresh" text when the FlexScrollContainer is pulled from the top. **pullToRefreshI18NKey** is applicable only when the value of the [scrollDirection](#scrollDi) Property is vertical.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 pullToRefreshI18NKey
 ```
 
-### Type
+<b>Type</b>
 
 String
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Example
+<b>Example</b>
 
 ```
 
 Form1.flxScroll.pullToRefreshI18NKey= "Pull To Refresh";
 ```
 
-### Remarks
+<b>Remarks</b>
 
 *   The default value of this key is **Pull to refresh**.
 *   The value for the i18N key is got from the existing application locale specific i18N resource bundle. If the key is not found in the resource bundle, then the default (english locale) title text is used. For more internationalization APIs, refer the [Internationalization APIs](../../../Iris/iris_api_dev_guide/content/internationalization.md).
 *   When the [scrollDirection](#scrollDi) Property of the **FlexScrollContainer** is set as vertical, the text provided in the **pullToRefreshI18NKey** and **[pushToRefreshI18NKey](#pushToRefreshI18NKey)** attributes takes precedence over the icons provided in **[pullToRefreshIcon](#pullToRefreshIcon)** and **[pushToRefreshIcon](#pushToRefreshIcon)**.
 *   When the [scrollDirection](#scrollDi) Property of the **FlexScrollContainer** is set as horizontal, only the icons provided in **[pullToRefreshIcon](#pullToRefreshIcon)** and **[pushToRefreshIcon](#pushToRefreshIcon)** are displayed.
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   iOS
 *   Android
@@ -2239,40 +2287,40 @@ Form1.flxScroll.pullToRefreshI18NKey= "Pull To Refresh";
 * * *
 
 </details>
-<details close markdown="block"><summary>pullToRefreshIcon Property</summary>
+<details close markdown="block"><summary id="pullToRefreshIcon">pullToRefreshIcon Property</summary>
 
 * * *
 
 This property specifies the icon to be displayed when the FlexScrollContainer is pulled from the top.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 pullToRefreshIcon
 ```
 
-### Type
+<b>Type</b>
 
 String
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Example
+<b>Example</b>
 
 ```
 
 Form1.flxScroll.pullToRefreshIcon = "topArrow.png";
 ```
 
-### Remarks
+<b>Remarks</b>
 
 *   When the [scrollDirection](#scrollDi) Property of the **FlexScrollContainer** is set as vertical, the text provided in the **[pullToRefreshI18NKey](#pullToRefreshI18NKey)** and **[pushToRefreshI18NKey](#pushToRefreshI18NKey)** attributes takes precedence over the icons provided in **[pullToRefreshIcon](#pullToRefreshIcon)** and **[pushToRefreshIcon](#pushToRefreshIcon)**.
 *   When the [scrollDirection](#scrollDi) Property of the **FlexScrollContainer** is set as horizontal, only the icons provided in **[pullToRefreshIcon](#pullToRefreshIcon)** and **[pushToRefreshIcon](#pushToRefreshIcon)** are displayed.
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   iOS
 *   Android
@@ -2288,29 +2336,29 @@ Form1.flxScroll.pullToRefreshIcon = "topArrow.png";
 
 This property specifies the skin to be applied to the text that is displayed when the FlexScrollContainer is pulled from the top. **pullToRefreshSkin** property is applicable only when the value of the [scrollDirection](#scrollDi) Property is vertical and when the text is displayed.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 pullToRefreshSkin
 ```
 
-### Type
+<b>Type</b>
 
 String
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Example
+<b>Example</b>
 
 ```
 
 Form1.flxScroll.pullToRefreshSkin = "pullSkin";
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   iOS
 *   Android
@@ -2320,42 +2368,42 @@ Form1.flxScroll.pullToRefreshSkin = "pullSkin";
 * * *
 
 </details>
-<details close markdown="block"><summary>pushToRefreshI18NKey Property</summary>
+<details close markdown="block"><summary id="pushToRefreshI18NKey">pushToRefreshI18NKey Property</summary>
 
 * * *
 
 This property specifies the i18N key for the "Push to refresh" text when the FlexScrollContainer is pushed from the bottom. **pushToRefreshI18NKey** is applicable only when the value of the [scrollDirection](#scrollDi) Property is vertical.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 pushToRefreshI18NKey
 ```
 
-### Type
+<b>Type</b>
 
 String
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Example
+<b>Example</b>
 
 ```
 
 Form1.flxScroll.pushToRefreshI18NKey= "Push To Refresh";
 ```
 
-### Remarks
+<b>Remarks</b>
 
 *   The default value of this key is **Push to refresh**.
 *   The value for the i18N key is got from the existing application locale specific i18N resource bundle. If the key is not found in the resource bundle, then the default (english locale) title text is used. For more internationalization APIs, refer the [Internationalization APIs](../../../Iris/iris_api_dev_guide/content/internationalization.md).
 *   When the [scrollDirection](#scrollDi) Property of the **FlexScrollContainer** is set as vertical, the text provided in the **[pullToRefreshI18NKey](#pullToRefreshI18NKey)** and **[pushToRefreshI18NKey](#pushToRefreshI18NKey)** attributes takes precedence over the icons provided in **[pullToRefreshIcon](#pullToRefreshIcon)** and **[pushToRefreshIcon](#pushToRefreshIcon)**.
 *   When the [scrollDirection](#scrollDi) Property of the **FlexScrollContainer** is set as horizontal, only the icons provided in **[pullToRefreshIcon](#pullToRefreshIcon)** and **[pushToRefreshIcon](#pushToRefreshIcon)** are displayed.
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   iOS
 *   Android
@@ -2365,40 +2413,40 @@ Form1.flxScroll.pushToRefreshI18NKey= "Push To Refresh";
 * * *
 
 </details>
-<details close markdown="block"><summary>pushToRefreshIcon Property</summary>
+<details close markdown="block"><summary id="pushToRefreshIcon">pushToRefreshIcon Property</summary>
 
 * * *
 
 This property specifies the icon to be displayed when the FlexScrollContainer is pushed from the bottom.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 pushToRefreshIcon
 ```
 
-### Type
+<b>Type</b>
 
 String
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Example
+<b>Example</b>
 
 ```
 
 Form1.flxScroll.pushToRefreshIcon = "downArrow.png";
 ```
 
-### Remarks
+<b>Remarks</b>
 
 *   When the [scrollDirection](#scrollDi) Property of the **FlexScrollContainer** is set as vertical, the text provided in the **[pullToRefreshI18NKey](#pullToRefreshI18NKey)** and **[pushToRefreshI18NKey](#pushToRefreshI18NKey)** attributes takes precedence over the icons provided in **[pullToRefreshIcon](#pullToRefreshIcon)** and **[pushToRefreshIcon](#pushToRefreshIcon)**.
 *   When the [scrollDirection](#scrollDi) Property of the **FlexScrollContainer** is set as horizontal, only the icons provided in **[pullToRefreshIcon](#pullToRefreshIcon)** and **[pushToRefreshIcon](#pushToRefreshIcon)** are displayed.
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   iOS
 *   Android
@@ -2414,29 +2462,29 @@ Form1.flxScroll.pushToRefreshIcon = "downArrow.png";
 
 This property specifies the skin to be applied to the text that is displayed when the FlexScrollContainer is pushed from the bottom. **pushToRefreshSkin** property is applicable only when the value of the [scrollDirection](#scrollDi) Property is vertical and when the text is displayed.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 pushToRefreshSkin
 ```
 
-### Type
+<b>Type</b>
 
 String
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Example
+<b>Example</b>
 
 ```
 
 Form1.flxScroll.pushToRefreshSkin = "pushSkin";
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   iOS
 *   Android
@@ -2452,34 +2500,34 @@ Form1.flxScroll.pushToRefreshSkin = "pushSkin";
 
 This property specifies the i18N key for the "Release to refresh" text, when the FlexScrollContainer is pulled from the top. **releaseToPullRefreshI18NKey** is applicable only when the value of the [scrollDirection](#scrollDi) Property is vertical.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 releaseToPullRefreshI18NKey
 ```
 
-### Type
+<b>Type</b>
 
 String
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Example
+<b>Example</b>
 
 ```
 
 Form1.flxScroll.releaseToPullRefreshI18NKey = "Release To Refresh";
 ```
 
-### Remarks
+<b>Remarks</b>
 
 *   The default value of this key is **Release to refresh**.
 *   The value for the i18N key is got from the existing application locale specific i18N resource bundle. If the key is not found in the resource bundle, then the default (english locale) title text is used. For more internationalization APIs, refer the [Internationalization APIs](../../../Iris/iris_api_dev_guide/content/internationalization.md).
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   iOS
 *   Android
@@ -2495,34 +2543,34 @@ Form1.flxScroll.releaseToPullRefreshI18NKey = "Release To Refresh";
 
 This property specifies the i18N key for the "Release to refresh" text, when the FlexScrollContainer is pushed from the bottom. **releaseToPushRefreshI18NKey** is applicable only when the value of the [scrollDirection](#scrollDi) Property is vertical.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 releaseToPushRefreshI18NKey
 ```
 
-### Type
+<b>Type</b>
 
 String
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Example
+<b>Example</b>
 
 ```
 
 Form1.flxScroll.releaseToPushRefreshI18NKey = "Release To Refresh";
 ```
 
-### Remarks
+<b>Remarks</b>
 
 *   The default value of this key is **Release to refresh**.
 *   The value for the i18N key is got from the existing application locale specific i18N resource bundle. If the key is not found in the resource bundle, then the default (english locale) title text is used. For more internationalization APIs, refer the [Internationalization APIs](../../../Iris/iris_api_dev_guide/content/internationalization.md).
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   iOS
 *   Android
@@ -2552,7 +2600,7 @@ function getIsFlexPositionalShouldMirror(widgetRetainFlexPositionPropertiesValue
 }
 ```
 
-### The following table illustrates how widgets consider Local flag and Widget flag values.
+<b> The following table illustrates how widgets consider Local flag and Widget flag values.</b>
 
   
 | Properties | Local Flag Value | Widget Flag Value | Action |
@@ -2567,22 +2615,22 @@ function getIsFlexPositionalShouldMirror(widgetRetainFlexPositionPropertiesValue
 | Mirror/retain FlexPositionProperties | not specified | false | Use the Design/Model-specific default layout. |
 | Mirror/retain FlexPositionProperties | not specified | not specified | Use the Design/Model-specific default layout. |
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 retainContentAlignment
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 No (only during widget-construction time)
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -2611,7 +2659,7 @@ var btn = new voltmx.ui.Button({
 }, {});
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in IDE
 *   Windows, iOS, Android, and SPA
@@ -2627,7 +2675,7 @@ This property is used to retain flex positional property values as they were def
 
 > **_Note:_** Locale-level configurations take priority when invalid values are given to this property, or if it is not defined.
 
-### The mirroring widget layout properties should be defined as follows.
+<b>The mirroring widget layout properties should be defined as follows.</b>
 
 ```
 
@@ -2639,7 +2687,7 @@ function getIsFlexPositionalShouldMirror(widgetRetainFlexPositionPropertiesValue
 }
 ```
 
-### The following table illustrates how widgets consider Local flag and Widget flag values.
+<b> The following table illustrates how widgets consider Local flag and Widget flag values.</b>
 
   
 | Properties | Local Flag Value | Widget Flag Value | Action |
@@ -2654,22 +2702,22 @@ function getIsFlexPositionalShouldMirror(widgetRetainFlexPositionPropertiesValue
 | Mirror/retain FlexPositionProperties | not specified | false | Use the Design/Model-specific default layout. |
 | Mirror/retain FlexPositionProperties | not specified | not specified | Use the Design/Model-specific default layout. |
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 retainFlexPositionProperties
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 No (only during widget-construction time)
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -2698,7 +2746,7 @@ var btn = new voltmx.ui.Button({
 }, {});
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in IDE
 *   Windows, iOS, Android, and SPA
@@ -2710,11 +2758,11 @@ var btn = new voltmx.ui.Button({
 
 * * *
 
-### This property is used to convert Flow Horizontal Left to Flow Horizontal Right.
+<b>This property is used to convert Flow Horizontal Left to Flow Horizontal Right.</b>
 
 > **_Note:_** Locale-level configurations take priority when invalid values are given to this property, or if it is not defined.
 
-### The mirroring widget layout properties should be defined as follows.
+<b>The mirroring widget layout properties should be defined as follows.</b>
 
 ```
 
@@ -2726,7 +2774,7 @@ function getIsFlexPositionalShouldMirror(widgetRetainFlexPositionPropertiesValue
 }
 ```
 
-### The following table illustrates how widgets consider Local flag and Widget flag values.
+<b> The following table illustrates how widgets consider Local flag and Widget flag values.</b>
 
   
 | Properties | Local Flag Value | Widget Flag Value | Action |
@@ -2741,22 +2789,22 @@ function getIsFlexPositionalShouldMirror(widgetRetainFlexPositionPropertiesValue
 | Mirror/retain FlexPositionProperties | not specified | false | Use the Design/Model-specific default layout. |
 | Mirror/retain FlexPositionProperties | not specified | not specified | Use the Design/Model-specific default layout. |
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 retainFlowHorizontalAlignment
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 No (only during widget-construction time)
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -2786,7 +2834,7 @@ var btn = new voltmx.ui.Button({
 }, {});
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in IDE
 *   Windows, iOS, Android, and SPA
@@ -2802,22 +2850,22 @@ The _reverseLayoutDirection_ property specifies the stacking order of the child 
 
 The default value of the property is false.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 reverseLayoutDirection
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read / Write
+<b> Read / Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 1.  If the value of _reverseLayoutDirection_ property is set as false:
     *   When the value of _layoutType_ property is, voltmx.flex.FLOW\_HORIZONTAL, the child widgets are stacked from left to right.
@@ -2826,12 +2874,12 @@ Read + Write
     *   When the value of _layoutType_ property is, voltmx.flex.FLOW\_HORIZONTAL, the child widgets are stacked from right to left.
     *   When the value of _layoutType_ property is, voltmx.flex.FLOW\_VERTICAL, the child widgets are stacked from bottom to top.
 
-### Limitations
+<b>Limitations</b>
 
 *   When the value of _reverseLayoutDirection_ property is true, the frame values of the child widgets are calculated with respect to the [left](#left) property of FlexScrollContainer. The frame values given for different features of FlexScrollContainer widget, such as animation, must reflect this change.
 *   When the _reverseLayoutDirection_ property is set as true and any new widget is added or removed dynamically, the scroll of **FlexScrollContainer** is from the left.
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -2840,7 +2888,7 @@ Read + Write
 myForm.flexScrContainer.reverseLayoutDirection = true;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE
 *   iOS
@@ -2862,26 +2910,26 @@ The right property determines the position of the right edge of the widget’s b
 
 The right property is used only if the width property is not provided.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 right
 ```
 
-### Type
+<b>Type</b>
 
 String
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 If the layoutType is set as voltmx.flex.FLOW\_HORIZONTAL, the right property is measured from left edge of the right sibling widget. The horizontal space between two widgets is measured from right of the left sibling widget and left of the right sibling widget.
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -2893,7 +2941,7 @@ frmHome.widgetID.right = "10%";
 frmHome.widgetID.right = "10px";
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE
 *   iOS, Android, Windows, SPA, and Desktop Web
@@ -2901,28 +2949,28 @@ frmHome.widgetID.right = "10px";
 * * *
 
 </details>
-<details close markdown="block"><summary>scrollDirection Property</summary>
+<details close markdown="block"><summary id="scrollDi">scrollDirection Property</summary>
 
 * * *
 
 Specifies the direction in which the widget should scroll. This property is supported only when the scrollingEnabled property is set to true.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 scrollDirection
 ```
 
-### Type
+<b>Type</b>
 
 Number
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 The default value for this property is voltmx.flex.SCROLL\_HORIZONTAL.
 
@@ -2935,7 +2983,7 @@ The available options are:
 *   voltmx.flex.SCROLL\_BOTH: Specifies the form to scroll in both the horizontal and vertical directions.(default for CollectionView widget)
 *   voltmx.flex.SCROLL\_NONE: Specifies the form not to scroll in any direction.
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -2947,7 +2995,7 @@ scrollDirection Property for other applicable widgets.*/
 frmFlxScroll.myFlxScroll.scrollDirection=voltmx.flex.SCROLL_BOTH;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Not available in the IDE
 *   iOS, Android, Windows, and SPA
@@ -2955,46 +3003,256 @@ frmFlxScroll.myFlxScroll.scrollDirection=voltmx.flex.SCROLL_BOTH;
 * * *
 
 </details>
-<details close markdown="block"><summary>scrollsToTop Property</summary>
+<details close markdown="block"><summary id="syntax_59">scrollsToTop Property</summary>
 
 * * *
 
 This property enables you to scroll the FlexScrollCotainer to top on tapping a device’s status bar.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 scrollsToTop
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 The default value for this property is true.
 
 > **_Note:_** If this property is true for more than one widget, then this property is not applied to any of the widgets.
 
-### Example
+<b>Example</b>
 
 ```
 
 Form3.flxScroll.scrollsToTop = true;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
-Not available in the IDE.
-
+*   Not available in the IDE.
 *   iPhone
 *   iPad
+
+* * *
+
+</details>
+<details close markdown="block"><summary id="shadowColor">shadowColor Property</summary>
+
+* * *
+
+Specifies the color for the shadow of the widget.
+
+<b>Syntax</b>
+
+```
+
+shadowColor
+```
+
+<b>Type</b>
+
+Color constant or Hexadecimal number
+
+<b>Read/Write</b>
+
+Read + Write
+
+<b>Remarks</b>
+
+*   Colors can be specified using a 6 digit or an 8-digit hex value with alpha position. For example, ffff65 or ffffff00.
+*   When the 4-byte color format (RGBA) string is used, an alpha (A) value of 65 specifies that the color is transparent. If the value is 00, the color is opaque. The Alpha value is in percentage and must be given in the hexadecimal value for the color (100% in hexadecimal value is 65).
+
+    For example, red complete opaque is FF000000. Red complete transparent is FF000065. The values 0x and # are not allowed in the string.
+*   A color constant is a String that is defined at the theme level. Ensure that you append the $ symbol at the beginning of the color constant.
+*   This property does not have a default value.
+*   This property has more priority than (and overrides) the shadow property of the configured skin. Even if there is no skin configured for the widget, this property updates the skin.
+*   On the Android platform, if the clipBounds property and the rounded corner is enabled for the FlexScrollContainer widget, the shadowColor appears beyond the rounded corner area.
+
+
+
+<b>Example</b>
+
+This example uses the button widget, but the principle remains the same for all widgets that have the shadowColor property.
+
+```
+Form1.btn1.shadowColor = "ea5075";
+```
+
+
+<b>Platform Availability</b>
+
+*   Android
+*   iOS
+*   Desktop Web (Not available on Desktop Web Legacy SDK)
+
+* * *
+
+</details>
+<details close markdown="block"><summary>shadowOffset Property</summary>
+
+* * *
+
+This property specifies the current coordinates of the shadow region in the widget.
+
+<b>Syntax</b>
+
+```
+
+shadowOffset
+```
+
+<b>Type</b>
+
+JSON Object
+
+<b>Read/Write</b>
+
+Read + Write
+
+<b>Remarks</b>
+
+*   The JSON Object contains the X-coordinate and Y-coordinates for the offset in the following format:
+    `{x: value in pixels, y: value in pixels}`
+*   The default unit for the value of this property is pixels.
+*   This property does not have a default value.
+*   This property has more priority than (and overrides) the shadow property of the configured skin. Even if there is no skin configured for the widget, this property updates the skin.
+
+
+
+<b>Example</b>
+
+This example uses the button widget, but the principle remains the same for all widgets that have the shadowOffset property.
+
+```
+Form1.btn1.shadowOffset= {
+    "x": "3",
+    "y": "27"
+};
+```
+
+
+<b>Platform Availability</b>
+
+*   Android
+*   iOS
+*   Desktop Web (Not available on Desktop Web Legacy SDK)
+
+* * *
+
+</details>
+<details close markdown="block"><summary>shadowRadius Property</summary>
+
+* * *
+
+Specifies the radius for the blur value of the shadow.
+
+<b>Syntax</b>
+
+```
+
+shadowRadius
+```
+
+<b>Type</b>
+
+Number
+
+<b>Read/Write</b>
+
+Read + Write
+
+<b>Remarks</b>
+
+*   The default value of the shadowRadius property for a Responsive Web app is 0.
+*   The default unit for the value of this property is pixels.
+*   This property does not have a default value.
+*   This property has more priority than (and overrides) the shadow property of the configured skin. Even if there is no skin configured for the widget, this property updates the skin.
+
+
+
+<b>Example</b>
+
+This example uses the button widget, but the principle remains the same for all widgets that have the shadowRadius property.
+
+```
+ Form1.btn1.shadowRadius = 6;
+```
+
+
+<b>Platform Availability</b>
+
+*   Android
+*   iOS
+*   Desktop Web (Not available on Desktop Web Legacy SDK)
+
+* * *
+
+</details>
+<details close markdown="block"><summary>shouldGroup Property</summary>
+
+* * *
+
+This property enables the grouping of elements within a FlexScrollContainer widget, to mitigate redundancy while invoking multiple elements that have the same context.
+
+<b>Syntax</b>
+
+```
+
+shouldGroup
+```
+
+<b>Type</b>
+
+Boolean
+
+<b>Read/Write</b>
+
+Read + Write
+
+<b>Remarks</b>
+
+Ensure that Accessibility Config is enabled for the app, before you use the shouldGroup property.
+
+
+<b>Example</b>
+
+```
+//Sample code to enable the shouldGroup property for a FlexScrollContainer widget.  var flxPagesHdr = new kony.ui.FlexSScrollContainer({
+                "autogrowMode": kony.flex.AUTOGROW_NONE,
+                "clipBounds": false,
+                "height": "180dp",
+                "id": "flxPagesHdr",
+                "isVisible": false,
+                "layoutType": kony.flex.FREE_FORM,
+                "left": "-1dp",
+                "isModalContainer": false,
+                "skin": "slFbox0jdc689d7cdb74a",
+                "top": "0dp",
+                "width": "100%",
+                "zIndex": 100,
+                "shouldGroup" : true
+            }, {
+                "paddingInPixel": false
+            }, {});
+```
+
+
+<b>Platform Availability</b>
+
+*   Available in the IDE
+*   Android
+*   iOS
+
 
 * * *
 
@@ -3005,29 +3263,29 @@ Not available in the IDE.
 
 This property enables you to define the display of fading edges for the FlexScrollForm widget.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 showFadingEdges
 ```
 
-### Type
+<b>Type</b>
 
 String
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Example
+<b>Example</b>
 
 ```
 
 Form3.flxScroll.showFadingEdges = true;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Available in the IDE.
 
@@ -3045,26 +3303,26 @@ Available in the IDE.
 
 Specifies a background skin for FlexScrollForm widget.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 skin
 ```
 
-### Type
+<b>Type</b>
 
 String
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 > **_Note:_** Transparent skin is not supported on SPA (Windows) platform.
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -3074,7 +3332,7 @@ myForm.myFlexScrContainer.skin="sknred";
 
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Available in the IDE.
 
@@ -3094,26 +3352,26 @@ This property determines the top edge of the widget and measured from the top bo
 
 The top property determines the position of the top edge of the widget’s bounding box. The value may be set using DP (Device Independent Pixels), Percentage, or Pixels. In freeform layout, the distance is measured from the top edge of the parent container. In flow-vertical layout, the distance is measured from the bottom edge of the previous sibling widget in the hierarchy. In flow-horizontal layout, the distance is measured from the left edge of the parent container.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 top
 ```
 
-### Type
+<b>Type</b>
 
 String
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 If the layoutType is set as voltmx.flex.FLOW\_VERTICAL, the top property is measured from the bottom edge of the top sibling widget. The vertical space between two widgets is measured from bottom of the top sibling widget and top of the bottom sibling widget.
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -3125,7 +3383,7 @@ frmHome.widgetID.top = "10%";
 frmHome.widgetID.top = "10px";
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE
 *   iOS, Android, Windows, SPA, and Desktop Web
@@ -3139,22 +3397,22 @@ frmHome.widgetID.top = "10px";
 
 Specifies whether the user has touched the content to initiate scrolling. This property returns true, if the user’s finger is in contact with the device screen.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 tracking
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 Read only
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -3167,7 +3425,7 @@ myForm.myFlexScrollContainer.tracking=true;
 
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Not available in the IDE.
 
@@ -3182,26 +3440,26 @@ This property is available on iOS platform.
 
 Contains an animation transformation that can be used to animate the widget.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 transform
 ```
 
-### Type
+<b>Type</b>
 
 JSObject
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 This property is set to the identify transform by default. Any transformations applied to the widget occur relative to the widget's anchor point. The transformation contained in this property must be created using the [voltmx.ui.makeAffineTransform](../../../Iris/iris_api_dev_guide/content/voltmx.ui_functions.md#makeAffi) function.
 
-### Example
+<b>Example</b>
 
 This example uses the button widget, but the principle remains the same for all widgets that have a transform property.
 
@@ -3215,7 +3473,7 @@ newTransform.translate3D(223, 12, 56);
 widget.transform = newTransform;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   iOS, Android, Windows, and SPA
 
@@ -3228,35 +3486,35 @@ widget.transform = newTransform;
 
 Specifies whether the scroll indicator must be shown in the vertical direction.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 verticalScrollIndicator
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 The default value for this property is true.
 
 > **_Note:_** Scroll Indicators may not be shown permanently. But depending on the platform scroll indicators may appear only during scrolling.
 
-### Example
+<b>Example</b>
 
 ```
 
 Form1.flxScroll.verticalScrollIndicator = true;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Available in the IDE.
 
@@ -3274,36 +3532,36 @@ Available in the IDE.
 
 This property is used to enable and configure left or right swipe actions for a widget. The widgetSwipeMove Property can be used for all widgets . The most common use case is for implementing swipe action for individual rows in Segment.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 widgetSwipeMove
 ```
 
-### Type
+<b>Type</b>
 
 String
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Input Parameters
+<b>Input Parameters</b>
 
 <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('Resources/TableStyles/2015DefinitiveBasicTable.css');" class="TableStyle-2015DefinitiveBasicTable" cellspacing="0"><colgroup><col class="TableStyle-2015DefinitiveBasicTable-Column-Column1" style="width: 80px;"> <col class="TableStyle-2015DefinitiveBasicTable-Column-Column1" style="width: 80px;"> <col class="TableStyle-2015DefinitiveBasicTable-Column-Column1" style="width: 184px;"> <col class="TableStyle-2015DefinitiveBasicTable-Column-Column1" style="width: 300px;"></colgroup><tbody><tr class="TableStyle-2015DefinitiveBasicTable-Body-Body1"><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1" style="text-align: center;">Parameter Name</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">Type</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1" style="text-align: center;">Default Value</td><td class="TableStyle-2015DefinitiveBasicTable-BodyD-Column1-Body1" style="text-align: center;">Description</td></tr><tr class="TableStyle-2015DefinitiveBasicTable-Body-Body1"><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">translate</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">Boolean</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">true</td><td class="TableStyle-2015DefinitiveBasicTable-BodyD-Column1-Body1">This is an optional parameter. When the value of this parameter is set as true, the widget moves along with the swipe in the same direction.</td></tr><tr class="TableStyle-2015DefinitiveBasicTable-Body-Body1"><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">Xboundaries</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">Array</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">Size of the current widget</td><td class="TableStyle-2015DefinitiveBasicTable-BodyD-Column1-Body1">This is an optional parameter and it defines the boundaries of the swipe in the X-axis.</td></tr><tr class="TableStyle-2015DefinitiveBasicTable-Body-Body1"><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">swipeLeft/swipeRight</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">JS Object</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">&nbsp;</td><td class="TableStyle-2015DefinitiveBasicTable-BodyD-Column1-Body1">This is an optional parameter and it is used to define the configuration of the widget while swiping to the left/ right. Each <i>swipeLeft</i> or <i>swipeRight</i>parameter is an array of configuration attributes containing <i>translateRange</i> , <i>callback</i> , <i>translatePos</i> , and <i>translate</i>. This JS&nbsp;Object defines the behavior of the widget during the swipe action.</td></tr><tr class="TableStyle-2015DefinitiveBasicTable-Body-Body1"><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">translateRange</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">Array</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">Size of the current widget</td><td class="TableStyle-2015DefinitiveBasicTable-BodyD-Column1-Body1">This is an optional parameter and it defines the sub-boundaries for the action when the swipe action ends.</td></tr><tr class="TableStyle-2015DefinitiveBasicTable-Body-Body1"><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">translatePos</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">Array</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">Previous position of the widget</td><td class="TableStyle-2015DefinitiveBasicTable-BodyD-Column1-Body1">This is an optional parameter and it determines the final translation position to be applied to the widget when the widget swipe reaches the <i>translateRange</i> value.</td></tr><tr class="TableStyle-2015DefinitiveBasicTable-Body-Body1"><td class="TableStyle-2015DefinitiveBasicTable-BodyB-Column1-Body1">callback</td><td class="TableStyle-2015DefinitiveBasicTable-BodyB-Column1-Body1">JS Object</td><td class="TableStyle-2015DefinitiveBasicTable-BodyB-Column1-Body1">null</td><td class="TableStyle-2015DefinitiveBasicTable-BodyA-Column1-Body1">This is an optional parameter and it defines the callback which needs to be triggered when the finger swipe reaches the sub boundary defined in <i>translateRange</i>. The attributes inside this parameter are described in the following table.</td></tr></tbody></table>
 
-### The following table consists of the parameters of the _callback_ parameter:
+<b>The following table consists of the parameters of the _callback_ parameter:</b>
 
 <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('Resources/TableStyles/2015DefinitiveBasicTable.css');" class="TableStyle-2015DefinitiveBasicTable" cellspacing="0"><colgroup><col class="TableStyle-2015DefinitiveBasicTable-Column-Column1" style="width: 111px;"> <col class="TableStyle-2015DefinitiveBasicTable-Column-Column1" style="width: 93px;"> <col class="TableStyle-2015DefinitiveBasicTable-Column-Column1"></colgroup><tbody><tr class="TableStyle-2015DefinitiveBasicTable-Body-Body1"><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1" style="text-align: center;">Parameter Name</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">Type</td><td class="TableStyle-2015DefinitiveBasicTable-BodyD-Column1-Body1" style="text-align: center;">Description</td></tr><tr class="TableStyle-2015DefinitiveBasicTable-Body-Body1"><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">widgetHandle</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">&nbsp;</td><td class="TableStyle-2015DefinitiveBasicTable-BodyD-Column1-Body1">This parameter consists of the widget handle or ID of the widget on which the swipe action has been performed.</td></tr><tr class="TableStyle-2015DefinitiveBasicTable-Body-Body1"><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">context</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">JS Object</td><td class="TableStyle-2015DefinitiveBasicTable-BodyD-Column1-Body1">This is applicable only for widgets inside the Segment with row templates. Each context parameter consists of <i>rowIndex</i>, <i>sectionIndex</i> and <i>widgetref</i></td></tr><tr class="TableStyle-2015DefinitiveBasicTable-Body-Body1"><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">rowIndex</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">Number</td><td class="TableStyle-2015DefinitiveBasicTable-BodyD-Column1-Body1">This parameter stores the row index of the Segment containing the swiped widget.</td></tr><tr class="TableStyle-2015DefinitiveBasicTable-Body-Body1"><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">sectionIndex</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">Number</td><td class="TableStyle-2015DefinitiveBasicTable-BodyD-Column1-Body1">This parameter stores the section index of the Segment containing the swiped widget.</td></tr><tr class="TableStyle-2015DefinitiveBasicTable-Body-Body1"><td class="TableStyle-2015DefinitiveBasicTable-BodyB-Column1-Body1">widgetref</td><td class="TableStyle-2015DefinitiveBasicTable-BodyB-Column1-Body1">widgetHandle</td><td class="TableStyle-2015DefinitiveBasicTable-BodyA-Column1-Body1">This parameter stores the handle of the Segment containing the swiped widget.</td></tr></tbody></table>
 
-### Remarks
+<b>Remarks</b>
 
 *   For a Segment, the **widgetSwipeMove** Property is configured while setting the data of the Segment.
 
 > **_Note:_** It is not recommended to assign the widgetSwipeMove property on a top Flex container of the segment template widget.
 
-### Limitations
+<b>Limitations</b>
 
 *   When a translation animation is applied to the same widget that has **widgetSwipeMove** already configured, the action which has been performed last takes precedence. For example, if you have set a translation animation on a FlexContainer and then set the _widgetSwipeMove_ property, the actions set in _widgetSwipeMove_ take precedence over the translation animation.
 *   The state of the swipe transition of the widget is not retained.
@@ -3312,7 +3570,7 @@ Read + Write
 *   If the widgetSwipeMove property is configured on a top level Flex container of a segment template, the onRowClick event will not be triggered. - Applicable on iOS, Android, and SPA.
 *   Android limitation: On Android devices, when the user lifts their finger, the transition occurs immediately.
 
-### Example
+<b>Example</b>
 
 Following is a code snippet for a mail app. Here we have used a Segment for listing the mail and the _widgetSwipeMove_ Property has been configured for the _SwipeFlex_ FlexContainer.
 
@@ -3354,7 +3612,7 @@ this.view.myButton.widgetSwipeMove=swipeMoveConfig;
 
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android, iOS, and SPA
 
@@ -3369,22 +3627,22 @@ This property determines the width of the widget and is measured along the x-axi
 
 The width property determines the width of the widget’s bounding box. The value may be set using DP (Device Independent Pixels), Percentage, or Pixels. For supported widgets, the width may be derived from either the widget or container’s contents by setting the width to “preferred”.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 width
 ```
 
-### Type
+<b>Type</b>
 
 Number, String, and Constant
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 Following are the options that can be used as units of width:
 
@@ -3394,7 +3652,7 @@ Following are the options that can be used as units of width:
 *   default: Specifies the default value of the widget.
 *   voltmx.flex.USE\_PREFERED\_SIZE: When this option is specified, the layout uses preferred width of the widget as width and preferred size of the widget is determined by the widget and may varies between platforms.
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -3406,7 +3664,7 @@ frmHome.widgetID.width = "10%";
 frmHome.widgetID.width = "10px";
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE
 *   iOS, Android, Windows, SPA, and Desktop Web
@@ -3422,22 +3680,22 @@ This property specifies the stack order of a widget. A widget with a higher zInd
 
 The zIndex property is used to set the stack, or layer order of a widget. Widgets with higher values will appear “over”, or “on top of” widgets with lower values. Widgets layered over other widgets will override any interaction events tied to widgets beneath. Modifying the zIndex does not modify the order of the widgets in the Volt MX Iris hierarchy, inside of a flexContainer or form. The zIndex property accepts only positive values.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 zIndex
 ```
 
-### Type
+<b>Type</b>
 
 Number
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 The default value for this property is 1.
 
@@ -3474,7 +3732,7 @@ flx.zIndex = voltmx.flex.ZINDEX\_AUTO;
 
 ```
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -3482,7 +3740,7 @@ flx.zIndex = voltmx.flex.ZINDEX\_AUTO;
 frmHome.widgetID.zIndex = 300;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE
 *   iOS, Android, Windows, SPA, and Desktop Web
@@ -3496,29 +3754,29 @@ frmHome.widgetID.zIndex = 300;
 
 A boolean value indicates whether the content view is currently zooming in or out.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 zooming
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 Read only
 
-### Example
+<b>Example</b>
 
 ```
 
 Form1.flxScroll.zooming = true;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Available in the IDE.
 
@@ -3533,33 +3791,33 @@ This property is available on iOS platform.
 
 Specifies the current scale factor applied to the FlexScrollContainer content.
 
-### Syntax
+<b>Syntax</b>
 
 ```
 
 zoomScale
 ```
 
-### Type
+<b>Type</b>
 
 Number
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 The default value for this property is 1.
 
-### Example
+<b>Example</b>
 
 ```
 
 Form1.zoomScale = 1.0;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE.
 *   This property is available on iOS platform.

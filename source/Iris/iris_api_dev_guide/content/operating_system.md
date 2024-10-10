@@ -11,7 +11,7 @@ The Operating System API enables you to access various features provided by the 
 | Function | Description |
 | --- | --- |
 | [voltmx.os.addHiddenField](voltmx.os_functions.md#os.addhi) | This API helps the developers to pass dynamic values when the form needs to be submitted to external sites. |
-| [voltmx.os.addMetaTag](voltmx.os_functions.md#voltmx.os.9) | This API adds a meta tag in.html header. This API result will effect only on header reload. |
+| [voltmx.os.addMetaTag](voltmx.os_functions.md#voltmx.os.9) | This API adds a meta tag in.md header. This API result will effect only on header reload. |
 | [voltmx.os.createUUID](voltmx.os_functions.md#createUUID) | This API returns a string that contains a formatted UUID value. |
 | [voltmx.os.detectDynamicInstrumentation](voltmx.os_functions.md#detectDynamicInstrumentation) | This API helps your application to detect the presence of any Dynamic Instrumentation instance. |
 | [voltmx.os.deviceInfo](voltmx.os_functions.md#deviceInfo) | This API allows the developers to get information about the device in which the application is launched. |
@@ -31,8 +31,8 @@ The Operating System API enables you to access various features provided by the 
 | [voltmx.os.readHiddenField](voltmx.os_functions.md#os.readh) | This API allows the developers to read the hidden fields added by the os.addHiddenField API. |
 | [voltmx.os.registerBatteryService](voltmx.os_functions.md#registerBatteryService) | Registers for the battery monitoring service of the device operating system. |
 | [voltmx.os.registerSpeechRecognizer](voltmx.os_functions.md#regSpeech) | Registers callbacks for speech recognition events. |
-| [voltmx.os.removeAllMetaTags](voltmx.os_functions.md#voltmx.os.11) | This API removes all the user defined meta tags from a.html header. |
-| [voltmx.os.removeMetaTag](voltmx.os_functions.md#voltmx.os.10) | This API removes a specific meta tag from a.html header. |
+| [voltmx.os.removeAllMetaTags](voltmx.os_functions.md#voltmx.os.11) | This API removes all the user defined meta tags from a.md header. |
+| [voltmx.os.removeMetaTag](voltmx.os_functions.md#voltmx.os.10) | This API removes a specific meta tag from a.md header. |
 | [voltmx.os.startSecureTransaction](voltmx.os_functions.md#voltmx.os.7) | This API can be invoked on an event of a widget. When this API is invoked it makes all the data and subsequent transactions of the application secure. |
 | [voltmx.os.startSpeechRecognition](voltmx.os_functions.md#startSpeechRecog) | Starts the speech recognition process. |
 | [voltmx.os.stopSpeechRecognition](voltmx.os_functions.md#stopSpeechRecog) | Stops existing (already started with voltmx.os.startSpeechRecognition API) speech recognition operations. |
