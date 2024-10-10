@@ -1,8 +1,8 @@
                                  
 
 
-Browser Properties
-==================
+## <a id="browser-properties"></a> Browser Properties
+
 
 The properties for Browser widget are as follows:
 
@@ -623,6 +623,44 @@ frmButton.myButton.cursorType = "wait";
 * * *
 
 </details>
+<details close markdown="block"><summary>customUserAgent Property</summary>
+
+* * *
+
+This property is used to set a custom user agent string for your browser widget.
+
+### Syntax
+
+customUserAgent
+
+### Type
+
+String
+
+### Read/Write
+
+Read + Write
+
+### Remarks
+
+If customUserAgent is not set for browser widget or is set to _null_, the default value is set by platform.
+The default value for this property is _null_.
+
+### Example
+
+```
+//Sample code to set customUserAgent in Browser widget.  
+frmBrowser.myBrowser.customUserAgent = "VoltMX-Custom-User-Agent/1.0";  
+```
+
+### Platform Availability
+
+*   iOS
+*   Android
+
+* * *
+
+</details>
 <details close markdown="block"><summary>detectTelNumber Property</summary>
 
 * * *
@@ -1136,7 +1174,7 @@ frmHome.browser1. height="10px";
 * * *
 
 </details>
-<details close markdown="block"><summary id="htmlString">.htmlString Property</summary>
+<details close markdown="block"><summary id="htmlString">htmlString Property</summary>
 
 * * *
 
@@ -1144,7 +1182,7 @@ Specifies the HTML content for the Browser widget.
 
 ### Syntax
 
-htmlString
+`htmlString`
 
 ### Type
 
@@ -1154,15 +1192,28 @@ String
 
 Read + Write
 
-### Example
+### Remarks
+
+In Desktop Web platform, the `htmlString` property accepts any tag that is allowed inside the `body` tag. For example, you cannot provide the `title` tag inside the `htmlString` property as the `title` tag is allowed only inside the `head` tag of HTML document.
+
+### Example 1
 
 ```
 
-//Sample code to set.htmlString property in Browser widget.  
-var.htmlStringWelcome= ".html>Welcome<.html>";  
-frmBrowser.myBrowser.htmlString.htmlStringWelcome;  
+/*Sample code to set htmlString property in Browser widget for Desktop Web platform.*/
+var htmlStringWelcome= "<h1>Welcome</h1>";
+frmBrowser.myBrowser.htmlString=htmlStringWelcome;
+```
+
+### Example 2
 
 ```
+
+/*Sample code to set htmlString property in Browser widget for all other platforms.*/
+var htmlWelcome= "<html><head><body><h1>Welcome</h1></body></head></html>";
+frmBrowser.myBrowser.htmlString=htmlWelcome;
+```
+
 
 ### Platform Availability
 
@@ -1268,6 +1319,52 @@ voltmx.print("Browser info ::" + frmBrowser.myBrowser.info);
 ### Platform Availability
 
 *   Available on all platforms
+
+* * *
+
+* * *
+
+</details>
+<details close markdown="block"><summary>isPopUpBlockEnabled Property</summary>
+
+* * *
+
+This property indicates whether pop-ups invoked by the Window.open() API are blocked in the WKWebView browser.
+
+### Syntax
+
+isPopUpBlockEnabled
+
+### Type
+
+Boolean
+
+### Read/Write
+
+Read + Write
+
+### Remarks
+
+*   If the value is set to true, the pop-up web page that is invoked by the Window.open() API is blocked and does not open.
+*   If the value is set to false, the pop-up web page opens in the same browser window, invoked by an event of the Window.open() API.
+*   The default value for this property is false.
+*   When the Window.close() API is invoked, the page navigates back to the space that the pop-up event was triggered from.
+
+
+### Example
+
+```
+
+// Sample Code to block pop-ups
+var browser0 \= new voltmx.ui.Browser({
+"isPopUpBlockEnabled": true
+)};
+```
+
+### Platform Availability
+
+*   Available on the iOS platform
+ 
 
 * * *
 
@@ -1667,7 +1764,7 @@ When you are defining the padding (for any platform) the _first_ time, the value
   
 The following image illustrates a widget with a defined padding:
 
-![](../../../8.4/WidgetsProgGuide/Content/Resources/Images/Padding.png)
+![](Resources/Images/Padding.png)
 
 ### Syntax
 
@@ -1860,7 +1957,7 @@ Specifies the key-value pairs that must be sent to the initial URL. It accepts a
 
 ```
 
-[["key1","value1"],["key2","value2"],["keyn", "valuen"]]
+[["key1","value1"],["key2","value2"],["keyn", "valuen"]
 ```
 
 ### Example

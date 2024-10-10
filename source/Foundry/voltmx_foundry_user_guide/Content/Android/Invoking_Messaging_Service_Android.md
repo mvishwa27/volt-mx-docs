@@ -98,7 +98,7 @@ Import the following Libraries:
 ### Sample Code
 
 ```
- // Sample code to update the geolocation
+  // Sample code to update the geolocation
 Double latitude = < latitude - value > ;
 Double longitude = < longitude - value > ;
 String locationName = < location - name > ;
@@ -130,7 +130,7 @@ Import the following Libraries:
 ### Sample Code
 
 ```
- // Sample code to get all messagesint startIndex = 0;
+  // Sample code to get all messagesint startIndex = 0;
 int pageSize = 1000;
 messagingClient.fetchAllMessagesInBackground(startIndex, pageSize, new MessageContentCallback() {
     @Override
@@ -186,7 +186,7 @@ Import the following Libraries:
 ### Sample Code
 
 ```
- // Sample code to fetch message content from  Messaging 
+  // Sample code to fetch message content from  Messaging 
 String messageid = < fetch - id - of - the - message > ;
 messagingClient.fetchMessageContentInBackground(messageid, new MessageContentCallback() {
     @Override

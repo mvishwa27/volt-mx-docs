@@ -1,7 +1,4 @@
-                                  
-
-
-FlexContainer Properties
+﻿FlexContainer Properties
 ========================
 
 The properties for FlexContainer widget are as follows.
@@ -17,22 +14,22 @@ Enables you to control accessibility behavior and alternative text for the widge
 
 For more information on using accessibility features in your app, see the [Accessibility](../../../Iris/app_design_dev/Content/Accessibility_Overview.md) appendix in the Volt MX IrisUser Guide.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 accessibilityConfig
 ```
 
-### Type
+<b>Type</b>
 
 Object
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 *   The accessibilityConfig property is enabled for all the widgets which are supported under the Flex Layout.
 
@@ -50,18 +47,18 @@ The accessibilityConfig property is a JavaScript object which can contain the fo
 | a11yHidden | Boolean | This is an optional parameter. Specifies if the widget should be ignored by assistive technology. The default option is set to _false_. This option is supported on iOS 5.0 and above, Android 4.1 and above, and SPA | For all widgets, this parameter maps to the `aria-hidden` property of ARIA in HTML. |
 | a11yARIA | Object | This is an optional parameter. For each widget, the key and value provided in this object are added as the attribute and value of the HTML tags respectively. Any values provided for attributes such as `aria-labelledby` and `aria-describedby` using this attribute, takes precedence over values given in `a11yLabel` and `a11yHint` fields. When a widget is provided with the following key value pair or attribute using the a11yARIA object, the tabIndex of the widget is automatically appended as zero.`{"role": "main"}``aria-label` | This parameter is only available on the Desktop Web platform. |
 
-### Android limitations
+<b>Android limitations</b>
 
 *   If the results of the concatenation of a11y fields result in an empty string, then `accessibilityConfig` is ignored and the text that is on widget is read out.
 *   The soft keypad does not gain accessibility focus during the right/left swipe gesture when the keypad appears.
 
-### SPA/Desktop Web limitations
+<b>SPA/Desktop Web limitations</b>
 
 *   When `accessibilityConfig` property is configured for any widget, the `tabIndex` attribute is added automatically to the `accessibilityConfig` property.
 *   The behavior of accessibility depends on the Web browser, Web browser version, Voice Over Assistant, and Voice Over Assistant version.
 *   Currently SPA/Desktop web applications support only a few ARIA tags. To achieve more accessibility features, use the attribute a11yARIA. The corresponding tags will be added to the DOM as per these configurations.
 
-### Example 1
+<b>Example 1</b>
 
 This example uses the button widget, but the principle remains the same for all widgets that have an accessibilityConfig property.
 
@@ -77,7 +74,7 @@ Form1.myButton.accessibilityConfig = {
 };
 ```
 
-### Example 2
+<b>Example 2</b>
 
 This example uses the button widget to implement internationalization in `accessibilityConfig` property, but the principle remains the same for all widgets.
 
@@ -94,10 +91,107 @@ Form1.myButton.accessibilityConfig = {
 };
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE
 *   iOS, Android, SPA, and Desktop Web
+
+* * *
+
+</details>
+<details close markdown="block"><summary>activeStateSkin Property</summary>
+
+* * *
+
+Specifies the look and feel of a widget when the widget is in focus.
+
+When the activeStateSkin property is configured for a widget, the activeStateSkin is applied to the widget when a user focuses on the widget (either by using the TAB key, mouse-click, or by using the setActive API programmatically).
+
+<b>Syntax</b>
+
+```
+
+activeStateSkin
+```
+
+<b>Type</b>
+
+String
+
+<b>Read/Write</b>
+
+Read + Write
+
+<b>Remarks</b>
+
+If a widget has the activeStateSkin, focusSkin, and the hoverSkin properties configured, the skins are applied based on the mouse-action performed on the widget:
+
+*   The **focusSkin** is applied on the mouse-down action on the widget.
+*   The **hoverSkin** is applied on the mouse-over action on the widget.
+*   The **activeStateSkin** is applied on the mouse-release action on the widget.
+
+  
+<b>Example</b> 
+
+Setting the activeStateSkin property on an existing widget
+
+```
+//The Active State Skin is a skin created under the Skins tabfrmButton.myButton.activeStateSkin= 'btnActiveStateSkin';
+```
+
+<b>Platform Availability</b>
+
+*   Available in the IDE
+*   Available on the Responsive Web platform
+
+* * *
+
+</details>
+
+<details close markdown="block"><summary>activeStateSkin Property</summary>
+
+* * *
+
+Specifies the look and feel of a widget when the widget is in focus.
+
+When the activeStateSkin property is configured for a widget, the activeStateSkin is applied to the widget when a user focuses on the widget (either by using the TAB key, mouse-click, or by using the setActive API programmatically).
+
+<b>Syntax</b>
+
+```
+
+activeStateSkin
+```
+
+<b>Type</b>
+
+String
+
+<b>Read/Write</b>
+
+Read + Write
+
+<b>Remarks</b>
+
+If a widget has the activeStateSkin, focusSkin, and the hoverSkin properties configured, the skins are applied based on the mouse-action performed on the widget:
+
+*   The **focusSkin** is applied on the mouse-down action on the widget.
+*   The **hoverSkin** is applied on the mouse-over action on the widget.
+*   The **activeStateSkin** is applied on the mouse-release action on the widget.
+
+  
+<b>Example</b> 
+
+Setting the activeStateSkin property on an existing widget
+
+```
+//The Active State Skin is a skin created under the Skins tabfrmButton.myButton.activeStateSkin= 'btnActiveStateSkin';
+```
+
+<b>Platform Availability</b>
+
+*   Available in the IDE
+*   Available on the Responsive Web platform
 
 * * *
 
@@ -108,22 +202,22 @@ Form1.myButton.accessibilityConfig = {
 
 The property helps to specify the type of navigation order that should be used in the FlexContainer.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 a11yNavigationMode
 ```
 
-### Type
+<b>Type</b>
 
 Number
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 You can define any one of the following values to the property:
 
@@ -131,7 +225,7 @@ You can define any one of the following values to the property:
 *   constants.ACCESSIBILITY\_NAVIGATION\_MODE\_PARENT: Applies a custom navigation for widgets based on the a11yIndices set to the child widgets.
 *   constants.ACCESSIBILITY\_NAVIGATION\_MODE\_DEFAULT: Derives the property value from its immediate parent going all the way to form level.
 
-### Example
+<b>Example</b>
 
 ```
 //Sample code to set the a11yNavigationMode property to a FlexContainer widget.
@@ -141,7 +235,7 @@ myForm.myFlexContainer.accessibilityConfig = {
 };
 ```
 
-### Availability
+<b>Availability</b>
 
 iOS
 
@@ -154,28 +248,28 @@ iOS
 
 Specifies the anchor point of the widget bounds rectangle using the widget's coordinate space.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 anchorPoint
 ```
 
-### Type
+<b>Type</b>
 
 JSObject
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 The value for this property is a JavaScript dictionary object with the keys "x" and "y". The values for the "x" and "y" keys are floating-point numbers ranging from 0 to 1. All geometric manipulations to the widget occur about the specified point. For example, applying a rotation transform to a widget with the default anchor point causes the widget to rotate around its center.
 
 The default value for this property is center ( {"x":0.5, "y":0.5} ), that represents the center of the widgets bounds rectangle. The behavior is undefined if the values are outside the range zero (0) to one (1).
 
-### Example
+<b>Example</b>
 
 ```
 Form1.widget1.anchorPoint = {
@@ -184,7 +278,7 @@ Form1.widget1.anchorPoint = {
 };
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   iOS, Android, Windows, and SPA
 
@@ -202,22 +296,22 @@ The autogrowMode property is used to set the height of a widget dynamically base
 *   voltmx.flex.AUTOGROW\_NONE (value is 0)
 *   voltmx.flex.AUTOGROW\_HEIGHT (value is 1)
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 autogrowMode
 ```
 
-### Type
+<b>Type</b>
 
 Number
 
-### Read/Write
+<b>Read/Write</b>
 
 Read only
 
-### Remarks
+<b>Remarks</b>
 
 > **_Note:_** If you want to configure this property in Volt MX Iris, configure the height property of FlexContainer as preferred, then Volt MX Iris generates the autogrowMode property as voltmx.flex.AUTOGROW\_HEIGHT.
 
@@ -225,7 +319,7 @@ The default value for this property is voltmx.flex.AUTOGROW\_NONE.
 
 > **_Note:_** If one or all the child widgets height or other properties such as centerY, top, bottom, minHeight or maxHeight are used in determining the height given in percentage (%), then the autogrowMode property will not work for the FlexContainer and its height fallback to default configuration value.
 
-### Rules and priorities of autogrowMode property
+<b>Rules and priorities of autogrowMode property</b>
 
 *   The autogrowMode property is ignored if the height of the widget is computable either through explicit value or implicit calculation.
     
@@ -244,13 +338,13 @@ The default value for this property is voltmx.flex.AUTOGROW\_NONE.
 *   When animating the height property of the child widget of a FlexContainer in iOS, Windows, and SPA platforms, after the animation is complete, then parent containers height increases based on the value provided in 100th step when fillMode is configured as voltmx.anim.FILL\_MODE\_FORWARDS.
 *   When animating the height property of the child widget of a FlexContainer in the Android platform, the parent container's height grows along with the child widget's height.
 
-### When to Use
+<b>When to Use</b>
 
 Case1: If the height of the FlexContainer is dependent on the heights of the child widgets that are added.
 
 Case2: If you are using the FlexContainer in a SegmentedUI template, where each row of the SegmentedUI row height is dependent on the child widgets content. Configure the height property of the FlexContainer as preferred, then Volt MX Iris generates the autogrowMode property as voltmx.flex.AUTOGROW\_HEIGHT.
 
-### Example
+<b>Example</b>
 
 ```
 //Sample code to set the autogrowMode property of a FlexContainer widget.
@@ -261,7 +355,7 @@ frmHome.flexcontainer1.autogrowMode=voltmx.flex.AUTOGROW_NONE;
 frmHome.flexcontainer1.autogrowMode=voltmx.flex.AUTOGROW_HEIGHT;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Not available in the IDE.
 
@@ -279,22 +373,22 @@ Not available in the IDE.
 
 Specifies the background color of the widget.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 backgroundColor
 ```
 
-### Type
+<b>Type</b>
 
 Color constant or Hexadecimal number
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 *   The initial value of backgroundColor has to be specified explicitly. If not, Iris will not deduce the values from the existing skin and this will lead to undefined behavior.
 *   Colors can be specified using a 6 digit or an 8-digit hex value with alpha position. For example, ffff65 or ffffff00.
@@ -305,7 +399,7 @@ Read + Write
 *   This property has more priority than (and overrides) the background property of the configured skin. Even if there is no skin configured for the widget, this property updates the skin.
 *   The backgroundColor, backgroundColorTwoStepGradient, backgroundColoMultiStepGradient, and backgroundImage properties are mutually exclusive. The property that was set most recently is given higher priority over other properties.
 
-### Example
+<b>Example</b>
 
 This example uses the button widget, but the principle remains the same for all widgets that have the backgroundColor property.
 
@@ -314,7 +408,7 @@ Form1.btn1.backgroundColor = "ea5075";
 
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android
 *   iOS
@@ -329,22 +423,22 @@ Form1.btn1.backgroundColor = "ea5075";
 
 Specifies the multi-step gradient color for the background of the widget.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 backgroundColorMultiStepGradient
 ```
 
-### Type
+<b>Type</b>
 
 JSON Object
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Input Parameters
+<b>Input Parameters</b>
 
 *   **gradientType** \[Constant\]: Specifies the configuration type of the gradient. This parameter can have the following constant values:
     
@@ -358,7 +452,7 @@ Read + Write
 *   **colors** \[Array\]: Specifies the colors for the multi-step gradient. Colors is an array of color hex values that indicate the reference color values of the gradient. This parameter contains an array of hexadecimal numbers that represent the colors or constants defined at the theme level.
 *   **colorStops** \[Array\]: Specifies the color stops for the multi-step gradient. Color Stops are the locations of the reference colors on the gradient, from 0 (the start of the gradient) to 100 (the final value of the gradient). This parameter contains an array of numbers that represent the color stops.
 
-### Remarks
+<b>Remarks</b>
 
 *   The default value of the gradientType key is `voltmx.skin.MULTI_STEP_GRADIENT_TYPE_TO_TOP`.
 *   Colors can be specified using a 6 digit or an 8-digit hex value with alpha position. For example, ffff65 or ffffff00.
@@ -369,7 +463,7 @@ Read + Write
 *   This property has more priority than (and overrides) the background property of the configured skin. Even if there is no skin configured for the widget, this property updates the skin.
 *   The backgroundColor, backgroundColorTwoStepGradient, backgroundColoMultiStepGradient, and backgroundImage properties are mutually exclusive. The property that was set most recently is given higher priority over other properties.
 
-### Example
+<b>Example</b>
 
 This example uses the button widget, but the principle remains the same for all widgets that have the backgroundColorMultiStepGradient property.
 
@@ -382,7 +476,7 @@ Form1.btn1.backgroundColorMultiStepGradient = {
 };
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android
 *   iOS
@@ -397,22 +491,22 @@ Form1.btn1.backgroundColorMultiStepGradient = {
 
 Specifies the two-step gradient color for the background of the widget.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 backgroundColorTwoStepGradient
 ```
 
-### Type
+<b>Type</b>
 
 JSON Object
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Input Parameters
+<b>Input Parameters</b>
 
 *   **topColor** \[Constant or Hex\]: Specifies the top color of the two-step gradient. The value of this parameter can be a hexadecimal number that represents a color or a constant that is defined at the theme level.
     
@@ -425,7 +519,7 @@ Read + Write
     *   `voltmx.skin.TWO_STEP_GRADIENT_STYLE_HORIZONTAL_GRADIENT`: Constant for the horizontal gradient style.
     *   `voltmx.skin.TWO_STEP_GRADIENT_STYLE_HORIZONTAL_SPLIT`: Constant for the horizontal split style.
 
-### Remarks
+<b>Remarks</b>
 
 *   The default value of the style key is `voltmx.skin.TWO_STEP_GRADIENT_STYLE_VERTICAL_GRADIENT`.
 *   Colors can be specified using a 6 digit or an 8-digit hex value with alpha position. For example, ffff65 or ffffff00.
@@ -436,7 +530,7 @@ Read + Write
 *   This property has more priority than (and overrides) the background property of the configured skin. Even if there is no skin configured for the widget, this property updates the skin.
 *   The backgroundColor, backgroundColorTwoStepGradient, backgroundColoMultiStepGradient, and backgroundImage properties are mutually exclusive. The property that was set most recently is given higher priority over other properties.
 
-### Example
+<b>Example</b>
 
 This example uses the button widget, but the principle remains the same for all widgets that have the backgroundColorTwoStepGradient property.
 
@@ -448,7 +542,7 @@ Form1.btn1.backgroundColorTwoStepGradient = {
 };
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android
 *   iOS
@@ -463,28 +557,28 @@ Form1.btn1.backgroundColorTwoStepGradient = {
 
 Sets the image for the background of the widget.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 backgroundImage
 ```
 
-### Type
+<b>Type</b>
 
 String
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 *   This property does not have a default value.
 *   This property has more priority than (and overrides) the background property of the configured skin. Even if there is no skin configured for the widget, this property updates the skin.
 *   The backgroundColor, backgroundColorTwoStepGradient, backgroundColoMultiStepGradient, and backgroundImage properties are mutually exclusive. The property that was set most recently is given higher priority over other properties.
 
-### Example
+<b>Example</b>
 
 This example uses the button widget, but the principle remains the same for all widgets that have the backgroundImage property.
 
@@ -492,7 +586,7 @@ This example uses the button widget, but the principle remains the same for all 
 Form1.btn1.backgroundImage = "bgImg.png";
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android
 *   iOS
@@ -507,14 +601,14 @@ Form1.btn1.backgroundImage = "bgImg.png";
 
 You can enable or disable a blur-effect for a widget(for example, a FlexContainer) by making use of a constructor-level property, called **blur**. The **blur** property accepts a dictionary that contains the following keys: enabled, value and style. You must specify an appropriate value for the dictionary keys, otherwise the property will not be valid.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 blur
 ```
 
-**### Input Parameters**
+**<b>Input Parameters</b>**
 
 *   _enabled_: Accepts a Boolean value that basically decides whether to enable or disable the blur-effect for the widget. This is a mandatory attribute.
 *   _value_: Level of the blur-effect that needs to be set for the widget. It should ideally be between 0 to 100. If the level is set as 0 no blur is set, even when the enabled property is set as true. This is a mandatory attribute. Even when the _enabled_ attribute is set as false, you need to specify a numerical value to this attribute.
@@ -531,11 +625,11 @@ blur
     *   constants.BLUR\_EFFECT\_PROMINENT
         
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 *   If you set _enabled_ as true, the blur-effect for the widget is enabled.
 *   If you set _enabled_ as false, the blur-effect for the widget is disabled.
@@ -543,7 +637,7 @@ Read + Write
     
 *   If you specify _value_ as greater than 100, the value is taken as 100.
 
-### Limitations
+<b>Limitations</b>
 
 *   For Android:
     *   If a FlexContainer or a FlexScrollContainer contains a Map widget, the blur-effect is not applied to the map.
@@ -553,7 +647,7 @@ Read + Write
     *   Even if you apply 100% blur for widgets that display any text( such as Label or Calendar widgets), the text on these widgets is not blurred. This is a Native Android limitation. To generate the blur effect for the text, apply a skin with darker background to the Label or Calendar widget. This is true even when the widgets are placed in a FlexContainer with blur effect and the widgets do not have a skin.
     *   Blur effect will not work on widgets added inside BOX containers.
 
-### Example 1
+<b>Example 1</b>
 
 To dynamically set the blur-effect for any widget, such as a FlexContainer, use the following code.
 
@@ -570,7 +664,7 @@ Form1.myFlexContainer.blur = {
 
 ```
 
-### Example 2
+<b>Example 2</b>
 
 To dynamically set the blur-effect for any widget, such as a FlexContainer in iOS, use the following code.
 
@@ -582,7 +676,7 @@ Form1.widget1.blur = {
 };
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android, iOS, Windows, SPA , and Desktop web
 
@@ -597,22 +691,22 @@ Form1.widget1.blur = {
 
 Specifies the border color of the widget.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 borderColor
 ```
 
-### Type
+<b>Type</b>
 
 Color constant or Hexadecimal number
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 *   Colors can be specified using a 6 digit or an 8-digit hex value with alpha position. For example, ffff65 or ffffff00.
 *   When the 4-byte color format (RGBA) string is used, an alpha (A) value of 65 specifies that the color is transparent. If the value is 00, the color is opaque. The Alpha value is in percentage and must be given in the hexadecimal value for the color (100% in hexadecimal value is 65).  
@@ -621,7 +715,7 @@ Read + Write
 *   This property does not have a default value.
 *   This property has more priority than (and overrides) the border property of the configured skin. Even if there is no skin configured for the widget, this property updates the skin.
 
-### Example
+<b>Example</b>
 
 This example uses the button widget, but the principle remains the same for all widgets that have the borderColor property.
 
@@ -629,7 +723,7 @@ This example uses the button widget, but the principle remains the same for all 
 Form1.btn1.borderColor = "ea5075";
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android
 *   iOS
@@ -644,22 +738,22 @@ Form1.btn1.borderColor = "ea5075";
 
 Specifies the multi-step gradient color for the border of the widget.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 borderColorGradient
 ```
 
-### Type
+<b>Type</b>
 
 JSON Object
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Input Parameters
+<b>Input Parameters</b>
 
 *   **gradientType** \[Constant\]: Specifies the configuration type of the gradient. This parameter can have the following constant values:
     
@@ -673,7 +767,7 @@ Read + Write
 *   **colors** \[Array\]: Specifies the colors for the multi-step gradient. Colors is an array of color hex values that indicate the reference color values of the gradient. This parameter contains an array of hexadecimal numbers that represent the colors or constants defined at the theme level.
 *   **colorStops** \[Array\]: Specifies the color stops for the multi-step gradient. Color Stops are the locations of the reference colors on the gradient, from 0 (the start of the gradient) to 100 (the final value of the gradient). This parameter contains an array of numbers that represent the color stops.
 
-### Remarks
+<b>Remarks</b>
 
 *   The default value of the gradientType key is `voltmx.skin.MULTI_STEP_GRADIENT_TYPE_TO_TOP`.
 *   Colors can be specified using a 6 digit or an 8-digit hex value with alpha position. For example, ffff65 or ffffff00.
@@ -683,7 +777,7 @@ Read + Write
 *   This property does not have a default value.
 *   This property has more priority than (and overrides) the border property of the configured skin. Even if there is no skin configured for the widget, this property updates the skin.
 
-### Example
+<b>Example</b>
 
 This example uses the button widget, but the principle remains the same for all widgets that have the borderColorGradient property.
 
@@ -696,7 +790,7 @@ Form1.btn1.borderColorGradient = {
 };
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android
 *   iOS
@@ -710,22 +804,22 @@ Form1.btn1.borderColorGradient = {
 
 Specifies the border style for the widget.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 borderStyle
 ```
 
-### Type
+<b>Type</b>
 
 Constant
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 *   This property can have the following constant values:
     
@@ -737,7 +831,7 @@ Read + Write
 *   This property does not have a default value.
 *   This property has more priority than (and overrides) the border property of the configured skin. Even if there is no skin configured for the widget, this property updates the skin.
 
-### Example
+<b>Example</b>
 
 This example uses the button widget, but the principle remains the same for all widgets that have the borderStyle property.
 
@@ -745,7 +839,7 @@ This example uses the button widget, but the principle remains the same for all 
 Form1.btn1.borderStyle = voltmx.skin.BORDER_STYLE_PLAIN;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android
 *   iOS
@@ -759,29 +853,29 @@ Form1.btn1.borderStyle = voltmx.skin.BORDER_STYLE_PLAIN;
 
 Specifies the width of the border for the widget in pixels.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 borderWidth
 ```
 
-### Type
+<b>Type</b>
 
 Number or JSON Object
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 *   This property does not have a default value.
 *   The default unit for the value of this property is pixels.
 *   The Desktop Web platform supports both Number and JSON Object (with the top, bottom, right, and left keys) values for the borderWidth parameter. The Android and iOS platforms support only Number values for the borderWidth parameter.
 *   This property has more priority than (and overrides) the border property of the configured skin. Even if there is no skin configured for the widget, this property updates the skin.
 
-### Example
+<b>Example</b>
 
 This example uses the button widget, but the principle remains the same for all widgets that have the borderWidth property.
 
@@ -789,7 +883,7 @@ This example uses the button widget, but the principle remains the same for all 
  Form1.btn1.borderWidth = 2;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android
 *   iOS
@@ -810,28 +904,28 @@ The bottom property determines the position of the bottom edge of the widget’s
 
 The bottom property is used only if the Height property is not provided.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 bottom
 ```
 
-### Type
+<b>Type</b>
 
 String
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 The property determines the bottom edge of the widget and is measured from the bottom bounds of the parent container.
 
 If the layoutType is set as voltmx.flex.FLOW\_VERTICAL, the bottom property is measured from the top edge of bottom sibling widget. The vertical space between two widgets is measured from bottom of the top sibling widget and the top of the bottom sibling widget.
 
-### Example
+<b>Example</b>
 
 ```
 //Sample code to set the bottom property for widgets by using DP, Percentage and Pixels.
@@ -842,7 +936,7 @@ frmHome.widgetID.bottom = "10%";
 frmHome.widgetID.bottom = "10px";
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE
 *   iOS, Android, Windows, SPA , and Desktop Web
@@ -858,26 +952,26 @@ This property determines the center of a widget measured from the left bounds of
 
 The centerX property determines the horizontal center of the widget’s bounding box. The value may be set using DP (Device Independent Pixels), Percentage, or Pixels. In freeform layout, the distance is measured from the left edge of the parent container. In flow-vertical layout, the distance is measured from the left edge of the parent container. In flow-horizontal layout, the distance is measured from the right edge of the previous sibling widget in the hierarchy.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 centerX
 ```
 
-### Type
+<b>Type</b>
 
 String
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 If the layoutType is set as voltmx.flex.FLOW\_HORIZONTAL, the centerX property is measured from right edge of the left sibling widget.
 
-### Example
+<b>Example</b>
 
 ```
 //Sample code to set the centerX property for widgets by using DP, Percentage and Pixels.
@@ -888,7 +982,7 @@ frmHome.widgetID.centerX = "10%";
 frmHome.widgetID.centerX = "10px";
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE
 *   iOS, Android, Windows, SPA, and Desktop Web
@@ -904,26 +998,26 @@ This property determines the center of a widget measured from the top bounds of 
 
 The centerY property determines the vertical center of the widget’s bounding box. The value may be set using DP (Device Independent Pixels), Percentage, or Pixels. In freeform layout, the distance is measured from the top edge of the parent container. In flow-horizontal layout, the distance is measured from the top edge of the parent container. In flow-vertical layout, the distance is measured from the bottom edge of the previous sibling widget in the hierarchy.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 centerY
 ```
 
-### Type
+<b>Type</b>
 
 String
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 If the layoutType is set as voltmx.flex.FLOW\_VERTICAL, the centerY property is measured from bottom edge of the top sibling widget.
 
-### Example
+<b>Example</b>
 
 ```
 //Sample code to set the centerY property for widgets by using DP, Percentage and Pixels.
@@ -934,7 +1028,7 @@ frmHome.widgetID.centerY = "10%";
 frmHome.widgetID.centerY = "10px";
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE
 *   iOS, Android, Windows, SPA, and Desktop Web
@@ -950,22 +1044,22 @@ This property specifies whether to clip the child widgets when they go out of bo
 
 The clipBounds property specifies whether the container’s bounding box will “clip” the child widgets of the container. If set to false, all of the child widgets will be visible, even if outside of the parent container’s visible area.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 clipBounds
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 The default value for this property is true.
 
@@ -978,7 +1072,7 @@ This property does not have any effect on the following scrollable widgets:
 *   SegmentedUI
 *   Browser
 
-### Example
+<b>Example</b>
 
 ```
 //Sample code to set the clipBounds property of a FlexContainer widget.
@@ -990,7 +1084,7 @@ frmHome.flexcontainer1.clipBounds = false;
 
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Available in the IDE.
 
@@ -1008,18 +1102,18 @@ Available in the IDE.
 
 Defines a shape to clip the widget view.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 clipView ()
 ```
 
-### Type
+<b>Type</b>
 
 JSObject
 
-### Parameters
+<b>Parameters</b>
 
 **shape**
 
@@ -1047,17 +1141,17 @@ _false_: Indicates the specified bounds should be in percentage.
 
 Optional. Specifies the radius of the clipping shape. Represents the corner radius of the rounded rectangular shape when the clipping shape is VIEW\_CLIP\_SHAPE\_ROUNDED\_RECTANGLE or represents the radius of a circle when the clipping shape is VIEW\_CLIP\_SHAPE\_CIRCLE.
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 The property enables you to change the shape of a FlexContainer view. Without view clipping, all views are displayed in a regular rectangular shape. With the property, you can change the view shape to circular or rounded rectangle, irrespective of the shape of the background. Supported shapes to clipping a view are rectangle, rounded rectangle, and circle.
 
 The clipView property is applicable only for the widgets added in the Flex Forms.
 
-### Example
+<b>Example</b>
 
 ```
 //Sample code to set clipView property of a FlexContainer widget.
@@ -1069,7 +1163,7 @@ myForm.myFlexContainer.clipView = {
 };
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android 5.0 and later versions.
 
@@ -1082,22 +1176,22 @@ myForm.myFlexContainer.clipView = {
 
 Specifies the radius of the border for the widget.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 cornerRadius
 ```
 
-### Type
+<b>Type</b>
 
 Number or JSON Object
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 *   The cornerRadius property is only applicable when the borderStyle is voltmx.skin.BORDER\_STYLE\_CUSTOM.
 *   For a Responsive Web app, a corner radius of value zero applies a plain border, and a corner radius value greater than zero applies a rounded border.
@@ -1106,7 +1200,7 @@ Read + Write
 *   This property does not have a default value.
 *   This property has more priority than (and overrides) the border property of the configured skin. Even if there is no skin configured for the widget, this property updates the skin.
 
-### Example
+<b>Example</b>
 
 This example uses the button widget, but the principle remains the same for all widgets that have the cornerRadius property.
 
@@ -1114,7 +1208,7 @@ This example uses the button widget, but the principle remains the same for all 
  Form1.btn1.cornerRadius = 60;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android
 *   iOS
@@ -1131,24 +1225,24 @@ This example uses the button widget, but the principle remains the same for all 
 
 In Desktop Web applications, when you hover the mouse over any widget, a mouse pointer appears. Using the cursorType property in Iris, you can specify the type of the mouse pointer.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 cursorType
 ```
 
-### Type
+<b>Type</b>
 
 String.
 
 You must provide valid CSS cursor value such as wait, grab, help, etc. to the cursorType property.
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 To add the `cursorType` property using Volt MX Iris in a Desktop Web application, follow these steps.
 
@@ -1165,7 +1259,7 @@ To add the `cursorType` property using Volt MX Iris in a Desktop Web application
     You can see that the **Cursor Type** property has been added under the **General** section.
 8.  Select a value from the drop-down list to set the **Cursor Type** for the widget.
 
-### Example
+<b>Example</b>
 
 ```
  //This is a generic property and is applicable for many widgets.  
@@ -1176,7 +1270,7 @@ frmButton.myButton.cursorType = "wait";
 
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in IDE
 *   Desktop Web
@@ -1190,27 +1284,27 @@ frmButton.myButton.cursorType = "wait";
 
 Specifies the skin properties that define the look and feel of the widget, when the widget is disabled or blocked.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 disabledStateSkinProperties
 ```
 
-### Type
+<b>Type</b>
 
 JSON Object
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 *   This property does not have a default value.
 *   This property has more priority than (and overrides) the disabledSkin property of the configured skin. Even if there is no skin configured for the widget, this property updates the skin.
 
-### Example
+<b>Example</b>
 
 This example uses the button widget, but the principle remains the same for all widgets that have the disabledStateSkinProperties property.
 
@@ -1247,7 +1341,7 @@ Form1.btn1.disabledStateSkinProperties= {
     }
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android
 
@@ -1264,22 +1358,22 @@ The `enable` property is used to control the actionability of the widgets. In a 
 
 This is a constructor level property and applicable for all widgets in Volt MX Iris.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 enable
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 The default value of this property is true.
 
@@ -1287,7 +1381,7 @@ When `enable` property is configured to true, the action associated with a widge
 
 When `enable` property is configured to false, the action associated with a widget cannot be invoked by the user in the application.
 
-### Example
+<b>Example</b>
 
 ```
 //This is a generic property and is applicable for many widgets.  
@@ -1297,7 +1391,7 @@ When `enable` property is configured to false, the action associated with a widg
 frmButton.myBtn.enable= true;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android, iOS, Windows, SPA, and Desktop web
 
@@ -1312,34 +1406,34 @@ frmButton.myBtn.enable= true;
 
 The property enables you to improve the performance of Positional Dimension Animations.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 enableCache
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 The default value for this property is true.
 
 > **_Note:_** When the property is used, application consumes more memory. The usage of the property enables tradeoff between performance and visual quality of the content. Use the property cautiously.
 
-### Example
+<b>Example</b>
 
 ```
 Form1.widgetID.enableCache = true;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE.
 *   Windows
@@ -1353,23 +1447,23 @@ Form1.widgetID.enableCache = true;
 
 Allows you to enable or disable haptic feedback on the FlexContainer widget.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 enableHapticFeedback
 ```
 
-### Type
+<b>Type</b>
 
 Boolean.  
 If the enableHapticFeedback property is not specified, haptic feedback is not enabled on the FlexContainer widget.
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 *   The enableHapticFeedback property is supported for FlexContainer widgets only when the onClick callback event is defined.
 *   iOS
@@ -1382,14 +1476,14 @@ Read + Write
 *   Windows
     *   Haptic Feedback is supported on Windows devices with OS build version 10.0.15063.0 or later.
 
-### Example
+<b>Example</b>
 
 ```
 //Sample code to set the enableHapticFeedback property of a FlexContainer widget.
 frmFlexContainer.myFlexContainer.enableHapticFeedback=true;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android
     
@@ -1405,27 +1499,27 @@ frmFlexContainer.myFlexContainer.enableHapticFeedback=true;
 
 Specifies the skin properties that define the look and feel of the widget, when the widget is in focus.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 focusStateSkinProperties
 ```
 
-### Type
+<b>Type</b>
 
 JSON Object
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 *   This property does not have a default value.
 *   This property has more priority than (and overrides) the focusSkin property of the configured skin. Even if there is no skin configured for the widget, this property updates the skin.
 
-### Example
+<b>Example</b>
 
 This example uses the button widget, but the principle remains the same for all widgets that have the focusStateSkinProperties property.
 
@@ -1462,7 +1556,7 @@ This example uses the button widget, but the principle remains the same for all 
     }
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android
 *   iOS
@@ -1479,22 +1573,22 @@ This example uses the button widget, but the principle remains the same for all 
 
 Specifies the font color of the widget.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 fontColor
 ```
 
-### Type
+<b>Type</b>
 
 Color constant or Hexadecimal number
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 *   Colors can be specified using a 6 digit or an 8-digit hex value with alpha position. For example, ffff65 or ffffff00.
 *   When the 4-byte color format (RGBA) string is used, an alpha (A) value of 65 specifies that the color is transparent. If the value is 00, the color is opaque. The Alpha value is in percentage and must be given in the hexadecimal value for the color (100% in hexadecimal value is 65).  
@@ -1503,7 +1597,7 @@ Read + Write
 *   This property does not have a default value.
 *   This property has more priority than (and overrides) the fonts property of the configured skin. Even if there is no skin configured for the widget, this property updates the skin.
 
-### Example
+<b>Example</b>
 
 This example uses the button widget, but the principle remains the same for all widgets that have the fontColor property.
 
@@ -1511,7 +1605,7 @@ This example uses the button widget, but the principle remains the same for all 
 Form1.btn1.fontColor = "ea5075";
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android
 *   iOS
@@ -1526,27 +1620,27 @@ Form1.btn1.fontColor = "ea5075";
 
 Specifies the font family for the font of the widget.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 fontFamily
 ```
 
-### Type
+<b>Type</b>
 
 String
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 *   This property does not have a default value.
 *   This property has more priority than (and overrides) the fonts property of the configured skin. Even if there is no skin configured for the widget, this property updates the skin.
 
-### Example
+<b>Example</b>
 
 This example uses the button widget, but the principle remains the same for all widgets that have the fontFamily property.
 
@@ -1554,7 +1648,7 @@ This example uses the button widget, but the principle remains the same for all 
  Form1.btn1.fontFamily = "Serif";
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android
 *   iOS
@@ -1571,27 +1665,27 @@ This example uses the button widget, but the principle remains the same for all 
 
 Specifies the font size for the widget in percentage (%) units.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 fontSize
 ```
 
-### Type
+<b>Type</b>
 
 Number
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 *   This property does not have a default value.
 *   This property has more priority than (and overrides) the fonts property of the configured skin. Even if there is no skin configured for the widget, this property updates the skin.
 
-### Example
+<b>Example</b>
 
 This example uses the button widget, but the principle remains the same for all widgets that have the fontSize property.
 
@@ -1599,7 +1693,7 @@ This example uses the button widget, but the principle remains the same for all 
  Form1.btn1.fontSize = 150;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android
 *   iOS
@@ -1616,22 +1710,22 @@ This example uses the button widget, but the principle remains the same for all 
 
 Specifies the font style for the widget.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 fontStyle
 ```
 
-### Type
+<b>Type</b>
 
 Constant
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 *   This property can have the following constant values:
     
@@ -1641,7 +1735,7 @@ Read + Write
 *   This property does not have a default value.
 *   This property has more priority than (and overrides) the fonts property of the configured skin. Even if there is no skin configured for the widget, this property updates the skin.
 
-### Example
+<b>Example</b>
 
 This example uses the button widget, but the principle remains the same for all widgets that have the fontStyle property.
 
@@ -1649,7 +1743,7 @@ This example uses the button widget, but the principle remains the same for all 
 Form1.btn1.fontStyle = voltmx.skin.FONT_STYLE_NONE;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android
 *   Desktop Web (Not available on Desktop Web Legacy SDK)
@@ -1663,22 +1757,22 @@ Form1.btn1.fontStyle = voltmx.skin.FONT_STYLE_NONE;
 
 Specifies the weight for the font of the widget.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 fontWeight
 ```
 
-### Type
+<b>Type</b>
 
 Constant
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 *   This property can have the following constant values:
     
@@ -1687,7 +1781,7 @@ Read + Write
 *   This property does not have a default value.
 *   This property has more priority than (and overrides) the fonts property of the configured skin. Even if there is no skin configured for the widget, this property updates the skin.
 
-### Example
+<b>Example</b>
 
 This example uses the button widget, but the principle remains the same for all widgets that have the fontWeight property.
 
@@ -1695,7 +1789,7 @@ This example uses the button widget, but the principle remains the same for all 
 Form1.btn1.fontWeight = voltmx.skin.FONT_WEIGHT_NORMAL;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android
 *   Desktop Web (Not available on Desktop Web Legacy SDK)
@@ -1709,26 +1803,26 @@ Form1.btn1.fontWeight = voltmx.skin.FONT_WEIGHT_NORMAL;
 
 The frame property reflects the calculated flex layout properties derived at application runtime. If a widget’s calculated position, width, or height has been manipulated at runtime, the frame property will reflect the final derived value. The frame property is a JSObject with the keys (x, y, width, height) measured in default system units.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 frame
 ```
 
-### Type
+<b>Type</b>
 
 JSObject
 
-### Read/Write
+<b>Read/Write</b>
 
 Read only
 
-### Remarks
+<b>Remarks</b>
 
 The frame values are correct when you app is processing the doLayout event. Accessing the frame property in the postShow event handler is not suggested as the layout cycles are still being calculated and the frame values might not be up to date.
 
-### Example
+<b>Example</b>
 
 Getting the frame property on an existing widget
 
@@ -1751,7 +1845,7 @@ var flexcontainerFrame = frmHome.flexcontainer1.frame;
 
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Not available in the IDE.
 
@@ -1771,22 +1865,22 @@ It determines the height of the widget and measured along the y-axis.
 
 The height property determines the height of the widget’s bounding box. The value may be set using DP (Device Independent Pixels), Percentage, or Pixels. For supported widgets, the height may be derived from either the widget or container’s contents by setting the height to “preferred”.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 height
 ```
 
-### Type
+<b>Type</b>
 
 Number, String, and Constant
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 Following are the available measurement options:
 
@@ -1796,7 +1890,7 @@ Following are the available measurement options:
 *   default: Specifies the default value of the widget.
 *   voltmx.flex.USE\_PREFERED\_SIZE: When this option is specified, the layout uses preferred height of the widget as height and preferred size of the widget is determined by the widget and may varies between platforms.
 
-### Example
+<b>Example</b>
 
 ```
 /*Sample code to set the height property for a FlexContainer widget by using DP, Percentage and Pixels.*/
@@ -1808,7 +1902,7 @@ frmFlexContainer.myFlexContainer. height="10px";
 
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE
 *   iOS
@@ -1825,27 +1919,27 @@ frmFlexContainer.myFlexContainer. height="10px";
 
 Specifies the skin properties that define the look and feel of the widget, when the cursor hovers on the widget.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 hoverStateSkinProperties
 ```
 
-### Type
+<b>Type</b>
 
 JSON Object
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 *   This property does not have a default value.
 *   This property has more priority than (and overrides) the hoverSkin property of the configured skin.
 
-### Example
+<b>Example</b>
 
 This example uses the button widget, but the principle remains the same for all widgets that have the hoverStateSkinProperties property.
 
@@ -1882,7 +1976,7 @@ This example uses the button widget, but the principle remains the same for all 
     }
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Desktop Web (Not available on Desktop Web Legacy SDK)
 
@@ -1897,22 +1991,22 @@ This example uses the button widget, but the principle remains the same for all 
 
 id is a unique identifier of FlexContainer consisting of alpha numeric characters. Every FlexContainer should have a unique id within an application.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 id
 ```
 
-### Type
+<b>Type</b>
 
 String - \[Mandatory\]
 
-### Read/Write
+<b>Read/Write</b>
 
 Read only
 
-### Example
+<b>Example</b>
 
 ```
 //Defining properties for FlexContainer on a FlexForm
@@ -1960,7 +2054,7 @@ function testfrmGlobals() {
 }
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Available in the IDE.
 
@@ -1978,22 +2072,22 @@ Available in the IDE.
 
 A custom JSObject with the key value pairs that a developer can use to store the context with the widget. This will help in avoiding the globals to most part of the programming.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 info
 ```
 
-### Type
+<b>Type</b>
 
 JSObject
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 > **_Note:_** This is a **non-Constructor** property. You cannot set this property through widget constructor. But you can read and write data to it.
 
@@ -2009,7 +2103,7 @@ widget.info.a = "hello world";
 //widget.info.a will have old value as hello.
 ```
 
-### Example
+<b>Example</b>
 
 ```
 //Sample code to set info property for a FlexContainer widget.
@@ -2022,7 +2116,7 @@ frmFlexContainer.myFlexContainer.info = {
 voltmx.print("FlexContainer widget info ::" +frmFlexContainer.myFlexContainer.info);
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Not available in the IDE.
 
@@ -2037,28 +2131,28 @@ Not available in the IDE.
 
 Specifies whether the container is a master container.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 isMaster
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 Read Only after initialization.
 
-### Remarks
+<b>Remarks</b>
 
 If the `isMaster` property is true, the current widget is a master container and all of the rules and limitations of master containers apply to it. For more information, please see [Masters](Masters.md) in the Overviews section of this guide, as well as [Using Masters](../../../Iris/iris_widget_prog_guide/Content/Masters.md?Highlight=Masters) in the [Iris User Guide](../../../Iris/iris_user_guide/Content/Introduction.md).
 
 Your app can set the `isMaster` property in this container's constructor. After that, this property is read-only.
 
-### Example
+<b>Example</b>
 
 ```
 
@@ -2074,22 +2168,22 @@ var isMasterContainer = flexContainer1.isMaster;
 
 When you use the FlexContainer as a popup, this property helps to prevent user interaction beyond the edges of the FlexContainer.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 isModalContainer
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 A modal window is a child window that requires user interaction before the control goes to the parent window. When a child window opens from a parent window (such as a popup), to make the parent window non-interactive , set the isModalContainer property as true.
 
@@ -2097,14 +2191,14 @@ The default value of this property is false.
 
 > **_Note:_** If ModalContainer property is set to true in any of the FlexContainer widget, the Z Index value of that container and all of its parent containers should be set to **Custom**.
 
-### Example
+<b>Example</b>
 
 ```
 
 Form1.FlexPopup.isModalContainer = true;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in IDE
 *   iOS
@@ -2122,33 +2216,33 @@ Form1.FlexPopup.isModalContainer = true;
 
 This property controls the visibility of a widget on the FlexContainer.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 isVisible
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 The default value for this property is true.
 
-### Example
+<b>Example</b>
 
 ```
 //Sample code to set isVisible property for a FlexContainer widget.
 frmFlexContainer.myFlexContainer.isVisible=true;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Available in the IDE.
 
@@ -2166,22 +2260,22 @@ Available in the IDE.
 
 Specifies if the arrangement of the widgets either in free form or horizontal or vertical direction.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 layoutType
 ```
 
-### Type
+<b>Type</b>
 
 Number
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 The default value for this property is voltmx.flex.FREE\_FORM.
 
@@ -2211,14 +2305,14 @@ The available options are:
     *   The FlexContainer cell respects height, minHeight, maxHeight property only.
     *   If the width of a child widget exceeds the width of the container widget, the next child widget is wrapped and placed in the next row.
 
-### Example
+<b>Example</b>
 
 ```
 //Sample code to set layoutType property for a FlexContainer widget.
 frmFlexContainer.myFlexContainer.layoutType=voltmx.flex.FREE_FORM;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Available in the IDE.
 
@@ -2238,26 +2332,26 @@ This property determines the lower left corner edge of the widget and is measure
 
 The left property determines the position of the left edge of the widget’s bounding box. The value may be set using DP (Device Independent Pixels), Percentage, or Pixels. In freeform layout, the distance is measured from the left edge of the parent container. In flow-vertical layout, the distance is measured from the left edge of the parent container. In flow-horizontal layout, the distance is measured from the right edge of the previous sibling widget in the hierarchy.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 left
 ```
 
-### Type
+<b>Type</b>
 
 String
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 If the layoutType is set as voltmx.flex.FLOW\_HORIZONTAL, the left property is measured from right edge of the left sibling widget.
 
-### Example
+<b>Example</b>
 
 ```
 //Sample code to set the left property for widgets by using DP, Percentage and Pixels.
@@ -2268,7 +2362,7 @@ frmHome.widgetID.left = "10%";
 frmHome.widgetID.left = "10px";
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE
 *   iOS, Android, Windows, SPA, and Desktop Web
@@ -2284,22 +2378,22 @@ This property specifies the maximum height of the widget and is applicable only 
 
 The maxHeight property determines the maximum height of the widget’s bounding box. The value may be set using DP (Device Independent Pixels), Percentage, or Pixels. The maxHeight value overrides the preferred, or “autogrow” height, if the maxHeight is less than the derived content height of the widget.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 maxHeight
 ```
 
-### Type
+<b>Type</b>
 
 Number
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Example
+<b>Example</b>
 
 ```
 //Sample code to set the maxHeight property for widgets by using DP, Percentage and Pixels.
@@ -2310,7 +2404,7 @@ frmHome.widgetID.maxHeight = "10%";
 frmHome.widgetID.maxHeight = "10px";
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE
 *   iOS, Android, Windows, SPA, and Desktop Web
@@ -2326,22 +2420,22 @@ This property specifies the maximum width of the widget and is applicable only w
 
 The Width property determines the maximum width of the widget’s bounding box. The value may be set using DP (Device Independent Pixels), Percentage, or Pixels. The maxWidth value overrides the preferred, or “autogrow” width, if the maxWidth is less than the derived content width of the widget.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 maxWidth
 ```
 
-### Type
+<b>Type</b>
 
 Number
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Example
+<b>Example</b>
 
 ```
 //Sample code to set the maxWidth property for widgets by using DP, Percentage and Pixels.
@@ -2352,7 +2446,7 @@ frmHome.widgetID.maxWidth = "10%";
 frmHome.widgetID.maxWidth = "10px";
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE
 *   iOS, Android, Windows, SPA, and Desktop Web
@@ -2368,22 +2462,22 @@ This property specifies the minimum height of the widget and is applicable only 
 
 The minHeight property determines the minimum height of the widget’s bounding box. The value may be set using DP (Device Independent Pixels), Percentage, or Pixels. The minHeight value overrides the preferred, or “autogrow” height, if the minHeight is larger than the derived content height of the widget.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 minHeight
 ```
 
-### Type
+<b>Type</b>
 
 Number
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Example
+<b>Example</b>
 
 ```
 //Sample code to set the minHeight property for widgets by using DP, Percentage and Pixels.
@@ -2394,7 +2488,7 @@ frmHome.widgetID.minHeight = "10%";
 frmHome.widgetID.minHeight = "10px";
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE
 *   iOS, Android, Windows, SPA, and Desktop Web
@@ -2410,22 +2504,22 @@ This property specifies the minimum width of the widget and is applicable only w
 
 The minWidth property determines the minimum width of the widget’s bounding box. The value may be set using DP (Device Independent Pixels), Percentage, or Pixels. The minWidth value overrides the preferred, or “autogrow” width, if the minWidth is larger than the derived content width of the widget.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 minWidth
 ```
 
-### Type
+<b>Type</b>
 
 Number
 
-### Read/Write
+<b>Read/Write</b>
 
 Read only
 
-### Example
+<b>Example</b>
 
 ```
 //Sample code to set the minWidth property for widgets by using DP, Percentage and Pixels.
@@ -2436,7 +2530,7 @@ frmHome.widgetID.minWidth = "10%";
 frmHome.widgetID.minWidth = "10px";
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE
 *   iOS, Android, Windows, SPA, and Desktop Web
@@ -2452,26 +2546,26 @@ Specifies the opacity of the widget. The value of this property must be in the r
 
 Specifies the opacity of the widget. Valid opacity values range from 0.0 (transparent), to 1.0 (opaque). Values set to less than zero will default to zero. Values more than 1.0 will default to 1. Interaction events set on a transparent widget will still be fired. To disable the events, also set the “isVisible” property to “false”.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 opacity
 ```
 
-### Type
+<b>Type</b>
 
 Number
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 > **_Note:_** This property has more priority compared to the values coming from the configured skin.
 
-### Example
+<b>Example</b>
 
 ```
 //Sample code to make the widget transparent by using the opacity property.
@@ -2481,7 +2575,7 @@ frmHome.widgetID.opacity = 0;
 frmHome.widgetID.opacity = 1;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Not available in the IDE.
 *   iOS, Android, Windows, SPA, and Desktop Web
@@ -2495,22 +2589,22 @@ frmHome.widgetID.opacity = 1;
 
 Helps you access the parent of the widget. If the widget is not part of the widget hierarchy, the parent property returns null.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 parent
 ```
 
-### Read/Write
+<b>Read/Write</b>
 
 Read only
 
-### Remarks
+<b>Remarks</b>
 
 > **_Note:_** The property works for all the widgets inside a FlexForm, FlexContainer or FlexScrollContainer.
 
-### Example
+<b>Example</b>
 
 ```
 function func() {
@@ -2520,7 +2614,7 @@ function func() {
 }
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Not available in the IDE
 *   iOS, Android, Windows, SPA, and Desktop Web
@@ -2534,27 +2628,27 @@ function func() {
 
 Specifies the skin properties that define the look and feel of the widget, when the widget is pressed or clicked.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 pressedStateSkinProperties
 ```
 
-### Type
+<b>Type</b>
 
 JSON Object
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 *   This property does not have a default value.
 *   This property has more priority than (and overrides) the pressedSkin property of the configured skin. Even if there is no skin configured for the widget, this property updates the skin.
 
-### Example
+<b>Example</b>
 
 This example uses the button widget, but the principle remains the same for all widgets that have the pressedStateSkinProperties property.
 
@@ -2591,7 +2685,7 @@ Form1.btn1.pressedStateSkinProperties = {
     }
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android
 
@@ -2608,14 +2702,14 @@ This property is used to make different layouts for different breakpoints in Fle
 
 For more information about the Simple Responsive design, click [here](../../../Iris/iris_user_guide/Content/Responsive_Design.md).
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 responsiveConfig
 ```
 
-### Type
+<b>Type</b>
 
 JSON object.
 
@@ -2627,11 +2721,11 @@ The following table shows the attributes that can be assigned to the `responsive
 | span | JSON Object | In Mobile and Tablet platforms, the keys are: `portrait` and `landscape`. In Desktop Web platform, breakpoints assigned to the form are the keys. You can assign the numbers from 0 to 12 to the keys. The default value is 12. | `span` is the twelve points in which the width of a FlexContainer is divided. If you provide any value greater than 12, it will be treated as 12. If you provide any value less than zero, it will be treated as 0. If no value is assigned to a particular breakpoint, the `span` value assigned to the previous breakpoint is considered. If no value is provided for this key, then default value is applied to all the breakpoints. |
 | offset | JSON Object | In Mobile and Tablet platforms, the keys are: `portrait` and `landscape`. In Desktop Web platform, breakpoints assigned to the form are the keys. You can assign the numbers from 0 to 12 to the keys. The default value is 0. | `offset` is the twelve point space between FlexContainers is divided. If you provide any value greater than 12, it will be treated as 12. If you provide any value less than zero, it will be treated as 0. If no value is assigned to a particular breakpoint, the `offset` value assigned to the previous breakpoint is considered. If no value is provided for this key, then default value is applied to all the breakpoints. |
 
-### Read/Write
+<b>Read/Write</b>
 
 No- Constructor level property
 
-### Example 1
+<b>Example 1</b>
 
 ```
 /*Sample code to set the responsiveConfig property to a FlexContainer widget in Desktop Web platform.*/
@@ -2655,7 +2749,7 @@ var myFlex = new voltmx.ui.FlexContainer({
 }, {}, {});
 ```
 
-### Example 2
+<b>Example 2</b>
 
 ```
 /*Sample code to set the responsiveConfig property to a FlexContainer widget in Mobile and Tablet platforms.*/
@@ -2676,7 +2770,7 @@ var myFlex = new voltmx.ui.FlexContainer({
 }, {}, {});
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE
 *   iOS, Android, Windows, SPA, and Desktop Web
@@ -2718,22 +2812,22 @@ The following table illustrates how widgets consider Local flag and Widget flag 
 | Mirror/retain FlexPositionProperties | not specified | false | Use the Design/Model-specific default layout. |
 | Mirror/retain FlexPositionProperties | not specified | not specified | Use the Design/Model-specific default layout. |
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 retainContentAlignment
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 No (only during widget-construction time)
 
-### Example
+<b>Example</b>
 
 ```
 //This is a generic property that is applicable for various widgets.
@@ -2761,7 +2855,7 @@ var btn = new voltmx.ui.Button({
 }, {});
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in IDE
 *   Windows, iOS, Android, and SPA
@@ -2803,22 +2897,22 @@ The following table illustrates how widgets consider Local flag and Widget flag 
 | Mirror/retain FlexPositionProperties | not specified | false | Use the Design/Model-specific default layout. |
 | Mirror/retain FlexPositionProperties | not specified | not specified | Use the Design/Model-specific default layout. |
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 retainFlexPositionProperties
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 No (only during widget-construction time)
 
-### Example
+<b>Example</b>
 
 ```
 //This is a generic property that is applicable for various widgets.
@@ -2846,7 +2940,7 @@ var btn = new voltmx.ui.Button({
 }, {});
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in IDE
 *   Windows, iOS, Android, and SPA
@@ -2888,22 +2982,22 @@ The following table illustrates how widgets consider Local flag and Widget flag 
 | Mirror/retain FlexPositionProperties | not specified | false | Use the Design/Model-specific default layout. |
 | Mirror/retain FlexPositionProperties | not specified | not specified | Use the Design/Model-specific default layout. |
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 retainFlowHorizontalAlignment
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read/Write
+<b>Read/Write</b>
 
 No (only during widget-construction time)
 
-### Example
+<b>Example</b>
 
 ```
 //This is a generic property that is applicable for various widgets.
@@ -2932,7 +3026,7 @@ var btn = new voltmx.ui.Button({
 }, {});
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in IDE
 *   Windows, iOS, Android, and SPA
@@ -2944,26 +3038,26 @@ var btn = new voltmx.ui.Button({
 
 * * *
 
-The _reverseLayoutDirection_ property specifies the stacking order of the child widgets of FlexContainer. It is not applicable when the value of the [layout### Type](#layoutTy) Property is _voltmx.flex.FREE\_FORM_.
+The _reverseLayoutDirection_ property specifies the stacking order of the child widgets of FlexContainer. It is not applicable when the value of the [layout<b>Type</b>](#layoutTy) Property is _voltmx.flex.FREE\_FORM_.
 
 The default value of the property is false.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 reverseLayoutDirection
 ```
 
-### Type
+<b>Type</b>
 
 Boolean
 
-### Read / Write
+<b>Read / Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 1.  If the value of _reverseLayoutDirection_ property is set as false:
     *   When the value of _layoutType_ property is, voltmx.flex.FLOW\_HORIZONTAL, the child widgets are stacked from left to right.
@@ -2972,11 +3066,11 @@ Read + Write
     *   When the value of _layoutType_ property is, voltmx.flex.FLOW\_HORIZONTAL, the child widgets are stacked from right to left.
     *   When the value of _layoutType_ property is, voltmx.flex.FLOW\_VERTICAL, the child widgets are stacked from bottom to top.
 
-### Limitations
+<b>Limitations</b>
 
 *   When the value of _reverseLayoutDirection_ property is true, the frame values of the child widgets are calculated with respect to the [left](FlexScrollContainer_Properties.md#left) property of FlexContainer. The frame values given for different features of FlexContainer widget, such as animation, must reflect this change.
 
-### Example
+<b>Example</b>
 
 You can change the flow layout direction of a FlexContainer with ID as "flexContainer1" in form "myForm" during run time by entering the following code.
 
@@ -2984,7 +3078,7 @@ You can change the flow layout direction of a FlexContainer with ID as "flexCont
 //Sample code to enable reverseLayoutDirection property for a FlexContainer widget. myForm.myFlexContainer.reverseLayoutDirection = true;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE
 *   iOS, Android, Windows, Desktop Web, and SPA
@@ -3002,26 +3096,26 @@ The right property determines the position of the right edge of the widget’s b
 
 The right property is used only if the width property is not provided.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 right
 ```
 
-### Type
+<b>Type</b>
 
 String
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 If the layoutType is set as voltmx.flex.FLOW\_HORIZONTAL, the right property is measured from left edge of the right sibling widget. The horizontal space between two widgets is measured from right of the left sibling widget and left of the right sibling widget.
 
-### Example
+<b>Example</b>
 
 ```
 //Sample code to set the right property for widgets by using DP, Percentage and Pixels.
@@ -3032,7 +3126,7 @@ frmHome.widgetID.right = "10%";
 frmHome.widgetID.right = "10px";
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE
 *   iOS, Android, Windows, SPA, and Desktop Web
@@ -3046,18 +3140,18 @@ frmHome.widgetID.right = "10px";
 
 Defines the ripple background for a FlexContainer Widget.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 rippleBackground
 ```
 
-### Type
+<b>Type</b>
 
 JSObject
 
-### Parameters
+<b>Parameters</b>
 
 **rippleColor**
 
@@ -3069,11 +3163,11 @@ You can define the ripple color in the RGBA format, where the R, G, and B range 
 
 Optional. Array of two JS Objects. Each JS Object contains following key-value pairs to define a layer for ripple background. You can define the background for the ripple as a skin or as a background color.
 
-#### background
+<b>background</b>
 
 Defines the background for the ripples. You can define the color in the RGBA format, where the R, G, and B range from 00 to ff, and the A (transparency) ranges from 00 (zero percent) to 64 (100 percent). Or, you can specify a skin as the background.
 
-#### backgroundType
+<b>backgroundType</b>
 
 Defines the type of a background. You can define:
 
@@ -3081,15 +3175,15 @@ _RIPPLE\_CONTENT\_LAYER\_COLOR_: Background as color in the RGBA format.
 
 _RIPPLE\_CONTENT\_LAYER\_SKIN_: Background as a skin.
 
-#### Mask
+<b>Mask</b>
 
 Defines the bounds for the ripple animation. The property takes the Boolean value and by default is set to false.
 
-#### padding
+<b>padding</b>
 
 Defines the space around the ripple background. Specify an array of four integers \[left, top, right, bottom\]
 
-#### paddingInPixel
+<b>paddingInPixel</b>
 
 Defines whether the units of specified padding values should be in pixels or in percentage. The property takes the Boolean value.
 
@@ -3105,15 +3199,15 @@ _RIPPLE\_PADDING\_MODE\_NEST_: Nests each layer inside padding of the previous l
 
 _RIPPLE\_PADDING\_MODE\_STACK_: Stacks each layer on top of the previous layer. This is the default value.
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 If you set rippleBackground, skin, and focusSkin properties to the FlexContainer Widget through a constructor, the rippleBackground property takes the priority. Later, if you modify or set the skin properties such as skin, focusSkin, pressedSkin, and disabledSkins dynamically, the skin properties take priority.
 
-### Example
+<b>Example</b>
 
 ```
 //Sample code to set the rippleBackground property for a FlexContainer widget. 
@@ -3133,35 +3227,35 @@ myForm.myFlexContainer.rippleBackground = {
 };
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android 5.0 and later versions.
 
 * * *
 
 </details>
-<details close markdown="block"><summary>shadowColor Property</summary>
+<details close markdown="block"><summary id="shadowColor">shadowColor Property</summary>
 
 * * *
 
 Specifies the color for the shadow of the widget.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 shadowColor
 ```
 
-### Type
+<b>Type</b>
 
 Color constant or Hexadecimal number
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 *   Colors can be specified using a 6 digit or an 8-digit hex value with alpha position. For example, ffff65 or ffffff00.
 *   When the 4-byte color format (RGBA) string is used, an alpha (A) value of 65 specifies that the color is transparent. If the value is 00, the color is opaque. The Alpha value is in percentage and must be given in the hexadecimal value for the color (100% in hexadecimal value is 65).  
@@ -3170,7 +3264,7 @@ Read + Write
 *   This property does not have a default value.
 *   This property has more priority than (and overrides) the shadow property of the configured skin. Even if there is no skin configured for the widget, this property updates the skin.
 
-### Example
+<b>Example</b>
 
 This example uses the button widget, but the principle remains the same for all widgets that have the shadowColor property.
 
@@ -3178,7 +3272,7 @@ This example uses the button widget, but the principle remains the same for all 
 Form1.btn1.shadowColor = "ea5075";
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   iOS
 *   Desktop Web (Not available on Desktop Web Legacy SDK)
@@ -3192,26 +3286,26 @@ Form1.btn1.shadowColor = "ea5075";
 
 Defines the depth of the shadow effect applied to the FlexContainer Widget.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 shadowDepth
 ```
 
-### Type
+<b>Type</b>
 
 Number
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 The depth of the shadow should be specified in DP (Device Independent Pixels) units. The higher the value of shadowDepth, the appearance of the FlexContainer Widget is elevated from the screen and the casted shadow becomes soft.
 
-### Example
+<b>Example</b>
 
 ```
 //Sample code to set shadowDepth property for a FlexContainer widget.   
@@ -3219,35 +3313,35 @@ The depth of the shadow should be specified in DP (Device Independent Pixels) un
 myForm.myFlexContainer.shadowDepth=10;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android 5.0 and later versions.
 
 * * *
 
 </details>
-<details close markdown="block"><summary>shadowOffset Property</summary>
+<details close markdown="block"><summary id="shadowOffset">shadowOffset Property</summary>
 
 * * *
 
 This property specifies the current coordinates of the shadow region in the widget.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 shadowOffset
 ```
 
-### Type
+<b>Type</b>
 
 JSON Object
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 *   The JSON Object contains the X-coordinate and Y-coordinates for the offset in the following format:
     
@@ -3257,7 +3351,7 @@ Read + Write
 *   This property does not have a default value.
 *   This property has more priority than (and overrides) the shadow property of the configured skin. Even if there is no skin configured for the widget, this property updates the skin.
 
-### Example
+<b>Example</b>
 
 This example uses the button widget, but the principle remains the same for all widgets that have the shadowOffset property.
 
@@ -3268,7 +3362,7 @@ Form1.btn1.shadowOffset= {
 };
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   iOS
 *   Desktop Web (Not available on Desktop Web Legacy SDK)
@@ -3276,35 +3370,35 @@ Form1.btn1.shadowOffset= {
 * * *
 
 </details>
-<details close markdown="block"><summary>shadowRadius Property</summary>
+<details close markdown="block"><summary id="shadowradius-property">shadowRadius Property</summary>
 
 * * *
 
 Specifies the radius for the blur value of the shadow.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 shadowRadius
 ```
 
-### Type
+<b>Type</b>
 
 Number
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 *   The default value of the shadowRadius property for a Responsive Web app is 0.
 *   The default unit for the value of this property is pixels.
 *   This property does not have a default value.
 *   This property has more priority than (and overrides) the shadow property of the configured skin. Even if there is no skin configured for the widget, this property updates the skin.
 
-### Example
+<b>Example</b>
 
 This example uses the button widget, but the principle remains the same for all widgets that have the shadowRadius property.
 
@@ -3312,7 +3406,7 @@ This example uses the button widget, but the principle remains the same for all 
  Form1.btn1.shadowRadius = 6;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   iOS
 *   Desktop Web (Not available on Desktop Web Legacy SDK)
@@ -3328,22 +3422,22 @@ This example uses the button widget, but the principle remains the same for all 
 
 Sets a type of the shadow effect to apply to the FlexContainer Widget.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 shadowType
 ```
 
-### Type
+<b>Type</b>
 
 Number
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 The property specifies a shape for the widget's shadow that is cast. You can apply any one of the following shadow types:
 
@@ -3353,7 +3447,7 @@ _PADDED\_VIEW\_BOUNDS\_SHADOW_: Shadow matches the widget's rectangular padded b
 
 _BACKGROUND\_SHADOW_: Shadow matches the widget's background. This is the default value.
 
-### Example
+<b>Example</b>
 
 ```
 //Sample code to set the shadowType property for a FlexContainer widget.   
@@ -3362,11 +3456,68 @@ myForm.myFlexContainer.shadowType = constants.VIEW_BOUNDS_SHADOW;
 
 ```
 
-### Example
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android 5.0 and later versions.
+
+* * *
+
+</details>
+<details close markdown="block"><summary id="shouldGroup">shouldGroup Property</summary>
+
+* * *
+
+This property enables the grouping of elements within a FlexContainer widget, to mitigate redundancy while invoking multiple elements that have the same context.
+
+<b>Syntax</b>
+
+```
+
+shouldGroup
+```
+
+<b>Type</b>
+
+Boolean
+
+<b>Read/Write</b>
+
+Read + Write
+
+<b>Remarks</b>
+
+Ensure that Accessibility Config is enabled for the app, before you use the shouldGroup property.
+
+<b>Example</b>
+
+```
+//Sample code to enable the shouldGroup property for a FlexContainer widget.  var flxPagesHdr = new kony.ui.FlexContainer({
+                "autogrowMode": kony.flex.AUTOGROW_NONE,
+                "clipBounds": false,
+                "height": "180dp",
+                "id": "flxPagesHdr",
+                "isVisible": false,
+                "layoutType": kony.flex.FREE_FORM,
+                "left": "-1dp",
+                "isModalContainer": false,
+                "skin": "slFbox0jdc689d7cdb74a",
+                "top": "0dp",
+                "width": "100%",
+                "zIndex": 100,
+                "shouldGroup" : true
+            }, {
+                "paddingInPixel": false
+            }, {});
+
+```
+
+
+<b>Platform Availability</b>
+
+*   Available in the IDE
+*   iOS
+*   Android
 
 * * *
 
@@ -3377,22 +3528,22 @@ myForm.myFlexContainer.shadowType = constants.VIEW_BOUNDS_SHADOW;
 
 This property specifies a background skin for FlexContainer widget.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 skin
 ```
 
-### Type
+<b>Type</b>
 
 String
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Example
+<b>Example</b>
 
 ```
 //Sample code to set skin property for a FlexContainer widget.   
@@ -3401,7 +3552,7 @@ myForm.myFlexContainer.skin="sknred";
 
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 Available in the IDE.
 
@@ -3419,22 +3570,22 @@ Available in the IDE.
 
 Specifies the color for the text shadow of the widget.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 textShadowColor
 ```
 
-### Type
+<b>Type</b>
 
 Color constant or Hexadecimal number
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 *   Colors can be specified using a 6 digit or an 8-digit hex value with alpha position. For example, ffff65 or ffffff00.
 *   When the 4-byte color format (RGBA) string is used, an alpha (A) value of 65 specifies that the color is transparent. If the value is 00, the color is opaque. The Alpha value is in percentage and must be given in the hexadecimal value for the color (100% in hexadecimal value is 65).  
@@ -3443,7 +3594,7 @@ Read + Write
 *   This property does not have a default value.
 *   This property has more priority than (and overrides) the textShadow property of the configured skin. Even if there is no skin configured for the widget, this property updates the skin.
 
-### Example
+<b>Example</b>
 
 This example uses the button widget, but the principle remains the same for all widgets that have the textShadowColor property.
 
@@ -3451,7 +3602,7 @@ This example uses the button widget, but the principle remains the same for all 
 Form1.btn1.textShadowColor = "ea5075";
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android
 *   iOS
@@ -3466,22 +3617,22 @@ Form1.btn1.textShadowColor = "ea5075";
 
 This property specifies the current coordinates of the text shadow region in the widget.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 textShadowOffset
 ```
 
-### Type
+<b>Type</b>
 
 JSON Object
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 *   The JSON Object contains the X-coordinate and Y-coordinates for the offset in the following format:
     
@@ -3491,7 +3642,7 @@ Read + Write
 *   This property does not have a default value.
 *   This property has more priority than (and overrides) the textShadow property of the configured skin. Even if there is no skin configured for the widget, this property updates the skin.
 
-### Example
+<b>Example</b>
 
 This example uses the button widget, but the principle remains the same for all widgets that have the textShadowOffset property.
 
@@ -3502,7 +3653,7 @@ Form1.btn1.textShadowOffset = {
 };
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android
 *   iOS
@@ -3517,29 +3668,29 @@ Form1.btn1.textShadowOffset = {
 
 Specifies the radius for the blur value of the text shadow.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 textShadowRadius
 ```
 
-### Type
+<b>Type</b>
 
 Number
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 *   The default value of the textShadowRadius property for a Responsive Web app is 0.
 *   The default unit for the value of this property is pixels.
 *   This property does not have a default value.
 *   This property has more priority than (and overrides) the textShadow property of the configured skin. Even if there is no skin configured for the widget, this property updates the skin.
 
-### Example
+<b>Example</b>
 
 This example uses the button widget, but the principle remains the same for all widgets that have the textShadowRadius property.
 
@@ -3547,7 +3698,7 @@ This example uses the button widget, but the principle remains the same for all 
  Form1.btn1.textShadowRadius = 6;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android
 *   iOS
@@ -3566,26 +3717,26 @@ This property determines the top edge of the widget and measured from the top bo
 
 The top property determines the position of the top edge of the widget’s bounding box. The value may be set using DP (Device Independent Pixels), Percentage, or Pixels. In freeform layout, the distance is measured from the top edge of the parent container. In flow-vertical layout, the distance is measured from the bottom edge of the previous sibling widget in the hierarchy. In flow-horizontal layout, the distance is measured from the left edge of the parent container.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 top
 ```
 
-### Type
+<b>Type</b>
 
 String
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 If the layoutType is set as voltmx.flex.FLOW\_VERTICAL, the top property is measured from the bottom edge of the top sibling widget. The vertical space between two widgets is measured from bottom of the top sibling widget and top of the bottom sibling widget.
 
-### Example
+<b>Example</b>
 
 ```
 //Sample code to set the top property for widgets by using DP, Percentage and Pixels.
@@ -3596,7 +3747,7 @@ frmHome.widgetID.top = "10%";
 frmHome.widgetID.top = "10px";
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE
 *   iOS, Android, Windows, SPA, and Desktop Web
@@ -3610,26 +3761,26 @@ frmHome.widgetID.top = "10px";
 
 Contains an animation transformation that can be used to animate the widget.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 transform
 ```
 
-### Type
+<b>Type</b>
 
 JSObject
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 This property is set to the identify transform by default. Any transformations applied to the widget occur relative to the widget's anchor point. The transformation contained in this property must be created using the [voltmx.ui.makeAffineTransform](../../../Iris/iris_api_dev_guide/content/voltmx.ui_functions.md#makeAffi) function.
 
-### Example
+<b>Example</b>
 
 This example uses the button widget, but the principle remains the same for all widgets that have a transform property.
 
@@ -3642,7 +3793,7 @@ newTransform.translate3D(223, 12, 56);
 widget.transform = newTransform;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   iOS, Android, Windows, and SPA
 
@@ -3655,22 +3806,22 @@ widget.transform = newTransform;
 
 This property is used to enable and configure left or right swipe actions for a widget. The widgetSwipeMove Property can be used for all widgets . The most common use case is for implementing swipe action for individual rows in Segment.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 widgetSwipeMove
 ```
 
-### Type
+<b>Type</b>
 
 String
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Input Parameters
+<b>Input Parameters</b>
 
 <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('Resources/TableStyles/2015DefinitiveBasicTable.css');" class="TableStyle-2015DefinitiveBasicTable" cellspacing="0"><colgroup><col class="TableStyle-2015DefinitiveBasicTable-Column-Column1" style="width: 80px;"> <col class="TableStyle-2015DefinitiveBasicTable-Column-Column1" style="width: 80px;"> <col class="TableStyle-2015DefinitiveBasicTable-Column-Column1" style="width: 184px;"> <col class="TableStyle-2015DefinitiveBasicTable-Column-Column1" style="width: 300px;"></colgroup><tbody><tr class="TableStyle-2015DefinitiveBasicTable-Body-Body1"><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1" style="text-align: center;">Parameter Name</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">Type</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1" style="text-align: center;">Default Value</td><td class="TableStyle-2015DefinitiveBasicTable-BodyD-Column1-Body1" style="text-align: center;">Description</td></tr><tr class="TableStyle-2015DefinitiveBasicTable-Body-Body1"><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">translate</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">Boolean</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">true</td><td class="TableStyle-2015DefinitiveBasicTable-BodyD-Column1-Body1">This is an optional parameter. When the value of this parameter is set as true, the widget moves along with the swipe in the same direction.</td></tr><tr class="TableStyle-2015DefinitiveBasicTable-Body-Body1"><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">Xboundaries</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">Array</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">Size of the current widget</td><td class="TableStyle-2015DefinitiveBasicTable-BodyD-Column1-Body1">This is an optional parameter and it defines the boundaries of the swipe in the X-axis.</td></tr><tr class="TableStyle-2015DefinitiveBasicTable-Body-Body1"><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">swipeLeft/swipeRight</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">JS Object</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">&nbsp;</td><td class="TableStyle-2015DefinitiveBasicTable-BodyD-Column1-Body1">This is an optional parameter and it is used to define the configuration of the widget while swiping to the left/ right. Each <i>swipeLeft</i> or <i>swipeRight</i>parameter is an array of configuration attributes containing <i>translateRange</i> , <i>callback</i> , <i>translatePos</i> , and <i>translate</i>. This JS&nbsp;Object defines the behavior of the widget during the swipe action.</td></tr><tr class="TableStyle-2015DefinitiveBasicTable-Body-Body1"><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">translateRange</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">Array</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">Size of the current widget</td><td class="TableStyle-2015DefinitiveBasicTable-BodyD-Column1-Body1">This is an optional parameter and it defines the sub-boundaries for the action when the swipe action ends.</td></tr><tr class="TableStyle-2015DefinitiveBasicTable-Body-Body1"><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">translatePos</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">Array</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">Previous position of the widget</td><td class="TableStyle-2015DefinitiveBasicTable-BodyD-Column1-Body1">This is an optional parameter and it determines the final translation position to be applied to the widget when the widget swipe reaches the <i>translateRange</i> value.</td></tr><tr class="TableStyle-2015DefinitiveBasicTable-Body-Body1"><td class="TableStyle-2015DefinitiveBasicTable-BodyB-Column1-Body1">callback</td><td class="TableStyle-2015DefinitiveBasicTable-BodyB-Column1-Body1">JS Object</td><td class="TableStyle-2015DefinitiveBasicTable-BodyB-Column1-Body1">null</td><td class="TableStyle-2015DefinitiveBasicTable-BodyA-Column1-Body1">This is an optional parameter and it defines the callback which needs to be triggered when the finger swipe reaches the sub boundary defined in <i>translateRange</i>. The attributes inside this parameter are described in the following table.</td></tr></tbody></table>
 
@@ -3678,13 +3829,13 @@ The following table consists of the parameters of the _callback_ parameter:
 
 <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('Resources/TableStyles/2015DefinitiveBasicTable.css');" class="TableStyle-2015DefinitiveBasicTable" cellspacing="0"><colgroup><col class="TableStyle-2015DefinitiveBasicTable-Column-Column1" style="width: 111px;"> <col class="TableStyle-2015DefinitiveBasicTable-Column-Column1" style="width: 93px;"> <col class="TableStyle-2015DefinitiveBasicTable-Column-Column1"></colgroup><tbody><tr class="TableStyle-2015DefinitiveBasicTable-Body-Body1"><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1" style="text-align: center;">Parameter Name</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">Type</td><td class="TableStyle-2015DefinitiveBasicTable-BodyD-Column1-Body1" style="text-align: center;">Description</td></tr><tr class="TableStyle-2015DefinitiveBasicTable-Body-Body1"><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">widgetHandle</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">&nbsp;</td><td class="TableStyle-2015DefinitiveBasicTable-BodyD-Column1-Body1">This parameter consists of the widget handle or ID of the widget on which the swipe action has been performed.</td></tr><tr class="TableStyle-2015DefinitiveBasicTable-Body-Body1"><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">context</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">JS Object</td><td class="TableStyle-2015DefinitiveBasicTable-BodyD-Column1-Body1">This is applicable only for widgets inside the Segment with row templates. Each context parameter consists of <i>rowIndex</i>, <i>sectionIndex</i> and <i>widgetref</i></td></tr><tr class="TableStyle-2015DefinitiveBasicTable-Body-Body1"><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">rowIndex</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">Number</td><td class="TableStyle-2015DefinitiveBasicTable-BodyD-Column1-Body1">This parameter stores the row index of the Segment containing the swiped widget.</td></tr><tr class="TableStyle-2015DefinitiveBasicTable-Body-Body1"><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">sectionIndex</td><td class="TableStyle-2015DefinitiveBasicTable-BodyE-Column1-Body1">Number</td><td class="TableStyle-2015DefinitiveBasicTable-BodyD-Column1-Body1">This parameter stores the section index of the Segment containing the swiped widget.</td></tr><tr class="TableStyle-2015DefinitiveBasicTable-Body-Body1"><td class="TableStyle-2015DefinitiveBasicTable-BodyB-Column1-Body1">widgetref</td><td class="TableStyle-2015DefinitiveBasicTable-BodyB-Column1-Body1">widgetHandle</td><td class="TableStyle-2015DefinitiveBasicTable-BodyA-Column1-Body1">This parameter stores the handle of the Segment containing the swiped widget.</td></tr></tbody></table>
 
-### Remarks
+<b>Remarks</b>
 
 *   For a Segment, the **widgetSwipeMove** Property is configured while setting the data of the Segment.
 
 > **_Note:_** It is not recommended to assign the widgetSwipeMove property on a top Flex container of the segment template widget.
 
-### Limitations
+<b>Limitations</b>
 
 *   When a translation animation is applied to the same widget that has **widgetSwipeMove** already configured, the action which has been performed last takes precedence. For example, if you have set a translation animation on a FlexContainer and then set the _widgetSwipeMove_ property, the actions set in _widgetSwipeMove_ take precedence over the translation animation.
 *   The state of the swipe transition of the widget is not retained.
@@ -3693,7 +3844,7 @@ The following table consists of the parameters of the _callback_ parameter:
 *   If the widgetSwipeMove property is configured on a top level Flex container of a segment template, the onRowClick event will not be triggered. - Applicable on iOS, Android, and SPA.
 *   Android limitation: On Android devices, when the user lifts their finger, the transition occurs immediately.
 
-### Example
+<b>Example</b>
 
 Following is a code snippet for a mail app. Here we have used a Segment for listing the mail and the _widgetSwipeMove_ Property has been configured for the _SwipeFlex_ FlexContainer.
 
@@ -3702,7 +3853,7 @@ Following is a code snippet for a mail app. Here we have used a Segment for list
 //Here, we have shown how to use the widetSwipeMove property for Button widget.
 /*You need to make a corresponding use of the 
 widgetSwipeMove property for other applicable widgets.*/  
-//### Example of a swipe move configuration.  
+//Example of a swipe move configuration.  
 var swipeMoveConfig = {
  "translate": true,
  "Xboundaries": ["-60%", "60%"],
@@ -3734,7 +3885,7 @@ this.view.myButton.widgetSwipeMove=swipeMoveConfig;
 
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Android, iOS, and SPA
 
@@ -3749,22 +3900,22 @@ This property determines the width of the widget and is measured along the x-axi
 
 The width property determines the width of the widget’s bounding box. The value may be set using DP (Device Independent Pixels), Percentage, or Pixels. For supported widgets, the width may be derived from either the widget or container’s contents by setting the width to “preferred”.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 width
 ```
 
-### Type
+<b>Type</b>
 
 Number, String, and Constant
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 Following are the options that can be used as units of width:
 
@@ -3774,7 +3925,7 @@ Following are the options that can be used as units of width:
 *   default: Specifies the default value of the widget.
 *   voltmx.flex.USE\_PREFERED\_SIZE: When this option is specified, the layout uses preferred width of the widget as width and preferred size of the widget is determined by the widget and may varies between platforms.
 
-### Example
+<b>Example</b>
 
 ```
 //Sample code to set the width property for widgets by using DP, Percentage and Pixels.
@@ -3785,7 +3936,7 @@ frmHome.widgetID.width = "10%";
 frmHome.widgetID.width = "10px";
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE
 *   iOS, Android, Windows, SPA, and Desktop Web
@@ -3799,22 +3950,22 @@ This property specifies the stack order of a widget. A widget with a higher zInd
 
 The zIndex property is used to set the stack, or layer order of a widget. Widgets with higher values will appear “over”, or “on top of” widgets with lower values. Widgets layered over other widgets will override any interaction events tied to widgets beneath. Modifying the zIndex does not modify the order of the widgets in the Volt MX Iris hierarchy, inside of a flexContainer or form. The zIndex property accepts only positive values.
 
-### Syntax 
+<b>Syntax</b>
 
 ```
 
 zIndex
 ```
 
-### Type
+<b>Type</b>
 
 Number
 
-### Read/Write
+<b>Read/Write</b>
 
 Read + Write
 
-### Remarks
+<b>Remarks</b>
 
 The default value for this property is 1.
 
@@ -3848,14 +3999,14 @@ flx.zIndex = voltmx.flex.ZINDEX\_AUTO;
 
 ```
 
-### Example
+<b>Example</b>
 
 ```
 //Sample code to set the zIndex property for widgets.  
 frmHome.widgetID.zIndex = 300;
 ```
 
-### Platform Availability
+<b>Platform Availability</b>
 
 *   Available in the IDE
 *   iOS, Android, Windows, SPA, and Desktop Web

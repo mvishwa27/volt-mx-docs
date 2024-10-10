@@ -37,10 +37,10 @@ KNYIdentityService * identityService = [
 ];
 ```
 
-> **_Note:_** Call these methods only after successful completion of -\[HCLClient initializeInBackgroundWithAppKey:appSecret:serviceURLString:completion\]. For more details, refer to [Init method](#NoteInit).  
+> **_Note:_** Call these methods only after successful completion of -\[KNYClient initializeInBackgroundWithAppKey:appSecret:serviceURLString:completion\]. For more details, refer to [Init method](#NoteInit).  
 
 > **_Important:_** When you select Volt MX User Repository as the identity type, the system does not allow you to provide an identity name.  
-To use Volt MX User Repository as authentication service, ensure that the value for `initWithIdentityName`: method must be set as `userstore` in the HCLIdentityService class. If you set it with any other value (for example, Volt MX User Repository, User Store or Cloud Repository), the system throws an error.
+To use Volt MX User Repository as authentication service, ensure that the value for `initWithIdentityName`: method must be set as `userstore` in the KNYIdentityService class. If you set it with any other value (for example, Volt MX User Repository, User Store or Cloud Repository), the system throws an error.
 
 Login with provider type as OAuth/SAML
 --------------------------------------

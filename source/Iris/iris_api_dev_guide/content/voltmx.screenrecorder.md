@@ -192,7 +192,7 @@ var blob = voltmx.screenrecorder.getrecordeddata();
 
 Returns a Blob URL of the screen recording as a String.
 
-> **_Note:_** In the Opera(v60) web browser, if you assign the Blob URL of the screen recording to the [source](../../../Iris/iris_widget_prog_guide/Content/Video_Basic_Properties.md#source) property of the Video widget, the recording may not start. This is because the Opera(v60) web browser has a technical limitation while playing an HTML5 video.
+> **_Note:_** In the Opera](v60) web browser, if you assign the Blob URL of the screen recording to the [source](../../../Iris/iris_widget_prog_guide/Content/Video_Basic_Properties.md#source) property of the Video widget, the recording may not start. This is because the Opera(v60) web browser has a technical limitation while playing an.md5 video.
 
 * * *
 

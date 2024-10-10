@@ -120,11 +120,13 @@ If you want to store userid and password in HTTP session, write the below code i
 You need to configure the below -D parameters:
 
 ```
-
-    voltmx.http.proxyHost
-    voltmx.http.proxyPort
-    voltmx.http.proxyUser  
-    voltmx.http.proxyPassword
+kony.http.proxyHost
+kony.http.proxyPort
+kony.http.proxyUser
+kony.http.proxyPassword
+kony.proxy.ntlm.domainName
+kony.proxy.authentication.mode
+KONY_SERVER_FORCE_ENABLE_PROXY
 ```
 
 If end server is with NTLM enabled authentication, then you need to configure the additional below -D parameter:
@@ -228,7 +230,7 @@ Sample HTTP Response from end server:
 <soapenv:Envelope xmlns:Soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">     
 <soapenv:Body>     
     <lmsSOAPResponse xmlns="HYPERLINK "http://lms.sbi.com/"http://lms.sbi.com">
-         <lmsPReturn>&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;&lt;LMS&gt;&lt;record id="0"&gt;&lt;CO_APP2_GMI&gt;![CDATA[Google check]]&lt;/CO_APP2_GMI&gt;&lt;NMI_ELG_CAL&gt;&lt;/record&gt;&lt;/LMS&gt;</lmsReturn>
+         <lmsPReturn>&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;&lt;LMS&gt;&lt;record id="0"&gt;&lt;CO_APP2_GMI&gt;![CDATA[Google check]&lt;/CO_APP2_GMI&gt;&lt;NMI_ELG_CAL&gt;&lt;/record&gt;&lt;/LMS&gt;</lmsReturn>
       </lmsSOAPResponse>
    </soapenv:Body>
 </soapenv:Envelope>
@@ -242,7 +244,7 @@ The sample embedded xml in SOAP response is converted into valid SOAP response f
    <soapenv:Body>
       <lmsSOAPResponse xmlns="HYPERLINK "http://lms.sbi.com/"http://l   
 ms.sbi.com">
-         <lmsPReturn>&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;&lt;LMS&gt;&lt;record id="0"&gt;&lt;CO_APP2_GMI&gt;![CDATA[Google check]]&lt;/CO_APP2_GMI&gt;&lt;NMI_ELG_CAL&gt;&lt;/record&gt;&lt;/LMS&gt;</lmsReturn>
+         <lmsPReturn>&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;&lt;LMS&gt;&lt;record id="0"&gt;&lt;CO_APP2_GMI&gt;![CDATA[Google check]&lt;/CO_APP2_GMI&gt;&lt;NMI_ELG_CAL&gt;&lt;/record&gt;&lt;/LMS&gt;</lmsReturn>
       </lmsSOAPResponse>
    </soapenv:Body>
 </soapenv:Envelope>

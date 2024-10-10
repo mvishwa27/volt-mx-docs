@@ -360,7 +360,7 @@ This property is available on Windows Phone 8.1
 * * *
 
 </details>
-<details close markdown="block"><summary>contextPath</summary>
+<details close markdown="block"><summary id="contextP">contextPath</summary>
 
 * * *
 
@@ -1404,7 +1404,7 @@ Boolean
 
 ### Remarks
 
-A web cache is a mechanism for the temporary storage (caching) of web documents, such as HTML pages and images, to reduce bandwidth usage, server load, and perceived lag.
+A web cache is a mechanism for the temporary storage ](caching) of web documents, such as.md pages and images, to reduce bandwidth usage, server load, and perceived lag.
 
 The default value for this property is true.
 
@@ -1771,7 +1771,7 @@ This property is available on Desktop Web platform.
 * * *
 
 </details>
-<details close markdown="block"><summary>scrollsToTop</summary>
+<details close markdown="block"><summary id="scrollsT">scrollsToTop</summary>
 
 * * *
 
@@ -1855,7 +1855,7 @@ var popUp=new voltmx.ui.Popup(popBasic, popLayout, popPSP);
 * * *
 
 </details>
-<details close markdown="block"><summary>showMiniAppMenu</summary>
+<details close markdown="block"><summary id="showMini">showMiniAppMenu</summary>
 
 * * *
 

@@ -369,7 +369,7 @@ Below syntax filter all the records where `second(BirthDate)` eq `40`.
 
  Filters to list all the recodrs where post rounding the column value is equal to provided number.
 
- ### Ceiling 
+### Ceiling 
  
   API Usage
 
@@ -381,7 +381,7 @@ Example
 
 Below syntax filter all the records where `ceiling` rounds upto `32`.
  
- ### Floor
+### Floor
  
  API Usage
 
@@ -394,7 +394,7 @@ Example
 Below syntax filter all the records where `ceiling` rounds upto `32`.
 
 
- ### Round 
+### Round 
 
 API Usage
 
@@ -429,5 +429,24 @@ Below syntax filter all the records where trim gives CompanyName without leading
 ```
  trim(CompanyName) eq CompanyName
 ```
+
+### indexof
+
+The indexof function to fillter all the records where parameter values returns the zero-based character position of the first occurrence of the second parameter in the first parameter, or -1 if the first parameter does not contain the second parameter. 
+
+API Usage
+
+```
+ $filter=indexof('colname','expression') eq value
+```
+
+Example
+
+Below syntax filters all the records where `Name` containing 'lfreds' starting at the second character.
+
+```
+ indexof(Name,'lfreds') eq 1
+```
+Note : As of now it is supported only in the MySQL and in the Oracle backend databases.
 
 

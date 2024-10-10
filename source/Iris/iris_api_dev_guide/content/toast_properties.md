@@ -73,7 +73,7 @@ alignConfig
 
 ```
 var offset = { 
-    gravity: constants.TOAST_POS_MIDDLE_CENTER, 
+    gravity: constant.TOAST_POS_MIDDLE_CENTER, 
     x: "100",
     y: "200"
 };

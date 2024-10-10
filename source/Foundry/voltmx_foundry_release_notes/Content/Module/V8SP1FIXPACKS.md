@@ -7,7 +7,7 @@ Click any of the following to learn about the minor enhancements and fixes made 
 
 > **_Note:_** For Volt MX Foundry V8 SP1, Fix Pack 1, Fix Pack 2, and Fix Pack 3 are not available.
 
-*   [V8 SP1 Fix Pack 6 (Install Volt MX Foundry Containers Solution On-Premises)](V8SP1Fixpack6.md#V8SP1Fixpack6.html)
+*   [V8 SP1 Fix Pack 6 ](Install Volt MX Foundry Containers Solution On-Premises)](V8SP1Fixpack6.md#V8SP1Fixpack6.md)
 
 <!-- *   [V8 SP1 Fix Pack 5(Install Volt MX Foundry on Azure)](V8SP1Fixpack5.md) -->
 

@@ -201,7 +201,7 @@ Responsive Web Enhancements
 
 In the V9 Service Pack 2 release, Volt MX Iris introduces support to implement CSS and HTML capabilities in the splash screen for Responsive web apps, by using Custom CSS and Custom HTML code. Prior to the V9 Service Pack 2 release, you could only use images to implement the splash screen for Responsive Web apps.
 
-For more information on this feature, click [here](../../../Iris/iris_user_guide/Content/Splash_Screen_Properties.md#configure-a-splash-screen-by-using-custom-css-html).
+For more information on this feature, click [here](../../../Iris/iris_user_guide/Content/Splash_Screen_Properties.md#configure-a-splash-screen-by-using-custom-css.md).
 
 ### Protected Mode CI Build
 

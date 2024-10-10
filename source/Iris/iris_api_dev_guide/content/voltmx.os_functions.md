@@ -317,8 +317,6 @@ Available only on Mobile Web.
 
 This API provides the ability to query and fetch the actual OS allocated memory available for the application on the mobile device.
 
-
-
 You can use this API to:
 
 *   Find out the free memory on the mobile device for the application, clear unwanted objects, and improve the application's performance.
@@ -761,6 +759,49 @@ Available on all platforms except Mobile Web.
 * * *
 
 </details>
+
+<details close markdown="block"><summary>voltmx.os.hasNFCSupport</summary>
+
+* * *
+
+This Api is the part of voltmx.os namespace and used to check if the NFC is supported on the device or not. This Api is useful for checking the NFC support before scanning any tag.
+
+<b>Syntax</b>
+
+voltmx.os.hasNFCSupport()
+
+<b>Input Parameters</b>
+
+None
+
+<b>Example</b>
+
+```
+function startScan() {
+
+if(voltmx.os.hasNFCSupport()) { // check if the device has NFC support, then only call the other NFC Api.
+
+//call NFC API's
+
+} else {
+
+alert ("This device doesn't support NFC feature");
+
+}
+
+}
+```
+
+Platform Availability
+
+Android, iOS
+
+
+* * *
+
+</details>
+
+</details>
 <details close markdown="block"><summary>voltmx.os.hasTouchSupport</summary>
 
 * * *
@@ -800,6 +841,7 @@ Available on all platforms except Mobile Web and Desktop Web.
 * * *
 
 </details>
+
 <details close markdown="block"><summary>voltmx.os.print</summary>
 
 * * *
@@ -1433,7 +1475,7 @@ The following are a few sample useragents:
 | `OPWV-SDK/62 UP.Browser/6.2.2.1.208 (GUI) MMP/2.0` | Openwave Mobile Browser 6.2.2 |
 | `Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)` | Microsoft Internet Explorer 6 |
 | `Mozilla/5.0 (Windows; U; Windows NT 5.0; en-US; rv:1.7.12) Gecko/20050915 Firefox/1.0.7` | Mozilla Firefox 1.0.7 running on Windows 2000 |
-| `Mozilla/5.0(iPad; U; CPU iPhone OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B314 Safari/531.21.10` | iPad |
+| `Mozilla/5.0](iPad; U; CPU iPhone OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (.md, like Gecko) Version/4.0.4 Mobile/7B314 Safari/531.21.10` | iPad |
 | `Device Model. For example, Galaxy Nexus.` | Android and Android Tablet. |
 
 You can use this API in the following scenarios when you need to identify:
@@ -1475,5 +1517,6 @@ Available on all platforms.
 
 * * *
 </details>
+
 
 ![](resources/prettify/onload.png)

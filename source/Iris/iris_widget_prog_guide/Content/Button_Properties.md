@@ -1,12 +1,12 @@
                                   
 
 
-Button Properties
-=================
+### <a id=“button-properties”></a>Button Properties
+
 
 * * *
 
-
+<a id="accessibilityconfig"/>
 <details close markdown="block"><summary>accessibilityConfig Property</summary>
 
 * * *
@@ -96,6 +96,54 @@ Form1.myButton.accessibilityConfig = {
 
 *   Available in the IDE
 *   iOS, Android, SPA, and Desktop Web
+
+* * *
+
+</details>
+<details close markdown="block"><summary>activeStateSkin Property</summary>
+
+* * *
+
+Specifies the look and feel of a widget when the widget is in focus.
+
+When the activeStateSkin property is configured for a widget, the activeStateSkin is applied to the widget when a user focuses on the widget (either by using the TAB key, mouse-click, or by using the setActive API programmatically).
+
+### Syntax
+
+```
+activeStateSkin 
+```
+
+### Type
+
+String
+
+### Read/Write
+
+Read + Write
+
+### Remarks
+
+If a widget has the activeStateSkin, focusSkin, and the hoverSkin properties configured, the skins are applied based on the mouse-action performed on the widget:
+
+*    The **focusSkin** is applied on the mouse-down action on the widget.
+*    The **hoverSkin** is applied on the mouse-over action on the widget.
+*    The **activeStateSkin** is applied on the mouse-release action on the widget.
+
+
+### Example
+
+Setting the activeStateSkin property on an existing widget
+
+```
+//The Active State Skin is a skin created under the Skins tab
+frmButton.myButton.activeStateSkin= 'btnActiveStateSkin';
+```
+
+### Platform Availability
+
+*    Available in the IDE
+*    Available on the Responsive Web platform
 
 * * *
 

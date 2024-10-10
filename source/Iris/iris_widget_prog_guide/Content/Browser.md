@@ -158,9 +158,9 @@ The Browser widget capabilities can be broadly categorized into the following:
 | [evaluateJavaScript](Browser_Methods.md#evaluate) | Accepts a JavaScript snippet in the form of a string. |
 | [evaluateJavaScriptAsync](Browser_Methods.md#evaluate2) | Accepts a JavaScript snippet and a callback function as inputs. |
 | [getBadge](Browser_Methods.md#getBadge) | Enables you to read the badge value (if any) attached to the specified widget. |
-| [getHTMLFilesInWebFolder](Browser_Methods.md#getHTMLFilesInWebFolder) | Retrieves a list of the HTML files of the specified type. |
+| [getHTMLFilesInWebFolder](Browser_Methods.md#ge.mdFilesInWebFolder) | Retrieves a list of the HTML files of the specified type. |
 | [isCordovaAppsEnabled](Browser_Methods.md#isCordovaAppsEnabled) | Retrieves a Boolean value that indicates whether Apache Cordova apps are enabled. |
-| [isHtmlPreviewEnabled](Browser_Methods.md#isHtmlPreviewEnabled) | Retrieves a Boolean value that indicates whether your app can open an HTML preview. |
+| [isHtmlPreviewEnabled](Browser_Methods.md#i.mdPreviewEnabled) | Retrieves a Boolean value that indicates whether your app can open an HTML preview. |
 | [isWebAppDevelopmentEnabled](Browser_Methods.md#isWebAppDevelopmentEnabled) | Retrieves a Boolean value indicating whether web app development is enabled in the app. |
 | [setBadge](Browser_Methods.md#setBadge) | Enables you to set the badge value to the given widget at the upper, right corner of the widget. |
 | [setSafeBrowsingResponse](../../../Iris/iris_widget_prog_guide/Content/Browser_Methods.md#setSafeBrowsingResponse) | Sets an action for a Browser widget, when the onSafeBrowsingHit event is triggered. |
@@ -174,6 +174,7 @@ The Browser widget capabilities can be broadly categorized into the following:
 | [bounces](Browser_Properties.md#bounces) | Specifies whether the scroll view bounces past the edge of the content and back again. |
 | [browserType](Browser_Properties.md#browserType) | Specifies the type of the web view used to load the web pages in iOS applications. |
 | [cursorType](Browser_Properties.md#cursorType) | Specifies the type of mouse pointer used. |
+| [customUserAgent](Browser_Properties.md#customUserAgent) | Use this property to set a custom user agent string. |
 | [detectTelNumber](Browser_Properties.md#detectTelNumber) | Specifies if the Browser widget must support the detection of phone numbers in the web page and display the phone numbers as clickable Phone links. |
 | [enableOverviewMode](Browser_Properties.md#enableOv) | Specifies whether the browser should load pages in overview mode. |
 | [enableNativeCommunication](Browser_Properties.md#enableNativeCommunication) | Enables web apps to access native capabilities from within the web app's JavaScript code. |
@@ -184,11 +185,11 @@ The Browser widget capabilities can be broadly categorized into the following:
 | [opacity](Browser_Properties.md#opacity) | Specifies the opacity of the widget. |
 | [playVideoInFullScreen](Browser_Properties.md#playVideoInFullScreen) | You can use this property to enable Full Screen viewing of videos in webpages in Browser widget. |
 | [requestURLConfig](Browser_Properties.md#requestURLConfig) | Specifies the configurations for the requested URL in key-value pairs as a JavaScript object. |
-| [screenLevelWidget](Browser_Properties.md#screenLevelWidget) | Specifies whether the widget should occupy the whole container or not when your Browser widget has a large HTML content to display. |
+| [screenLevelWidget](Browser_Properties.md#screenLevelWidget) | Specifies whether the widget should occupy the whole container or not when your Browser widget has a large.md content to display. |
 | [showProgressIndicator](Browser_Properties.md#showProg) | Specifies if the progress indicator must be displayed before loading the URL or executing an event. |
 | [settings](Browser_Properties.md#settings) | Helps you to configure the Browser Widget settings. |
 | [transform](Browser_Properties.md#transform) | Contains an animation transformation that can be used to animate the widget. |
-| [useWideViewport](Browser_Properties.md#useWideV) | Specifies whether the browser should enable support for the "viewport" HTML meta tag or should use the wide viewport. |
+| [useWideViewport](Browser_Properties.md#useWideV) | Specifies whether the browser should enable support for the "viewport".md meta tag or should use the wide viewport. |
 | [zoomDensity](Browser_Properties.md#zoomDens) | Specifies the default zoom density of the page. |
 
  
@@ -247,7 +248,7 @@ var webtemp = new voltmx.ui.Browser(basicConf, layoutConf, pspConf);
 
 > **_Note:_** The configuration properties should be passed only in the respective configuration objects otherwise they are ignored
 
-1.  Use the requestURLConfig property to specify the HTML content (static HTML content or a URL), as in the following example.
+1.  Use the requestURLConfig property to specify the HTML content ](static.md content or a URL), as in the following example.
     
 ```
 
@@ -268,7 +269,7 @@ var webtemp = new voltmx.ui.Browser(basicConf, layoutConf, pspConf);
     var browserID = new voltmx.ui.Browser(webBasic, webLayout, webPsp);
     frm1.add(browserID);
 ```
-2.  (Optional) If you choose to display HTML content from a URL, specify onfailure and onsuccess Events.
+2.  ](Optional) If you choose to display.md content from a URL, specify onfailure and onsuccess Events.
 3.  (Optional) You can choose to display a loading screen while the content is being loaded from a URL. For more information about the loading screen, see the _Windows Library_ section of the _API Reference Guide_.
 4.  (Optional) On iPhone platform, you can move back and forward through the web page history using the [Browser](Browser_Methods.md) Methods.
 
@@ -412,7 +413,7 @@ The Browser widget has the following important considerations:
 *   You must _not_ use the Browser widget as a RichText widget. It should only be used to display large HTML content.
 *   You must avoid using the Browser widget to create an application which looks and behaves like a mini web browser. Users normally expect to use the native browser to browse web content. Replicating this functionality within your application is not recommended.
 *   On Android, for 4.2 and below the browser widget does not clip correctly to the bounds of a parent flex container with rounded edges. This is a native Android limitation. Clipping works correctly in API Level 18(4.3 and above).
-*   On SPA platform, < script > tag is not supported.
+*   On SPA platform, <script> tag is not supported.
 *   On SPA (Windows) platform, content is rendered using a URL, opening a new tab is not technically possible. It opens in the current tab itself.
 
 ### i18N Keys

@@ -1,7 +1,9 @@
                                 
-# App Menu Widget ( Tab Bar ) 
+# App Menu Widget ( Tab Bar )  
 
-### [Tab Bar](#app-menu-widget--tab-bar)  
+<!-- ### Tab Bar -->
+
+### [Tab Bar](#app-menu-widget--tab-bar)
 
 
 The _Application Menu_ _(App Menu)_ is a bar that is displayed at the bottom of an app, containing icons for features that apply to the application, rather than to a specific application screen or window.
@@ -123,20 +125,50 @@ The AppMenu widget capabilities can be broadly categorized into the following:
 
 | Properties | Description |
 | --- | --- |
-| [ID](AppMenu_Properties.md#ID) | A unique identifier of App Menu consisting of alpha numeric characters. |
+| [ID](AppMenu_Properties.md#ID) | A unique identifier of App Menu consisting of alpha numeric characters. |  
+
 
 AppMenu Widget Basics
----------------------
+---------------------  
+
+### Enabling via Low Code
+
+The AppMenu widget can be enabled via low code, but the approach is different than that of other low code widgets. To enable the AppMenu for a form, right click on the form and select “Configure App-Menu”. 
+
+![enabling_via_low_code-1](../Content/Resources/Images//enabling_via_low_code-1.png)  
+
+This will open the App-Menu Master Data editor. This editor allows you to add, delete, and update items, as well as change the Skin and Focus Skin. Update the master data with your desired data and select “OK” to apply any changes.
+
+![enabling_via_low_code-2](../Content/Resources/Images//enabling_via_low_code-2.png)  
+
+Now that the AppMenu is populated with data, it needs to be enabled to show on the form. In the form’s “PROPERTIES” window, select the “Edit” button beside “App Menu”.
+
+![enabling_via_low_code-3](../Content/Resources/Images//enabling_via_low_code-3.png)  
+
+Select all platforms on which you wish to display the AppMenu and select “OK” to apply changes.
+
+![enabling_via_low_code-4](../Content/Resources/Images//enabling_via_low_code-4.png)  
+
+The AppMenu will now appear for the selected platforms.  
+
+![enabling_via_low_code-5](../Content/Resources/Images//enabling_via_low_code-5.png)  
+
 
 ### Android Specific Behavior
 
-*   If you add more than six App Menu items, the menu items beyond the fifth App Menu item are grouped under the Menu item _More_ (added automatically by the Android platform) and if you select _More_, the rest of the Menu items are displayed in a list without any icons (even if the icons are set through code). This is a limitation in the Android platform support.
-*   You cannot specify a skin for the App Menu.
+*   AppMenu is not supported for Android : Native.
 
 ### iOS Specific Behavior
 
 *   In iOS 7 and iOS 7.1, AppMenu supports only single color. If the color is not specified, then by default native color ( transparent) is applied to iOS 7 and cyan color is applied to iOS7.1.
-*   If you add more than five App Menu items, the menu items beyond the fourth App Menu item are grouped under the Menu item “More” (added automatically by the iOS platform) and if you select _More_, the rest of the Menu items are displayed in a list with the icons set for them.
+
+*   For Mobile, If you add more than five AppMenu items, the menu items beyond the fifth AppMenu item are grouped under the Menu item “More” (added automatically by the iOS platform) and if you select More, the rest of the Menu items are displayed in a list with the icons set for them.
+
+*   For Tablet, If you add more than eight AppMenu items, the menu items beyond the eigth AppMenu item are grouped under the Menu item “More” (added automatically by the iOS platform) and if you select More, the rest of the Menu items are displayed in a list with the icons set for them.
 
 *   Transition Animations are not supported when a flow of transitions from a form with AppMenu to a form without AppMenu.
+
+### Mobile Web Specific Behavior  
+
+*   For iOS : Web, Android : Web, and Windows : Web, if you add more than four App Menu items, the menu items beyond the fourth AppMenu item are grouped under the Menu item More and if you select More, the rest of the Menu items are displayed in a list without any icons (even if the icons are set through code).
 

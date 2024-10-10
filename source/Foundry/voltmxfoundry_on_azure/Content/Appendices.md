@@ -1,7 +1,5 @@
                            
 
-Volt MX  Foundry on MS Azure: [Appendices](#appendices) > Prerequisite Packages
-
 Appendices
 ==========
 
@@ -22,15 +20,13 @@ White-listing the HCL IP address enables access to the Azure SQL Database.
 Configuring NAT Gateway
 -----------------------
 
-A network address translation (NAT) gateway is used to enable instances in a private subnet to connect to the internet or other AWS services, but prevent the internet from initiating a connection with those instances. For more information about NAT, see [NAT](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat.md).
+A network address translation (NAT) gateway is used to enable instances in a private subnet to connect to the internet or other AWS services, but prevent the internet from initiating a connection with those instances. For more information about NAT, see [NAT](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat.html).
 
-From V8 SP4 onwards, Volt MX Foundry on Azure will support the routing of private subnets through a NAT instance.
+Volt MX Foundry on Azure will support the routing of private subnets through a NAT instance.
 
-To enable NAT Gateway:
+To enable NAT Gateway, Set the `AZURE_FIREWALL_ENABLED` flag in properties file to `true`.
 
-*   Set the **AZURE\_FIREWALL\_ENABLED** flag in properties file to **true**.
-
-Azure Firewall acts as NAT Gateway. All the internet traffic from Kubernetes nodes(VMs) is routed through the NAT Gateway. Deployment of Azure Firewall will increase the overall cost. The cost for Firewall in the east US region is $1.25/hour in Azure. On a monthly basis, the cost of azure firewall deployment costs around 900$. If you do not want to configure the NAT Gateway, disable the firewall deployment by setting the **AZURE\_FIREWALL\_ENABLED** flag to **false**.
+Azure Firewall acts as NAT Gateway. All the internet traffic from Kubernetes nodes(VMs) is routed through the NAT Gateway. Deployment of Azure Firewall will increase the overall cost. The cost for Firewall in the east US region is $1.25/hour in Azure. On a monthly basis, the cost of azure firewall deployment costs around 900$. If you do not want to configure the NAT Gateway, disable the firewall deployment by setting the `AZURE_FIREWALL_ENABLED` flag to `false`.
 
 Hosting your domain with Azure DNS
 ----------------------------------
@@ -106,9 +102,9 @@ If you want to extract logs from a container, execute the following commands fro
 | COMMAND | LOG |
 | --- | --- |
 | $ kubectl config current-context | Display the current-context |
-| $ kubectl config use-context \<cluster-name\> | Set the default context to the cluster-name if the current context does not point to the Volt MX Foundry cluster. |
+| $ kubectl config use-context <cluster-name\> | Set the default context to the cluster-name if the current context does not point to the Volt MX Foundry cluster. |
 | $ kubectl get pods | Lists all the pods |
-| $ kubectl logs -f \<pod-name\> | To tail logs from a specific pod |
+| $ kubectl logs -f <pod-name\> | To tail logs from a specific pod |
 | $ kubectl logs pod-name > logs.txt | To extract the logs of a specific pod to local file |
 
 Connecting to AKS nodes through Jumpbox
@@ -118,11 +114,9 @@ Connecting to AKS nodes through Jumpbox
     
 2.  Use the following SSH command to connect to the Jumpbox:
     
-```
-$ ssh username@publicip
-```
+    `$ ssh username@publicip`
 
-The default username is **devops** and password is **Devops@12345**.
+    The default username is **devops** and password is **Devops@12345**.
     
 3.  To log in to Azure Kubernetes node from Jumpbox, you need to get the Private IP of the node from the Azure Portal.
     
@@ -130,11 +124,9 @@ The default username is **devops** and password is **Devops@12345**.
     
 5.  Execute the following command to login to AKS node:
     
-```
-$ ssh -i key.pem username@privateIpOfNode
-```
+    `$ ssh -i key.pem username@privateIpOfNode`
     
-The default username is **azureuser**.
+    The default username is **azureuser**.
     
 
 Log Analytics
@@ -146,7 +138,7 @@ Follow these steps to view the application specific logs:
 
 1.  Navigate to [http://portal.azure.com/](http://portal.azure.com/).
 
-2.  On the home page, select the resource group in which the AKS cluster is created. You can find the resource group (AZURE\_RESOURCE\_GROUP) in the properties file which was used in the VoltMX Foundry installation.
+2.  On the home page, select the resource group in which the AKS cluster is created. You can find the resource group (`AZURE_RESOURCE_GROUP`) in the properties file which was used in the VoltMX Foundry installation.
 <br>![](Resources/Images/Log_Analytics_1_574x313.png)
 4.  Select **Containers** solution.
 <br>![](Resources/Images/Log_Analytics_2_572x299.png)
@@ -155,10 +147,10 @@ Follow these steps to view the application specific logs:
 8.  Select **CONTAINER LOGS.**
 <br>![](Resources/Images/Log_Analytics_4_578x278.png)
 10.  In the **Log Search** page, you need to execute the following queries to fetch the logs.
-<br>![](Resources/Images/Log_Analytics_5_568x253.png)
+<br>![](Resources/Images/Log_Analytics_5_568x253.png)  
 
-*   `ContainerLog | where LogEntrySource == "stdout" | sort by TimeGenerated desc` - To fetch all the logs.
-*   `ContainerLog | where LogEntrySource == "stderr" | sort by TimeGenerated desc` - To fetch all the error logs.
+   *  `ContainerLog | where LogEntrySource == "stdout" | sort by TimeGenerated desc` - To fetch all the logs.
+   *  `ContainerLog | where LogEntrySource == "stderr" | sort by TimeGenerated desc` - To fetch all the error logs.
 
 ### Search Logs
 
@@ -185,42 +177,42 @@ The image name gets appended to the query when you select the image. Execute the
 
 *   Using content
 
-When you want to search specific key word in the logs execute the following query:
+    When you want to search specific key word in the logs execute the following query:
 
-`ContainerLog | where LogEntrySource == "stdout" | where Image == "<image-name>" | sort by TimeGenerated desc | search "<keyword>`"
+    `ContainerLog | where LogEntrySource == "stdout" | where Image == "<image-name>" | sort by TimeGenerated desc | search "<keyword>`"
 
-![](Resources/Images/Search_Content1_578x355.png)
+    ![](Resources/Images/Search_Content1_578x355.png)
 
-You can also apply filters to the logs. Filters can be applied to any column.
+    You can also apply filters to the logs. Filters can be applied to any column.
 
-![](Resources/Images/Search_Content2_577x348.png)
+    ![](Resources/Images/Search_Content2_577x348.png)
 
 *   Using request ID
 
-To view the logs based on request id, you need to apply a filter on the **Log Entry** column.
+    To view the logs based on request id, you need to apply a filter on the **Log Entry** column.
 
-![](Resources/Images/Search_ReqID_573x279.png)
+    ![](Resources/Images/Search_ReqID_573x279.png)
 
 *   Using date range
 
-You can select custom date range to access the logs.
+    You can select custom date range to access the logs.
 
-![](Resources/Images/Search_DateRange_580x285.png)
+    ![](Resources/Images/Search_DateRange_580x285.png)
 
 *   By pod name
 
-You can fetch the logs specific to a pod in the kubernetes cluster.
+    You can fetch the logs specific to a pod in the kubernetes cluster.
 
   
-| Feature | Pod name prefix |
-| --- | --- |
-| Console | K8s\_VoltMX-foundry-console |
-| Identity | K8s\_VoltMX-foundry-identity |
-| Integration | K8s\_VoltMX-foundry-integration |
-| Engagement | K8s\_VoltMX-foundry-engagement |
-| Api Portal | K8s\_VoltMX-foundry-apiportal |
+    | Feature | Pod name prefix |
+    | --- | --- |
+    | Console | K8s\_VoltMX-foundry-console |
+    | Identity | K8s\_VoltMX-foundry-identity |
+    | Integration | K8s\_VoltMX-foundry-integration |
+    | Engagement | K8s\_VoltMX-foundry-engagement |
+    | Api Portal | K8s\_VoltMX-foundry-apiportal |
 
-![](Resources/Images/Search_PodName_576x329.png)
+    ![](Resources/Images/Search_PodName_576x329.png)
 
 New Relic Monitoring
 --------------------
@@ -262,7 +254,7 @@ Follow these steps to view the business insights or application performance resu
 4.  Choose the required monitoring option in the upper left corner of the New Relic portal. Select **APM** for Application Performance Monitoring and **INFRASTRUCTURE** for Infrastructure Monitoring.
 <br>![](Resources/Images/New_Relic_APM_600x336.png)
 
-#### **Application Performance Monitoring**
+### Application Performance Monitoring
 
 <br>In APM, you can view the metrics of Volt MX Foundry **Kubernetes** **pods** deployed on Microsoft Azure Kubernetes cluster.  
 ![](Resources/Images/NR_APM_pods_641x360.png)  
@@ -294,7 +286,7 @@ A **transaction trace** gives a detailed snapshot of a single transaction in you
 
 ![](Resources/Images/NR_APM_JVM_599x335.png)
 
-#### **Infrastructure Monitoring**
+### Infrastructure Monitoring
 
 In the **Infrastructure** portal of **New Relic Monitoring**, you can view the Infrastructure metrics of Volt MX Foundry.
 
@@ -348,12 +340,16 @@ Using the rolling updates feature, you can perform the following actions:
 *   Linux machine with Ubuntu 16.04 installed.
 *   Unzipped directory of the **VoltMX Foundry installation zip** (Use the same unzipped directory of the Volt MX Foundry installation which was used for the initial Volt MX Foundry setup).
 
-> **_Note:_** You can update the following Volt MX Foundry pods using the rolling update feature:  
-*   voltmx-foundry-apiportal  
-*   voltmx-foundry-console  
-*   voltmx-foundry-engagement  
-*   voltmx-foundry-identity  
-*   voltmx-foundry-integration  
+<blockquote><em><b>Note:</b></em> You can update the following Volt MX Foundry pods using the rolling update feature:
+<ul>
+<li>voltmx-foundry-apiportal</li>
+<li>voltmx-foundry-console</li>
+<li>voltmx-foundry-engagement</li>
+<li>voltmx-foundry-identity</li>
+<li>voltmx-foundry-integration</li>
+</ul>
+</blockquote>
+
 
 ### Execute Rolling Updates in Azure Kubernetes Cluster
 
@@ -385,6 +381,8 @@ Once the new pod is created, repeat the process for other pods.
         For example, If the number of pods is three, and maxUnavailable=1, then there will be at least two pods in service during the update process. Once the roll out is complete, the number of pods will be three.
 
 > **_Note:_** The values of `MAX_SURGE` and `MAX_UNAVAILABLE` must not be zero simultaneously.
+
+<a id="execute-the-script"></a>
 
 #### Execute the `kf_setup.sh` Script
 
@@ -470,6 +468,7 @@ After increasing (or) decreasing the number of worker nodes (Azure VM’s), you 
     ![](Resources/Images/rolling_updates_8_601x290.png)
 2.  Execute the `kf_setup.sh` file as described in the [earlier](#execute-the-script) section.
 
+
 ### Update the Docker Image of the Container inside the Pod
 
 *   Modify the docker image in the properties file.  
@@ -493,35 +492,30 @@ Following are the prerequisites to use the Kubernetes dashboard:
 
 Following are the steps to access Kubernetes dashboard in browser:
 
-1\. Sign in to the **Azure** portal.
+1. Sign in to the **Azure** portal.
 
-2\. Select the **Resource Group** in which the Kubernetes cluster is created.
+2. Select the **Resource Group** in which the Kubernetes cluster is created.
 
-3\. In the list of resources, select the created **Kubernetes cluster**.
+3. In the list of resources, select the created **Kubernetes cluster**.
 
-4\. Select the **View Kubernetes dashboard** tab in the lower-right corner of the screen.  
+4. Select the **View Kubernetes dashboard** tab in the lower-right corner of the screen.  
+   ![](Resources/Images/Kubernetes_db_1_599x267.png)
+   The configuration screen appears:
+   ![](Resources/Images/Kubernetes_db_2_597x281.png)  
 
-![](Resources/Images/Kubernetes_db_1_599x267.png)
+5. Follow these steps to initialize the Kubernetes dashboard    
+    1. Click on the copy button below the _Open the Kubernetes dashboard by running the following command_ step. The following code is copied:  
+       `$az aks browse --resource-group <resource group name> --name <aks cluster name>`
 
-The configuration screen appears:
-
-![](Resources/Images/Kubernetes_db_2_597x281.png)  
-
-1.  Follow these steps to initialize the Kubernetes dashboard
-    
-1.  Click on the copy button below the _Open the Kubernetes dashboard by running the following command_ step. The following code is copied:
-```
-$az aks browse --resource-group <resource group name> --name <aks cluster name>
-```<br>
-2.  From the top right corner on the navigation bar, click the Power Shell icon.          
-        ![](Resources/Images/pwrshell.PNG)<br>The bash terminal opens at the bottom of the window.<br>![](Resources/Images/pwrshell1.PNG)
+    2. From the top right corner on the navigation bar, click the Power Shell icon.           
+       ![](Resources/Images/pwrshell.PNG) 
+       The bash terminal opens at the bottom of the window.
+       ![](Resources/Images/pwrshell1.PNG)
         
-3.  Paste and execute the copied command in the Bash terminal.      
-        ![](Resources/Images/dashboard.PNG)
+    3. Paste and execute the copied command in the Bash terminal.  
+       ![](Resources/Images/dashboard.PNG)
         
-4.  Copy the response URL and open it in a browser to display the Kubernetes Dashboard for the requested resource group.
-
-The Kubernetes Dashboard is rendered on the browser.
+    4. Copy the response URL and open it in a browser to display the Kubernetes Dashboard for the requested resource group. The Kubernetes Dashboard is rendered on the browser.
 
 You can view the summary of Kubernetes objects of a deployed application like daemon sets, jobs, pods, CPU usage, memory usage, and so on.
 
@@ -547,6 +541,8 @@ Pod Anti-Affinity
 
 Pod anti-affinity is used to handle the creation of pods in worker nodes in Azure Kubernetes cluster for deploying a resilient application in the Kubernetes cluster. Certain rules are defined in a pod configuration which allows pod to be deployed only on a particular node when the required conditions are satisfied. No two pods of same kind will be deployed on a single node. Pod anti-affinity helps in distributing the pods across the cluster nodes and helps in creating resilient applications.
 
+<a id="Autoscaling"></a>
+
 AKS Autoscaling
 ---------------
 
@@ -560,7 +556,8 @@ There are two components involved in auto scaling of AKS cluster.
 You can check the runtime usage of memory and CPU by using the following command:
 
 ```
-"kubectl get hpa" //hpa is horizontal pod autoscaler.
+"kubectl get hpa"
+//hpa is horizontal pod autoscaler.
 ```
 
 Whenever the usage of either the memory or the CPU exceeds the limit given for that particular pod, the Horizontal Pod Autoscaler is triggered and it starts scaling up the pod.
@@ -623,6 +620,7 @@ Follow these steps to block IP addresses in the Azure Web Application Firewall:
     
     ![](Resources/Images/ClamAV/Block_IP_2_613x75.png)
     
+    <a id="subnet"></a>
 4.  Select the subnet which has the WAF attached.
     
     ![](Resources/Images/ClamAV/Block_IP_3_593x70.png)
@@ -682,22 +680,22 @@ Follow these steps to whitelist IP addresses in the Azure Content Delivery Netwo
 3.  Go to **CDN profile** from the list of resources available in the Azure Resource Group.
 4.  Click on the **Manage** from the top navigation bar to access CDN Manage Portal.
 
-![](Resources/Images/cdnProfile.png)
+    ![](Resources/Images/cdnProfile.png)
 
-Configure the new **Rule**.
+5.  Configure the new **Rule**.
 
-![](Resources/Images/whitelistIP.png)
+    ![](Resources/Images/whitelistIP.png)
 
-Set **Deny Access (403)** to **Enabled**.
+6.  Set **Deny Access (403)** to **Enabled**.
     
-This determines whether all requests are rejected with a 403 Forbidden response or not.
+    This determines whether all requests are rejected with a 403 Forbidden response or not.
+        
+    You can set Deny Access (403) to the values shown in the following table:
     
-You can set Deny Access (403) to the values shown in the following table:
-    
-| Value | Result |
-| --- | --- |
-| Enabled | Causes all requests that satisfy the matching criteria to be rejected with a 403 Forbidden response. |
-| Disabled | Allow the origin server to determine the type of response that will be returned. |
+    | Value | Result |
+    | --- | --- |
+    | Enabled | Causes all requests that satisfy the matching criteria to be rejected with a 403 Forbidden response. |
+    | Disabled | Allow the origin server to determine the type of response that will be returned. |
     
 > **_Note:_** It takes some time for the rule to be propagated to the CDN edge nodes. Check the status of rule in CDN Manage Portal.
     
@@ -848,7 +846,9 @@ VPN Reference Implementation
 
 > **_Note:_** VPN Reference Implementation is documented assuming that the FortiGate Firewall is used on the On-Premise setup. If you are using any other firewall, contact your system administrator for setting up the incoming policies from Volt MX Foundry set up on Microsoft Azure Cloud.
 
-A Site-to-Site VPN gateway connection is used to connect your on-premises network to an Azure virtual network over an IPsec or IKE (IKEv1 or IKEv2) VPN tunnel. This type of connection requires an on-premises VPN device that has an externally facing public IP address assigned to it. Follow the steps described [here](VPN_Implementation.md) to setup a site-to-site VPN.
+<!-- A Site-to-Site VPN gateway connection is used to connect your on-premises network to an Azure virtual network over an IPsec or IKE (IKEv1 or IKEv2) VPN tunnel. This type of connection requires an on-premises VPN device that has an externally facing public IP address assigned to it.  -->
+
+<!-- Follow the steps described [here](VPN_Implementation.md) to setup a site-to-site VPN. -->
 
 Configure Backup and Restore for Azure File Share
 -------------------------------------------------
@@ -916,17 +916,23 @@ SNAPSHOT=$(az storage share snapshot --account-name $STORAGEACCT  --account-key 
 The **az storage file copy start** command can be used to restore a file. Perform the following steps to restore from a share snapshot:
 
 Delete the sample file (for example: SampleUpload.txt) that you have uploaded earlier, so you can restore it from the snapshot.
+
 ```
 az storage file delete --account-name $STORAGEACCT --account-key $STORAGEKEY --share-name "myshare" --path "myDirectory/SampleUpload.txt"
 ```
+
 Build the source URI for a snapshot restore.
+
 ```
 URI=$(az storage account show --resource-group "myResourceGroup" --name $STORAGEACCT --query "primaryEndpoints.file" | tr -d '"')
 ```
+
 ```
 URI=$URI"myshare/myDirectory/SampleUpload.txt?sharesnapshot="$SNAPSHOT
 ```
+
 Restore SampleUpload.txt from the share snapshot.
+
 ```
 az storage file copy start --account-name $STORAGEACCT --account-key $STORAGEKEY --source-uri $URI --destination-share "myshare" --destination-path "myDirectory/SampleUpload.txt"
 ```
@@ -952,30 +958,28 @@ Following is the list of features and their supported regions. If the region spe
     
 ```
 australiacentral,southafricanorth,uaenorth,westcentralus
-```
+```  
+
 *   Regions where **CDN is supported**:
     
 ```
-australiaeast, australiasoutheast, brazilsouth, canadacentral, canadaeast, 
-    centralindia, centralus, eastasia, eastus, eastus2, japaneast, japanwest, 
-    northcentralus, northeurope, southcentralus, southindia, southeastasia, westeurope, 
-    westindia, westus, westcentralus
-```
+australiaeast, australiasoutheast, brazilsouth, canadacentral, canadaeast, centralindia, centralus, eastasia, eastus, eastus2, japaneast, japanwest, northcentralus, northeurope, southcentralus, southindia, southeastasia, westeurope, westindia, westus, westcentralus
+```  
+
 *   Regions where **multiple availability zones are supported for AKS**:
     
 ```
-centralus, eastus2, eastus, francecentral, japaneast, northeurope, 
-    southeastasia, uksouth, westeurope, westus2
-```
+centralus, eastus2, eastus, francecentral, japaneast, northeurope, southeastasia, uksouth, westeurope, westus2
+```  
+
 *   Regions where **multiple availability zones are supported for Application Gateway**:
     
 ```
-centralus,eastus,eastus2,westus2,francecentral,
-    northeurope,uksouth,westeurope,japaneast,southeastasia
-```
+centralus,eastus,eastus2,westus2,francecentral, northeurope,uksouth,westeurope,japaneast,southeastasia
+```  
+
 *   Regions where **ZRS is not supported for Storage account**:
     
 ```
-westus2,eastus,eastus2,northeurope,westeurope,southeastasia,
-    francecentral,japaneast,centralus,uksouth,australiaeast,southafricanorth
+westus2,eastus,eastus2,northeurope,westeurope,southeastasia, francecentral,japaneast,centralus,uksouth,australiaeast,southafricanorth
 ```

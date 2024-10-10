@@ -13,7 +13,7 @@ The iOS SDK also provides the ability for a developer to send additional custom 
 
 Additionally, the iOS SDK provides an Events API that allows an app to track user actions within the app to gain insight into the user journey.The developer can send various standard events such as form entry, touch events, service requests, gestures and errors. The developer can also send custom events to capture any app specific scenarios or transactions. These events can be analyzed within Volt MX Foundry Console by using the Standard Reports or user defined Custom Reports. For more details, refer to [Custom Metrics and Reports Guide](../../../../Foundry/custom_metrics_and_reports/Content/Custom_Metrics_and_Reports_Guide.md).
 
-This section lists all `HCLMetricsService` object APIs.
+This section lists all `KNYMetricsService` object APIs.
 
 Create an instance of HCLMetricsService
 ---------------------------------------
@@ -21,7 +21,7 @@ Create an instance of HCLMetricsService
 The HCLMetricsService class sets the configuration for APM event reporting.
 
 ```
-  //Sample code to create an instance of metricService with variable name "sharedMetricsService"
+ //Sample code to create an instance of metricService with variable name "sharedMetricsService"
 KNYMetricsService * metricService = [KNYMetricsService sharedMetricsService];
 
 ```
@@ -186,7 +186,7 @@ The reportHandledException API enables apps to report a handled exception event.
 
 ### setEventConfig
 
-The setEventConfig API takes the required values to set the event configuration values. When eventConfigType is - HCLEventConfigTypeBuffer eventBufferAutoFlushCount and eventBufferMaxCount are considered.
+The setEventConfig API takes the required values to set the event configuration values. When eventConfigType is - KNYEventConfigTypeBuffer eventBufferAutoFlushCount and eventBufferMaxCount are considered.
 
 ```
  //Sample code to setEventConfig

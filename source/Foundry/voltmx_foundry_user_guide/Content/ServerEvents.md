@@ -1,3 +1,7 @@
+                             
+
+User Guide: [Integration](Services.md#integration) \> [Advanced Configurations](Advanced_Configurations.md) > Server Events 
+
 Server Events
 =============
 
@@ -64,16 +68,16 @@ For example, Parent service name can be “transaction” and its child can be �
 request.getServicesManager().getEventManager()
 ```
     
-    This class contains the following APIs:
+This class contains the following APIs:
     
-    *   **subscribe**: Subscribes the given event subscriber to all events with the specified topic.
+*   **subscribe**: Subscribes the given event subscriber to all events with the specified topic.
     
 ```
 request.getServicesManager().getEventManager().subscribe(<topic>, <subscriber>);  
     
 ```
     
-    *   **unsubscribe**: Unsubscribes the given event subscriber to all events with the specified topic.
+*   **unsubscribe**: Unsubscribes the given event subscriber to all events with the specified topic.
         
 ```
 request.getServicesManager().getEventManager().unsubscribe(<topic>, <subscriber>);
@@ -84,18 +88,50 @@ request.getServicesManager().getEventManager().unsubscribe(<topic>, <subscriber>
 request.getServicesManager().getEventNotifier();
 ```
     
-    This class contains the following APIs:
+This class contains the following APIs:
     
-    *   **notify (with event data)**: Notify all subscribers of the given event based on the topic.
+*   **notify (with event data)**: Notify all subscribers of the given event based on the topic.
         
 ```
 request.getServicesManager().getEventNotifier().notify(<event_data>);
 ```
-    *   **notify (with topic and data)**: Creates event data internally and notifies all subscribers of the given event based on the topic.
+*   **notify (with topic and data)**: Creates event data internally and notifies all subscribers of the given event based on the topic.
         
 ```
 request.getServicesManager().getEventNotifier().notify(<topic>, <data>);
+```  
+
 ```
+package com.event.wf;
+
+import org.json.JSONObject;
+
+import com.hcl.voltmx.middleware.common.JavaService2;
+import com.hcl.voltmx.middleware.controller.DataControllerRequest;
+import com.hcl.voltmx.middleware.controller.DataControllerResponse;
+import com.hcl.voltmx.middleware.dataobject.Param;
+import com.hcl.voltmx.middleware.dataobject.Result;
+
+public class WFEvent implements JavaService2{
+
+	@Override
+	public Object invoke(String arg0, Object[] arg1, DataControllerRequest request, 
+			DataControllerResponse arg3)
+			throws Exception {
+		JSONObject obj = new JSONObject();
+		obj.put("userName", request.getParameter("userName"));
+		Result result = new Result();
+		result.addParam(new Param("opstatus", "0", "number"));
+		result.addParam(new Param("hello", "Hello " + request.getParameter("userName"), "string"));
+		request.getServicesManager().getEventNotifier().notify("signaltestw03js/start",obj);
+		return result;
+	}
+
+}
+
+```  
+
+
 
 Handling Server Side Events
 ---------------------------
@@ -114,7 +150,7 @@ Once an event is created, a service or custom business logic is configured to ha
     *   **onEvent**: Receives notification when any event of the subscribed topic is triggered. Make sure that this API is thread-safe as multiple threads can call this API simultaneously.
         
 
-> **_Note:_** Refer to the [Foundry Queue Service java document](../../../../../java_docs_apis/MiddlewareAPI/index-all.html) for more information on Foundry Queue Service APIs.
+> **_Note:_** Refer to the [Foundry Queue Service java document](../../../../../java_docs_apis/MiddlewareAPI/index-all.md) for more information on Foundry Queue Service APIs.
 
 Create Subscriber from Business Logic
 -------------------------------------
@@ -156,6 +192,13 @@ Use Case
 --------
 
 An online shopping website can use server events feature to send the order status emails automatically to its customers who have placed orders on their website. The developer can write the custom code to trigger events when an order is either successful or failed. The concerned customer will get an email depending upon the status of the order.
+
+```
+eventData = new EventData("apps/order/success", response.getResponse());
+
+```
+> **_Note:_** response.getResponse() should return json string in order to send this response to event.
+
 
 ### Custom Code to trigger an Event
 
@@ -285,7 +328,7 @@ WebSocket endpoint for events (/ServerEvents/Stream)
 
 A WebSocket supports bi-directional communication between a client and a server. With VoltMX Foundry, a client app can connect to a WebSocket, and then subscribe and unsubscribe from events to the server. For more information about the client-side APIs, refer to [Server Event APIs](./../Content/VoltMXStudio/ServerEventAPIs.md).
 
-> **_Note:_** A client device can only subscribe and unsubscribe from events that are configured on the Throw Signal node in Workflows. To subscribe to an event from a client device, the event type must be [Client](./Workflow.md#throw-signal-event) Only.
+> **_Note:_** A client device can only subscribe and unsubscribe from events that are configured on the Throw Signal node in Workflows. To subscribe to an event from a client device, the event type must be [Client](./Workflow.md#throw-signal-event-for-async-workflow) Only.
 
 After a connection is established between a client and a WebSocket, the server sends a ping to the client every 30 seconds. If the client responds to the server ping, the WebSocket session continues to run. If the client closes the connection, or if the client does not respond after three pings, the WebSocket session is terminated.
 

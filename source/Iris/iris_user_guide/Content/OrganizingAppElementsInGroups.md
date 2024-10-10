@@ -191,7 +191,7 @@ To view or edit a resource file in Volt MX Iris:
         
     *   Python (.py, .pw)
         
-    *   HTML (.html, .html)
+    *   HTML ](.html, .md)
         
     *   Javascript (.js)
         

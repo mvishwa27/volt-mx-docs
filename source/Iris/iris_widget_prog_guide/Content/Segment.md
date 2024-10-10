@@ -3,7 +3,6 @@
 
 ## Table  
 
-
 The Segment widget is a UI component commonly used to display lists or pages of data. Segment widget is a container that provides the capability to define a row template that repeats for every row or page of the specific segment.
 
 You can use the Segment widget to display data from services, group services together, use templates to create the layout of each row, perform actions such as animations and form navigation when users click on a record, and more. These features have been explained in detail here:

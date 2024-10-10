@@ -33,7 +33,7 @@ The following topics cover some of the key tasks in planning and creating your a
 
 [Add and Manage Images and Other Media](Adding_and_Managing_Images.md)
 
-[Preview and Collaborate on a Project](ViewAndCollabOnProject.md#ViewAndCollabOnProject.html)
+[Preview and Collaborate on a Project](ViewAndCollabOnProject.md#ViewAndCollabOnProject.md)
 
 [Capture Product Requirements with Review Notes](CapProdReqsWithNotes.md)
 

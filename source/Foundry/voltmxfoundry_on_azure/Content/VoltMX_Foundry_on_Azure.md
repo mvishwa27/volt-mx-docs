@@ -1,86 +1,89 @@
-<!-- 
-                            
-
+---
+layout: "documentation"
+category: "undefined"
+---
+﻿   
 
 Overview
 ========
 
-Volt MX  Foundry has multiple components, such as Identity, Integration, and Engagement Services. These features can be accessed through a common, centralized Volt MX Foundry Console. This document helps you install and configure Volt MX Foundry (Console, Identity Services, Integration Services, and Engagement Services) on Azure Cloud. For more information about Volt MX Foundry, refer to [VoltMX Foundry User Guide](../../../Foundry/voltmx_foundry_user_guide/Content/Introduction.md).
+VoltMX Foundry has multiple components, such as Identity, Integration, and Engagement Services. These features can be accessed through a common, centralized VoltMX Foundry Console. This document helps you install and configure VoltMX Foundry (Console, Identity Services, Integration Services, and Engagement Services) on Azure Cloud. For more information about VoltMX Foundry, refer to [VoltMX Foundry User Guide](./../../voltmx_foundry_user_guide/Content/Introduction.md).
 
-Volt MX  Foundry Containers on Azure Solution is designed to facilitate Volt MX Foundry on Azure for Non-Production and Production needs. This setup occurs with minimal manual intervention and leverages the following technologies:
+VoltMX Foundry Containers on Azure Solution is designed to facilitate VoltMX Foundry on Azure for Trial and Enterprise needs. This setup occurs with minimal manual intervention and leverages the following technologies:
 
 *   **Docker** - To package different components as portable container images (with all the required binaries and libs)
 *   **Kubernetes** - To orchestrate and maintain all these running containers. It will also have features like auto-scaling, secrets, deployment upgrades and rollbacks.
-*   **Azure** - For provisioning of the underlying infrastructure.
+*   **Azure** - For provisioning of the underlying infrastructure.  
 
-From Foundry V9 SP1 onwards, the installation involves a separate dedicated cluster for Integration, which will be referred to as the **INT** cluster. Whereas, the rest of the Foundry components will be present in a single cluster which will be referred to as the **SHARED** cluster.
+<blockquote>
+<em><b>Note: </b></em>
+    <ul>
+        <li>From Fabric V9 SP1 onwards, the installation involves a separate dedicated cluster for Integration, which will be referred to as the <b>INT</b> cluster. Whereas, the rest of the Fabric components will be present in a single cluster which will be referred to as the <b>SHARED</b> cluster.</li>
+        <li>For versions V9 ServicePack 5 or later, containers for the Fabric components run on the Red Hat Universal Base Image (UBI).</li>
+        <li>For versions V9 ServicePack 4 or earlier, containers for the Fabric components run on a Debian image.</li>
+    </ul>
+</blockquote>
 
-There are two installation modes, Production and Non-Production. The Production mode is equipped to handle Production level traffic and Non-Production mode is for testing purposes.
+<p>There are two installation modes, Production and Non-Production. The Production mode is equipped to handle Production level traffic and Non-Production mode is for testing purposes.</p>
+<p>During the installation you would be prompted to choose between the installation of a Production instance or a Non-Production instance.  In general, for a given Azure subscription an organization installs one Production instance and multiple Non-Production instances (for example, dev, qa, uat, etc.).</p>
+<ul>
+    <li>When you select a  Non-Production instance, every time you run it to setup another environment such as qa, uat, etc., only the Integration (INT)&#160;cluster gets created again, while the rest of the Fabric components are shared for all the Non-Production instances within the subscription.</li>
+    <li>When you select a Production instance, each installation is treated as a fresh installation where both the Shared cluster and the Integration cluster will be created again.</li>
+</ul>
 
-During the installation you would be prompted to choose between the installation of a Production instance or a Non-Production instance. In general, for a given Azure subscription an organization installs one Production instance and multiple Non-Production instances (for example, dev, qa, uat, etc.).
+> **_Note:_** In case of a  Non-Production setup the information about the shared resources which are required for installing the new environments is stored as [installation metadata](./Frequently%20Asked%20Questions%20(FAQs).md#Installa) in Azure Cosmos DB and Azure Key Vault.
 
-*   When you select a Non-Production instance, every time you run it to setup another environment such as qa, uat, etc., only the Integration (INT) cluster gets created again, while the rest of the Foundry components are shared for all the Non-Production instances within the subscription.
-*   When you select a Production instance, each installation is treated as a fresh installation where both the Shared cluster and the Integration cluster will be created again.
+**Salient Features**
 
-> **_Note:_** In case of a Non-Production setup the information about the shared resources which are required for installing the new environments is stored as [installation metadata](Frequently_Asked_Questions__FAQs_.md#installation-metadata) in Azure Cosmos DB and Azure Key Vault.
-
- Salient Features
-
-The Volt MX Foundry Containers on Azure Solution has the following features:
+The VoltMX Foundry Containers on Azure Solution has the following features:
 
 *   Creates a multi-layer architecture along with the Application Gateway in a Virtual Network making it secure.
 *   Supports options to configure a custom DNS name, SSL cert support for secure communication, and includes Jumpbox for DevOps activities.
 
-Overview for the Production and Non-Production Installations
-------------------------------------------------------------
 
-### Non-Production Mode
+<h2>Overview for the Production  and Non-Production Installations</h2>
+<h3>Non-Production Mode</h3>
+<p>In a given Azure subscription, when you try to install a  Non-Production instance, a complete Quantum Fabric is created with both the clusters (Shared and Integration) for the first Non-Production installation. Subsequently, every time you run it to setup another non-production instance such as dev, qa, uat, etc., only the Integration (INT)&#160;cluster gets created again, while the rest of the Fabric components are shared for all the Non-Production instances within the same subscription. This integration instance is registered with the existing Fabric console created as part of the first installation.</p>
+<h3>Production Mode</h3>
+<p>When you setup an Production account each installation is treated as a fresh installation where both the Shared cluster and the Integration cluster will be created for every install.</p>
 
-In a given Azure subscription, when you try to install a Non-Production instance, a complete Volt MX Foundry is created with both the clusters (Shared and Integration) for the first Non-Production installation. Subsequently, every time you run it to setup another non-production instance such as dev, qa, uat, etc., only the Integration (INT) cluster gets created again, while the rest of the Foundry components are shared for all the Non-Production instances within the same subscription. This integration instance is registered with the existing Foundry console created as part of the first installation.
-
-### Production Mode
-
-When you setup an Production account each installation is treated as a fresh installation where both the Shared cluster and the Integration cluster will be created for every install.
 
 Prerequisites
 -------------
 
 1.  **Azure Account** - The setup script creates all the resources in this account. In your Azure subscription, your account should have the following permissions.
     
-    
-    <details close markdown="block"><summary>Azure Subscription Permissions</summary>
+    **Azure Subscription Permissions**
     
     *   Your account must have the role of an **[Owner](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#owner)**.
     *   If your account has the role of a **Contributor**, you do not have adequate permissions. Contact your Azure Account Administrator for getting the required permissions.
     
     Steps to check the permissions of your Azure subscription:  
     
-    a.  In the Azure Portal, select your account from the upper right corner, and select **My permissions**.  
+    1.  In the Azure Portal, select your account from the upper right corner, and select **My permissions**.  
         ![](Resources/Images/AzureAcc_3.png)
-    b.  From the drop-down list, select **Subscription**. Select **Click here to view complete access details for this subscription.  
+    2.  From the drop-down list, select **Subscription**. Select **Click here to view complete access details for this subscription.  
         ![](Resources/Images/AzureAcc_4.png)**
-    c.  View the roles assigned to you. In the following image, the user has the role of the **Owner**, which means that the user has adequate permissions.  
-        ![](Resources/Images/AzureAcc_5_521x199.png)
+    3.  View the roles assigned to you. In the following image, the user has the role of the **Owner**, which means that the user has adequate permissions.  
+        ![](Resources/Images/AzureAcc_5.png)
     
-    </details>
-
-    <details close markdown="block"><summary>Azure Active Directory Permissions</summary>
+    **Azure Active Directory Permissions**
     
     To check your Azure AD permissions:
     
-    a.  Select **Azure Active Directory**.  
+    1.  Select **Azure Active Directory**.  
         ![](Resources/Images/AzureAcc_1.png)
-    b.  In Azure Active Directory, select **Overview** and look at your user information. You should have the role of a **Global Administrator** to proceed further. If you do not have this role, contact your administrator to assign this role to you.  
-        ![](Resources/Images/AzureAcc_2_525x185.png)
-    </details>
-
-2.  **Prerequisite packages** - The Volt MX Foundry Containers on Azure Solution does not need any additional software to be pre-installed, as the prerequisite packages are downloaded as a part of the setup scripts.
+    2.  In Azure Active Directory, select **Overview** and look at your user information. You should have the role of a **Global Administrator** to proceed further. If you do not have this role, contact your administrator to assign this role to you.  
+        ![](Resources/Images/AzureAcc_2.png)
+    
+2.  **Prerequisite packages** - The VoltMX Foundry Containers on Azure Solution does not need any additional software to be pre-installed, as the prerequisite packages are downloaded as a part of the setup scripts.
 
     **The packages that are installed as part of the install scripts are: azure-cli, kubectl, jq, and sponge.**
 
-    > **_Note:_** To make sure that the script is able to download all the necessary software, you might need to open outbound connections to the respective sites. For more information, refer to the [Appendices](Appendices.md#appendices) section of this document.
+    To make sure that the script is able to download all the necessary software, you might need to open outbound connections to the respective sites. For more information, refer to the [Appendices](./Appendices.md) section of this document.
 
-3.  **Generate an SSH Public Key** – Using the SSH protocol, you can connect and authenticate to remote servers and services. Volt MX Foundry setup expects an SSH key pair for authentication. The SSH public key is used for creating the Azure Virtual Machine, and for installing the Volt MX Foundry Setup. You need to specify the SSH Public Key in the properties file.
+    <a id="Generate"></a>
+7.  **Generate an SSH Public Key** – Using the SSH protocol, you can connect and authenticate to remote servers and services. VoltMX Foundry setup expects an SSH key pair for authentication. The SSH public key is used for creating the Azure Virtual Machine, and for installing the VoltMX Foundry Setup. You need to specify the SSH Public Key in the properties file.
     
     On Ubuntu terminal, use the `ssh-keygen` command to generate SSH public and private key files that are created by default in the `~/.ssh` directory. This command can be executed from your local (Ubuntu) machine:
     
@@ -88,12 +91,12 @@ Prerequisites
     
     You must create and configure a key pair as you need to provide them in the [Configuration](#SSH) settings.
     
-    > **_Note:_** The SSH keys need to be placed in **sshkeys** folder.
+    The SSH key needs to be placed in **sshkeys** folder.
     
-    > **_Note:_** You must leave the passphrase empty while generating the SSH key. VM logins are protected by other features such as the Google Authenticator.
+    You must leave the passphrase empty while generating the SSH key. VM logins are protected by other features such as the Google Authenticator.
     
-4.  **Domain Name**\- You can have a Domain Name for the solution, which you can purchase from any third-party organizations, such as GoDaddy, and a proper DNS which you need to map to the public DNS of the Application Gateway. Refer to the [Appendices](Appendices.md#appendices) section, for more details.
-5.  **SSL certs**\- To secure the communication, acquire the SSL certs (Azure Application Gateway requires certificates in .pfx format) and provide them during the Installation process. These SSL certs must be associated with the Domain Name that the user has procured. Refer to the [Appendices](Appendices.md#appendices) section on SSL cert pfx format conversion.
+8.  **Domain Name**\- You can have a Domain Name for the solution, which you can purchase from any third-party organizations, such as GoDaddy, and a proper DNS which you need to map to the public DNS of the Application Gateway. Refer to the [Appendices](./Appendices.md) section, for more details.
+9.  **SSL certs**\- To secure the communication, acquire the SSL certs (Azure Application Gateway requires certificates in .pfx format) and provide them during the Installation process. These SSL certs must be associated with the Domain Name that the user has procured. Refer to the [Appendices](./Appendices.md) section on SSL cert pfx format conversion.
     *   Place the SSL certificate (in a **.pfx** file format) in the ssl-cert folder, and then provide the **Server Domain Name** and **AppGateway SSL Cert Password**.
     *   For enabling HTTPS on the back-end of appgateway, perform the following steps:
         1.  The SSL certificates with the cert data and key data should be in separate files (both in a **.pem** file format).
@@ -101,270 +104,1082 @@ Prerequisites
         3.  Save the Key file as `ingress_key.pem`.
         4.  Place both ingress.pem and ingress\_key.pem files in the **certs** folder of the installation directory.
 
-    > **_Note:_** It is recommended to use CA signed SSL cert to avoid any errors.
+It is recommended to use CA signed SSL cert to avoid any errors.
 
-    > **_Note:_** To execute the installation scripts, you must use Bash version 4 or later.
+To execute the installation scripts, you must use Bash version 4 or later.
 
-    > **_Note:_** In case you are using [Marketing Catalog Microservice](#marketing-catalog-microservice) or [Campaign Microservice](#campaign-microservice) you can refer to their prerequisites mentioned ahead in the document.
+<!-- You must white-list VoltMX IP Address(115.113.211.130) to be able to the Azure SQL Database. -->
 
 VM Setup
 --------
 
-You need an Azure Virtual Machine to download the artifacts, and execute the setup scripts from the VM to install Volt MX Foundry on Azure.  
+You need an Azure Virtual Machine to download the artifacts, and execute the setup scripts from the VM to install VoltMX Foundry on Azure.  
 Follow these steps to create a VM through Azure Portal:
-
-<details close markdown="block"><summary>Click here to view the steps</summary>
 
 1.  Login to the Azure Portal with the same account you configured for the role of the **Global Administrator.** Navigate to the **Virtual Machines** Tab.  
     Click on `+Add` button and select the Ubuntu Server image.  
-    ![](Resources/Images/VM_Login_547x271.png)
+    ![](Resources/Images/VM_Login.png)
 2.  Select **Ubuntu Server 16.04 LTS** image and click on **Create**.  
-    ![](Resources/Images/Ubuntu16.04_532x343.png)
+    ![](Resources/Images/Ubuntu16.04.png)
 3.  Proceed with the remaining steps in the wizard and provide the **SSH Public Key** where needed.  
     ![](Resources/Images/SSH_Ubuntu.PNG)
 
-</details>
+
 
 Pre-Installation Tasks
-----------------------
+-----------------
 
-Steps to Install Volt MX Foundry on MS Azure:
-
-<details close markdown="block"><summary>Click here to view the steps</summary>
+Steps to Install VoltMX Foundry on MS Azure:
 
 1.  Fetch the **Public IP** of the Virtual Machine from Azure Portal.  
-    ![](Resources/Images/VM_AzPortal_582x174.png)  
+    ![](Resources/Images/VM_AzPortal.png)  
     Login to the VM by executing the following command in the Terminal:  
     `$ ssh azureuser@<public-ip> -i ~/.ssh/id_rsa`
-2.  Switch to the root user, install the **unzip** package for extracting contents, and download the `voltmx-foundry-containers-azure.zip` file:  
-    **$ sudo -s**  
-    **$ apt-get install unzip** 
-    **$ curl -o HCL VoltMX-Foundry-Container-Installer”** [ HCL Volt MX Foundry Container Installer (Kubernetes cluster)](https://hclsoftware.flexnetoperations.com/flexnet/operationsportal/entitledDownloadFile.action?downloadPkgId=HCL_Volt_Foundry_v9.2.x&orgId=HCL&fromRecentFile=false&fromRecentPkg=true&fromDL=false)
-3.  Unzip the downloaded artifacts:  
-    **$ unzip voltmx-foundry-containers-azure.zip -d \<directory-name\>**
-    **The structure of the document will be as shown below:**  
-    ![](Resources/Images/Folder_structure_567x157.png)
+2.  Switch to the root user, install the **unzip** package for extracting contents, and download the `voltmx-foundry-containers-azure.zip` file: <br>
+    `$ sudo -s`   <br>
+    `$ apt-get install unzip` <br>
+    `$ curl -o voltmx-foundry-containers-azure.zip -L voltmx-foundry-containers-azure_9.0.0.1_GA.zip` 
 
-</details>
+    <!-- `$ curl -o voltmx-foundry-containers-azure.zip -L [voltmx-foundry-containers-azure_9.0.0.1_GA.zip](http://download.voltmx.com/onpremise/mobilefoundry/docker/9.0.0.1/VoltMXFoundryContainersAzure-9.0.0.1_GA.zip)` -->
+
+3.  Unzip the downloaded artifacts:  
+    **$ unzip voltmx-foundry-containers-azure.zip -d <directory-name>  
+    **The structure of the document will be as shown below:  
+    ![](Resources/Images/Folder_structure.PNG)
 
 Configuration
 -------------
 
-Edit the input parameters in the following file based on the type of solution you want to create.
+Edit the input parameters in the following files based on the type of solution you want to create.
 
-*   **\<Installation Directory\>/conf/enterprise.properties**  
-    For more information, refer to the [sample.properties (zip)](sample.zip) file.
+<!-- *   **<Installation Directory\>/conf/trial.properties** for Trial solution. -->
+*   **<Installation Directory\>/conf/enterprise.properties** for Enterprise solution.  
+    For more information, refer to the [sample.properties (zip)](https://github.com/HCL-TECH-SOFTWARE/volt-mx-docs/raw/master/voltmxlibrary/foundry/zip/user_guide/sample.zip) file.
 
-There are two types of input properties:
+<!-- VoltMX Foundry setup expects configuration through the properties file available in the **conf** directory of the unzipped artifacts. For the Trial solution, edit the **trial.properties** file. For the Enterprise solution, edit the **enterprise.properties** file. -->
 
-*   **User Defined Parameters**: These are the mandatory inputs for which you must specify values.
-*   **Advanced Properties**: These are either populated by default or populated by the script during installation. Therefore, these generally do not need to be updated by you. These are available in the [sample.properties (zip)](sample.zip) file.
+<p>There are two types of input properties:</p>
+        <ul>
+            <li><b>User Defined Parameters</b>: These are the  mandatory inputs for which you must specify values.</li>
+            <li><b>Advanced Properties</b>: These are either populated by default or populated by the script during installation. Therefore, these generally do not need to be updated by you. These are available in the<a href="sample.zip"> sample.properties (zip)</a> file.</li>
+        </ul>
+        <h3>List of properties under the User Defined Section</h3>
+        <p style="font-weight: bold;">You need to provide the following parameters  during Installation:</p>
+        <p class="Note" MadCap:autonum="&lt;b&gt;&lt;i&gt;&lt;span style=&quot;color: #0a9c4a;&quot; class=&quot;mcFormatColor&quot;&gt;Note: &lt;/span&gt;&lt;/i&gt;&lt;/b&gt;">None of the values for parameters in the properties file should contain quotes.</p>
+        <table class="TableStyle-Basic" style="max-width: 70%;mc-table-style: url('Resources/TableStyles/Basic.css');border-top-left-radius: 0px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;border-left-style: solid;border-left-width: 2px;border-left-color: #a9a9a9;border-right-style: solid;border-right-width: 2px;border-right-color: #a9a9a9;border-top-style: solid;border-top-width: 2px;border-top-color: #a9a9a9;border-bottom-style: solid;border-bottom-width: 2px;border-bottom-color: #a9a9a9;margin-left: 0;margin-right: auto;width: 50%;" cellspacing="0">
+            <col class="TableStyle-Basic-Column-Column1" style="max-width: 30%;width: 15%;" />
+            <col class="TableStyle-Basic-Column-Column1" style="max-width: 30%;width: 20%;" />
+            <col class="TableStyle-Basic-Column-Column1" style="max-width: 30%;width: 15%;" />
+            <thead>
+                <tr class="TableStyle-Basic-Head-Header1">
+                    <td style="text-align: center;" class="TableStyle-Basic-HeadE-Column1-Header1">PARAMETER</td>
+                    <td style="text-align: center;" class="TableStyle-Basic-HeadE-Column1-Header1">DESCRIPTION</td>
+                    <td style="text-align: center;" class="TableStyle-Basic-HeadD-Column1-Header1">EXAMPLE</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p><b MadCap:conditions="Default.NotToPublish" style="font-weight: normal;">SHARED_SERVER_DOMAIN_NAME</b>SERVER_DOMAIN_NAME</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>This is the domain name property for Fabric Console component. This is not required if shared cluster is already created in previous installations.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>kfazure-console.konylabs.net</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1" MadCap:conditions="Default.NotToPublish">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>INTEGRATION_SERVER_DOMAIN_NAME</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>This is the domain name property for Fabric Integration component.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>kfazure-integration.konylabs.net</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1" MadCap:conditions="Default.NotToPublish">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>KMS_DOMAIN_NAME</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p> This is the domain name property for Fabric Engagement Service Component. This is not required in case of Production because Engagement will also use SHARED_SERVER_DOMAIN_NAME incase of production.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>kfazure-engagement.konylabs.net</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>AZURE_SUBSCRIPTION_ID</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>This is the Azure subscription ID. Steps to know this are in the <a href="#subId">next section</a>.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>da28307f-55ae-42de-995a-fcc6608d1bd4</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>AZURE_LOCATION</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>The region in which the AKS cluster should be created. For more details refer to, <a href="Appendices.htm#Features">Features and Supported Regions</a>.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>eastus</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>SERVICE_PRINCIPAL_CLIENT_ID</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Application ID of the service principal created for the Azure installation. </p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>716f6434-1315-4acb-3184-d9a23efa3613</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>SERVICE_PRINCIPAL_CLIENT_SECRET</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Password of the Service Principal.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>34a10627-308d-4697-9ea2-e379f8e33bb0</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>SERVICE_PRINCIPAL_OBJECT_ID</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Service principal object ID. Steps to know this are in the <a href="#servicePObj">next section</a>.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>c3afcb93-46ed-21c4-98e0-7bb639297f21</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>TENANT_ID</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1" style="font-weight: normal;">
+                        <p>Tenant ID of the Azure account. Steps to know this are in the <a href="#tenantID">next section</a>.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>a5a1f617-3b00-1e81-8190-c4a5136ba396</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>SSH_PUBLIC_KEY</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>This is required for creation of the AKS. Steps to create SSH key is provided in the <a href="#Generate">pre-requisites section</a>.</p>
+                        <p class="Note" MadCap:autonum="&lt;b&gt;&lt;i&gt;&lt;span style=&quot;color: #0a9c4a;&quot; class=&quot;mcFormatColor&quot;&gt;Note: &lt;/span&gt;&lt;/i&gt;&lt;/b&gt;"> You cannot use the same SSH key   for all the Non-Production installations within a subscription.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>ssh-rsa SAAWB3NzaC1yc2...</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p><b MadCap:conditions="Default.NotToPublish" style="font-weight: normal;">SHARED_AZURE_RESOURCE_GROUP</b>AZURE_RESOURCE_GROUP</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Specify the name of the resource group that must be created for the cluster. Enter a name that does not conflict with any of the existing resource groups. This is not required for Non-Production if the shared cluster is already installed for the same subscription.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>FabricXYZ</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1" MadCap:conditions="Default.NotToPublish">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>INTEGRATION_AZURE_RESOURCE_GROUP</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Specify name of resource group to be created for the Integration (INT) cluster. This will be the resource group where AKS cluster for Fabric Integration is created. Enter a name which does not conflict with any existing resource group. This is mandatory for all installations.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>FabricIntXYZ</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>DATABASE_TYPE</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Specify the database type you want to use for hosting Quantum Fabric on Azure.</p>
+                        <p>The Quantum Fabric Containers on Azure Solution supports the MS SQL and MySQL Server Databases.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>mysql</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p><b MadCap:conditions="Default.NotToPublish" style="font-weight: normal;">SHARED_DATABASE_USER_NAME</b>DATABASE_USER_NAME</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Specify a username for the  database that is used by the Fabric components. This is not required in Non-Production installation if a shared cluster is already created in the previous installation.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>dbclient</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p><b MadCap:conditions="Default.NotToPublish" style="font-weight: normal;">SHARED_DATABASE_PASSWORD</b>DATABASE_PASSWORD</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Specify a password for the database that is used by the Fabric components.</p>
+                        <p class="Note" MadCap:autonum="&lt;b&gt;&lt;i&gt;&lt;span style=&quot;color: #0a9c4a;&quot; class=&quot;mcFormatColor&quot;&gt;Note: &lt;/span&gt;&lt;/i&gt;&lt;/b&gt;">The following special character $, *, &amp;, !, (, ), \ are not supported in DB password.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>Test#/123</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1" MadCap:conditions="Default.NotToPublish">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>DATABASE_PASSWORD_SECRET_KEY</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Specify the decryption key for the database password. This parameter is required only if you are using an encrypted password.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>12345</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>INTEGRATION_DATABASE_USER_NAME</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Specify a username for your INT database. This is required only if the selected database is of the type <b>sqlserver</b>. This is not required in Non-Production installation if a shared cluster is already created in the previous installation.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>dbclient</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>INTEGRATION_DATABASE_PASSWORD</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Specify a database password for your integration database. This is required only if the selected database is of the type <b>sqlserver</b>. This is not required in Non-Production installation if a shared cluster is already created in the previous installation.</p>
+                        <p class="Note" MadCap:autonum="&lt;b&gt;&lt;i&gt;&lt;span style=&quot;color: #0a9c4a;&quot; class=&quot;mcFormatColor&quot;&gt;Note: &lt;/span&gt;&lt;/i&gt;&lt;/b&gt;">If you are using Quantum Fabric 9.0.0.1 GA docker images, you must specify the same value for SHARED_DATABASE_PASSWORD and INTEGRATION_DATABASE_PASSWORD. Integration docker image does not support multiple passwords.<br />You can use different passwords for your databases from Quantum Fabric V9.0.1.0 GA onwards.<br />The following special character $, *, &amp;, !, (, ), \ are not supported in DB password.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>FabR^c123</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>ENVIRONMENT_DB_USER</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Specify a username for your environment database. This is required only if the selected database is of the type <b>mysql</b> and the installation type is Non-Production.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>dbclient</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>ENVIRONMENT_DB_PASSWORD</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Specify a password for your environment database. This is required only if the selected database is of the type <b>mysql</b> and the installation type is Non-Production.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>FabR^c123</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>ENABLE_REDIS_SSL</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Specifies whether an SSL connection must be enabled between the Authentication Service and REDIS.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>true</p>
+                        <p>Supported values are <b>true</b> and <b>false</b>.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>APPGATEWAY_SSL_CERT_PASSWORD</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Password of the SSL PFX certificate.This is the Password is used for getting the <b>pfx</b> key for the SSL offloading.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>Test@1234</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Automatic Registration Details:</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Auto registration inputs are not required to be provided for Non-Production if the Shared cluster is already created in a previous installation.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>AUTO_REGISTRATION_USER_ID</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>The email ID used for Quantum Fabric Registration. After the installation is complete, you can add more users from the Fabric console.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>micheal.doe@xyz.com</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>AUTO_REGISTRATION_PASSWORD</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>The password used for Quantum Fabric Registration.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>Test@5264!</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>AUTO_REGISTRATION_FIRST_NAME</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>The first name used for Quantum Fabric Registration.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>Micheal</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>AUTO_REGISTRATION_LAST_NAME</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>The last name used for Quantum Fabric Registration.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>Doe</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>AZURE_CDN_ENABLED</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Specify whether to install CDN for the apps component or not. If you have chosen a region where CDN Profile is not supported, CDN will not be configured. For more details refer to, <a href="Appendices.htm#Features">Features and Supported Regions</a>.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>true</p>
+                        <p>Supported values include: true or false.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>ALERT_NOTIFICATION_ENABLED</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Specify whether to enable notification for Alerts. For example sending an alert when the CPU Usage crosses 90% on integration pod, etc.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>true</p>
+                        <p>Supported values include: true or false.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>AZURE_ACTION_GROUP_NAME</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Specify name of the action group.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>admin</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>USER_EMAIL_ID</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Specify the default email ID to which alert notification should be sent.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>micheal.doe@xyz.com</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>ARRAY_TO_WHITELIST_IPS_TO_ACCESS_FILE_SHARE</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Specify the public Fabric IP of the machine where the installation script would be running. To specify multiple IPs use space separated values like ("w1.x1.y1.z1" "w2.x2.y2.z2" "w3.x3.y3.z3").</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>("103.140.124.130")</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>COMMON_RESOURCE_GROUP</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Specify the name of the resource group where few subscription level shared resources would be created. This needs to be a separate value for Production and for Non-Production.  This is the resource group under which PCI related function app gets created.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>KonyInfra</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p><a name="Marketing"></a>MARKETING_CATALOG_MS</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Specify whether to enable Marketing Catalog Microservice or not.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>false</p>
+                        <p>Supported values include: true or false.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>MARKETING_CATALOG_RESOURCE_GROUP</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Specify the name of the resource group where the marketing catalog microservice resources would be created.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>marketingcatalog-ms</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>MONGO_PATH</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Enter the path where Mongo Shell is installed.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>/opt/mongodb-linux-x86_64-ubuntu1804-4.2.10/bin</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>MONGO_CONNECTION</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Enter the connection string for Mongo Shell from Altas.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>mongodb+srv://mongo-cluster-1.jonig.mongodb.net</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>MONGO_USER_NAME</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Enter the Mongo Database user name which has been created earlier by you.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>mongodbuser</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>MONGO_PASSWORD</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Enter the Mongo Database password which has been given by you while creating the mongodb user.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>Root@123</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>MONGODB_DBNAME</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Enter the preferred Database name.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>marketingcatalogdb</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>MONGODB_CONNECTIONSTR</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Provide mongo DB connection string. </p>
+                        <p class="Note" MadCap:autonum="&lt;b&gt;&lt;i&gt;&lt;span style=&quot;color: #0a9c4a;&quot; class=&quot;mcFormatColor&quot;&gt;Note: &lt;/span&gt;&lt;/i&gt;&lt;/b&gt;">Ensure that you are providing URL encoded mongodb username and password values if they contain special characters like *,@,:,?,. etc.</p>
+                        <p>It can be formed by using the following string:</p>
+                        <p class="code">mongodb://&lt;MONGO_USER_NAME&gt;:&lt;MONGO_PASSWORD&gt;@&lt;cluster-shard-0&gt;:&lt;port-number&gt;,<br />&lt;cluster-shard-1&gt;:&lt;port-number&gt;,<br />&lt;cluster-shard-2&gt;:&lt;port-number&gt;/<br />&lt;MONGODB_DBNAME&gt;?ssl=true&amp;replicaSet=&lt;value&gt;<br />&amp;authSource=admin<br />&amp;retryWrites=true<br />&amp;w=majority</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p class="code">mongodb://mongodbuser:Root%40123@<br />mongo-cluster-1-shard-00-01.jonig.mongodb.net:27017,<br />mongo-cluster-1-shard-00-02.jonig.mongodb.net:27017,<br />mongo-cluster-1-shard-00-00.jonig.mongodb.net:27017/<br />marketingcatalogdb?ssl=true&amp;amp;<br />replicaSet=atlas-qxcm8s-shard-0&amp;amp;<br />authSource=admin&amp;amp;<br />retryWrites=true&amp;amp;<br />w=majority</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>EVENT_HUB_NAME_SPACE</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Enter the preferred Event hub namespace.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>marketingcatalogkafkaapp</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p><a name="CampaignMS"></a>CAMPAIGN_MS</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Specify whether to enable Campaign Microservice or not.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>false</p>
+                        <p>Supported values include: true or false.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>CAMPAIGN_RESOURCE_GROUP</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Specify the name of the resource group where campaign microservice resources would be created.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>nas-ssl-campaign</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>CAMPAIGN_DB_SERVER_NAME</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Specify the server name for your MySQL Database.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>sqlcampaigndb</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>CAMPAIGN_DB_USER_NAME</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Enter the preferred Database username.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>campaign</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1" MadCap:conditions="Default.NotToPublish">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>CAMPAIGN_DB_NAME</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Enter the preferred Database name.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>campaigndb</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>CAMPAIGN_DB_PASSWORD</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Enter the preferred Database password.</p>
+                        <p>It should be a String containing a minimum of 8 characters and combination of alpha-numeric and non-alpha-numeric characters.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>root@123</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>ARRAY_TO_WHITELIST_IPS_TO_ACCESS_CAMPAIGN_DB</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Specify the outbound public IP of the machine where the installation script would be running. To specify multiple IPs you can use space separated values like ("w1.x1.y1.z1" "w2.x2.y2.z2" "w3.x3.y3.z3").</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>("103.140.124.130")</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1" MadCap:conditions="Default.NotToPublish">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>ADMIN_USER_NAME</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Enter the preferred Admin Username for MySQL database.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>campaign</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>New Relic Monitoring details:</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>New Relic Monitoring for AKS Cluster. Enable New Relic monitoring for Infrastructure monitoring. Make sure a proper new relic subscription is available before enabling this feature.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>NEW_RELIC_INFRA_MONITORING_ENABLED</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Set to true if you have a new relic license key and if new relic infra monitoring needs to be enabled.</p>
+                        <p>This would monitor the node level performance metrics such as CPU, memory, etc.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>true</p>
+                        <p>Supported values include: true or false.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>NEW_RELIC_APP_PERF_MONITORING_ENABLED</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Set to true if you have a new relic license and if pod level monitoring needs to be enabled. </p>
+                        <p>This would monitor the pod level metrics.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>true</p>
+                        <p>Supported values include: true or false.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>NEW_RELIC_LICENSE_KEY</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Specify the new relic license key.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>9e3f3112fb39c130a75c407ab0b4ba153f30NRAL</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>AKS_NODE_COUNT</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Specify the number of worker nodes in the cluster.</p>
+                        <p>This is the minimum number of nodes to be created in the Shared AKS agent pool.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>2</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>AKS_MAX_NODE_COUNT</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Specify the maximum number of worker nodes that can be provisioned by Autoscaling.</p>
+                        <p>The max number of nodes for the Shared AKS to create in case load increases.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>6</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p><b MadCap:conditions="Default.NotToPublish" style="font-weight: normal;">SHARED_AKS_NODE_SIZE_NON_PROD</b>AKS_NODE_SIZE_NON_PROD</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>This is for a Non Production instance. Type of the Azure instance created for Shared cluster in which Fabric components console, identity, engagement pods will be created.
+Refer to the <a href="https://docs.microsoft.com/en-us/azure/aks/use-multiple-node-pools" target="_blank">Azure documentation</a> for instance sizes and codes.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>Standard_D4_v3</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p><b MadCap:conditions="Default.NotToPublish" style="font-weight: normal;">SHARED_AKS_NODE_SIZE_PROD</b>AKS_NODE_SIZE_PROD</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>This is for a Production instance. Type of the Azure instance created for Shared cluster in which Fabric components console, identity, engagement pods will be created.
+Refer to the <a href="https://docs.microsoft.com/en-us/azure/aks/use-multiple-node-pools" target="_blank">Azure documentation</a> for instance sizes and codes.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>Standard_D4_v3</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p><b MadCap:conditions="Default.NotToPublish" style="font-weight: normal;">INTEGRATION_AKS_NODE_SIZE</b>INTEGRATION_NODE_SIZE</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>Type of the Azure instance to be created for the Integration Components.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>Standard_B2MS</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>AKS_MASTER_NODE_COUNT</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>This is the AKS&#160;Master Node Count. Specify the number of Master nodes to create.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>1</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>INTEGRATION_AKS_NODE_COUNT</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyE-Column1-Body1">
+                        <p>The minimum number of nodes to be created in the Integration AKS agent/node pool.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyD-Column1-Body1">
+                        <p>2</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Basic-Body-Body1">
+                    <td class="TableStyle-Basic-BodyB-Column1-Body1">
+                        <p>INTEGRATION_AKS_MAX_NODE_COUNT</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyB-Column1-Body1">
+                        <p>The maximum number of nodes to be created in the Integration AKS agent/node pool.</p>
+                    </td>
+                    <td class="TableStyle-Basic-BodyA-Column1-Body1">
+                        <p>6</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
-### List of properties under the User Defined Section
 
-You need to provide the following parameters during Installation:
 
-> **_Note:_** None of the values for parameters in the properties file should contain quotes.
 
-  
-| PARAMETER | DESCRIPTION | EXAMPLE |
-| --- | --- | --- |
-| **SHARED\_SERVER\_DOMAIN\_NAME** | This is the domain name property for Foundry Console component. This is not required if shared cluster is already created in previous installations. | `kfazure-console.hcl.net` |
-| **INTEGRATION\_SERVER\_DOMAIN\_NAME** | This is the domain name property for Foundry Integration component. | `kfazure-integration.hcl.net` |
-| **VMS\_DOMAIN\_NAME** | This is the domain name property for Foundry Engagement Service Component. This is not required in case of Production because Engagement will also use SHARED\_SERVER\_DOMAIN\_NAME incase of production. | `kfazure-engagement.hcl.net` |
-| **AZURE\_SUBSCRIPTION\_ID** | This is the Azure subscription ID. Steps to know this are in the [next section](#subId). | da28307f-55ae-42de-995a-fcc6608d1bd4 |
-| **AZURE\_LOCATION** | The region in which the AKS cluster should be created. For more details refer to, [Features and Supported Regions](Appendices.md#features-and-supported-regions). | eastus |
-| **SERVICE\_PRINCIPAL\_CLIENT\_ID** | Application ID of the service principal created for the Azure installation. | 716f6434-1315-4acb-3184-d9a23efa3613 |
-| **SERVICE\_PRINCIPAL\_CLIENT\_SECRET** | Password of the Service Principal. | 34a10627-308d-4697-9ea2-e379f8e33bb0 |
-| **SERVICE\_PRINCIPAL\_OBJECT\_ID** | Service principal object ID. Steps to know this are in the [next section](#servicePObj). | c3afcb93-46ed-21c4-98e0-7bb639297f21 |
-| **TENANT\_ID** | Tenant ID of the Azure account. Steps to know this are in the [next section](#tenantID). | a5a1f617-3b00-1e81-8190-c4a5136ba396 |
-| **SSH\_PUBLIC\_KEY** | This is required for creation of the AKS. Steps to create SSH key is provided in the [pre-requisites section](#Generate). > **_Note:_** You cannot use the same SSH key for all the Non-Production installations within a subscription. | ssh-rsa SAAWB3NzaC1yc2... |
-| **SHARED\_AZURE\_RESOURCE\_GROUP** | Specify name of resource group to be created for the cluster of SHARED components (Console, Identity, and Engagement). Enter a name which does not conflict with any of the existing resource groups. This is not required for Non-Production if the shared cluster is already installed for the same subscription. | FoundrySharedXYZ |
-| **INTEGRATION\_AZURE\_RESOURCE\_GROUP** | Specify name of resource group to be created for the Integration (INT) cluster. This will be the resource group where AKS cluster for Foundry Integration is created. Enter a name which does not conflict with any existing resource group. This is mandatory for all installations. | FoundryIntXYZ |
-| **DATABASE\_TYPE** | Specify the database type you want to use for hosting Volt MX Foundry on Azure.The Volt MX Foundry Containers on Azure Solution supports the MS SQL and MySQL Server Databases. | mysql |
-| **SHARED\_DATABASE\_USER\_NAME** | Specify a username for the database used by the Foundry console, identity and engagement components. This is not required in Non-Production installation if a shared cluster is already created in the previous installation. | dbclient |
-| **SHARED\_DATABASE\_PASSWORD** | Specify a password for the database used by the shared Foundry components. > **_Note:_** The following special character $, \*, &, !, (, ), \\ are not supported in DB password. | Test#/123 |
-| **INTEGRATION\_DATABASE\_USER\_NAME** | Specify a username for your INT database. | dbclient |
-| **INTEGRATION\_DATABASE\_PASSWORD** | Specify a database password for your integration database.> **_Note:_** If you are using Volt MX Foundry 9.0.0.1 GA docker images, you must specify the same value for SHARED\_DATABASE\_PASSWORD and INTEGRATION\_DATABASE\_PASSWORD. Integration docker image does not support multiple passwords.You can use different passwords for your databases from Volt MX Foundry V9.0.1.0 GA onwards.The following special character $, \*, &, !, (, ), \\ are not supported in DB password. | FabR^c123 |
-| **APPGATEWAY\_SSL\_CERT\_PASSWORD** | Password of the SSL PFX certificate.This is the Password is used for getting the **pfx** key for the SSL offloading. | Test@1234 |
-| **Automatic Registration Details:** | Auto registration inputs are not required to be provided for Non-Production if the Shared cluster is already created in a previous installation. |   |
-| **AUTO\_REGISTRATION\_USER\_ID** | The email ID used for Volt MX Foundry Registration. After the installation is complete, you can add more users from the Foundry console. | micheal.doe@xyz.com |
-| **AUTO\_REGISTRATION\_PASSWORD** | The password used for Volt MX Foundry Registration. | Test@5264! |
-| **AUTO\_REGISTRATION\_FIRST\_NAME** | The first name used for Volt MX Foundry Registration. | Micheal |
-| **AUTO\_REGISTRATION\_LAST\_NAME** | The last name used for Volt MX Foundry Registration. | Doe |
-| **AZURE\_CDN\_ENABLED** | Specify whether to install CDN for the apps component or not. If you have chosen a region where CDN Profile is not supported, CDN will not be configured. For more details refer to, [Features and Supported Regions](Appendices.md#features-and-supported-regions). | true Supported values include: true or false. |
-| **ALERT\_NOTIFICATION\_ENABLED** | Specify whether to enable notification for Alerts. For example sending an alert when the CPU Usage crosses 90% on integration pod, etc. | true Supported values include: true or false. |
-| **AZURE\_ACTION\_GROUP\_NAME** | Specify name of the action group. | admin |
-| **USER\_EMAIL\_ID** | Specify the default email ID to which alert notification should be sent. | micheal.doe@xyz.com |
-| **ARRAY\_TO\_WHITELIST\_IPS\_TO\_ACCESS\_FILE\_SHARE** | Specify the public Foundry IP of the machine where the installation script would be running. To specify multiple IPs use space separated values like ("w1.x1.y1.z1" "w2.x2.y2.z2" "w3.x3.y3.z3"). | ("103.140.124.130") |
-| **COMMON\_RESOURCE\_GROUP** | Specify the name of the resource group where few subscription level shared resources would be created. This needs to be a separate value for Production and for Non-Production. This is the resource group under which PCI related function app gets created. | VoltMXInfra |
-| **MARKETING\_CATALOG\_MS** | Specify whether to enable Marketing Catalog Microservice or not. | false Supported values include: true or false. |
-| **MARKETING\_CATALOG\_RESOURCE\_GROUP** | Specify the name of the resource group where the marketing catalog microservice resources would be created. | marketingcatalog-ms |
-| **MONGO\_PATH** | Enter the path where Mongo Shell is installed. | `/opt/mongodb-linux-x86_64-ubuntu1804-4.2.10/bin` |
-| **MONGO\_CONNECTION** | Enter the connection string for Mongo Shell from Altas. | mongodb+srv://mongo-cluster-1.jonig.mongodb.net |
-| **MONGO\_USER\_NAME** | Enter the Mongo Database user name which has been created earlier by you. | mongodbuser |
-| **MONGO\_PASSWORD** | Enter the Mongo Database password which has been given by you while creating the mongodb user. | Root@123 |
-| **MONGODB\_DBNAME** | Enter the preferred Database name. | marketingcatalogdb |
-| **MONGODB\_CONNECTIONSTR** | Provide mongo DB connection string. <br> **Note:** Ensure that you are providing URL encoded mongodb username and password values if they contain special characters like \*,@,:,?,. etc. <br><br>It can be formed using the following string: mongodb://< MONGO\_USER\_NAME>:< MONGO\_PASSWORD> @<cluster-shard-0>:<port-number>,<cluster-shard-1>:<port-number> , <cluster-shard-2>:<port-number>/< MONGODB\_DBNAME>?ssl=true&replicaSet=<value> &authSource=admin&retryWrites=true&w=majority | mongodb://mongodbuser:Root%40123@mongo-cluster-1-shard-00-01.jonig.mongodb.net:27017,mongo-cluster-1-shard-00-02.jonig.mongodb.net:27017,mongo-cluster-1-shard-00-00.jonig.mongodb.net:27017/marketingcatalogdb?ssl=true&replicaSet=atlas-qxcm8s-shard-0&authSource=admin&retryWrites=true&w=majority |
-| **EVENT\_HUB\_NAME\_SPACE** | Enter the preferred Event hub namespace. | marketingcatalogkafkaapp |
-| **CAMPAIGN\_MS** | Specify whether to enable Campaign Microservice or not. | false Supported values include: true or false. |
-| **CAMPAIGN\_RESOURCE\_GROUP** | Specify the name of the resource group where campaign microservice resources would be created. | nas-ssl-campaign |
-| **CAMPAIGN\_DB\_SERVER\_NAME** | Specify the server name for your MySQL Database. | sqlcampaigndb |
-| **CAMPAIGN\_DB\_USER\_NAME** | Enter the preferred Database username. | campaign |
-| **CAMPAIGN\_DB\_PASSWORD** | Enter the preferred Database password. It should be a String containing a minimum of 8 characters and combination of alpha-numeric and non-alpha-numeric characters. | root@123 |
-| **ARRAY\_TO\_WHITELIST\_IPS\_TO\_ACCESS\_CAMPAIGN\_DB** | Specify the outbound public IP of the machine where the installation script would be running. To specify multiple IPs you can use space separated values like ("w1.x1.y1.z1" "w2.x2.y2.z2" "w3.x3.y3.z3"). | ("103.140.124.130") |
-| **New Relic Monitoring details:** | New Relic Monitoring for AKS Cluster. Enable New Relic monitoring for Infrastructure monitoring. Make sure a proper new relic subscription is available before enabling this feature. |   |
-| **NEW\_RELIC\_INFRA\_MONITORING\_ENABLED** | Set to true if you have a new relic license key and if new relic infra monitoring needs to be enabled. This would monitor the node level performance metrics such as CPU, memory, etc. | true Supported values include: true or false. |
-| **NEW\_RELIC\_APP\_PERF\_MONITORING\_ENABLED** | Set to true if you have a new relic license and if pod level monitoring needs to be enabled. This would monitor the pod level metrics. | true Supported values include: true or false. |
-| **NEW\_RELIC\_LICENSE\_KEY** | Specify the new relic license key. | 9e3f3112fb39c130a75c407ab0b4ba153f30NRAL |
-| **AKS\_NODE\_COUNT** | Specify the number of worker nodes in the cluster. This is the minimum number of nodes to be created in the Shared AKS agent pool. | 2 |
-| **AKS\_MAX\_NODE\_COUNT** | Specify the maximum number of worker nodes that can be provisioned by Autoscaling. The max number of nodes for the Shared AKS to create in case load increases. | 6 |
-| **SHARED\_AKS\_NODE\_SIZE\_NON\_PROD** | This is for a Non Production instance. Type of the Azure instance created for Shared cluster in which Foundry components console, identity, engagement pods will be created. Refer to the [Azure documentation](https://docs.microsoft.com/en-us/azure/aks/use-multiple-node-pools) for instance sizes and codes. | Standard\_D4\_v3 |
-| **SHARED\_AKS\_NODE\_SIZE\_PROD** | This is for a Production instance. Type of the Azure instance created for Shared cluster in which Foundry components console, identity, engagement pods will be created. Refer to the [Azure documentation](https://docs.microsoft.com/en-us/azure/aks/use-multiple-node-pools) for instance sizes and codes. | Standard\_D4\_v3 |
-| **INTEGRATION\_AKS\_NODE\_SIZE** | Type of the Azure instance to be created for Integration Cluster. | Standard\_B2MS |
-| **AKS\_MASTER\_NODE\_COUNT** | This is the AKS Master Node Count. Specify the number of Master nodes to create. | 1 |
-| **INTEGRATION\_AKS\_NODE\_COUNT** | The minimum number of nodes to be created in the Integration AKS agent/node pool. | 2 |
-| **INTEGRATION\_AKS\_MAX\_NODE\_COUNT** | The maximum number of nodes to be created in the Integration AKS agent/node pool. | 6 |
 
-<a name="userProperties"></a>    
-<details close markdown="block"><summary>Click here to view details of the User Defined Properties <strong>(Azure Subscription ID, Azure Service Principal ID Name, Azure Service Principal ID Secret, Service Principal Object ID, and Tenant ID)</strong></summary>
 
-**Azure Subscription ID** is a GUID that uniquely identifies your subscription to use Azure services. The Application needs the Service Principal to access or configure resources through the Azure Resource Manager (ARM) in the Azure Stack.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- You need to provide the following parameters during Installation: -->
+
+You can view details of the User Defined Properties:
+
+<!-- None of the values for parameters in trial or enterprise properties file should contain quotes. -->
+
+1.  **Azure Subscription ID**, **Azure Service Principal ID Name**, **Azure Service Principal ID Secret**, **Service Principal Object ID**, and **Tenant ID** - Azure Subscription ID is a GUID that uniquely identifies your subscription to use Azure services. The Application needs the Service Principal to access or configure resources through the Azure Resource Manager (ARM) in the Azure Stack.  
     You must have an Azure account with the permissions of a **Global Administrator** and the role of a **User**. Without these privileges, it is not possible to create the AKS clusters (or other resources).  
     The following section describes fetching **Azure Subscription ID**, generating **Azure Service Principal ID Name**, **Azure Service Principal ID Secret**, **Service Principal Object ID**, and **Tenant ID**.
-<br>
-i. **Steps to get the Subscription ID**
 
-*   Navigate to [http://portal.azure.com/](http://portal.azure.com/).
-*   Navigate to Browse.
-*   In the search box, begin to type subscription.
-*   Select Subscriptions from the search results.<br/>
-![](Resources/Images/ASP_1_459x653.png)
+    1.  Steps to get the Subscription ID:
 
-Find the appropriate subscription to check your Azure subscription GUID.<br/>
-![](Resources/Images/ASP_2_463x131.png)
-
-
-ii. **Step to generate Azure Service Principal with Contributor role at subscription level**
-
-Login to Azure Portal and click on **Cloud Shell** as shown:<br/>
-
-![](Resources/Images/Execute_1_542x106.png)
-
-1.  Execute:  
-```
-
-    $ az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/<subscription_id>"
-```<br/>
-![](Resources/Images/Execute_3_478x135.png)
-
-After executing the above command, a json response will be displayed on the command prompt.
-
-```
-
-{  
-"appId": "APP_ID",  
-"displayName": "ServicePrincipalName",  
-"name": "http://ServicePrincipalName",  
-"password": ...,  
-"tenant": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"  
-}  
-
-```
-
-In the properties file of the **conf** directory:
-
-*   SERVICE\_PRINCIPAL\_CLIENT\_ID is the value of the appId.
-*   SERVICE\_PRINCIPAL\_CLIENT\_SECRET is the value of the password.
-
-> **_Note:_** The values of the SERVICE\_PRINCIPAL\_CLIENT\_ID and SERVICE\_PRINCIPAL\_CLIENT\_SECRET should not contain any quotation marks. For example:
-
-*   SERVICE\_PRINCIPAL\_CLIENT\_ID = a5afa829-525c-436c-ca4f-f442027cfd2e
-*   SERVICE\_PRINCIPAL\_CLIENT\_SECRET = cx4q44eq-fq7a-450v-zf41-4049183d1eb8
-
-iii. **Steps to generate the Service Principal Object ID**
-
-Login to Azure Portal and click on **Power Shell**.
-
-1.  Execute:  
-```
-
-    $(Get-AzureADServicePrincipal -Filter "AppId eq ‘<Service_principle_client_ID>’").ObjectId
-```<br/>
-![](Resources/Images/objectid.PNG)
-
+        *   Navigate to [http://portal.azure.com/](http://portal.azure.com/).
+        *   Navigate to Browse.
+        *   In the search box, begin to type subscription.
+        *   Select Subscriptions from the search results.  
+            ![](Resources/Images/ASP_1.png)
+            Find the appropriate subscription to check your Azure subscription GUID.  
+            ![](Resources/Images/ASP_2.png)
     
-iv. **Steps to know your Tenant ID**
+    2.  Generating **Azure Service Principal ID Name** and **Azure Service Principal ID Secret**:  
+        Login to Azure Portal and click on **Cloud Shell** as shown:  
+        ![](Resources/Images/Execute_1.png)  
+        *   Execute:
+            `$ az group create --name "resource_group_name" --location "eastus"`
+            ![](Resources/Images/Execute_2.png)
+        *   Execute:  
+            `$ az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>"`
+            ![](Resources/Images/Execute_3.png)
+            After executing the above command, a json response will be displayed on the command prompt.
 
-1.  Go to Portal.azure.com > Azure Active Directory.
-2.  In the Overview section you can find the Tenant ID.<br/>
-![](Resources/Images/tenant_id.png)
+            <pre><code>{
+            "appId": "APP\_ID",  
+            "displayName": "ServicePrincipalName",  
+            "name": "http://ServicePrincipalName",  
+            "password": ...,  
+            "tenant": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"  
+             }</code></pre>
 
-</details>
+        *   In the properties file of the **conf** directory:
 
-Installation
-------------
-
-Steps to Install Volt MX Foundry on MS Azure
-
-1.  Create an Ubuntu VM or you can use an existing VM. For more details, refer to [VM Setup](#vm-setup).
-2.  Extract the downloaded installation zip on that VM. For more details, refer to [Pre-Installation Tasks](#pre-installation-tasks).
-
-![](Resources/Images/installfolder.png)
-
-3.  Modify/Enter the required properties in the **<Installation Directory>/conf/enterprise.properties** file. For more details, refer to [Configuration](#configuration).
-4.  Run the installation using command bash **install-foundry.sh**.
-
-![](Resources/Images/new_install1.png)
-
-5.  Choose between a Non-Production or a Production installation mode. In the following prompt a **Non-Production** mode has been chosen. You can choose Production mode and follow a similar flow to complete the installation.
-6.  Specify a label for the Non-Production installation environment. A label is just a simple string such as dev, qa, uat etc., this will also be appended to the Azure resources created for this environment to identify them easily.
+            *   SERVICE\_PRINCIPAL\_CLIENT\_ID is the value of the appId.
+            *   SERVICE\_PRINCIPAL\_CLIENT\_SECRET is the value of the password.
+                The values of the SERVICE\_PRINCIPAL\_CLIENT\_ID and SERVICE\_PRINCIPAL\_CLIENT\_SECRET should not contain any quotation marks. For example:
+            *   SERVICE\_PRINCIPAL\_CLIENT\_ID = a5afa829-525c-436c-ca4f-f442027cfd2e
+            *   SERVICE\_PRINCIPAL\_CLIENT\_SECRET = cx4q44eq-fq7a-450v-zf41-4049183d1eb8
     
-    ![](Resources/Images/new_install2.png)
-    
-    > **_Note:_** This step is specific to Non-Production mode.
-    
-7.  The installation begins and towards the end of the installation the following prompt will be displayed.
+    3.  Generating **Service Principal Object ID**  
+        Login to Azure Portal and click on **Power Shell**. 
 
-![](Resources/Images/new_install3.png)
-
-8.  Once the domains are mapped to the IPs/CNAME as shown in the prompt, validate the mappings and continue the installation by re-running **install-foundry.sh**. The CDN configuration will be done and the following prompt will be displayed to complete the manual steps of CDN configuration.
-    
-    ![](Resources/Images/CdnSuccessful.png)
-    
-    > **_Note:_** You must ensure that the domain mapping must reflect with correct mapping from the script client box using **nslookup**.
-    
-9.  As shown in the prompt, follow the steps in [Setting up Azure Content Delivery Network (CDN)](VoltMX_Foundry_on_Azure.md#setting-up-azure-content-delivery-network-cdn) to perform a custom domain HTTPS configuration.
-10.  Re-run the installation by running the **install-foundry.sh** again to complete the post-installation tasks.
-11.  At the end of the installation, the following message is displayed which contains the Foundry Console URL. Copy and paste the displayed link on to a browser. Press Enter. The Foundry Console is displayed.
-
-![](Resources/Images/new_install4.png)
-
-Post Installation
------------------
-
-After the installation and CDN configuration is complete, you can access the Foundry Console using the link displayed on the screen.
-
-1.  Take a backup and keep the installation logs from **<Installation Directory>/logs directory**.
-2.  Copy and paste the displayed link on to a browser. Press Enter. The Foundry Console is displayed.
-3.  Login with the registration credentials provided in the properties file and navigate across various pages. Following is a screenshot of the Environments tab from an Azure test setup after installing 3 environments, namely DEV, UAT2, and QA4.
-    
-    ![](Resources/Images/Environment_Page.png)
+        *   Execute:  
+            `$(Get-AzureADServicePrincipal -Filter "AppId eq ‘<Service_principle_client_ID>’").ObjectId`
+            ![](Resources/Images/objectid.PNG)
+        
+    4.  **Tenant ID** - Following are the steps to know your Tenant ID:
+        *  Go to Portal.azure.com > Azure Active Directory.
+        *  In the Overview section you can find the Tenant ID.
+           ![](Resources/Images/tenant_id.png)
     
 
-You can now publish apps and check the runtime services.
+<!-- 2.  **Azure Location** - Azure location is the location of the Azure Resource group.
 
-Configuring Iris to Connect to Volt MX Foundry on Azure
+    Azure AKS is supported in various Azure locations. For more information about Azure locations, refer to [Products available by region](https://azure.microsoft.com/en-gb/global-infrastructure/services?products=kubernetes-service&regions=all).
+
+    <a id="SSH"></a>
+
+3.  **SSH\_PUBLIC\_KEY** - You need this to configure all the Linux machines with the SSH RSA public key string.
+       
+       *    **ID\_RSA\_PASSPHRASE** - The passphrase of the SSH key.
+             It is advised to avoid having a passphrase for the SSH key.
+             You must use a single set of SSH keys (id\_rsa.pub and id\_rsa) for the entire subscription to use a single common resource group for PCI. If a new set of SSH keys is being used for cloud creation then you must create a new common resource group for PCI. To create a new common resource group for PCI you must change the default value of the variable **COMMON\_RESOURCE\_GROUP** in the properties file.
+        
+    For information on how to Generate an SSH public key, click [here](VoltMX_Foundry_v9_on_Azure.md#Generate).
+        
+6.  **VNET\_ADDRESS\_SPACE**: Provide custom address space of virtual network, if required.
+7.  **AKS\_SUBNET\_ADDRESS\_SPACE**: If custom address space of virtual network is configured, then set the value of AKS subnet address space.
+8.  **APP\_GATEWAY\_SUBNET\_ADDRESS\_SPACE**: If custom address space of virtual network is configured, then set the value of azure application gateway subnet address space.
+9.  **JUMPBOX\_SUBNET\_ADDRESS\_SPACE**: If custom address space of virtual network is configured, then set the value of jumpbox subnet address space.
+10.  **DNS\_SERVICE\_IP**: If custom address space of virtual network is configured, then set the IP address value of the DNS service.
+11.  **SERVICE\_CIDR**: If custom address space of virtual network is configured, then set the IP address value of the Kubernetes internal service.
+    
+     If custom address space of virtual network is configured then make sure AKS\_SUBNET\_ADDRESS\_SPACE, APP\_GATEWAY\_SUBNET\_ADDRESS\_SPACE, JUMPBOX\_SUBNET\_ADDRESS\_SPACE, DNS\_SERVICE\_IP, SERVICE\_CIDR IP address do not overlap and at the same time exist in the virtual network address space.
+    
+12.  **ALERT\_NOTIFICATION\_ENABLED**: Flag to enable or disable alert notifications.
+13.  **AZURE\_ACTION\_GROUP\_NAME**: Action group name is the identifier for a set of email IDs to which notifications are sent.
+14.  **USER\_EMAIL\_ID**: Primary email ID is provided for receiving alert notifications. You can access the Azure portal to add other email IDs, if required.
+15.  **IS\_DB\_SSL\_ENABLED**: Flag for enabling or disabling SSL connection to access MySQL DB.
+    
+    If IS\_DB\_SSL\_ENABLED is set to true then IS\_SSL\_ENABLED should also be set to true.
+    
+16.  **ARRAY\_TO\_WHITELIST\_IPS\_TO\_ACCESS\_DB**: Enter the IP address to be whitelisted to access any database.
+17.  **IS\_SSL\_ENABLED** – Flag to enable or disable SSL on VoltMX Foundry setup. This flag is set to **true** by default. If you do not require SSL, set this parameter to **false**.
+    *   Place the SSL certificate (in a **.pfx** file format) in the ssl-cert folder, and then provide the **Server Domain Name** and **AppGateway SSL Cert Password**.
+    *   For enabling HTTPS on the back-end of appgateway, perform the following steps:
+        1.  The SSL certificates with the cert data and key data should be in separate files (both in a **.pem** file format).
+        2.  Save the Cert file as `ingress.pem`.
+        3.  Save the Key file as `ingress_key.pem`.
+        4.  Place both ingress.pem and ingress\_key.pem files in the **certs** folder of the installation directory.
+18.  **Server Domain Name** - This is the external server domain that you need to map with the Azure Application Gateway DNS name.
+19.  **AppGateway SSL Cert Password** – This is the Password used for getting the **pfx** key for the SSL offloading.
+20.  **AZURE\_LOG\_ANALYTICS\_ENABLED** – Flag to enable Azure Operations Management Suite (OMS) Log analytics solution.
+21.  **AZURE\_LOG\_ANALYTICS\_SERVICE\_TIER** - Service tier for Azure log analytics. The allowed values are **Free**, **Standalone**, and **PerNode**. The **Free** Tier is applicable only if you created your Azure account before 02-April-2018. This tier has a 500MB limit on the amount of data collected daily and also has a 7-day limit on data retention. If you created your Azure Account after 02-April-2018, you only have the **Standalone** or **PerNode** options. If you use the **Free** tier, the installation throws an error. For information about the pricing of the **Standalone** and **PerNode** options, refer to the [Azure pricing for Log Analytics](https://azure.microsoft.com/en-in/pricing/details/log-analytics/).
+22.  **AZURE\_LOG\_ANALYTICS\_DATA\_RETENTION\_PERIOD** – This is the data retention period for the logs in log analytics solution (minimum data retention period: 7, maximum data retention period : 738). This value is required if log analytics is enabled. For **Free** tier, data retention period is not allowed for more than 7 days. For **Standalone** and **PerNode** tiers, data is retained at no charge for the first 31 days. There is no daily limit for data upload for **Standalone** or **PerNode** tiers.
+23.  **DATABASE\_TYPE** - This is the database type you want to use for hosting VoltMX Foundry on Azure.  
+    The VoltMX Foundry Containers on Azure Solution supports the MS SQL and MySQL Server Databases.
+24.  **DATABASE\_USER\_NAME** - The preferred Database Username (other than `Admin`).
+
+     **_Note:_**: Ensure that the value of the DB\_NAME parameter in the properties file is unique. An installation error is thrown when a DB service with the same name already exists.
+
+28.  **DATABASE\_PASSWORD** - String containing a minimum of 8 characters and combination of alpha-numeric and non-alpha-numeric characters.
+
+     **_Note:_**: The Database Username and Database Password provided here must also be used to login to the Database using the Azure Portal. You must not use the **$** and **#** characters in the Database password field.
+
+31.  **DB\_SKUTIER**: For MySQL DB, the Skutier can be **Basic**, **GeneralPurpose**, or **MemoryOptimized** tier. The default is set to GeneralPurpose.
+32.  **DB\_SKUCAPACITY**: Specify the vCore capacity. If Skutier is Basic, the possible values include 1,2. If Skutier is GeneralPurpose the possible values include 2, 4, 8, 16, 32 or 64. If Skutier is MemoryOptimized the possible values include 2, 4, 8, 16, 32.
+33.  **DB\_SKUFAMILY**: Specify the Computer Generation. If Skutier is Basic the possible values include Gen4, Gen5. If Skutier is GeneralPurpose the possible values include Gen4, Gen5. If Skutier is MemoryOptimized the possible values include Gen5.
+34.  **DB\_SKUNAME** = Specify the Skutier name in the following format: **TierPrefix\_family\_capacity**. For example, B\_Gen5\_1, GP\_Gen5\_16, MO\_Gen5\_32.
+35.  **DB\_SKUSIZEMB**: Specify the max provisioned storage size required for the server in megabytes. For example, 5120.
+36.  **MYSQL\_VERSION**: Specify the MySQL version. Currently supported MySQL versions are 5.6, and 5.7.
+37.  **DB\_BACKUP\_RETENTION\_DAYS**: Specify the desired backup retention period in days. If PCI is enabled choose the value as 31 days. If PCI is disabled choose the value as 15 days.
+38.  **DB\_GEO\_REDUNDANT\_BACKUP**: To configure the Geo-Redundancy backup for DB snapshots, set the value to **Enabled**. The default value is set as Disabled.
+
+     **_Note:_**: The DB\_SKUTIER, DB\_SKUCAPACITY, DB\_SKUFAMILY, DB\_SKUNAME, DB\_SKUSIZEMB, MYSQL\_VERSION, DB\_BACKUP\_RETENTION\_DAYS, and DB\_GEO\_REDUNDANT\_BACKUP properties are specific to the **MySQL Database**.
+
+40.  **DATABASE\_PORT**: Specify the Database Port. For MySQL it is 3306. For MS SQL it is 1433.
+41.  **AZURE\_AUTH\_REDIS\_CACHE\_NAME**: Name for the cache. Name can only contain letters, numbers, and hyphens. The first and last characters must each be a letter or a number. Consecutive hyphens are not allowed.
+42.  **AZURE\_AUTH\_REDIS\_SKU\_TYPE**: The possible values are **Basic**, **Standard**, **Premium**.
+43.  **AZURE\_AUTH\_REDIS\_SKU\_FAMILY**: The possible values are: '**C**', '**P**'; where C = Basic/Standard, and P = Premium.
+44.  **AZURE\_AUTH\_REDIS\_SKU\_CAPACITY** : The possible value for this can only be a numeric value. For the C (Basic/Standard) family: (0, 1, 2, 3, 4, 5, 6). For the P (Premium) family: (1, 2, 3, 4).
+45.  **AZURE\_AUTH\_REDIS\_CACHE\_EVICTION\_POLICY**: The available Eviction policies are **volatile-lru**, **allkeys-lru**, **volatile-random**, **allkeys-random**, **volatile-ttl**, and **noeviction**. The default value is set to volatile-lru.
+46.  **AZURE\_SERVER\_REDIS\_CACHE\_NAME**: Name for the cache. Name can only contain letters, numbers, and hyphens. The first and last characters must each be a letter or a number. Consecutive hyphens are not allowed. For example: kfrediscacheserver.
+47.  **AZURE\_SERVER\_REDIS\_SKU\_TYPE**: The possible values are **Basic**, **Standard**, **Premium**.
+48.  **AZURE\_SERVER\_REDIS\_SKU\_FAMILY**: The possible values are: '**C**', '**P**'; where C = Basic/Standard, and P = Premium.
+49.  **AZURE\_SERVER\_REDIS\_SKU\_CAPACITY**: The possible value for this can only be a numeric value. For the C (Basic/Standard) family: (0, 1, 2, 3, 4, 5, 6). For the P (Premium) family: (1, 2, 3, 4).
+50.  **AZURE\_SERVER\_REDIS\_CACHE\_EVICTION\_POLICY**: The available Eviction policies are **volatile-lru**, **allkeys-lru**, **volatile-random**, **allkeys-random**, **volatile-ttl**, and **noeviction**. The default value is set to volatile-lru.
+51.  **AZURE\_SERVER\_REDIS\_CONNECTION\_MINIMUM\_IDLE\_SIZE**: The value for Minimum idle Redis connection amount. The default value is set to 5.
+52.  **AZURE\_SERVER\_REDIS\_IDLE\_CONNECTION\_TIMEOUT\_IN\_MILLISECONDS**: The value for Redis Idle connection timeout. Default value is set to 10000.
+53.  **AZURE\_SERVER\_REDIS\_CONNECTION\_POOL\_SIZE**: This is the maximum pool size for Redis connection. Default value is set to 64.
+54.  **AZURE\_SERVER\_REDIS\_CONNECTION\_TIMEOUT**: The value for Redis connection timeout in milliseconds. Default value is set to 10000.
+55.  **JUMPBOX\_ENABLED** - Flag to create Jumpbox as a part of the VoltMX Foundry setup. Set this to false if you do not require Jumpbox. Refer to [Appendices](./Appendices.md) for more details on how to connect to the Azure Kubernetes through Jumpbox.
+    
+     **_Note:_**: After completion of installation, you  must whitelist the URLs that the DevOps would use to Log-in.
+    
+56.  **Automatic Registration Details:**
+ 
+     | PARAMETER | DESCRIPTION |
+     | --- | --- |
+     | AUTO\_REGISTRATION\_USER\_ID | The E-mail id used for VoltMX Foundry Registration. |
+     | AUTO\_REGISTRATION\_PASSWORD | The Password used for VoltMX Foundry Registration. |
+     | AUTO\_REGISTRATION\_FIRST\_NAME | The First Name used for VoltMX Foundry Registration. |
+     | AUTO\_REGISTRATION\_LAST\_NAME | The Last Name used for VoltMX Foundry Registration. |
+
+  
+     **AUTO\_REGISTRATION\_ENV\_NAME**: Name of the environment. You can set this in the **.properties** file
+
+     The AUTO\_REGISTRATION\_USER\_ID and AUTO\_REGISTRATION\_PASSWORD provided here will also be used to login to the VoltMX Foundry Console.
+
+     You must provide the following parameters **additionally** for an Enterprise solution.
+
+     *   **AKS Node Count** - This is the number of worker nodes in the cluster.
+     *   **AKS Node Size** - Type of the worker nodes in the cluster.
+     *   **AKS Master Node Count** - This is the AKS Master Node Count.
+
+     Specify the following parameters in the **trial.properties/enterprise.properties** file to enable **Autoscaling**. For more information on Autoscaling refer to, [AKS Autoscaling](./Appendices.md#Autoscaling).
+
+64.  **AKS\_MAX\_NODE\_COUNT**: Specify the maximum number of worker nodes that can be provisioned by Autoscaling.
+
+     **_Note:_**: The max pod count for all the components should not exceed the max node count.
+
+66.  **AKS\_MULTI\_AZ\_ENABLED**: Specify either true or false to enable or disable the deployment of AKS across multiple availability zones. Azure supports this feature only in [specific regions](https://docs.microsoft.com/en-us/azure/aks/availability-zones). If a region does not support AKS across multiple availability zones, setting this value to true has no effect.
+67.  **NUM\_INGRESS\_PODS**: Specify the number of ingress pods, if required. The default and recommended value is 2.
+
+     For the **INTEGRATION** Component:
+
+69.  **NUM\_INTEGRATION\_PODS**: The number of minimum pods. For example, the values can be set to: 1, 2, etc.
+70.  **INTEGRATION\_POD\_MAX\_REPLICAS**: The maximum number of pods to be scaled. Provide an integer value.
+71.  **INTEGRATION\_POD\_CPU\_USAGE\_THRESHOLD**: The scaling of pods will be triggered if CPU utilization value in percentage crosses the user given threshold value. For example, the values can be set to: 80, 90, etc.
+72.  **INTEGRATION\_POD\_CPU\_USAGE\_REQUESTS**: For pod placement, AKS looks for a node that has enough CPU to handle the pod requests. For example, the values can be set to: 300m, 400m, etc.
+73.  **INTEGRATION\_POD\_MEMORY\_USAGE\_THRESHOLD**: The memory utilization threshold in percentage that is required to trigger scaling. For example, the values can be set to: 80, 90, etc.
+74.  **INTEGRATION\_POD\_MEMORY\_USAGE\_REQUESTS**: For pod placement AKS looks for a node that has enough memory according to the requests configuration. For example, the values can be set to: 1G, 2G, etc.
+75.  **INTEGRATION\_POD\_MEMORY\_USAGE\_LIMIT**: The maximum amount of memory that can be allocated to a pod in the node. For example, the values can be set to: 3.2G, 3.5G, etc.
+
+     For the **ENGAGEMENT** Component:
+
+77.  **NUM\_ENGAGEMENT\_PODS**: The number of minimum pods. For example, the values can be set to: 1, 2, etc.
+78.  **ENGAGEMENT\_POD\_MAX\_REPLICAS**: The maximum number of pods to be scaled. For example, the values can be set to: 1, 2, etc.
+79.  **ENGAGEMENT\_POD\_CPU\_USAGE\_THRESHOLD**: The scaling of pods will be triggered if CPU/memory utilization value in percentage crosses the user given threshold value. For example, the values can be set to: 80, 90, etc.
+80.  **ENGAGEMENT\_POD\_CPU\_USAGE\_REQUESTS**: For pod placement, AKS looks for a node that has a CPU that can handle the pods, according to the requests. For example, the values can be set to: 300m, 400m, etc.
+81.  **ENGAGEMENT\_POD\_MEMORY\_USAGE\_THRESHOLD**: The memory utilization threshold in percentage that is required to trigger scaling. For example, the values can be set to: 80, 90, etc.
+82.  **ENGAGEMENT\_POD\_MEMORY\_USAGE\_REQUESTS**: For pod placement AKS looks for a node that has enough memory according to the requests configuration. For example, the values can be set to: 1G, 2G, etc.
+83.  **ENGAGEMENT\_POD\_MEMORY\_USAGE\_LIMIT**: The maximum amount of memory that can be allocated to a pod in the node. For example, the values can be set to: 3.2G, 3.5G, etc.
+
+     For the **IDENTITY** component:
+
+85.  **NUM\_IDENTITY\_PODS**: The number of minimum pods. For example, the values can be set to: 1, 2, etc.
+86.  **IDENTITY\_POD\_MAX\_REPLICAS**: The maximum number of pods to be scaled. For example, the values can be set to: 1, 2, etc.
+87.  **IDENTITY\_POD\_CPU\_USAGE\_THRESHOLD**: The scaling of pods will be triggered if CPU/memory utilization value in percentage crosses the user given threshold value. For example, the values can be set to: 80, 90, etc.
+88.  **IDENTITY\_POD\_CPU\_USAGE\_REQUESTS**: For pod placement, AKS looks for a node that has a CPU that can handle the pods, according to the requests. For example, the values can be set to: 300m, 400m, etc.
+89.  **IDENTITY\_POD\_MEMORY\_USAGE\_THRESHOLD**: The memory utilization threshold in percentage that is required to trigger scaling. For example, the values can be set to: 80, 90, etc.
+90.  **IDENTITY\_POD\_MEMORY\_USAGE\_REQUESTS**: For pod placement AKS looks for a node that has enough memory according to the requests configuration. For example, the values can be set to: 1G, 2G, etc.
+91.  **IDENTITY\_POD\_MEMORY\_USAGE\_LIMIT**: The maximum amount of memory that can be allocated to a pod in the node. For example, the values can be set to: 3.2G, 3.5G, etc.
+
+     For the **CONSOLE** component:
+
+93.  **NUM\_CONSOLE\_PODS**: The number of minimum pods. For example, the values can be set to: 1, 2, etc.
+94.  **CONSOLE\_POD\_MAX\_REPLICAS**: The maximum number of pods to be scaled. For example, the values can be set to: 1, 2, etc.
+95.  **CONSOLE\_POD\_CPU\_USAGE\_THRESHOLD**: The scaling of pods will be triggered if CPU/memory utilization value in percentage crosses the user given threshold value. For example, the values can be set to: 80, 90, etc.
+96.  **CONSOLE\_POD\_CPU\_USAGE\_REQUESTS**: For pod placement, AKS looks for a node that has a CPU that can handle the pods, according to the requests. For example, the values can be set to: 300m, 400m, etc.
+97.  **CONSOLE\_POD\_MEMORY\_USAGE\_THRESHOLD**: The memory utilization threshold in percentage that is required to trigger scaling. For example, the values can be set to: 80, 90, etc.
+98.  **CONSOLE\_POD\_MEMORY\_USAGE\_REQUESTS**: For pod placement AKS looks for a node that has enough memory according to the requests configuration. For example, the values can be set to: 1G, 2G, etc.
+99.  **CONSOLE\_POD\_MEMORY\_USAGE\_LIMIT**: The maximum amount of memory that can be allocated to a pod in the node. For example, the values can be set to: 3.2G, 3.5G, etc.
+
+     For the **APIPORTAL** component:
+
+101.  **NUM\_API\_PORTAL\_PODS**: The number of minimum pods. For example, the values can be set to: 1, 2, etc.
+102.  **APIPORTAL\_POD\_MAX\_REPLICAS**: The maximum number of pods to be scaled. For example, the values can be set to: 1, 2, etc.
+103.  **APIPORTAL\_POD\_CPU\_USAGE\_THRESHOLD**: The scaling of pods will be triggered if CPU/memory utilization value in percentage crosses the user given threshold value. For example, the values can be set to: 80, 90, etc.
+104.  **APIPORTAL\_POD\_CPU\_USAGE\_REQUESTS**: For pod placement, AKS looks for a node that has a CPU that can handle the pods, according to the requests. For example, the values can be set to: 300m, 400m, etc.
+105.  **APIPORTAL\_POD\_MEMORY\_USAGE\_THRESHOLD**: The memory utilization threshold in percentage that is required to trigger scaling. For example, the values can be set to: 80, 90, etc.
+106.  **APIPORTAL\_POD\_MEMORY\_USAGE\_REQUESTS**: For pod placement AKS looks for a node that has enough memory according to the requests configuration. For example, the values can be set to: 1G, 2G, etc.
+107.  **APIPORTAL\_POD\_MEMORY\_USAGE\_LIMIT**: The maximum amount of memory that can be allocated to a pod in the node. For example, the values can be set to: 3.2G, 3.5G, etc.
+108.  **AZURE\_FILE\_SHARE\_SECRET**: The name for the Kubernetes secret used by integration pods to access Azure file share. The default value is azure-file-share-secret.
+109.  **MOUNT\_PATH**: Enter the Mount path of the Integration pods required to store data. The default value is set to `/mnt/shared`.
+110.  **AZURE\_FILE\_SHARE\_ENABLED**: The flag to enable or disable Azure file share on the VoltMX Foundry setup. This flag is set to true by default.
+111.  **AZURE\_FILE\_SHARE\_STORAGE\_ACCOUNT**: The Azure storage account name must be between 3 and 24 characters in length and must contain alpha-numeric characters in lowercase. The default value is set to voltmxfs.
+112.  **AZURE\_FILE\_SHARE\_DIRECTORY\_NAME**: The Azure file share directory name must be between 1 and 255 characters in length and must not contain the following special characters **\\/:|<>\*?**. The default value is set to voltmx.
+113.  **STORAGE\_ACCOUNT\_KIND**: Enter the value for the kind of Storage account. The possible values include StorageV2 and FileStorage. The default value is set to StorageV2 as FileStorage Storage account does not support Zone Redundant Storage(ZRS).
+114.  **STORAGE\_ACCOUNT\_REPLICATION\_TYPE**: If Storage Account kind is StorageV2, possible values include Standard\_LRS, Standard\_GRS, Standard\_RAGRS, Standard\_ZRS, Premium\_LRS, Premium\_ZRS, Standard\_GZRS, and Standard\_RAGZRS. If Storage Account kind is FileStorage, possible values include Premium\_LRS. Default value is set to Standard\_ZRS.
+
+      **_Note:_**: Only few regions support Standard\_ZRS. Therefore, you must ensure that the region entered in the AZURE\_LOCATION param supports Standard\_ZRS.
+
+116.  **ACCESS\_TIER**: Only the Standard performance has access tiers. The possible values for access tiers include Hot and Cool. The default value is set to Cool.
+117.  **AZURE\_FILE\_SHARE\_NAME**: The file share name must be between 3 and 63 characters in length and can use numbers, lower-case letters, and hyphens only. The default value is voltmxfileshare.
+118.  **AZURE\_FILE\_SHARE\_QUOTA**: The maximum size of the share in Gigabytes. You can edit the value later in Azure portal. If performance is Standard then its value must be greater than 0, and less than or equal to 5120(5 Terabytes). If performance is Premium then its value must be greater than 0, and less than or equal to 102400(100 Terabytes). The default value is set to 1024.
+
+     ![](Resources/Images/AzureFileSharequota.png)
+
+120.  **AZURE\_FILE\_SHARE\_BACK\_UP\_VAULT**: The Recovery Services vault name must be between 2 and 50 characters in length, must start with a letter, and should consist only of letters, numbers, and hyphens. The default value is VoltMXRecoveryServiceVault.
+121.  **ARRAY\_TO\_WHITELIST\_IPS\_TO\_ACCESS\_FILE\_SHARE**: Enter the IP address that should be whitelisted to access Azure file share. For example: ("103.140.124.130").
+122.  **AZURE\_STORAGE\_ACCOUNT\_NAME**: The Azure storage account name must be between 3 and 24 characters in length, must contain only lowercase alphabets. The default value is voltmx.
+
+      **_Note:_**: The default values for all the above parameters are given in the properties file. -->
+
+Script Execution
+----------------
+
+1.  Switch to the directory that contains the kf\_setup.sh file and execute the setup script using:  
+    **$ bash kf\_setup.sh**
+2.  Select the Installation mode – **Trial** or **Enterprise**.  
+    ![](Resources/Images/Env_selection.png)
+3.  Login to your Azure account using the link printed on the screen, and enter the given code for the script to continue the setup process.  
+    ![](Resources/Images/az_login.PNG)
+4.  The Bash prompt prints the Public DNS of the Application Gateway while executing the script. You must map this DNS to your custom Domain Name, if SSL is to be configured. Once you  confirm the mapping on the command line, the script resumes execution and completes the setup.  
+    ![](Resources/Images/App_Gateway_Mapping.png)
+
+    To execute the installation scripts, you must use Bash version 4 or later.
+
+    Upon successful completion of the setup, all the Application URLs will be printed on the screen as shown in the image.
+
+    ![](Resources/Images/App_URLs.png)
+
+    You can start using VoltMX Foundry using the **VoltMX Foundry Console URL**. The credentials to login to the Console are the same as that of the Auto-registration details provided in the properties file.
+
+    <!-- Make sure to take a backup of the unzipped directory created in **Step 3** for being able to perform further updates to AKS clusters. -->
+
+    Once the installation is complete, and you take a backup, you can delete the Virtual Machine created for executing the setup script. To do so, go to the Azure Portal and navigate to the Virtual Machines Tab. Select the VM and confirm its deletion.
+
+Configuring Iris to Connect to VoltMX Foundry on Azure
 ------------------------------------------------------------
 
-For details about connecting to Volt MX Foundry Console through Iris, refer to [Connecting to Volt MX Foundry](../../../Iris/iris_user_guide/Content/Connect_to_VoltMXFoundry.md).
+For details about connecting to VoltMX Foundry Console through Iris, refer to [Connecting to VoltMX Foundry](./../../../Iris/iris_user_guide/Content/Connect_to_VoltMXFoundry.md).
 
 Updating the Azure Kubernetes Service Cluster configuration
 -----------------------------------------------------------
 
 You need to have the current config files if you want to update the AKS cluster configuration. Once the installation is complete, take a backup of the unzipped directory where you installed the `voltmx-foundry-containers-azure.zip` to perform further updates to the AKS clusters.
 
-> **_Important:_** If you do not have a backup of the unzipped directory, updating the AKS cluster is difficult.
+If you do not have a backup of the unzipped directory, updating the AKS cluster is difficult.
 
 Setting up Azure Content Delivery Network (CDN)
 -----------------------------------------------
@@ -373,75 +1188,72 @@ A Content Delivery Network (CDN) is a distributed network of servers that can ef
 
 Azure Content Delivery Network (CDN) offers a global solution for developers to rapidly deliver high-bandwidth content to users by caching the content at strategically placed physical nodes across the world.
 
-> **_Note:_** Azure CDN SKU for AKS cluster is set to Premium Verizon, which supports configuration of cache rules for Volt MX Foundry Apps.
+Azure CDN SKU for AKS cluster is set to Premium Verizon, which supports configuration of cache rules for VoltMX Foundry Apps.
 
 ### Enable CDN on Azure AKS cluster
 
-<details close markdown="block"><summary>Follow these steps to enable CDN in your AKS cluster .</summary>
+Follow these steps to enable CDN in your AKS cluster .
 
 1.  Set the value of `AZURE_CDN_ENABLED` to **true** in the properties file (trail.properties /enterprise.properties).
     
-![](Resources/Images/ClamAV/CDN1.png)
+    ![](Resources/Images/ClamAV/CDN1.png)
     
 2.  Set the CDN Endpoint:
     *   FOR SSL ENABLED CLOUD (`IS_SSL_ENABLED = true`), after creating the CDN endpoint, map the CDN endpoint to a custom domain name.
         
-![](Resources/Images/ClamAV/CDN2.png)
+        ![](Resources/Images/ClamAV/CDN2.png)
         
     *   FOR SSL DISABLED CLOUD (IS\_SSL\_ENABLED = false), no mapping of server domain name is required.
         
-</details>
+
 Once you create the CDN profile and endpoint, follow these steps to manually configure the CDN settings in the Azure portal:
 
-<details close markdown="block"><summary>Click here for the steps</summary>
-
-1.  Open the Azure portal ([portal.azure.com](http://portal.azure.com/)) and login using your Microsoft account credentials.
+3.  Open the Azure portal ([portal.azure.com](http://portal.azure.com/)) and login using your Microsoft account credentials.
     
-![](Resources/Images/ClamAV/CDN3_600x317.png)
+    ![](Resources/Images/ClamAV/CDN3.png)
     
 2.  Select **Resource groups** from the left navigation pane.
     
-![](Resources/Images/ClamAV/CDN4_597x272.png)
+    ![](Resources/Images/ClamAV/CDN4.png)
     
     All existing resource groups appear.  
     Select the resource group in which the AKS Cluster is created.
     
-![](Resources/Images/ClamAV/CDN5_600x274.png)
+    ![](Resources/Images/ClamAV/CDN5.png)
     
 3.  If the cloud is SSL enabled, open **CDN Endpoint** from the list of resources in the Azure Resource Group.
     
-![](Resources/Images/ClamAV/CDN6_596x250.png)
+    ![](Resources/Images/ClamAV/CDN6.png)
     
 4.  Click **Custom Domain**.The Custom Domain page appears.
     
-![](Resources/Images/ClamAV/CDN7_601x252.png)
+    ![](Resources/Images/ClamAV/CDN7.png)
     
 5.  Select ON to enable HTTPS for custom domain.
     
-![](Resources/Images/ClamAV/CDN8.png)
+    ![](Resources/Images/ClamAV/CDN8.png)
     
-</details>
 
 ### Configuring Caching Rules
 
 1.  Go to **CDN profile** from the list of resources available in the Azure Resource Group (having the created AKS cluster).  
-![](Resources/Images/ClamAV/CDN9.png)
+    ![](Resources/Images/ClamAV/CDN9.png)
 2.  Click **Manage** from the top navigation bar.
     
-![](Resources/Images/ClamAV/CDN10_599x251.png)
+    ![](Resources/Images/ClamAV/CDN10.png)
     
 3.  Configure all the rules in the **CDN Manage Console**.
     
-![](Resources/Images/ClamAV/CDN11_599x270.png)
+    ![](Resources/Images/ClamAV/CDN11.png)
     
 4.  From the **HTTP Large** list, select `cache settings -> query string caching` .  
-![](Resources/Images/ClamAV/CDN12_599x251.png)
+    ![](Resources/Images/ClamAV/CDN12.png)
 5.  Select **no-cache** as the **query string caching** and click **Update**.  
-![](Resources/Images/ClamAV/CDN13.png)
+    ![](Resources/Images/ClamAV/CDN13.png)
 6.  From the **HTTP Large** list, select **Rules Engine**.  
-![](Resources/Images/ClamAV/CDN14_591x112.png)
+    ![](Resources/Images/ClamAV/CDN14.png)
 7.  Configure all the required rules.  
-![](Resources/Images/ClamAV/CDN15.png)
+    ![](Resources/Images/ClamAV/CDN15.png)
     *   Rule 1  
         ![](Resources/Images/ClamAV/rule1.png)
     *   Rule 2  
@@ -471,6 +1283,18 @@ A cron job is configured to run ClamAV on Azure Virtual Machines based on the fr
 
 Provide the following inputs in the properties file to enable ClamAV.
 
+<!-- ### Generating SSH Keys
+
+Using the SSH protocol, you can connect and authenticate to remote servers and services.
+
+On Ubuntu terminal, use `$cd ~/.ssh` command to set `~/.ssh` as the current directory to generate the SSH public and private key files.
+
+Use the `ssh-keygen -t rsa -b 2048` to generate the SSH key pair using RSA encryption and a bit length of 2048.
+
+Name the key to be generated as **id\_rsa**.
+
+In the properties file, the value of the public key is SSH\_PUBLIC\_KEY. -->
+
 ### Install ClamAV on Azure Virtual Machine
 
 Follow these steps to install ClamAV on your Azure Virtual Machine:
@@ -479,19 +1303,18 @@ Follow these steps to install ClamAV on your Azure Virtual Machine:
 2.  Place your SSH private key and SSH public key in the `sshkeys` folder with names **id\_rsa** and **id\_rsa.pub** respectively.
 3.  Set the frequency of the cron job to start the ClamAV scan and push the generated logs to the storage account.
 
-> **_Note:_**  Use the following format to set the values for the frequencies of `clamscan_cron_schedule` and `clamscanlogpush_cron_schedule` in the properties file (trail.properties /enterprise.properties).
-```
- * * * * *
-  |  |  |  |  |
-  |  |  |  |  |
-  |  |  |  | +---- Day of the Week   (range: 1-7, 1 standing for Monday)
-  |  |  | +------ Month of the Year (range: 1-12)
-  |  | +-------- Day of the Month  (range: 1-31)
-  | +---------- Hour (range: 0-23)
-  +------------ Minute (range: 0-59)
- * = any value
-
-```
+    Use the following format to set the values for the frequencies of `clamscan_cron_schedule` and `clamscanlogpush_cron_schedule` in the properties file (trail.properties /enterprise.properties). 
+<pre><code>
+*  *  *  *  *
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  | +---- Day of the Week   (range: 1-7, 1 standing for Monday)
+|  |  | +------ Month of the Year (range: 1-12)
+|  | +-------- Day of the Month  (range: 1-31)
+| +---------- Hour (range: 0-23)
++------------ Minute (range: 0-59)
+* = any value
+</code></pre>
 
 For example, if you configure the crontab timing as 00 16 \* \* \*, this indicates that the crontab runs every day at 16:00:00 (UTC).
 
@@ -534,7 +1357,7 @@ The `freshclam.conf` file configures the ClamAV Database Updater.
 
 All the logs generated by CLAMAV are pushed to the Azure Storage Account.
 
-1.  Log on to the Azure portal ([portal.azure.com](http://portal.azure.com/)) using your Microsoft account credentials.
+1.  Log on to the Azure portal (`[portal.azure.com](http://portal.azure.com/)`) using your Microsoft account credentials.
     
     ![](Resources/Images/ClamAV/CLAMAV2.png)
     
@@ -543,29 +1366,30 @@ All the logs generated by CLAMAV are pushed to the Azure Storage Account.
     ![](Resources/Images/ClamAV/CLAMAV3.png)
     
 
-All existing resource groups appear.  
-Select the resource group in which the AKS Cluster is created.
+    All existing resource groups appear.  
+    Select the resource group in which the AKS Cluster is created.
 
-![](Resources/Images/ClamAV/CLAMAV4.png)
+    ![](Resources/Images/ClamAV/CLAMAV4.png)
 
-3.  Select the storage account from the list of resources available in the resource group.
-4.  Click **Blobs** to see all the containers available in the storage account.
+6.  Select the storage account from the list of resources available in the resource group.
+
+7.  Click **Blobs** to see all the containers available in the storage account.
     
     ![](Resources/Images/ClamAV/CLAMAV5.png)
     
-5.  Select the **clamavlogs** container from the list of containers available in the storage account.
+8.  Select the **clamavlogs** container from the list of containers available in the storage account.
     
     ![](Resources/Images/ClamAV/CLAMAV6.png)
     
     This shows all the log files pushed by ClamAV from the virtual machine.
     
-6.  Click **Download** to view the logs in the file.
+9.  Click **Download** to view the logs in the file.
     
     ![](Resources/Images/ClamAV/CLAMAV7.png)
     
-7.  Unzip the downloaded .zip file and extract the content.
+10.  Unzip the downloaded .zip file and extract the content.
     
-    You can now view all the logs that are pushed by CLAMAV from virtual machine.
+     You can now view all the logs that are pushed by CLAMAV from virtual machine.
     
 
 Configuring OSSEC Intrusion Detection
@@ -577,6 +1401,16 @@ OSSEC runs as a daemon process. It notifies through alert logs when intrusion at
 
 Provide the following inputs in the properties file to enable OSSEC.
 
+<!-- ### Generating SSH Keys
+
+Using the SSH protocol, you can connect and authenticate to remote servers and services.
+
+On Ubuntu terminal, use `$cd ~/.ssh` command to set `~/.ssh` as the current directory to generate the SSH public and private key files.
+
+Use the `ssh-keygen -t rsa -b 2048` to generate the SSH key pair using RSA encryption and a bit length of 2048.
+
+Name the key to be generated as id\_rsa. -->
+
 ### OSSEC Installation steps
 
 1.  Enable the `INSTALL_OSSEC` flag in the properties file (trial.properties /enterprise.properties):
@@ -585,24 +1419,24 @@ Provide the following inputs in the properties file to enable OSSEC.
     
 2.  As OSSEC is a daemon process, it continuously detects intrusion activities and stores alerts in `alerts.log` file. A cron job is configured to push the alerts from `/var/ossec/logs/alerts/alerts.log` to the Azure Storage Account.
 
-> **_Note:_** Configure the `cronjob osseclogpush_cron_schedule` in the properties file (trail.properties /enterprise.properties) to set the frequency value of the cron job. Configure the Crontab timing in the following format:
-```
- * * * * *
-  |  |  |  |  |
-  |  |  |  |  |
-  |  |  |  | +---- Day of the Week   (range: 1-7, 1 standing for Monday)
-  |  |  | +------ Month of the Year (range: 1-12)
-  |  | +-------- Day of the Month  (range: 1-31)
-  | +---------- Hour (range: 0-23)
-  +------------ Minute (range: 0-59)
- * = any value
+    Configure the `cronjob osseclogpush_cron_schedule` in the properties file (trail.properties /enterprise.properties) to set the frequency value of the cron job. Configure the Crontab timing in the following format: 
 
-```
+     <pre><code>
+        *  *  *  *  *
+        |  |  |  |  |
+        |  |  |  |  |
+        |  |  |  | +---- Day of the Week   (range: 1-7, 1 standing for Monday)
+        |  |  | +------ Month of the Year (range: 1-12)
+        |  | +-------- Day of the Month  (range: 1-31)
+        | +---------- Hour (range: 0-23)
+        +------------ Minute (range: 0-59)
+        \* = any value
+     </code></pre>   
 
-For example, if you configure the crontab timing as 00 16 \* \* \*, this indicates that the crontab runs every day at 16:00:00 (UTC).
+    For example, if you configure the crontab timing as 00 16 \* \* \*, this indicates that the crontab runs every day at 16:00:00 (UTC).
 
-*   You can modify the default values of the cron job, if required.
-*   All cron job timings follow UTC timezone.
+    *   You can modify the default values of the cron job, if required.
+    *   All cron job timings follow UTC timezone.
 
 3.  Place your SSH private key in the sshkeys folder with name id\_rsa.
 
@@ -632,15 +1466,15 @@ Follow these steps to access OSSEC logs in the Virtual Machine.
     
     *   You can view the OSSEC logs at `/var/ossec/logs/ossec.log`
         
-       `$cd /var/ossec/logs/`
+        `$cd /var/ossec/logs/`
         
-       `$cat ossec.log`
+        `$cat ossec.log`
         
     *   You can view the OSSEC alerts at `/var/ossec/logs/alerts/alerts.log`.
         
-       `$cd /var/ossec/logs/alerts/`
+        `$cd /var/ossec/logs/alerts/`
         
-       `$cat alerts.log`
+        `$cat alerts.log`
         
 
 ### Edit cron jobs
@@ -658,7 +1492,7 @@ Follow these steps to access OSSEC logs in the Virtual Machine.
 
 All the logs generated by OSSEC are pushed to the Azure Storage Account.
 
-1.  Log on to the Azure portal ([portal.azure.com](http://portal.azure.com/)) using your Microsoft account credentials..
+1.  Log on to the Azure portal (`[portal.azure.com](http://portal.azure.com/)`) using your Microsoft account credentials..
     
     ![](Resources/Images/ClamAV/OSSEC3.png)
     
@@ -688,24 +1522,25 @@ All the logs generated by OSSEC are pushed to the Azure Storage Account.
     
     You can now view all the logs that are pushed by OSSEC from the virtual machine.
     
-    > **_Note:_** Follow these steps to edit the `preloaded-vars.conf` file to give customized inputs (other than defaults) to install OSSEC.
+    Follow these steps to edit the `preloaded-vars.conf` file to give customized inputs (other than defaults) to install OSSEC.
     
     1.  Login to the specific Virtual Machine (node) using SSH keys in the terminal.
     2.  Go to the `/home/azureuser/ossec-hids-2.9.0/etc/` directory by using following command.
         
-       `$ cd /home/azureuser/ossec-hids-2.9.0/etc/`
+        `$ cd /home/azureuser/ossec-hids-2.9.0/etc/`
         
     3.  Open the `preloaded-vars.conf` file and edit as required.
     
-    > **_Note:_** Follow these steps to edit the `ossec.conf file` and change the existing configurations of OSSEC.
+    Follow these steps to edit the `ossec.conf file` and change the existing configurations of OSSEC.
     
     1.  Login to the specific Virtual Machine (node) using SSH keys in the terminal.
     2.  Go to the `/var/ossec/etc` directory using following command.
         
-       `$ cd /var/ossec/etc`
+        `$ cd /var/ossec/etc`
         
     3.  Open the **ossec.conf** file and edit as required.
     
+
 
 Marketing Catalog Microservice
 ------------------------------
@@ -716,11 +1551,11 @@ The Marketing Catalog Microservice is a comprehensive source of system-independe
 
 *   Run the installation on a fresh virtual machine.
     
-    > **_Important:_** If in case you execute the file on an existing virtual machine you must ensure the Java is not installed on it or pointing it to Java 8 is mandatory.
+    If in case you execute the file on an existing virtual machine you must ensure the Java is not installed on it or pointing it to Java 8 is mandatory.
     
 *   Create a cluster in your Atlas account and **Allow access from anywhere** in the IP access list which is present under Network Access. Then, create a database user for your cluster and connect it to your cluster. Refer to [Get Started with Atlas](https://docs.atlas.mongodb.com/getting-started/) for the exact procedure that needs to be followed to execute this step.
     
-    > **_Important:_** You must ensure allowing access from anywhere in the IP access list of the cluster. To do so you must login to your cluster and under Network Access go to IP Access List and then click on **Edit** and select **Allow access from anywhere** then save.
+    You must ensure allowing access from anywhere in the IP access list of the cluster. To do so you must login to your cluster and under Network Access go to IP Access List and then click on **Edit** and select **Allow access from anywhere** then save.
     
     ![](Resources/Images/NetworkAccess.png)
     
@@ -730,13 +1565,15 @@ The Marketing Catalog Microservice is a comprehensive source of system-independe
 
 ### Deployment
 
-*   If you want to create the marketing catalog microservice resources along with the end to end installation of Volt MX Foundry on Azure cloud you must do the following:
+*   If you want to create the marketing catalog microservice resources along with the end to end installation of VoltMX Foundry on Azure cloud you must do the following:
     1.  Provide the required inputs in the `conf/enterprise.properties` file.
     2.  Execute the `install-foundry.sh` file.
 *   If you want to create only the marketing catalog microservice resources then do the following:
-    1.  Copy the `marketing_catalogs` folder from VoltMXFoundryContainersAzure-\_/lib/microservices/ path.
+    1.  Copy the `marketing_catalogs` folder from `VoltMXFoundryContainersAzure-_/lib/microservices/` path.
     2.  Provide the required inputs in the `conf/ marketing_catalog_ms.properties` file.
     3.  Execute the `install_marketing_catalog_ms.sh` file present under the `marketing_catalogs` folder.
+
+You must ensure adding your IP address to the IP access list of the Atlas cluster before deployment of Marketing catalog microservice.
 
 Campaign Microservice
 ---------------------
@@ -747,15 +1584,14 @@ The Campaign microservice allows the branch user to create and store Campaign de
 
 *   Run the installation on a fresh virtual machine.
 
-> **_Important:_** If in case you execute the file on an existing virtual machine you must ensure the Java is not installed on it or pointing it to Java 8 is mandatory.
+If in case you execute the file on an existing virtual machine you must ensure the Java is not installed on it or pointing it to Java 8 is mandatory.
 
 ### Deployment
 
-*   If you want to create Campaign microservice resources along with the end to end installation of Volt MX Foundry on Azure cloud you must do the following:
+*   If you want to create Campaign microservice resources along with the end to end installation of VoltMX Foundry on Azure cloud you must do the following:
     1.  Provide the required inputs in the `conf/enterprise.properties` file.
     2.  Execute the `install-foundry.sh` file.
 *   If you want to create only the Campaign microservice resources then do the following:
-    1.  Copy the `campaigns` folder from VoltMXFoundryContainersAzure-\_/lib/microservices/ path.
+    1.  Copy the `campaigns` folder from `VoltMXFoundryContainersAzure-_/lib/microservices/` path.
     2.  Provide the required inputs in the `conf/campaign_ms.properties` file.
     3.  Execute the `install_campaign_ms.sh` file present under `campaigns` folder.
--->

@@ -126,7 +126,8 @@ Alter session set container = PDB<MF_DB> ;
 *   If you are using the Volt MX Foundry installer to set up the Volt MX Foundry database, then please choose the below options based on your Oracle database version.
     
     *   If Oracle database is created with PDB option of Oracle 12c, use service name pointing to PDB in the JDBC URL such as `pdborcl` or `pdbmfdb
-````
+`
+```
 jdbc:oracle:thin:@<Database_Host_IP>:1521**/pdbmfdb** 
 ```
         

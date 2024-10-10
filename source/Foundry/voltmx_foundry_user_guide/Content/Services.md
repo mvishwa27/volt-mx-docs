@@ -202,7 +202,7 @@ Out of the box Volt MX Foundry Integration Services support connectivity to the 
   </tr>
   <tr>
     <td>
-      <a href="VoltMX_SAP_Gateway_Adapter.html">VoltMX SAP Gateway</a>
+      <a href="VoltMX_SAP_Gateway_Adapter.html">VoltMX SAP Gateway</a><br>Only available if you have SAP Gateway services in your account
     </td>
     <td>Volt MX SAP Gateway communicates with external SAP services over supported HTTP methods.</td>
     <td>
@@ -591,3 +591,4 @@ Out of the box Volt MX Foundry Integration Services support connectivity to the 
 | [IBM MQ](IBM_MQ_service.md) | IBM MQ server 9.0.0 version is a messaging middleware that simplifies and accelerates the integration of diverse applications and business data across multiple platforms. Volt MX uses the IBM MQ service to secure the message delivery and reduce the risk of data loss. | [Configure IBM MQ Endpoint Adapter](IBM_MQ_service.md#configure-ibm-mq-end-point-adapter) [Create Operations for IBM MQ](IBM_MQ_service.md#create-operations-for-ibm-mq-service) [Configure Request Operation for IBM MQ](IBM_MQ_service.md#configure-request-operation-for-ibm-mq) [Configure Response Operation for IBM MQ](IBM_MQ_service.md#configure-response-operation-for-ibm-mq) |
 | [SAP JCo](SAP_JCO.md) | Volt MX Foundry allows you to access and use the external SAP services using custom SAP Connector. You must load the required Business Application Programming Interface (BAPI) functions to define an SAP service. The BAPI files contain the SAP methods and functions. | [Configure SAP JCo Endpoint Adapter](SAP_JCO.md#configure-sap-jco-end-point-adapter) [Create Operations for SAP JCo](SAP_JCO.md#create-operations-for-sap-jco) [Configure Request Operation for SAP JCo](SAP_JCO.md#configure-request-operation-for-sap-jco) [Configure Response Operation for SAP JCo](SAP_JCO.md#configure-response-operation-for-sap-jco) |
 | [Open API (Swagger)](Open_API__Swagger_.md) | Swagger is a powerful open API specification framework backed by a large ecosystem of tools that helps you design, build, document, and consume your RESTful APIs. | [Configure Open API (Swagger) Endpoint Adapter](Open_API__Swagger_.md#configuring-an-openapi-swagger-end-point-adapter) [Create Operations for Open API (Swagger)](Open_API__Swagger_.md#creating-operations-for-openapi-swagger) [Configure Request Operation for Open API (Swagger)](Open_API__Swagger_.md#configuring-request-parameters) [Configure Response Operation for Open API (Swagger)](Open_API__Swagger_.md#configuring-response-parameters) | -->
+

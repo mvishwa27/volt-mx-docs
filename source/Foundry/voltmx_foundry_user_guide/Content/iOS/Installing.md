@@ -17,3 +17,5 @@ These steps show how to add the VoltMX-iOS-SDK to your project and set up Volt M
     To view the API Reference for Volt MX iOS, click <a href="https://docs.kony.com/8_x_PDFs/konyfabric/kony_docsets/ios/com.kony.KonySDK.docset/Contents/Resources/Documents/index.html" target="_blank">VoltMX iOS docset.</a>
     </details>
   
+
+<!-- *   [Invoking a Sync Service](Invoking_Sync_Service_iOS.md) -->

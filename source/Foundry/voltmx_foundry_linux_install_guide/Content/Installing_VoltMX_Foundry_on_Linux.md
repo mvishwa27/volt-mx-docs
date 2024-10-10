@@ -12,14 +12,16 @@ This section of the document provides you with the instructions for installing a
 
 > **_Important:_** Make sure you have proper administrative rights to install Volt MX Foundry on your computer. You also need a user where Volt MX Foundry will be installed.
 
-The **<Install Location>** directory contains the log files logging each invocation of the installer. To make problem identification easier, provide these log files to Volt MX when reporting an issue.
+The **&lt;Install Location&gt;** directory contains the log files logging each invocation of the installer. To make problem identification easier, provide these log files to Volt MX when reporting an issue.
 
-You can install Volt MX Foundry on Tomcat and JBoss servers.
+You can install Volt MX Foundry on Tomcat, JBoss and Websphere liberty servers.
 
 *   [Installing Volt MX Foundry on Tomcat](Installing_VoltMX_Foundry_Tomcat.md)
 *   [Installing Volt MX Foundry on JBoss](Installing_Foundry_on_JBoss.md)
     *   [Standalone Mode (Single node installation in bundled JBoss)](Installing_Foundry_on_JBoss1.md)
     *   [Standalone Mode (Single Node installation in a pre-configured JBoss)](Installing_Foundry_JBoss_existing.md)
     *   [Domain Mode (Multi node installation in pre-configured JBoss)](Multi-Node_Installation.md)
+
+*   [Installing Volt MX Foundry on WebSphere Liberty](https://opensource.hcltechsw.com/volt-mx-docs/95/docs/documentation/Foundry/voltmx_foundry_manual_install_guide/Content/Installing_Foundry_WebSphereLiberty.html)
 
 <!-- *   [Installing Volt MX Foundry on WebLogic (V9 SP2 FP1 or later)](Installing_VoltMX_Foundry_Weblogic.md) -->

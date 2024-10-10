@@ -24,7 +24,8 @@ This API encrypts the input string and returns the encrypted text. This API is a
 voltmx.crypto.asymmetricEncrypt(alias, inputstring, propertiesTable)
 ```
 
-### Input Parameters
+
+<h3>Input Parameters</h3> 
 
   
 <!-- | Parameters | Description |
@@ -33,7 +34,6 @@ voltmx.crypto.asymmetricEncrypt(alias, inputstring, propertiesTable)
 | inputstring\[String/ RawBytes\] - Mandatory | The input text to be encrypted. > **_Note:_** RawBytes are only accepted on the Android platform. The content type of the RawBytes must be `voltmx.types.RawBytes.CONTENT_TYPE_CHAR_ARRAY` or `voltmx.types.RawBytes.CONTENT_TYPE_BYTE_ARRAY`. |
 | propertiesTable \[Object\] - Mandatory | The applicable values for this parameter are as follows: **transformation** (String): The cipher transformation to be used. Possible transformation values are as follows:For iOS
 RSA:rawRSA:PKCS1RSA:OAEP:SHA1RSA:OAEP:SHA224RSA:OAEP:SHA256RSA:OAEP:SHA384RSA:OAEP:SHA512RSA:OAEP:SHA1:AESGCMRSA:OAEP:SHA224:AESGCMRSA:OAEP:SHA256:AESGCMRSA:OAEP:SHA384:AESGCMRSA:OAEP:SHA512:AESGCMFor Android and Windows"RSA/ECB/PKCS1Padding""RSA/ECB/OAEPWithSHA-1AndMGF1Padding""RSA/ECB/OAEPWithSHA-224AndMGF1Padding""RSA/ECB/OAEPWithSHA-256AndMGF1Padding""RSA/ECB/OAEPWithSHA-384AndMGF1Padding""RSA/ECB/OAEPWithSHA-512AndMGF1Padding""RSA/ECB/OAEPPadding""RSA/NONE/NoPadding""RSA/NONE/PKCS1Padding""RSA/NONE/OAEPWithSHA-1AndMGF1Padding""RSA/NONE/OAEPWithSHA-224AndMGF1Padding""RSA/NONE/OAEPWithSHA-256AndMGF1Padding""RSA/NONE/OAEPWithSHA-384AndMGF1Padding""RSA/NONE/OAEPWithSHA-512AndMGF1Padding""RSA/NONE/OAEPPadding" | -->
-
 
 <table>
     <tr>
@@ -173,7 +173,7 @@ voltmx.crypto.asymmetricDecrypt(alias, encryptedContent, propertiesTable)
 | --- | --- |
 | alias \[String\] - Mandatory | You can generate the value of the alias parameter by using [generateAsymmetricKeyPair API.](#generateAsymmetricKeyPair) |
 | encryptedContent \[Object\] - Mandatory | An object that contains the encrypted text to be decrypted. |
-| propertiesTable \[Object\] - Mandatory | The applicable values for this parameter are as follows: **transformation (String)**: The cipher transformation to be used. Possible transformation values are as follows: For iOS RSA:raw RSA:PKCS1 RSA:OAEP:SHA1 RSA:OAEP:SHA224 RSA:OAEP:SHA256 RSA:OAEP:SHA384 RSA:OAEP:SHA512 RSA:OAEP:SHA1:AESGCM RSA:OAEP:SHA224:AESGCM RSA:OAEP:SHA256:AESGCM RSA:OAEP:SHA384:AESGCM RSA:OAEP:SHA512:AESGCM For Android and Windows"RSA/ECB/PKCS1Padding""RSA/ECB/OAEPWithSHA-1AndMGF1Padding""RSA/ECB/OAEPWithSHA-224AndMGF1Padding""RSA/ECB/OAEPWithSHA-256AndMGF1Padding""RSA/ECB/OAEPWithSHA-384AndMGF1Padding""RSA/ECB/OAEPWithSHA-512AndMGF1Padding""RSA/ECB/OAEPPadding""RSA/NONE/NoPadding""RSA/NONE/PKCS1Padding""RSA/NONE/OAEPWithSHA-1AndMGF1Padding""RSA/NONE/OAEPWithSHA-224AndMGF1Padding""RSA/NONE/OAEPWithSHA-256AndMGF1Padding""RSA/NONE/OAEPWithSHA-384AndMGF1Padding""RSA/NONE/OAEPWithSHA-512AndMGF1Padding""RSA/NONE/OAEPPadding" **decryptToRawBytes**: An optional Boolean value that specifies whether the input content must be decrypted to RawBytes. > **_Note:_** If you enable the decryptToRawBytes property, the decrypted text does not appear in the application memory in the String format. If the value is true, the encrypted input content is decrypted to RawBytes of the type voltmx.types.RawBytes.CONTENT\_TYPE\_BYTE\_ARRAY.If the value is false, the encrypted input content is decrypted to a String. > **_Note:_** This parameter is only available on the Android platform. | -->  
+| propertiesTable \[Object\] - Mandatory | The applicable values for this parameter are as follows: **transformation (String)**: The cipher transformation to be used. Possible transformation values are as follows: For iOS RSA:raw RSA:PKCS1 RSA:OAEP:SHA1 RSA:OAEP:SHA224 RSA:OAEP:SHA256 RSA:OAEP:SHA384 RSA:OAEP:SHA512 RSA:OAEP:SHA1:AESGCM RSA:OAEP:SHA224:AESGCM RSA:OAEP:SHA256:AESGCM RSA:OAEP:SHA384:AESGCM RSA:OAEP:SHA512:AESGCM For Android and Windows"RSA/ECB/PKCS1Padding""RSA/ECB/OAEPWithSHA-1AndMGF1Padding""RSA/ECB/OAEPWithSHA-224AndMGF1Padding""RSA/ECB/OAEPWithSHA-256AndMGF1Padding""RSA/ECB/OAEPWithSHA-384AndMGF1Padding""RSA/ECB/OAEPWithSHA-512AndMGF1Padding""RSA/ECB/OAEPPadding""RSA/NONE/NoPadding""RSA/NONE/PKCS1Padding""RSA/NONE/OAEPWithSHA-1AndMGF1Padding""RSA/NONE/OAEPWithSHA-224AndMGF1Padding""RSA/NONE/OAEPWithSHA-256AndMGF1Padding""RSA/NONE/OAEPWithSHA-384AndMGF1Padding""RSA/NONE/OAEPWithSHA-512AndMGF1Padding""RSA/NONE/OAEPPadding" **decryptToRawBytes**: An optional Boolean value that specifies whether the input content must be decrypted to RawBytes. > **_Note:_** If you enable the decryptToRawBytes property, the decrypted text does not appear in the application memory in the String format. If the value is true, the encrypted input content is decrypted to RawBytes of the type voltmx.types.RawBytes.CONTENT\_TYPE\_BYTE\_ARRAY.If the value is false, the encrypted input content is decrypted to a String. > **_Note:_** This parameter is only available on the Android platform. | -->
 
 
 <table>

@@ -201,7 +201,7 @@ function errorStatusText()
       var request = new voltmx.net.HttpRequest();
       glob_req = request;
       request.onReadyStateChange=statusreceived;
-      request.open(constants.HTTP_METHOD_GET, "http://10.10.5.19:9090/middleware/version1.html");
+      request.open](constants.HTTP_METHOD_GET, "http://10.10.5.19:9090/middleware/version1.md");
       frmStatus.statusLabel.text=request.status; 
       frmStatus.statusTextLabel.text=request.statusText;
       request.send();
@@ -245,7 +245,7 @@ function rawDataResponseType()
 function textDataResponseType()
 {
       var request = new voltmx.net.HttpRequest();
-      request.open(constants.HTTP_METHOD_GET, "http://10.10.5.19:9090/middleware/version.html");
+      request.open](constants.HTTP_METHOD_GET, "http://10.10.5.19:9090/middleware/version.md");
       request.send();
       frmResponseType.respTypeLabel.text=request.responseType; 
 }

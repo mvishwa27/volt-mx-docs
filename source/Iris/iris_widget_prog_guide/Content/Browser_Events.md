@@ -203,7 +203,6 @@ All errors reported by this callback:
 | 1016 | Resource related Errors |   | Found Gone MultipleChoices NotModified RequestedRangeNotSatisfiable LengthRequired NotAcceptable UnsupportedMediaType | ErrorResourceUnavailable, ErrorZeroByteResource |
 | 1018 | SSL related error | ERROR\_FAILED\_SSL\_HANDSHAKE | CertificateCommonNameIsIncorrect, CertificateContainsErrors, CertificateExpired, CertificateIsInvalid, CertificateRevoked, CertificateRevoked | ErrorSecureConnectionFailed,  ErrorServerCertificateHasBadDate,  ErrorServerCertificateUntrusted,  ErrorServerCertificateHasUnknownRoot,  ErrorServerCertificateNotYetValid,  ErrorClientCertificateRejected,  ErrorClientCertificateRequired,  ErrorCannotLoadFromNetwork |
 
-
 This event is also not called when [htmlString](Browser_Properties.md#htmlString) is set to the web widget.
 
 ### Example

@@ -67,7 +67,7 @@ App Services has provided the monitoring capabilities on the server performance 
     
     > **_Note:_** Monitoring has no perceptible performance impact and it is highly recommended to keep the feature enabled.<br>
 
-    > **_Note:_** If the Root Logger is set to OFF, logs will not be added to the database, resulting in no data being displayed on the monitoring page.
+     > **_Note:_** If the Root Logger is set to OFF, logs will not be added to the database, resulting in no data being displayed on the monitoring page
       
     You can sort the displayed data in the table using the Service Name, Object (or) Operation, Service Type, Parent Service, Total Request Count, and Server Response Time.
     

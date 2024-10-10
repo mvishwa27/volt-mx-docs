@@ -12,7 +12,7 @@ Volt MX  Iris protects all applications using methods like design time security,
 For enhanced security, Volt MX provides strong application protection solutions by using anti-tampering mechanisms, White Box Cryptography (WBC), Cryptography and Encryption APIs, and also can secure network communications. Following are two methods you can use to enhance security in your application.
 
 *   **VoltMX APIs** - You can make your application more secure by protecting the data in your application using the security APIs provided by Volt MX Iris. Data can be encrypted using [Cryptography APIs](../../../Iris/iris_api_dev_guide/content/cryptography.md), offline data can be encrypted and stored using [SQL Database Encryption APIs](../../../Iris/iris_api_dev_guide/content/data_store_library.md), and network communications can be secured using two-way SSL/Mutual Authentication (SSL Pinning + Client Authentication).
-*   **Protected Mode option** - Applications built in Volt MX Iris can use the additional security enhancements by building the application in the _Protected Mode_. Volt MX Iris Platform code for iOS and Android is equipped with mechanisms that can protect your application by detecting attacks like tampering, swizzling, debugging, jail breaking (iOS), rooting (Android), and information disclosure. Additional security mechanisms are provided through the use of White Box Cryptography to protect application business logic and source code. Application reacts to the attack by exiting upon detecting attacks to prevent further attempts.
+*   **Protected Mode option** - Applications built in Volt MX Iris can use the additional security enhancements by building the application in the _Protected Mode_. Volt MX IrisPlatform code for iOS and Android is equipped with mechanisms that can protect your application by detecting attacks like tampering, swizzling, debugging, jail breaking (iOS), rooting (Android), and information disclosure. Additional security mechanisms are provided through the use of White Box Cryptography to protect application business logic and source code. Application reacts to the attack by exiting upon detecting attacks to prevent further attempts.
 
 This topic covers the following:
 
@@ -68,39 +68,42 @@ Volt MX  provides the following application and code-level mechanisms to protect
     *   **Anti-debugging** - Prevents debugging of a production application to prevent attackers from analyzing the application at runtime.
 2.  **Protecting Cryptographic Keys using White Box Cryptography (WBC)** - Cryptographic keys are critical to securing systems such as applications and communications, and therefore must be protected at all times. Volt MX provides powerful secure cryptographic capability beyond the native operating system’s capabilities. VoltMX's encryption and decryption uses a secure process known as White Box Cryptography to perform encryption and decryption while keeping the keys safe. The keys are never present in static form or in memory at runtime. WBC is a secure implementation of cryptographic algorithms in a system that employs cryptographic algorithm and keys. Strong algorithms are used for encryption and decryption, insecure, and deprecated algorithms are not used.
 
-### RSA Key Pair Generation, Encryption and Usage
+### RSA Key Pair Generation, Encryption and Usage
 
 Prerequisites
 
-For OpenSSL command to work, for the Windows environment, you can use a couple of different third-party tools, such as Git Bash, which is available [here](https://git-scm.com/download/win), and Cygwin, which is available [here](https://cygwin.com/install.html).
+For OpenSSL command to work, for the Windows environment, you can use a couple of different third-party tools, such as Git Bash, which is available [here](https://git-scm.com/download/win), and Cygwin, which is available [here](https://cygwin.com/install.md).
 
-To generate, encrypt, and use the RSA key pair, follow these steps: 
+To generate RSA keypair and to obtain encrypted keys please follow these steps:
    
 1. Open a terminal (Git Bash or Cygwin terminal in Windows ) and type **openssl**. 
 2.  Generate RSA public/private key pair using OpenSSL.
 
-    Recently the cygwin and git bash tools were using the upgraded version of openssl ie 3.0 .The expected format as shown is of pkcs1 format of generating pem files using openssl. From openssl 3.0 and higher versions by default it generates pkcs8 encoded format , so in order to generate required pkcs1 format we have to first convert the generated encoded pkcs8 private key to pkcs1 using openssl and generate public key. Below are the steps for the same.
-    
-    a.  openssl genrsa -out private.pem -verbose 2048. // generates pkcs8 format. 
-        
-    
-    openssl genrsa -out private\_key.pem 2048
-    
-    b.  openssl pkey -in private.pem -traditional -out private_key.pem.   // generates pkcs1 format.
+    From openssl 3.0 and higher versions by default it generates pkcs8 encoded format, but the expected out put format as shown below is pkcs1 type padding. In windows machine we can use cygwin or gitbash contain openssl and other operating system like mac or linux also has openssl installed. To know the current openssl version please run following command<br>
+    openssl -v<br>
+    based on openssl version please run the following set of commands to generate keys. We have to use the generated private_key.pem and public_key.pem.
 
+    <b>if openssl version is 3.0 and above :</b>
 
-        
-        openssl rsa -pubout -in private_key.pem -out public_key.pem
-        
-    c.  openssl rsa -in private_key.pem -pubout -traditional -out public_key.pem // generate publickey from pkcs1 format key. 
-        `openssl rsa -text -in private_key.pem`
-    
-    d.  openssl rsa -in public_key.pem -pubin -text.
-        
-        i.  less private_key.pem to verify that it starts with a -----BEGIN RSA PRIVATE KEY-----.
+    openssl genrsa -out private.pem -verbose 2048 // generates pkcs8 format
 
-        ii.  less public_key.pem to verify that it starts with a -----BEGIN PUBLIC KEY——.
-3.  Engage support public key and Volt MX Iris version. This step is applicable for Android, iOS platforms, and responsive Web/SPA platform. 
+    openssl pkey -in private.pem -traditional -out private_key.pem   // generates pkcs1 format
+
+    openssl rsa -in private_key.pem -pubout -traditional -out public_key.pem // generate publickey from pkcs1 format key.
+
+    openssl rsa -in public_key.pem -pubin -text  //to view the key
+
+    <b>if openssl version is less than 3.0 :</b>
+
+    openssl genrsa -out private_key.pem 2048
+
+    openssl rsa -pubout -in private_key.pem -out public_key.pem
+
+    openssl rsa -text -in private_key.pem  // to view the key.
+
+    when the final  public_key.pem content is displayed  using commant  "openssl rsa text -in private_key.pem" it starts with "----BEGIN PUBLIC KEY——." which is of required pkcs1 format.
+
+3.  Engage Volt MX support and provide your public key and also Volt MX Iris version. This step is applicable for Android, iOS platforms, and responsive Web/SPA platform. 
 
     
       > **_Important:_** Public key must not be shared with anyone except Volt MX.
@@ -111,14 +114,20 @@ To generate, encrypt, and use the RSA key pair, follow these steps: 
 5. VoltMX's security team then returns the encrypted public key to you through email.
 
     > **_Important:_** You must not share your private key with anyone including Volt MX. In case of a key compromise for the Android, iOS and Responsive Web/SPA platforms, generate a new set of keys and send the public key to [voltmxlicensing@hcl-software.com](mailto:voltmxlicensing@hcl-software.com.?subject=Keys). 
-    
 6. Navigate to your Volt MX Iris workspace and create a **\_\_encryptionkeys** folder.
 7. Place the following keys received from Volt MX in **\_\_encryptionkeys** folder.
     
     a.  Your private key. The private key must be named as `private_key.pem`.
     
     b.  Encrypted public keys provided by Volt MX Iris.
-                   
+        
+    > **_Note:_**  Once you have updated your Iris version to V8 SP3 or later, you can delete the `fin` keys folder from your **\_\_encryptionkeys** folder.
+        
+    c. For iOS, the `fin` keys provided by Volt MX Iris. These keys are provided to protect iOS applications. `fin` keys are applicable until the Volt MX Iris V8 SP2 version.
+    
+
+    ![](Resources/Images/FinKeys1_696x388.png)
+    
 
 ### Configure Project Settings in Volt MX Iris
 

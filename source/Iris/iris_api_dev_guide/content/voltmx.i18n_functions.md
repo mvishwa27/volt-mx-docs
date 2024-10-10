@@ -2,9 +2,9 @@
 
 
 voltmx.i18n Namespace
-======================
+===================
 
-The voltmx.i18n Namespace, which forms the [Internationalization API](#functions), provides the following API elements.
+The voltmx,i18n Namespace, which forms the [Internationalization API](internationalization.md), provides the following API elements.
 
 > **_Note:_** From V9 SP2 onwards, the i18n database data for a VoltMX App child app is stored in child app data and not under the parent app. This feature is applicable for iOS, Windows, and Android platforms.
 <!-- > **_Note:_** From V8 SP4 onwards, the i18n database data for a VoltMX App child app is stored in child app data and not under the parent app. This feature is applicable for iOS, Windows, and Android platforms. -->
@@ -14,8 +14,8 @@ Functions
 
 The voltmx.i18n namespace, which is used for internationalization, provides the following functions.
 
-
-<details close markdown="block"><summary>voltmx.i18n.deleteResourceBundle</summary>
+voltmx.i18n.deleteResourceBundle
+------------------------------
 
 This API allows you to delete an existing resource bundle. If a resource bundle does not exist, the API will return without performing any operation. Only resource bundles which are newly created using the _setResourceBundle_ API will be deleted. The bundle which are created by IDE, cannot be deleted, but they can only be updated.
 
@@ -58,9 +58,8 @@ None
 
 Available on all platforms.
 
-</details>
-
-<details close markdown="block"><summary>voltmx.i18n.getCurrentLocale</summary>
+voltmx.i18n.getCurrentLocale
+--------------------------
 
 This API returns the locale (string) that is currently being used by the application to populate the localized data. This locale might be different than the system locale. The locale follows the format _language\_Country_.For example, `en_US`. `Country` is not mandatory.
 
@@ -161,9 +160,8 @@ The _voltmx.i18n.getCurrentLocale()_ API returns _nl\_NL_. If the device does no
 
 Available on all platforms.
 
-</details>
-
-<details close markdown="block"><summary>voltmx.i18n.getCurrentDeviceLocale</summary>
+voltmx.i18n.getCurrentDeviceLocale
+--------------------------------
 
 This API provides you the ability to fetch the current locale of the device.
 
@@ -207,10 +205,8 @@ None
 
 Available on iOS, Android, and Windows.
 
-</details>
-
-<details close markdown="block"><summary>voltmx.i18n.getLocalizedString</summary>
-
+voltmx.i18n.getLocalizedString
+----------------------------
 
 This API returns the localized string that corresponds to the specified i18n Key.
 
@@ -256,10 +252,8 @@ getLocalizedString: function() {
 
 Available on all platforms.
 
-</details>
-
-<details close markdown="block"><summary>voltmx.i18n.getSupportedLocales</summary>
-
+voltmx.i18n.getSupportedLocales
+-----------------------------
 
 This API retrieves a list of all the locales supported by the device.
 
@@ -304,10 +298,8 @@ Platform Availability
 
 Available on all platforms except Server Side Mobile Web, Desktop Web and SPA. \*SPA and Desktop Web returns only current locale instead of all locales supported by the browser.
 
-</details>
-
-<details close markdown="block"><summary>voltmx.i18n.isLocaleSupportedByDevice</summary>
-
+voltmx.i18n.isLocaleSupportedByDevice
+-----------------------------------
 
 This API provides you the ability to view whether a locale is supported by a device.
 
@@ -353,10 +345,8 @@ Checkthelocale: function() {
 
 Available on all platforms except SPA and Desktop Web.
 
-</details>
-
-<details close markdown="block"><summary>voltmx.i18n.isResourceBundlePresent</summary>
-
+voltmx.i18n.isResourceBundlePresent
+---------------------------------
 
 This API checks if a resource bundle exists for a given locale and returns a boolean value.
 
@@ -403,10 +393,8 @@ isResourceBundlePresent: function() {
 
 Available on all platforms except SPA and Desktop Web.
 
-</details>
-
-<details close markdown="block"><summary>voltmx.i18n.setDefaultLocaleAsync</summary>
-
+voltmx.i18n.setDefaultLocaleAsync
+-------------------------------
 
 Every application that has support for internationalization needs a locale to be set as a default locale. This API allows you to set the specified locale as the default locale for the application. You can also set the default locale from the IDE. However, this API allows you to perform that task dynamically.
 
@@ -452,13 +440,14 @@ None
 
 Available on all platforms.
 
-</details>
+voltmx.i18n.setCurrentLocaleAsync
+-------------------------------
 
-
-<details close markdown="block"><summary>voltmx.i18n.setCurrentLocaleAsync</summary>
-
+> **_Note:_**  When the application calls the voltmx.i18n.setCurrentLocaleAsync API, VoltMX Iris Framework loads forms with the corresponding Locale. The forms that were loaded previously must be destroyed in application code to see the effect of the setCurrentLocaleAsync api for that particular form.
 
 This API provides you the ability to set the specified locale as the current locale of the application. If the locale is not supported by the device, junk characters are displayed on the screen for the locale specific string.
+
+
 
 ### Use Cases
 
@@ -509,10 +498,8 @@ None
 
 Available on all platforms.
 
-</details>
-
-<details close markdown="block"><summary>voltmx.i18n.setLocaleLayoutConfig</summary>
-
+voltmx.i18n.setLocaleLayoutConfig
+-------------------------------
 
 This API helps you to define the Right-To-Left (RTL) behavior for each locale in an application.
 
@@ -552,7 +539,7 @@ voltmx.i18n.setLocaleLayoutConfig({
         "mirrorFlowHorizontalAlignment": true / false,
     },
 });
-```
+``` 
 
 ### Platform Availability
 
@@ -565,10 +552,8 @@ voltmx.i18n.setLocaleLayoutConfig({
 
 *   For Windows, if you use the **isI18nLayoutConfigEnabled** key and the **voltmx.application.setApplicationLayout** API together in a single application, the application does not function as expected.
 
-</details>
-
-<details close markdown="block"><summary>voltmx.i18n.setResourceBundle</summary>
-
+voltmx.i18n.setResourceBundle
+---------------------------
 
 This API allows you to set the specified resource bundle for a given locale. If the specified locale has a resource bundle already set, it is overridden with the given resource bundle.
 
@@ -619,10 +604,8 @@ None
 
 Available on all platforms.
 
-</details>
-
-
-<details close markdown="block"><summary>voltmx.i18n.updateResourceBundle</summary>
+voltmx.i18n.updateResourceBundle
+------------------------------
 
 This API allows you to append new key-value pairs to the given resource bundle for a specified locale. The key-value pairs you provide will be appended at the end of the resource bundle.
 
@@ -668,10 +651,6 @@ None
 ### Platform Availability
 
 Available on all platforms.
-
-
-
-
 
 <!-- Deprecated Functions
 ====================

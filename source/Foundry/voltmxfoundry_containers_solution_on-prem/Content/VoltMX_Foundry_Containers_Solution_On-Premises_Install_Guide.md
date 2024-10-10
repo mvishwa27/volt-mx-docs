@@ -16,7 +16,7 @@ Revision History
 
 Getting Started Options
 
-*   [Release Notes](../../../Foundry/voltmx_foundry_release_notes/Content/VoltMX_Foundry_Release_Notes.md)
+*   [Release Notes](../../../VMX_release_notes.md)
 *   [VoltMX Downloads](https://community.hclvoltmx.com/downloads)
 *   [VoltMX Foundry User Guide](../../../Foundry/voltmx_foundry_user_guide/Content/Introduction.md)
 *   [Iris User Guide](../../../Iris/iris_user_guide/Content/Introduction.md)

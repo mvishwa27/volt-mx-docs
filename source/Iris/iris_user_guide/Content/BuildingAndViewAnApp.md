@@ -36,7 +36,7 @@ For a smooth build in Volt MX Iris Classic, you'll want to ensure that the follo
 
 [Publish a Project to VoltMXFoundry](PublishVoltMXFoundryServicesApp.md)
 
-[Preview an App on a Device](PreviewAnAppOnADevice.md#FunctionalPreviewEnterprise.html)
+[Preview an App on a Device](PreviewAnAppOnADevice.md#FunctionalPreviewEnterprise.md)
 
 [Monitor an App's Performance](MonitorAppPerformance.md)
 

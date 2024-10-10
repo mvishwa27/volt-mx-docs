@@ -1,14 +1,8 @@
----
-title: Headless and Continuous Integration Build 
-layout: documentation
-has_children: false
-order: 22
----
 
 ### [Headless](../Iris/iris_user_guide/Content/CommandLine.md)
 Build and publish an app without launching the Eclipse environment that hosts Volt MX Iris.
 
-### [Continuous Integration (CI) with Volt MX Foundry (MFCLI)](/voltmx_foundry_user_guide/Content/CI_Foundry.md)
+### [Continuous Integration (CI) with Volt MX Foundry (MFCLI)](voltmx_foundry_user_guide/Content/CI_Foundry.md)
 Learn about the capabilities of Continuous Integration (CI) by using Volt MX Foundry APIs. Without using Volt MX Foundry Console, you can automate the process of importing an app, exporting an app, and publishing an app by using APIs supported in CI.
 
 ### [Pass Proxy Details by using MFCLI](https://support.hcltechsw.com/csm?id=kb_search)

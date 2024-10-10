@@ -31,3 +31,8 @@ Learn how to list users in the User Management module. Only users who are listed
 
 ### [Volt MX User Repository](../Foundry/voltmx_foundry_user_guide/Content/Identity12_VoltMXUR.md)
 Learn how to use the built-in Volt MX User Repository (User Store) to authenticate your apps.
+
+### [Micro Apps](../Foundry/voltmx_foundry_user_guide/Content/ManagingLinkedAppsinCompositeFoundryApp.md)
+Large applications can now be modularized into smaller applications using the Micro apps architecture.
+
+

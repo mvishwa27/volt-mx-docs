@@ -1,3 +1,4 @@
+
 # Install Volt MX Iris
 
 To install Volt MX Iris, follow these steps:
@@ -32,13 +33,10 @@ To install Volt MX Iris, follow these steps:
     > **_Note:_** The Workspace folder contains all your Iris projects.
 
 7.  Click **Next**. The **License Agreement** pane appears.
-8.  Read the License Agreement carefully and if you accept the terms of the agreement, select **I Accept the terms of the License Agreement** option, and then click **Install**.
+8.  Read the License Agreement carefully and if you accept the terms of the agreement, select **I Accept the terms of the License Agreement** option, and then click **Install**. <br>
+    The **Installing Volt MX Iris** page appears, and the installation begins.
 
-The **Installing Volt MX Iris** page appears, and the installation begins.
-
-[![](Resources/Images/Installing.png)](Resources/Images/Installing.png)
-
-<!-- [![](Resources/Images/Installing_thumb_0_288.png)](Resources/Images/Installing.png) -->
+    [![](Resources/Images/Installing.png)](Resources/Images/Installing.png)
 
 11. After the installation is complete, the **Install Complete** pane appears.
 
@@ -202,7 +200,6 @@ PassNTLMv2      XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</code></pre></li>
   <li>Move the <em>cntlm.ini</em> file to User Profile folder\user name\Iris\irisdata (for example, C:\Users\Iris\irisdata).</li>
 </ol>
 
-
 ## White-list Essential Domains
 
 Ensure that you contact your system administrator and white-list the following domain URLs:
@@ -218,4 +215,5 @@ Ensure that you contact your system administrator and white-list the following d
 - https://opensource.hcltechsw.com
 - https://hcl-tech-software.github.io
 - https://hclvoltmx-prototypetransit.s3.amazonaws.com
+
 

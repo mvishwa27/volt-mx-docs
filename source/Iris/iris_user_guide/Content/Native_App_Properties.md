@@ -1,8 +1,8 @@
                           
 
 
-Set Native App Properties
-=========================
+## <a id="set-native-app-properties"></a> Set Native App Properties
+
 
 Native app properties are divided into two categories: those that are common to all platforms, and those that are platform-specific. These properties range from the logo image your app displays to the types of screens and SDKs the app supports, and how certificates are handled.
 
@@ -100,8 +100,8 @@ To set Native app properties, follow these steps:
              
             
         *   **Disable Application Screenshot** - This option specifies whether the user can take a screenshot of your application.
-        *   **Enable File Upload** - Enables you to upload files to a remote sever by using the [HttpRequest API](../../../Iris/iris_api_dev_guide/content/voltmx.net_functions.md#HttpRequ).
-        *   **ActionBar** - Enabled only if target SDK is 3.0 or above. Use this option to enable _Action Bar_ feature.
+        *   **Enable File Upload** - Enables you to upload files to a remote sever by using the [HttpRequest API](../../../Iris/iris_api_dev_guide/content/voltmx.net_functions.md#HttpRequ).  <h3 id="actionBa"></h3>  
+        *   **ActionBar** - Enabled only if target SDK is 3.0 or above. Use this option to enable _Action Bar_ feature. 
         *   **Network Trust Config** - Using this option, you can control the certificates that are used.
             *   **None** - No certificates are allowed. This means that if the certificate is present in the Android Trust store, it will allow the N/W call to proceed; otherwise, it throws an exception. With this option, servers having non-trusted or self-signed certificates are not accessible via the app on the device.
             *   **All** - All types of certificates are allowed regardless of whether they are bundled. This option is useful during the development phase of an app, but not for publication. With this option, all servers are accessible regardless of the kind of certificate they hold (i.e. self-signed, non-trusted, trusted). Due to the lack of security inherent in this option, the Google Play store rejects such apps when they are submitted for publication.
@@ -161,10 +161,10 @@ To set Native app properties, follow these steps:
 ![](Resources/Images/Settings_iPhone_692x419.png)
 
 1.  **Bundle Identifier** - Provide an unique name that identifies the application bundle. This is usually in three parts and follows the convention of `com.voltmx.<appname>`.
-2.  **Bundle Version** - a number that identifies the version of the application bundle.
-3.  **Apply Glossy Effect to App Icon** - specifies if the glossy effect must be applied to the app icon. The default value is _false_.
-4.  **Target Versions** - Choose the deployment target version for your application.<br> _Note_: The minimum iOS deployment target is 12.0.<br>For Watch, the minimum watch OS deployment target is 4.0.
-4.  **Deeplink URL Scheme**: specifies a url to which the application will deep-link to. If the application name is southwest then the url scheme that the other applications can use to launch the southwest application is _southwest://_. For more information about deep-linking, see [Appendix E: the App Service Event](AppServiceEvent.md).
+2.  **Bundle Version** - A number that identifies the version of the application bundle.
+3.  **Apply Glossy Effect to App Icon** - Specifies if the glossy effect must be applied to the app icon. The default value is _false_.
+4.  **Target Versions** - Choose the deployment target version for your application.<br> _Note_: The minimum iOS deployment target is 12.0.<br>For Watch, the minimum watch OS deployment target is 4.0
+4.  **Deeplink URL Scheme**: Specifies a url to which the application will deep-link to. If the application name is southwest then the url scheme that the other applications can use to launch the southwest application is _southwest://_. For more information about deep-linking, see [Appendix E: the App Service Event](AppServiceEvent.md).
     *   **Platform Settings**: Using the Platform Settings Area, you can set certain default properties for an application for iPhone.
         
         ![](Resources/Images/iphoneplatformsettings_480x189.png)
@@ -190,7 +190,8 @@ To set Native app properties, follow these steps:
     > **_Note:_** This feature is available In Volt MX Iris V9 SP 2 FP19 onwards, and is available in both Volt MX Iris Classic and Volt MX Iris.  
     
 6.  **Application Launch Mode for iPad** - specifies the default mode of launching the application on iPad. _Portrait_ is the default value.
-7.  **Supported Orientations for iPad** - specifies the supported orientations for the iPad. This depends on the launch mode. The different orientations for a form and at application level are listed at
+7.  **Supported Orientations for iPad** - specifies the supported orientations for the iPad. This depends on the launch mode. The different orientations for a form and at application level are listed.
+8.  Sets the iOS capabilities with apple defined entitlement key and value based on the application requirements. For more information, refer [the Volt Mx Iris Configuration File](Adding_iOS_app_Capabilities.md).
 
 Add Android Properties to androidbuild.properties File
 ------------------------------------------------------
@@ -572,9 +573,9 @@ There are multiple reasons why the Verify Apps is not a practical solution for f
    applications and reads the following info:
 
     * Permissions
-    * Broadcast Receivers
-    * Services
-    * Actions of intent filters
+	* Broadcast Receivers
+	* Services
+	* Actions of intent filters
 
     No personal user data is ever captured or stored.
 
@@ -592,7 +593,6 @@ There are multiple reasons why the Verify Apps is not a practical solution for f
    VoltIris sdk never accesses any of the user’s private data. All the information about installed legitimate applications is immediately discarded and never stored anywhere .we only collect indications of compromise from malicious apps.
 
    All the application scanning is performed internally in a protected container. The scanning algorithm is protected from tampering, so information about other installed applications cannot be extracted.
-
 
 #### Security Provider Patching
 
@@ -646,3 +646,94 @@ To configure the threshold value that identifies a device as a Tablet, add the f
 The default value for the **tabletBreakPointInInches** key is 6 inches.
 
 > **_Note:_** This feature is available from the Volt MX Iris V9 ServicePack2 Fixpack 7 release.
+
+#### Support for splashOrientationClassifier Property
+
+The **splashOrientationClassifier** property is a sub-level property of the **Splash Screen Orientation Mode** (specified in the **Project Settings > Android** section) that provides screen orientation modes at a granular-level for a particular Splash Screen Orientation mode.
+
+You can specify the **splashOrientationClassifier property** in the **androidbuild.properties** file as follows:
+
+```
+splashOrientationClassifier =  "SCREEN_ORIENTATION_USER_LANDSCAPE";
+```
+Based on the value of the Splash Screen Orientation Mode property, the values of the splashOrientationClassifier property are as follows:
+
+
+<table>
+    <colgroup><col style="width: 35%;" class="TableStyle-TemenosTables-Column-Column1">
+    
+    <col style="width: 70%;" class="TableStyle-TemenosTables-Column-Column1">
+    
+    </colgroup><thead>
+        <tr class="TableStyle-TemenosTables-Head-Header1" data-mc-conditions="">
+            <th class="TableStyle-TemenosTables-HeadE-Column1-Header1" style="text-align: center;" data-mc-conditions="Default.V9SP3" scope="col" valign="middle"><b>Splash Screen Orientation Mode</b>
+            </th>
+            <th class="TableStyle-TemenosTables-HeadD-Column1-Header1" style="text-align: center;" data-mc-conditions="Default.V9SP3" scope="col" valign="middle"><b>splashOrientationClassifier</b>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="TableStyle-TemenosTables-Body-Body1" style="height: 56px;" data-mc-conditions="">
+            <td class="TableStyle-TemenosTables-BodyE-Column1-Body1" data-mc-conditions="Default.V9SP3">landscape</td>
+            <td class="TableStyle-TemenosTables-BodyD-Column1-Body1">
+                <p data-mc-conditions="Default.V9SP3">SCREEN_ORIENTATION_LANDSCAPE</p>
+                <p data-mc-conditions="Default.V9SP3">SCREEN_ORIENTATION_REVERSE_LANDSCAPE</p>
+                <p data-mc-conditions="Default.V9SP3">SCREEN_ORIENTATION_SENSOR_LANDSCAPE</p>
+                <p data-mc-conditions="Default.V9SP3">SCREEN_ORIENTATION_USER_LANDSCAPE</p>
+            </td>
+        </tr>
+        <tr class="TableStyle-TemenosTables-Body-Body1" style="height: 56px;" data-mc-conditions="">
+            <td class="TableStyle-TemenosTables-BodyE-Column1-Body1" data-mc-conditions="Default.V9SP3">portrait</td>
+            <td class="TableStyle-TemenosTables-BodyD-Column1-Body1">
+                <p data-mc-conditions="Default.V9SP3">SCREEN_ORIENTATION_PORTRAIT</p>
+                <p data-mc-conditions="Default.V9SP3">SCREEN_ORIENTATION_REVERSE_PORTRAIT</p>
+                <p data-mc-conditions="Default.V9SP3">SCREEN_ORIENTATION_SENSOR_PORTRAIT</p>
+                <p data-mc-conditions="Default.V9SP3">SCREEN_ORIENTATION_USER_PORTRAIT</p>
+            </td>
+        </tr>
+        <tr class="TableStyle-TemenosTables-Body-Body1" style="height: 56px;" data-mc-conditions="">
+            <td class="TableStyle-TemenosTables-BodyE-Column1-Body1" data-mc-conditions="Default.V9SP3">Device Default</td>
+            <td class="TableStyle-TemenosTables-BodyD-Column1-Body1">
+                <p data-mc-conditions="Default.V9SP3">SCREEN_ORIENTATION_UNSPECIFIED</p>
+                <p data-mc-conditions="Default.V9SP3">SCREEN_ORIENTATION_FULL_SENSOR</p>
+                <p data-mc-conditions="Default.V9SP3">SCREEN_ORIENTATION_SENSOR</p>
+            </td>
+        </tr>
+        <tr class="TableStyle-TemenosTables-Body-Body1" style="height: 56px;" data-mc-conditions="">
+            <td class="TableStyle-TemenosTables-BodyB-Column1-Body1" data-mc-conditions="Default.V9SP3">Both</td>
+            <td class="TableStyle-TemenosTables-BodyA-Column1-Body1">
+                <p data-mc-conditions="Default.V9SP3">SCREEN_ORIENTATION_BEHIND</p>
+                <p data-mc-conditions="Default.V9SP3">SCREEN_ORIENTATION_FULL_USER</p>
+                <p data-mc-conditions="Default.V9SP3">SCREEN_ORIENTATION_LOCKED</p>
+                <p data-mc-conditions="Default.V9SP3">SCREEN_ORIENTATION_NOSENSOR</p>
+                <p data-mc-conditions="Default.V9SP3">SCREEN_ORIENTATION_USER</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+> **_Note:_** The value of the splashOrientationClassifier property is only respected when you provide a valid value corresponding to a particular Splash Screen Orientation Mode (as specified in the table). For example, if you are using the portrait Splash Screen Orientation Mode, you can only provide a value for the splashOrientationClassifier property from the following:
+>
+>*   SCREEN_ORIENTATION_PORTRAIT
+>*   SCREEN_ORIENTATION_REVERSE_PORTRAIT
+>*   SCREEN_ORIENTATION_SENSOR_PORTRAIT
+>*   SCREEN_ORIENTATION_USER_PORTRAIT
+
+<!--
+For more information on the values of the splashOrientationClassifier property, refer Android Screen Orientation Values.
+-->
+
+#### Enable Support for SMS Retriever
+
+By using the SMS Retriever, you can implement SMS-based user verification in an app without requesting users to manually type verification codes, and without requesting for any additional app permissions.
+
+
+To enable support for SMS Retriever, add the **addSMSRetrieverSupport** key in the androidbuild.properties file:
+
+```
+addSMSRetrieverSupport = <UI or Non-UI>
+```
+
+Set the value of the addSMSRetrieverSupport key to **UI** or **Non-UI** to fetch the required Gradle entries.
+
+For more information on the SMS Retriever API, refer [voltmx.phone.retrieveSMS API](../../iris_api_dev_guide/content/voltmx.phone_functions.html).

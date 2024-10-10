@@ -17,13 +17,13 @@ Supported Widgets List
 | --- | --- | --- | --- |
 | [Alert](Alert.md) | A pre-configured dialog box that pops-up with a message such as a confirmation or an error. | Basic Widgets |   |
 | [App Menu](App_Menu.md) | Usually a menu bar displayed at the bottom of a form in an app. | Basic Widgets |   |
-| [Browser](Browser.md) | Displays HTML content in the context of your application without navigating away from the application or opening the native browser from your application | Advanced Widgets |   |
+| [Browser](Browser.md) | Displays.md content in the context of your application without navigating away from the application or opening the native browser from your application | Advanced Widgets |   |
 | [Button](Button.md) | A rectangle or rounded rectangle with a descriptive caption in its center. Use a button to trigger actions, such as navigating to a form or interacting with a dialog box. | Basic Widgets |   |
 | [Calendar](Calendar.md) | Presents a calendar to the user so that the user can pick one or more dates. | Basic Widgets |   |
 | [Camera](Camera.md) | Controls the on-device camera for taking pictures and videos. | Advanced Widgets |   |
 | [CheckBoxGroup](CheckBox.md) | Displays a group of related checkboxes so that the user can select one or more items from the group. | Basic Widgets |   |
 | [ComboBox](ComboBox.md) | Presents a drop-down list to the user allowing them to select a single item | Basic Widgets |   |
-| [CordovaBrowser](CordovaBrowser.md) | Displays HTML content in your application without navigating away from the application or opening the native browser. Use the CordovaBrowser widget to port your web or Apache Cordova (PhoneGap) app to Volt MX Iris. | Advanced Widgets |   |
+| [CordovaBrowser](CordovaBrowser.md) | Displays.md content in your application without navigating away from the application or opening the native browser. Use the CordovaBrowser widget to port your web or Apache Cordova (PhoneGap) app to Volt MX Iris. | Advanced Widgets |   |
 | [DataGrid](DataGrid.md) | Presents a tabular view of data to the user. | Basic Widgets |   |
 | [FlexContainer](FlexContainer.md) | Allows you to arrange multiple widgets in horizontal, vertical or free-form order. You can only add the FlexContainer to a Flex form. | Container Widgets |   |
 | [FlexForm](FlexForm.md) | A FlexForm is the top most container widget and you can place any number of widgets on it, Navigating between forms is a common way to structure the functionality of an app. | Container Widgets |   |
@@ -49,7 +49,7 @@ Supported Widgets List
 | [Slider](Slider.md) | Allows users to select a value from a range of values by moving an indicator. | Basic Widgets |   |
 | [SlidingContainer](SlidingContainer.md) | Implements a hamburger menu. Use a SlidingContainer widget to create a top-level navigation experience that adapts to different screen widths. | Advanced Widgets |   |
 | [Switch](Switch.md) | Presents two mutually exclusive choices or states. | Advanced Widgets |   |
-| [TabPane](VBox.md#/Content/TabPane.html) | Tabbed UI form. | Container Widgets |   |
+| [TabPane](VBox.md#/Content/TabPane.md) | Tabbed UI form. | Container Widgets |   |
 | [TextArea](TextArea.md) | An editable widget that enables users to enter multi-line text. | Basic Widgets |   |
 | [TextBox](TextBox.md) | An editable text component that is used to obtain an input from a user. | Basic Widgets |   |
 | [Video](Video.md) | Allows your app to play video files captured using the device's camera, videos from app resources, and from servers/websites within a form. | Advanced Widgets |   |

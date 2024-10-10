@@ -50,7 +50,7 @@ The following fields are output parameters:
 "osType" : "windows",
 "phoneNo" : "",
 "createdDateStr" : "06/22/2016 12:42:20 PM IST",
-"userAgent" : "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
+"userAgent" : "Mozilla/5.0 ](Windows NT 10.0; WOW64) AppleWebKit/537.36 (.md, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
 "ipAddress" : "10.10.30.89",
 "subscriptionStatus" : true,
 "cloudStatus" : true

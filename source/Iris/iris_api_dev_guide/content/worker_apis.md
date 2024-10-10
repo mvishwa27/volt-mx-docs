@@ -618,7 +618,7 @@ With and without Functional Module in Worker context:
 The following guidelines are recommended before using worker thread:
 
 1.  The objects "this" and "self" are available in worker thread inner scope that is referred as worker thread itself.
-2.  Event propagation cannot be stopped by using _event.stopPropagation_() as in HTML specification. Where _event.stopPropagation_() stops the DOM event to be propagated further by breaking the event chain.
+2.  Event propagation cannot be stopped by using _event.stopPropagation_]() as in.md specification. Where _event.stopPropagation_() stops the DOM event to be propagated further by breaking the event chain.
 3.  Data passed between the main thread and workers are copied, but not shared. Objects are serialized as they are handed to the worker, and subsequently, de-serialized on the other end. The main thread and worker do not share the same instance. So the end result is that a duplicate is created on each end. HTML5 worker threads support transferable objects that allow transferring the objects from one thread to other without making a copy.
 4.  As explicit thread synchronization mechanisms like locking or mutexes are not available in JS environment, you must take required care in scenarios where multiple threads concurrently or simultaneously are trying to access and write/insert data into local database or local datastore using WebSQL or Local datastore APIs, as these are shared resources across the Application context.
 

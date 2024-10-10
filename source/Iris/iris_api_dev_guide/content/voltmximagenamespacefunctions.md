@@ -201,7 +201,7 @@ function getImageFromLocalStorage(imageName) {
 /*var clippingRects = [
         [10, 12, 50, 100],
         [30, 45, 10, 200],
-        [300, 100, 200, 10]];*/
+        [300, 100, 200, 10];*/
 function cropImageToTilesFromRects(clippingRects, localImage, FormToaddImage) {
     try {
         var img = getImageFromLocalStorage(localImage);

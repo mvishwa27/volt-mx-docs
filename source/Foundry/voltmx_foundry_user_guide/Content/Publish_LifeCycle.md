@@ -97,7 +97,7 @@ After you publish an app to an environment, Volt MX Foundry generates app docume
 
 1.  To view the App documentation of a published app, click the **Download app documentation** button in the **Published Environment** box. The app documentation is downloaded in a zip folder to your local system.
 2.  Unzip the app documentation folder.  
-    The app documentation .zip comprises multiple artifacts such as `index.html` file, service definition in Open API Initiative (OAI) format, services references in HTML and JSON format.
+    The app documentation .zip comprises multiple artifacts such as `index.html` file, service definition in Open API Initiative ](OAI) format, services references in.md and JSON format.
     
 3.  Open the `index.html` in a browser to view the app details.
     
@@ -143,8 +143,8 @@ A published app provides link to the following services consoles:
 
 ![](Resources/Images/runtime_583x178.png)
 
-*   **Integration Service**: For more information, refer [Appendix - App Services.html.](Appendix_-_App_Services.md)
-*   **Orchestration Service**: For more information, refer [Appendix - App Services.html.](Appendix_-_App_Services.md)
+*   **Integration Service**: For more information, refer to [Appendix - App Services.html.](Appendix_-_App_Services.md)
+*   **Orchestration Service**: For more information, refer to [Appendix - App Services.html.](Appendix_-_App_Services.md)
 *   **Engagement  Service**: For more information, refer to [Engagement  Service](../../../Foundry/vms_console_user_guide/Content/Introduction_1.md).
 
 ### Snapshots

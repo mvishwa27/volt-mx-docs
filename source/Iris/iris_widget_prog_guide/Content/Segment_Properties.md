@@ -1073,9 +1073,9 @@ If you are scrolling the segment data, the next section header will be docked on
 
 This property is applicable only when the segment is a screenLevelWidget and viewType is set to SEGUI\_VIEW\_TYPE\_TABLE\_VIEW and has sections data.
 
-For example, If you scroll the segment data shown in the figure below, as the segment data scrolls up, the Samsung Phones docked header moves out of view and is replaced with the HTC Phones section header which is now docked.
+For example, If you scroll the segment data shown in the figure below, as the segment data scrolls up, the **Savings account details** docked header moves out of view and is replaced with the **Checking account details** section header which is now docked.
 
-![](Resources/Images/Docking_header_segment_199x289.png)
+![](Resources/Images/dockSectionHeaders.gif)
 
 The default value for this property is false.
 
@@ -1148,9 +1148,15 @@ If you want to enable Swipe to delete feature for a row in the SegmentedUI then 
 frmSegment.mySegment.editStyle= constants.SEGUI_EDITING_STYLE_SWIPE;
 ```
 
-The following image illustrates the _Icon_ edit style:
+<!-- The following image illustrates the _Icon_ edit style: -->
 
-![Edit Style set as Icon](Resources/Images/Icon_edit.png)
+**Icon Edit Style**
+
+![Edit Style set as Icon](Resources/Images/Icon_EditStyle.gif)
+
+**Swipe Edit Style**
+
+![Edit Style set as Icon](Resources/Images/Swipe_EditStyle.gif)
 
 ### Platform Availability
 
@@ -1322,7 +1328,7 @@ If set to _false,_ the dictionary is not available.
 
 The following image illustrates the behavior of the Enable Dictionary property when set to _true_:
 
-![Enable Dictionary true](Resources/Images/Dictionary.png)
+![Enable Dictionary true](Resources/Images/enableDictionary.gif)
 
 ### Example
 
@@ -1509,9 +1515,9 @@ If set to _false,_ the cells will not have rounded border.
 
 If set to _true,_ the cells will have a rounded border.
 
-![](Resources/Images/Group_Cell_true.png)
+![](Resources/Images/groupCells_Image.png)
 
-![](Resources/Images/Group_Cell_false_307x190.png)
+<!-- ![](Resources/Images/Group_Cell_false_307x190.png) -->
 
 ### Example
 
@@ -1677,19 +1683,35 @@ The available options are:
 
 *   SEGUI\_ROW\_SELECT: Specifies the disclosure indicator. The indicator appears as follows:
 
-![row Select](Resources/Images/rowSelect_58x54.png)
+![row Select](Resources/Images/rowSelect.png)
 
 > If the user selects the indicator, the related content appears in the next screen .
 
-*   SEGUI\_ROW\_CLICK: Specifies the disclosure button. The button appears as follows:
+*   SEGUI\_ROW\_CLICK: Specifies the detail button. The button appears as follows:
 
-![row Click](Resources/Images/rowClick.png)
+![row Click](Resources/Images/rowClick1.png)
 
-> If the user selects the disclosure button, the detailed content appears.
+> If the user selects the detail button, the detailed content appears.  
 
-*   SEGUI\_NONE: No indicator or button is displayed.
+----
+ 
+> **_Note:_** Below indicator property types are supported from 9.5.30
 
-To set the value through code, prefix the option with _constants._ such as _**constants.<option>**_.
+*   SEGUI\_ROW\_CLICKANDSELECT: Specifies the detail and disclosure button. <br>The button appears as follows:
+
+![row Click](Resources/Images/rowClick5.png)
+
+> If the user selects the detail or disclosure button, the detailed content appears.
+
+*   SEGUI\_ROW\_CHECK: Specifies the check button.The button appears as follows:
+
+![row Click](Resources/Images/rowClick2.png)
+
+> If the user selects the check button, the detailed content appears.
+
+*   SEGUI_NONE: No indicator or button is displayed.
+
+To set the value through code, prefix the option with constants. such as <b>constants..</b>
 
 ### Example
 
@@ -3646,7 +3668,7 @@ To set the value through code, prefix the option with _constants._ such as _**co
 
 The following image illustrates the search with _startsWith_ criteria:
 
-![search with starts With criteria](Resources/Images/Search.png)
+![search with starts With criteria](Resources/Images/searchCriteria_GIF.gif)
 
 ### Example
 
@@ -3795,8 +3817,8 @@ If data contains the sections then the _selectedIndex_ indicates the selected ro
 ### Example
 
 ```
-//Sample code to set the selectedRowIndex property for a Segment [1,4].
-frmSegment.mySegment.selectedRowIndex= [1,4];
+//Sample code to set the selectedRowIndex property for a Segment as four.
+frmSegment.mySegment.selectedRowIndex= 4;  
   
 //Reading the selectedRowIndex of the Segment widget.
 voltmx.print("SegmentedUI selectedRowIndex ::" + frmSegment.mySegment.selectedRowIndex);  
@@ -4562,12 +4584,12 @@ The following are the available view types that you can select and their appeara
 > *   **SEGUI\_VIEW\_TYPE\_TABLEVIEW**: The rows of the segment appear in a table as a list.  
 >       
 >     
->     ![](Resources/Images/SegUItable_view.png)  
+>     ![](Resources/Images/1_TableView_GIF.gif)  
 >     
 > *   **SEGUI\_VIEW\_TYPE\_PAGEVIEW**: The rows of the segment appear in pages and you need to scroll through the pages to view the rows.  
 >       
 >     
->     ![](Resources/Images/SegUIpage_view.png)
+>     ![](Resources/Images/2_PageView_GIF.gif)
 >     
 > 
 > > **_Note:_** To avoid UI issues with segment, ensure that each page of segment with pageview has equal size and also the height of segment should fit into the screen viewport area.
@@ -4576,33 +4598,33 @@ The following are the available view types that you can select and their appeara
 > 
 > *   **SEGUI\_VIEW\_TYPE\_COVERFLOW**: Regular cover flow view. The cover flow view enables you to flip through the widgets placed in a segment and bring the associated widget into view. You can flip through the widgets placed in a segment as shown in the figure.
 
-> > > ![](Resources/Images/view_Cover_flow_189x227.png)
+> > > ![](Resources/Images/3_CoverFlow_GIF.gif)
 > 
 > Following are the options applicable to iPhone and iPad only.
 
 > *   **SEGUI\_VIEW\_TYPE\_CYLINDER**: Displays the widgets placed in a segment as a cylinder. All the widgets placed in a segment form a horizontal cylinder (polygon) and the cylinder rotates based on the user's gesture. In the Cylinder view, the widgets appear as if the user is viewing at the cylinder from outside. The widgets gets skewed as you move along the axis of reference of the cylinder. You can rotate the widgets placed in a segment around the axis of reference as shown in the figure.
 
-> > > ![](Resources/Images/view_cylinder_189x227.png)
+> > > ![](Resources/Images/8_CylinderView_GIF.gif)
 
 > *   **SEGUI\_VIEW\_TYPE\_INVERTED\_CYLINDER**: Displays the widgets placed in a segment as a cylinder. All the widgets of the segment form a horizontal cylinder (polygon) and the cylinder rotates based on user's gesture. In the Inverted Cylinder view, the widgets placed in a segment appear as if the user is viewing the cylinder from inside. The widgets in a segment gets skewed as you move the segment along the axis of reference. You can rotate the widgets placed in a segment around the axis of reference as shown in the figure.
 
-> > > ![](Resources/Images/inverted_cylinder_189x227.png)
+> > > ![](Resources/Images/9_Inverted CylinderView_GIF.gif)
 
 > *   **SEGUI\_VIEW\_TYPE\_INVERTED\_ROTARY**: Displays the widgets placed in a segment that rotates around the axis of reference, where the current objects are projected inwards and the other widget appear closer to the user than the current widget. There won't be any widgets skewing or tilting like in the cover flow view.
 
-> > > ![](Resources/Images/view_inverted_rotary_189x227.png)
+> > > ![](Resources/Images/7_Inverted RotaryView_GIF.gif)
 
 > *   **SEGUI\_VIEW\_TYPE\_LINEAR**: Displays the widgets placed in a segment in a linear view; which is very similar to the existing views, where you can scroll the widgets horizontally. You can scroll across the widgets by moving them forward or backward as shown in the figure.
 
-> > > ![](Resources/Images/view_linear_189x227.png)
+> > > ![](Resources/Images/5_LinearView_GIF.gif)
 
 > *   **SEGUI\_VIEW\_TYPE\_ROTARY**: Displays the widgets placed in a segment that rotates around the axis of reference, where the current widget protrudes outwards and other widget appear slightly behind the current widget. There won't be any widget skewing or tilting like in the cover flow view.
 
-> > > ![](Resources/Images/view_rotary_189x227.png)  
+> > > ![](Resources/Images/6_RotaryView_GIF.gif)  
 
 > *   **SEGUI\_VIEW\_TYPE\_STACK**: Custom stack view where the widgets placed in a segment appear as a stack. The widgets can be moved inside and outside the stack based on the user's gesture as shown in the figure below.
 
-> > > ![](Resources/Images/view_stack_189x227.png)
+> > > ![](Resources/Images/4_StackView_GIF.gif)
 
 ### Example
 

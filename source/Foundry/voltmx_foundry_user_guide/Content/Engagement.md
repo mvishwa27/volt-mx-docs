@@ -90,6 +90,7 @@ To add Android details or Jpush details (app key and master secret), follow thes
         
 3.  To delete push configuration for Android, click **Delete Configuration**.
     
+
     **![](Resources/Images/DeletePushConfiguration.png)**
     
 4.  Click **Delete** to confirm.
@@ -98,7 +99,9 @@ To add Android details or Jpush details (app key and master secret), follow thes
       
     To enable CORS, in **VoltMX Foundry Engagement Console > General > Settings > Security**, select the **Allow Cross Domains Access** check box. In Volt MX Foundry Engagement Console, by default the check box is cleared.  
     
-      For more details, refer to [VoltMX Foundry Messaging Console > General > Settings > Security](../../../Foundry/vms_console_user_guide/Content/Administration/General_-_Settings.md#Security) section.  
+    For more details, refer to [VoltMX Foundry Messaging Console > General > Settings > Security](../../../Foundry/vms_console_user_guide/Content/Administration/General_-_Settings.md#Security) section.  
+
+    
       
     ![](Resources/Images/OnPrem/CORS_574x296.png)
     

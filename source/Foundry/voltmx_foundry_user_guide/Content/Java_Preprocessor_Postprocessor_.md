@@ -40,7 +40,12 @@ Configure the parameters for the preprocessor and postprocessor to filter the re
             </li><li>
             For <b>Preprocessor</b>, you must call <b>resultToJSON</b> API which returns JSON object. You can use the JSON object to modify the result as JSON and reset the result using <b>jsonToResult</b> API. For sample JavaScript code, refer to <a href="JS_Pre-Post_Samples.html#jsontoResultAPI" target="_blank">Sample code for <b>Preprocessor</b></a>.
             </li></ul>
-            <p>You can use these objects and their corresponding methods directly in JavaScript code.For a sample JavaScript code, refer to <a href="JS_Pre-Post_Samples.html">JavaScript Sample Code for Preprocessor and Postprocessor</a>.</p>
+            <p>You can use these objects and their corresponding methods directly in JavaScript code.For a sample JavaScript code, refer to <a href="JS_Pre-Post_Samples.html">JavaScript Sample Code for Preprocessor and Postprocessor</a>.</p>            
+            <blockquote><b><i>Note:</i></b> For details on Foundry Javascript for preprocessor and postprocessor, refer to <a href="../../../javascript_docs_apis/jsdocs/index.html"><code>javascript_docs_apis</code></a></blockquote>
+            <h3>Monaco Editor Enhancement</h3>
+            <li>Changed Pre and Post Processor editor from CodeMirror to Monaco (Monaco is the code editor used in Visual Studio).</li>
+            <li>Added new JavaScript APIs for commonly used middleware API Objects to use them in JavaScript friendly way and added samples and Intellisense support for the same.</li>
+           <li>Enhanced the editor UI so that the users can access JavaScript Samples from the editor.</li>
       </td>
     </tr>
     <tr><td><h2 style="text-decoration:underline;">Rules Preprocessor and Postprocessor</h2></td></tr>
@@ -59,6 +64,7 @@ The step allows you to further filter the data received from a service call.
 
 1.  Under the **Custom Code Invocation**, follow these steps:
     * Under **Preprocessor**, configure one of the following:
+        * Select **Java**, and in the **Class** text box, enter the preprocessor class. This step enables a developer to include any business logic on the data before forwarding the request to the external data source.
         *   For **Java**, you can configure multiple Preprocessors. This is supported for Integration/Orchestration services and Object services. If you have defined your logic for multiple preprocessors in the uploaded JAR file in the service definition, you can select the available one or other preprocessors. You can arrange the selected pre-processors to be executed in the desired order during the operation call.     
             <details close markdown="block"><summary>Use Case </summary> When customers have a large amount of custom code, the maintainability of the code becomes an issue. The issue becomes much more complicated when multiple stakeholders working on custom code. In such cases, the custom code can be split into multiple pre/post processors so that stakeholders can work on their respective modules. This increases the upgradability and maintainability of the custom code.  
             </details>  
@@ -123,7 +129,7 @@ The step allows you to further filter the data received from a service call.
             *   If you do not want to validate the JavaScript code for the Postprocessor, and want to save the operation, do not click **Validate**.
         *   Select **Rules** to open a text box. Here, you can write rules for the postprocessor.
 
-2.  Under the **Properties** section, provide details for the following advanced service properties:
+2.  <a id="timeout_cachable"></a>Under the **Properties** section, provide details for the following advanced service properties:
     *   **Timeout (in ms)** - the duration in milliseconds after which the service call times out. Provide the details in the text box.
     *   **Cache Response** - the duration in seconds within which the service response is fetched from the cache. Select the **Cache Response** check box, and provide the details in the text box.
     *   **Unescape embedded xml in response -** To ignore the MuleSoft response received in the XML value field, select the **Unescape embedded xml in response** check box.

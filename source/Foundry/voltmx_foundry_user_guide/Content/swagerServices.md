@@ -164,7 +164,7 @@ To configure a XML service, follow these steps:
         \- **For Cloud**, contact Volt MX Cloud Support for getting the appropriate middleware-system.jar for your server version.
         
         For details on Middleware APIs for preprocessor and postprocessor,  
-        contact refer to [Volt MX App Services API](../../../../../java_docs_apis/MiddlewareAPI/index.html)
+        contact refer to [Volt MX App Services API](../../../../../java_docs_apis/MiddlewareAPI/index.md)
         
     *   **JavaScript Preprocessor and Postprocessor** - Based on the interface, the preprocessors and postprocessors implement the following objects:
         
@@ -410,7 +410,7 @@ To configure a SOAP service, follow these steps:
         \- **For Cloud**, contact Volt MX Cloud Support for getting the appropriate middleware-system.jar for your server version.
         
         For details on Middleware APIs for preprocessor and postprocessor,  
-        contact refer to [Volt MX App Services API](../../../../../java_docs_apis/MiddlewareAPI/index.html)
+        contact refer to [Volt MX App Services API](../../../../../java_docs_apis/MiddlewareAPI/index.md)
         
     *   **JavaScript Preprocessor and Postprocessor** - Based on the interface, the preprocessors and postprocessors implement the following objects:
         
@@ -672,7 +672,7 @@ To configure a JSON service, follow these steps:
         \- **For Cloud**, contact Volt MX Cloud Support for getting the appropriate middleware-system.jar for your server version.
         
         For details on Middleware APIs for preprocessor and postprocessor,  
-        contact refer to [Volt MX App Services API](../../../../../java_docs_apis/MiddlewareAPI/index.html)
+        contact refer to [Volt MX App Services API](../../../../../java_docs_apis/MiddlewareAPI/index.md)
         
     *   **JavaScript Preprocessor and Postprocessor** - Based on the interface, the preprocessors and postprocessors implement the following objects:
         
@@ -1004,7 +1004,7 @@ To configure your Java connector, follow these steps:
         \- **For Cloud**, contact Volt MX Cloud Support for getting the appropriate middleware-system.jar for your server version.
         
         For details on Middleware APIs for preprocessor and postprocessor,  
-        contact refer to [Volt MX App Services API](../../../../../java_docs_apis/MiddlewareAPI/index.html)
+        contact refer to [Volt MX App Services API](../../../../../java_docs_apis/MiddlewareAPI/index.md)
         
     *   **JavaScript Preprocessor and Postprocessor** - Based on the interface, the preprocessors and postprocessors implement the following objects:
         

@@ -55,7 +55,7 @@ The following fields are output parameters:
 "osType" : "windows",
 "phoneNo" : "",
 "createdDateStr" : "06/20/2016 11:03:15 AM IST",
-"userAgent" : "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
+"userAgent" : "Mozilla/5.0 ](Windows NT 10.0; WOW64) AppleWebKit/537.36 (.md, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
 "ipAddress" : "10.10.30.89",
 "subscriptionStatus" : true,
 "cloudStatus" : true
@@ -69,7 +69,7 @@ The following fields are output parameters:
 "osType" : "android",
 "phoneNo" : "",
 "createdDateStr" : "06/20/2016 11:04:11 AM IST",
-"userAgent" : "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
+"userAgent" : "Mozilla/5.0 ](Windows NT 10.0; WOW64) AppleWebKit/537.36 (.md, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
 "ipAddress" : "10.10.30.89",
 "subscriptionStatus" : true,
 "cloudStatus" : true
@@ -83,7 +83,7 @@ The following fields are output parameters:
 "osType" : "androidgcm",
 "phoneNo" : "",
 "createdDateStr" : "06/22/2016 12:39:44 PM IST",
-"userAgent" : "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
+"userAgent" : "Mozilla/5.0 ](Windows NT 10.0; WOW64) AppleWebKit/537.36 (.md, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
 "ipAddress" : "10.10.30.89",
 "subscriptionStatus" : true,
 "cloudStatus" : false
@@ -97,7 +97,7 @@ The following fields are output parameters:
 "osType" : "windows",
 "phoneNo" : "",
 "createdDateStr" : "06/22/2016 12:40:35 PM IST",
-"userAgent" : "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
+"userAgent" : "Mozilla/5.0 ](Windows NT 10.0; WOW64) AppleWebKit/537.36 (.md, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
 "ipAddress" : "10.10.30.89",
 "subscriptionStatus" : true,
 "cloudStatus" : true
@@ -111,7 +111,7 @@ The following fields are output parameters:
 "osType" : "webfcm",
 "phoneNo" : "",
 "createdDateStr" : "06/20/2016 11:04:11 AM IST",
-"userAgent" : "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
+"userAgent" : "Mozilla/5.0 ](Windows NT 10.0; WOW64) AppleWebKit/537.36 (.md, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
 "ipAddress" : "10.10.30.89",
 "subscriptionStatus" : true,
 "cloudStatus" : true
@@ -125,7 +125,7 @@ The following fields are output parameters:
 "osType" : "windows",
 "phoneNo" : "",
 "createdDateStr" : "06/22/2016 12:42:20 PM IST",
-"userAgent" : "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
+"userAgent" : "Mozilla/5.0 ](Windows NT 10.0; WOW64) AppleWebKit/537.36 (.md, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
 "ipAddress" : "10.10.30.89",
 "subscriptionStatus" : true,
 "cloudStatus" : true

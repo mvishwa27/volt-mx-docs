@@ -46,14 +46,12 @@ Here is a sample of the relevant part of the SSL `connector` tag:
 
 ```
 SSLEnabled="true" sslEnabledProtocols="TLSv1.2" ciphers="TLS_ECDHE_RSA_WITH_RC4_128_SHA, SSL_RSA_WITH_RC4_128_SHA"
-
 ```
 
 Here is a sample modified https `connector` tag:
 
 ```
 <connector port="443" maxhttpheadersize="8192" address="127.0.0.1" enablelookups="false" disableuploadtimeout="true" acceptCount="100" scheme="https" secure="true" clientAuth="false" <mark> SSLEnabled="true" sslEnabledProtocols="TLSv1.2" ciphers="TLS_ECDHE_RSA_WITH_RC4_128_SHA,SSL_RSA_WITH_RC4_128_SHA" </mark> keystoreFile="mydomain.key" keystorePass="password" truststoreFile="mytruststore.truststore" truststorePass="password"/>;
-
 ```
 
 > **_Note:_** Upgrade the SSL Cipher list to the latest available versions.
@@ -95,14 +93,14 @@ There are a total of four account roles in Volt MX Foundry:
 
 - **Owner**: An owner has the most privileges and can do the following:
 
-  - Add, modify, and delete an environment.
-  - Add, modify, and delete other owners, admins, and members.
+    - Add, modify, and delete an environment.
+    - Add, modify, and delete other owners, admins, and members.
 
 - **Admin**: An admin has fewer privileges than an owner and can do the following:
 
-  - Add other admins and members.
-  - Modify and delete other admins and members.
-  - Grant and deny environment access to other admins and members.
+    - Add other admins and members.
+    - Modify and delete other admins and members.
+    - Grant and deny environment access to other admins and members.
 
 - **Member**: A member has the fewest privileges, which includes creating, editing or deleting new Volt MX Foundry applications or services. A member does not have permissions to invite a new user to the cloud or change the environment access of other members.
 - **Developer Portal Only**: This provides access to specific Developer Portals only and does not provide access to the Volt MX Foundry Console.
@@ -198,13 +196,15 @@ name=PBKDF2_ITERATIONS&value=1000
 
 ### Steps to get Auth token and Tenant ID
 
-1.  Login to Volt MX Foundry using Owner account.
-2.  Goto <code>http://&lt;VoltMX_host&gt;:8080/mfconsole/accountInfo</code>
-<!-- 2.  Goto [http://securitytestvm.kitspl.com:8080/mfconsole/accountInfo](http://securitytestvm.kitspl.com:8080/mfconsole/accountInfo) -->
+1.  Login to Volt MX Foundry using Owner account. 
+
+2.  Goto <code>http://&lt;VoltMX_host&gt;:8080/mfconsole/accountInfo</code>  
+
+    <!-- 2.  Goto [http://securitytestvm.kitspl.com:8080/mfconsole/accountInfo](http://securitytestvm.kitspl.com:8080/mfconsole/accountInfo) -->
 
 3.  Note down the tenant id and auth token as shown in below image.
 
-![](Resources/Images/Auth_Token_665x259.png)
+    ![](Resources/Images/Auth_Token_665x259.png)
 
 ## Idle Session Timeout for Volt MX Foundry App
 
@@ -214,8 +214,8 @@ You can configure either an idle timeout or fixed timeout for apps in the Applic
 
 - **Idle Timeout**: Specifies the amount of time in minutes that a session can remain idle before Volt MX Foundry automatically terminates the app.
 
-  - Identity Session Idle Timeout: When an app session on a device remains idle for a certain amount of time, the app session expires automatically. The user will need to log in to the app again.
-  - Maximum Session Duration: An apps log-in session is active until the maximum session duration time is met.
+    - Identity Session Idle Timeout: When an app session on a device remains idle for a certain amount of time, the app session expires automatically. The user will need to log in to the app again.
+    - Maximum Session Duration: An apps log-in session is active until the maximum session duration time is met.
 
 - **Fixed Timeout**: Specifies the app session’s idle timeout (HH:SS). When the timeout is reached, the session expires automatically, and the user will need to log into the app again.
 
@@ -257,8 +257,10 @@ name=password_regex&value=^(?=.*[a-z])(?=._[A-Z])(?=._\\d)(?=._(_|[^\\w])).{8,20
 ### Steps to get Auth token and Tenant ID
 
 1.  Login to Volt MX Foundry using Owner account.
+
 2.  Goto <code>http://&lt;VoltMX_host&gt;:8080/mfconsole/accountInfo</code>
-<!-- 2.  Goto [http://securitytestvm.kitspl.com:8080/mfconsole/accountInfo](http://securitytestvm.kitspl.com:8080/mfconsole/accountInfo) -->
+    <!-- 2.  Goto [http://securitytestvm.kitspl.com:8080/mfconsole/accountInfo](http://securitytestvm.kitspl.com:8080/mfconsole/accountInfo) -->
+
 3.  Note down the tenant id and auth token as shown in below image.
 
 ![](Resources/Images/Auth_Token_TID_645x252.png)
@@ -329,11 +331,11 @@ For security reasons, you must disable the server information disclosure for Tom
 
 1.  Open the Tomcat Server > `server.xml` file.
 2.  Add the following:
-```
-<Valve className="org.apache.catalina.valves.ErrorReportValve"
+
+    <pre><code>&lt;Valve className="org.apache.catalina.valves.ErrorReportValve"
     showReport="false" 
-    showServerInfo="false"/>
-```
+    showServerInfo="false"/&gt;</code></pre>
+
 3.  Save the server.xml.
 4.  Restart the server.
 
@@ -356,7 +358,7 @@ POST <Waas_Base_URL>/api/v1/setup/properties
 
 ### Headers:
 
-- X-Volt MX-Authorization = <Claims token value>
+- X-Volt MX-Authorization = <Claims token value\>
 - Content-Type = application/x-www-form-urlencoded
 
 ### Form Data parameters:
@@ -402,13 +404,13 @@ Follow these steps to get the **authToken**.
 Invoke the following API to enable User Blocking on multiple failed login attempts.
 
 ```
-POST <authUrl>/api/v1/setup/tenants/\_\_global/properties
+POST <authUrl>/api/v1/setup/tenants/__global/properties
 ```
 
 ### Headers:
 
 - Content-Type: application/json
-- X-Volt MX-Authorization: <authToken>
+- X-Volt MX-Authorization: <authToken\>
 
 ### Request body:
 
@@ -427,14 +429,14 @@ If the user tries to sign in after three failed attempts, the console displays t
 Use the following API to set the blocking threshold
 
 ```
-POST <authUrl>/api/v1/setup/tenants/\_\_global/properties
+POST <authUrl>/api/v1/setup/tenants/__global/properties
 ```
 
 ### Headers:
 
 Content-Type: application/json
 
-X-Volt MX-Authorization: <authToken>
+X-Volt MX-Authorization: <authToken\>
 
 ### Request body:
 
@@ -459,13 +461,13 @@ A database admin can unblock a user before the blocking threshold ends. To unblo
 
 ```
 set sql_safe_updates = 0;
-UPDATE users
-SET
-user_status = 'active',
-login_fail_count = 0
-WHERE
-userid = '<the blocked userid here>';
-set sql_safe_updates = 1;
+    UPDATE users
+    SET
+        user_status = 'active',
+        login_fail_count = 0
+    WHERE
+        userid = '<the blocked userid here>';
+    set sql_safe_updates = 1;
 
 ```
 
@@ -518,6 +520,8 @@ Add the following code in the **web.xml** file:
 
 * Restart the Application Server.
 
+![HTTPtoHTTPS](./Resources/Images/HTTPtoHTTPS.png)
+
 You can use developer tools to verify the changes.
 
 ### For JBoss as the Web Server, do the following.
@@ -535,7 +539,6 @@ To enable `secure/Http-only` for all deployed applications, you can add a sessio
 
 ```
 
-
 ### For WebSphere as the Web Server, follow these steps.
 
 1.  Sign in to [Volt MX Foundry Console](https://manage.hclvoltmx.com/).
@@ -546,13 +549,17 @@ To enable `secure/Http-only` for all deployed applications, you can add a sessio
     1.  Select your server.
     2.  Go to **Session management** > **Cookies**, enable the cookies .
 
+
+
     ![](Resources/Images/WebSphere-Settings_633x267.jpg)
+
+
 
 ## Redirect Traffic from Non-Secure Protocol (HTTP) to Secure Protocol (HTTPS)
 
 Follow these steps to setup the Tomcat Server to redirect HTTP requests to the HTTPS port to access web applications from both the ports:
 
-1.  Add the following code in the **server.xml** file present in the `TomcatInstallation/conf` path.
+*   Add the following code in the **server.xml** file present in the `TomcatInstallation/conf` path.
 
 ```
 <security-constraint>
@@ -567,7 +574,7 @@ Follow these steps to setup the Tomcat Server to redirect HTTP requests to the H
 
 ```
 
-2.  Restart the Application Server.
+*   Restart the Application Server.
 
 ## Enabling Secure flag for CacheID Cookie
 
@@ -661,6 +668,7 @@ Also, if there no overriding concerns, enable the security settings.
 
 1.  Write a custom filter that adds the response headers to the response.
 2.  Add the following custom filter to preprocessor and postprocessor jar, and publish the app.
+
 ```
 import java.io.IOException;
 

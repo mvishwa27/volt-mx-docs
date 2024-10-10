@@ -1,3 +1,4 @@
+                          
 
 
 Collab
@@ -30,7 +31,7 @@ In the Collab Server, you can configure the sever security to Http or Https. Fol
 
 Follow these steps to download and configure the Collab Server:
 
-1.  Download the Collab server from [here] (https://github.com/HCL-TECH-SOFTWARE/volt-mx-docs/raw/master/voltmxlibrary/iris/zip/user_guide/CollabServer_Win.zip).   
+1.  Download the Collab server from [here](https://github.com/HCL-TECH-SOFTWARE/volt-mx-docs/raw/master/voltmxlibrary/iris/zip/user_guide/CollabServer_Win.zip).   
     The installer is downloaded as a zip file to your computer.  
     
 2.  Extract the contents of the zip file.
@@ -104,7 +105,7 @@ To install and configure Git for the first time, follow these steps:
 
 > **_Note:_** Skip these steps if you already have GIT installed and configured.
 
-1.  Download and install Git from [here](https://git-scm.com/downloads).  
+1.  Download and install Git from here.  
     Ensure you have an account in Git. Create an account if you do not have one already.  
     
 2.  Open the terminal.

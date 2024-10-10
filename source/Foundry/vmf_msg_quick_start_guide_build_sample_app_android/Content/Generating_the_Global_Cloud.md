@@ -62,6 +62,7 @@ The first step in the installation and configuration of the sample Engagement ap
 10.  Copy the **Sender ID**. You use the **Sender ID** in the client-side application to register to FCM from the device.
 11.  Copy the **Server Key**. You use the **Server Key** in the Engagement server while creating an application
 
+
 Creating FCM Project URL and Generating Service Account Key for Android Device
 --------------------------------------------------------------------------------
 
@@ -111,14 +112,14 @@ The first step in the installation and configuration of the sample Engagement ap
     The **Welcome to Firebase! Get started here** page appears.
     
 7.  Click the wheel icon next to the **Engagement Services Demo App** label in the left menu bar.
-    
 
+    
     ![](Resources/Images/wheelfirebasehttpv1.png)
 
     
     The **Project settings** drop-down list appears.
-
     
+
     ![](Resources/Images/newfcmhttpv15_580x286.png)
 
     

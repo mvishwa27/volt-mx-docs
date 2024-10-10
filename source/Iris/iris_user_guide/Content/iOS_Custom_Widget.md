@@ -307,24 +307,24 @@ pragma mark Custom Widget Protocols Methods
 
         self.minThumbImageName = nValue;
 
-        [_minThumb setImage: [UIImage imageNamed: self.minThumbImageName]];
+        [_minThumb setImage: [UIImage imageNamed: self.minThumbImageName];
 
     } else if ([propertyName isEqualToString: @"maxThumbImageName"]) {
 
         self.maxThumbImageName = nValue;
 
-        [_maxThumb setImage: [UIImage imageNamed: self.maxThumbImageName]];
+        [_maxThumb setImage: [UIImage imageNamed: self.maxThumbImageName];
 
     } else if ([propertyName isEqualToString: @"trackBackgroundImageName"]) {
 
         self.trackBackgroundImageName = nValue;
 
-        [_trackBackground setImage: [UIImage imageNamed: self.trackBackgroundImageName]];
+        [_trackBackground setImage: [UIImage imageNamed: self.trackBackgroundImageName];
 
     } else if ([propertyName isEqualToString: @"trackHighlightImageName"]) {
 
         self.trackHighlightImageName = nValue;
-        [_track setImage: [UIImage imageNamed: self.trackHighlightImageName]];
+        [_track setImage: [UIImage imageNamed: self.trackHighlightImageName];
     }
 }
 

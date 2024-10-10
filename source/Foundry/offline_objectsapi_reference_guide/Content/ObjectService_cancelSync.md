@@ -1,13 +1,12 @@
 
-# \<objectService\>.cancelSync
+# <objectService\>.cancelSync
 
-The **\<objectService\>.cancelSync** function cancels an in progress object service sync operation. The operation fails if the task syncing is already finished, throws an error, or does not support the **Cancel** operation.
+The **<objectService\>.cancelSync** function cancels an in progress object service sync operation. The operation fails if the task syncing is already finished, throws an error, or does not support the **Cancel** operation.
 
 ## Volt MX Iris (JavaScript)
 
-> **Note:**
+> **Note :**  Not supported for Mobile Web, Desktop Web and Desktop Native channels.
 
-- Not supported for Mobile Web and Desktop Web channels.
 
 ### Signature
 
@@ -72,7 +71,7 @@ public void cancelSync(HashMap<String, Object> options, final VMXCallback syncCa
 
 | Parameter                | Type                    | Description                                                                                                                                        | Required |
 | ------------------------ | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| options                  | HashMap<String, Object> | Reserved for future use, so the parameter is insignificant. But, the developer must pass some value such as null or new HashMap<String, Object>(). | Yes      |
+| options                  | HashMap<String, Object\> | Reserved for future use, so the parameter is insignificant. But, the developer must pass some value such as null or new HashMap<String, Object>(). | Yes      |
 | syncCancellationCallback | VMXCallback             | Application implements **onSuccess** and **onFailure** methods of **VMXCallback** interface.                                                       | Yes      |
 
 ### Return Type
@@ -133,7 +132,7 @@ Log.d("ObjectServiceSync Cancellation", "ObjectService sync cancellation success
 ### Signature
 
 ```
-(void)cancelSync:(NSDictionary \*)options
+(void)cancelSync:(NSDictionary *)options
 onSuccess:(VMXSuccessCompletionHandler)onSuccess
 onFailure:(VMXFailureCompletionHandler)onFailure
 
@@ -157,7 +156,7 @@ error: & error
 ];
 
 // Define Sync options
-NSMutableDictionary \* syncOptions = [NSMutableDictionary new];
+NSMutableDictionary * syncOptions = [NSMutableDictionary new];
 [syncOptions setObject: @"100"
 forKey: @"downloadBatchSize"
 ];
@@ -173,7 +172,7 @@ forKey: @"getSyncStats"
 onSuccess: ^ (id object) {
 NSLog(@"ObjectService sync successful");
 }
-onFailure: ^ (NSError \* error) {
+onFailure: ^ (NSError * error) {
 NSLog(@"ObjectService sync failed with error :%@", [error description]);
 }
 onProgress: ^ (id object) {

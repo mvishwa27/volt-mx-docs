@@ -1369,7 +1369,7 @@ Specifies the key-value pairs that must be sent to the initial URL. It accepts a
 
 ```
 
-[["key1","value1"],["key2","value2"],["keyn", "valuen"]]
+[["key1","value1"],["key2","value2"],["keyn", "valuen"]
 ```
 
 ### Example

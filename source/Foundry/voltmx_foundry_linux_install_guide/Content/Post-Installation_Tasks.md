@@ -1,12 +1,8 @@
                           
 
-You are here: How to Add an Installer Generated Self-Signed SSL Certificate to Cacerts
+You are here: How to Add an Installer Generated Self-Signed SSL Certificate to Cacerts 
 
-Post-Installation Tasks
-=======================
-
-Configuring Secure Sockets Layer (SSL) Certificate
-==================================================
+# Configuring Secure Sockets Layer (SSL) Certificate - Post-Installation Tasks
 
 You can troubleshoot trusted certification issues.
 
@@ -21,22 +17,19 @@ To enable communication between Volt MX Foundry Console and other products such 
 *   import each product's certificate (VoltMX Foundry Integration Services, and Volt MX Foundry Engagement Services) into the Volt MX Foundry console (for example, `<INSTALL_DIR>/jre/lib/security/cacerts`).
 *   import console cert into the product boxes cacerts such as Volt MX Foundry Integration, Volt MX Foundry Engagement Services, and Volt MX Foundry Management.
 
-How to Add an Installer Generated Self-Signed SSL Certificate to Cacerts  
-------------------------------------------------------------------------
+## How to Add an Installer Generated Self-Signed SSL Certificate to Cacerts  
 
 To add an installer generated self-signed SSL certificate to cacerts, follow these steps:
 
 1.  From your Volt MX Foundry installed system, open the Linux terminal, and run the following command to generate an `intermediate.crt` file from the keystore:
-    <figure class="highlight"><pre><code class="language-voltmx" data-lang="voltmx">
-    <USERINSTALLDIR>/jre/bin/keytool -export -alias "<HOST\_URL\_SSL\_CONF>" -file <USERINSTALLDIR>/intermediate.crt -keystore <USERINSTALLDIR>/keystore.jks -storepass <Passsword\_of\_keystore>
-    </code></pre></figure>    
+
+    `<USERINSTALLDIR>/jre/bin/keytool -export -alias "<HOST_URL_SSL_CONF>" -file <USERINSTALLDIR>/intermediate.crt -keystore <USERINSTALLDIR>/keystore.jks -storepass <Passsword_of_keystore>`   
         
     Based on the hostname and keystore password provided at the [SSL Certificate window](Installing_VoltMX_Foundry_Tomcat.md#SSL_Hostname), the preceding command exports the required certificate from the source keystore with the given name - for example, `intermediate.crt`.
     
 2.  Run the following command to import the `intermediate.crt` certificate file into your Volt MX Foundry Installer's JRE trusted certificate authority (CA) certificates file:
-    <figure class="highlight"><pre><code class="language-voltmx" data-lang="voltmx">
-    <USERINSTALLDIR>/jre/bin/keytool -import -noprompt -trustcacerts -alias "<HOST\_URL\_SSL\_CONF>" -file <USERINSTALLDIR>/intermediate.crt -keystore <USERINSTALLDIR>/jre/lib/security/cacerts -storepass changeit 
-    </code></pre></figure>    
+
+    `<USERINSTALLDIR>/jre/bin/keytool -import -noprompt -trustcacerts -alias "<HOST_URL_SSL_CONF>" -file <USERINSTALLDIR>/intermediate.crt -keystore <USERINSTALLDIR>/jre/lib/security/cacerts -storepass changeit`  
      
 ### How to Add an Existing SSL Certificate to Cacerts
 
@@ -47,14 +40,11 @@ To add an existing SSL certificate to cacerts, follow these steps:
 Use the following steps to import your existing certificate to cacerts with the proper value of alias, keystore location and keystore password.
 
 1.  From your Volt MX Foundry installed system, open the Linux terminal, and run the following command to add an `intermediate.crt` file from the keystore:
-    <figure class="highlight"><pre><code class="language-voltmx" data-lang="voltmx">
-    <USERINSTALLDIR>/jre/bin/keytool -export -alias "<yourcertificate\_domain>" -file <USERINSTALLDIR>/intermediate.crt -keystore <keystore\_location>-storepass <Passsword\_of\_keystore>
-    </code></pre></figure>
+
+    `<USERINSTALLDIR>/jre/bin/keytool -export -alias "<yourcertificate_domain>" -file <USERINSTALLDIR>/intermediate.crt -keystore <keystore_location>-storepass <Passsword_of_keystore>`
 
 1.  Run the below command to import the `intermediate.crt` certificate file into your Volt MX Foundry Installer's JRE trusted certificate authority (CA) certificates file:
-    <figure class="highlight"><pre><code class="language-voltmx" data-lang="voltmx">
-    <USERINSTALLDIR>/jre/bin/keytool -import -noprompt -trustcacerts -alias "<yourcertificate\_domain>" -file <USERINSTALLDIR>/intermediate.crt -keystore <USERINSTALLDIR>/jre/lib/security/cacerts -storepass changeit
-    </code></pre></figure>
+    `<USERINSTALLDIR>/jre/bin/keytool -import -noprompt -trustcacerts -alias "<yourcertificate_domain>" -file <USERINSTALLDIR>/intermediate.crt -keystore <USERINSTALLDIR>/jre/lib/security/cacerts -storepass changeit`
 
 ### JDK Version Compatibility
 
@@ -70,20 +60,20 @@ For example: When you upgrade JDK V 1.6 to JDK V 1.7 (vice-versa), you can still
     *   `ssl.trustStore=/<java_home>/jre/lib/security/cacerts`
     *   `ssl.keyStore=/<java_home>/jre/lib/security/cacerts`
 
-How to Configure Memcached for Integration Services
-===================================================
+## How to Configure Memcached for Integration Services
+
 
 *   For Foundry version 7.3 or above, you can configure the memcache from Admin console.
     
-    To configure memcache in Foundry 7.3 or above versions, follow these steps:
+    To configure memcache from Admin console in Foundry, follow these steps:
     
-    1.  Open Admin console (http/https://<server-host>:<server-port>/admin).
+    1.  Open Admin console (`http/https://<server-host>:<server-port>/admin`).
     2.  In the left pane, go to the **Settings** tab.
         
         ![](Resources/Images/HC1_562x281.png)
         
     3.  Under the **Runtime Configuration** tab, expand the **Memcache Configuration** key.
-    4.  In the **Memcache Cluster** field, provide your memcache **hostname/IP** and **port** details separated with a colon. For example, <hostname/IP>:<Port>
+    4.  In the **Memcache Cluster** field, provide your memcache **hostname/IP** and **port** details separated with a colon. For example, `<hostname/IP>:<Port>`
     5.  Save the changes.
 
 *   For below Foundry 7.3, you can configure the memcache using queries on **voltmxadmindb**.
@@ -94,24 +84,23 @@ How to Configure Memcached for Integration Services
     
     > **_Note:_** Name of the VOLTMXADMINDB depends on the suffix and prefix provided, which you provided during the installation.
     
-    1.  Execute the following steps:
-        <figure class="highlight"><pre><code class="language-voltmx" data-lang="voltmx">
-        UPDATE <VOLTMXADMINDB>.server_configuration set prop_value =
-        '<memcache_hostname>’:’<memcache_port>’' , created_date = CURRENT_TIMESTAMP , updated_date
-        = CURRENT_TIMESTAMP WHERE prop_name = 'memcache.cluster';
-        </code></pre></figure>
+    1. Execute the following steps:
+
+        `UPDATE < VOLTMXADMINDB >.server_configuration set prop_value =
+        '< memcache_hostname >’:’< memcache_port >’' , created_date = CURRENT_TIMESTAMP , updated_date
+        = CURRENT_TIMESTAMP WHERE prop_name = 'memcache.cluster';`
         
         **Verification:** To verify whether the memcache configuration is successfully done, go to the **Health Check** page and look for **Access to Cache** entry.
         
         > **_Note:_** It may take up to 5 minutes for the healthcheck to reflect the cache status. If you are still unable to find the particular entry in the **Health Check** page, try clearing the healthcheck cache using the following URL:  
           
-        https://<server-host>:<server-port>/admin/healthcheck?output=json
+        `https://<server-host>:<server-port>/admin/healthcheck?output=json`
         
         ![](Resources/Images/HC2.png)
         
 
-Configure Deployment of mbaasportal.war File for Multi-Node
-===========================================================
+## Configure Deployment of mbaasportal.war File for Multi-Node
+
 
 Once Volt MX Foundry installation succeeds, the Volt MX Foundry Console will not be displayed as the **enable-welcome-root** value is set **true** in the`domain.xml` file**.**
 
@@ -120,13 +109,11 @@ To configure mbaasportal.war, follow these steps:
 1.  In the master node, open the `domain.xml` file from `JBOSSDIR/domain/configuration`, and search for enable-welcome-root="true."
 2.  Replace enable-welcome-root="true" with enable-welcome-root="false."
 
-Remote Installation Pre-requisites
-==================================
+## Remote Installation Pre-requisites
 
 After you have installed Volt MX Foundry, you must retain the **Installation** folder for upgrades. While upgrading, the Volt MX Foundry installer requires the `installvariables.properties` file under the `<USER_INSTALL_DIR>/_VoltMX Foundry_installation` folder.
 
-Installing Volt MX Foundry Remotely
-----------------------------------
+## Installing Volt MX Foundry Remotely
 
 You can install Volt MX Foundry remotely on the following supported application servers:
 
@@ -135,8 +122,7 @@ You can install Volt MX Foundry remotely on the following supported application 
 
 <!-- *   WebLogic -->
 
-How to Turn off the Send usage data anonymously feature
-=======================================================
+## How to Turn off the Send usage data anonymously feature
 
 Allows HCL to collect product usage information to make your Volt MX Foundry experience better.
 
@@ -150,8 +136,7 @@ Allows HCL to collect product usage information to make your Volt MX Foundry exp
 5.  Refresh Volt MX Foundry Console.  
     You should be able to figure out if analytics data that is sent/out by trying to check in the **Network** tab in the Browser Developer Tools.
 
-Configuring Datasource for performance improvements for JBoss pre-existing and Domain Mode
-==========================================================================================
+## Configuring Datasource for performance improvements for JBoss pre-existing and Domain Mode
 
 While using pre-configured JBoss or JBoss in Domain Mode, add the following snippet to the datasource to improve the performance.
 
@@ -165,8 +150,7 @@ While using pre-configured JBoss or JBoss in Domain Mode, add the following snip
 
 > **_Note:_** For the bundled version, the installer will add the default size to the datasources.
 
-Health Check URL
-================
+## Health Check URL
 
 The following is the Component Health Check URL if the initial setup is success:
 
@@ -190,8 +174,7 @@ Passed
 
 ```
 
-Steps to enable SAPJCo
-======================
+## Steps to enable SAPJCo
 
 The installer provides the following artifacts:
 
@@ -208,8 +191,7 @@ The Module.xml can be located at:
 
 *   `<USER_INSTALL_DIR>/Integration/sapjco/main`
 
-Steps for Tomcat
-----------------
+## Steps for Tomcat
 
 1.  Navigate to `<USER_INSTALL_DIR>/tomcat/lib`, and add the following files:
     
@@ -220,10 +202,9 @@ Steps for Tomcat
     
 2.  Restart the server
 
-Steps for JBoss
----------------
+## Steps for JBoss
 
-**For Windows**: Place the **sapjco3.dll** in the **jboss/bin** folder or **C:/Users/<USER\_NAME>/System32** folder.
+**For Windows**: Place the **sapjco3.dll** in the **jboss/bin** folder or `C:/Users/<USER_NAME>/System32` folder.
 
 **For** **Linux**: Place the **libsapjco3.so** in the **/usr/bin** folder or any location on the machine and append the path to the $LD\_LIBRARY\_PATH variable
 

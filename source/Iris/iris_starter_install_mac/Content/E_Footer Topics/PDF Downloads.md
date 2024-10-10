@@ -26,7 +26,7 @@ PDF Downloads
 You can download any of the following PDFs:
 
 *   [Getting Started Guide](http://docs.madcapsoftware.com/FlareV11/FlareGettingStartedGuide.pdf)
-*   [HTML5 Guide](http://docs.madcapsoftware.com/FlareV11/FlareHTML5Guide.pdf)
+*   [HTML5 Guide](http://docs.madcapsoftware.com/FlareV11/Flar.html5Guide.pdf)
 *   [Key Features Guide](http://docs.madcapsoftware.com/FlareV11/FlareKeyFeaturesGuide.pdf)
 *   [Shortcuts Guide](http://docs.madcapsoftware.com/FlareV11/FlareShortcutsGuide.pdf)
 *   [Touring the Workspace Guide](http://docs.madcapsoftware.com/FlareV11/FlareTouringTheWorkspaceGuide.pdf)

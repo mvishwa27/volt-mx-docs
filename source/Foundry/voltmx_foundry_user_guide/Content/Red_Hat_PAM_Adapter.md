@@ -1,4 +1,4 @@
-
+ 
 
 Red Hat Process Automation Manager Adapter
 ------------------------------------------
@@ -24,7 +24,7 @@ Red Hat PAM has primarily two components: Business Central and KIE Server:
     
 *   For invocation of task APIs, process definition and case definition with human tasks in a project are deployed to KIE Server.
     
-*   A user is configured with the following user roles:
+*   A user is configured with the following user roles in Keycloak IDM or Red Hat PAM Server:
     
     *   `kie-server`
     *   `rest-all`
@@ -52,11 +52,49 @@ To configure a Red Hat PAM adapter in the [Integration Service Definition](Confi
     | Connection URL | Provide the base endpoint URL of the KIE Server REST API endpoint.For example :`http://{host}:{port}/kie-server/services/rest/server` |
     | **User ID** | Type the user ID for the connection URL. |
     | Password | Type the password for the user ID which you have entered. |
+
+    > **_Note:_**  If RedHat PAM Server is integrated with Keycloak, and if authentication is chosen as Use Existing Identity Provider or Specify Login Endpoint, in this case, these User ID and Password are optional. Refer to **Authentication** in this section.
+    
     
 4.  In the **Authentication** section, you can select an identity provider from **Use Existing Identity Provider**. This drop-down lists the identity providers created on the Identity page. If you select any identity provider, you have to enter valid login credentials.
     
     > **_Note:_** The Authentication section is optional.
-    
+
+    > **_Note:_**  From V9SP2 HotFix, the Foundry Red Hat PAM adapter has been enhanced to support Keycloak IDM for authorization. Refer [Foundry OAuth 2.0 Identity Service](Identity10_VoltMX_OAuth2.md).  
+
+    **Business use case:** For example, VoltMX Infinity Spotlight and the Red Hat PAM applications are integrated with Keycloak IDM. Users of the bank are maintained at Keycloak IDM. After the bank customer logs in to Spotlight, the user is SSO enabled. So that when the bank customer navigates to the Task Management/Workspace application within Spotlight, the user is authorized for RedHat tasks that he owns. The user can then access those tasks within Spotlight.
+
+    ![](./Resources/Images/RedHat_Auth.png)
+
+        
+       *   **Use Existing Identity Provider** - select Keycloak identity provider to pass external IDM backend authentication token to RedHat Services for Authentication.
+        
+           > **_Note:_** You must select Keycloak Identity Services for Red Hat Services. Foundry RedHat Integration Services do not honor other identity services.
+       
+           This drop-down lists identity providers that are linked to the app in the Foundry Identity Services, for example: OAuth2 based Keycloak Identity Service.
+           Fill in the details for the following fields:
+
+           1. From the **Select Identity Provider** list, select your Keycloak identity service.
+
+              > **_Note:_** You can test the Keycloak Identity Service to validate your login credentials. If the identity session is already active, you are not prompted for login credentials again. 
+
+              Refer to [Integration of Keycloak IDM with RedHat PAM Server](https://access.redhat.com/documentation/en-us/red_hat_process_automation_manager/7.5/html-single/integrating_red_hat_process_automation_manager_with_red_hat_single_sign-on/index).  
+        
+        
+       *   **Specify Login Endpoint** - configure Keycloak endpoint and static user credentials for Red Hat services authentication. Fill in the details for the following fields:  
+
+
+           1. In the Endpoint URL, enter the URL - for example,
+                `http(s)://{host}:{port}/auth/realms/{realm}/protocol/openid-connect/token`
+           2. In the Client ID text box, enter a valid client id.
+           3. In the User ID text box, enter a valid user ID.
+           4. In the Password text box, enter a valid password.
+
+           Refer to [Integration of Keycloak IDM with RedHat PAM Server](https://access.redhat.com/documentation/en-us/red_hat_process_automation_manager/7.5/html-single/integrating_red_hat_process_automation_manager_with_red_hat_single_sign-on/index).   
+
+    > **_Note:_** For more information on Externalizing Identity Services, refer to [Replace the Identity Service references in a Foundry app](Replacing_Identity_Services.md).  
+
+
 5.  **For additional configuration of your service definition, provide the following details in the Advanced section.** 
     
       
@@ -102,7 +140,7 @@ The **Operations List** tab appears only after the service definition is saved a
     
 6.  **For additional configuration of request (or) response operations, provide the following details in the Advanced section.**
     
-    <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('../Resources/TableStyles/Basic.css');" class="TableStyle-Basic" cellspacing="0"><colgroup><col class="TableStyle-Basic-Column-Column1" style="width: 174px;"> <col class="TableStyle-Basic-Column-Column1"></colgroup><tbody><tr class="TableStyle-Basic-Body-Body1"><td class="TableStyle-Basic-BodyE-Column1-Body1">Custom Code Invocation</td><td class="TableStyle-Basic-BodyD-Column1-Body1">You can add pre and post processing logic to services to modify the request inputs. When you test, the services details of various stages in the service execution are presented to you for better debugging. All options in the Advanced section are optional. For more details, refer to <a href="Java_Preprocessor_Postprocessor_.html" target="_blank">Preprocessor and Postprocessor</a>.</td></tr><tr class="TableStyle-Basic-Body-Body1"><td class="TableStyle-Basic-BodyE-Column1-Body1">Additional Configuration Properties</td><td class="TableStyle-Basic-BodyD-Column1-Body1">Additional Configuration Properties allows you to configure service call time out cache response. For information on different types of configuration properties, refer <a href="Java_Preprocessor_Postprocessor_.html#timeout_cachable" target="_blank">Properties</a>.</td></tr><tr class="TableStyle-Basic-Body-Body1"><td class="TableStyle-Basic-BodyB-Column1-Body1">Front-end API</td><td class="TableStyle-Basic-BodyA-Column1-Body1">Front-end API allows you map your endpoint (or) backend URL of an operation to a front-end URL. For detailed information, refer Custom <a href="FrontEndAPI.html" target="_blank">Front-end URL</a>.</td></tr><tr class="TableStyle-Basic-Body-Body1"><td class="TableStyle-Basic-BodyB-Column1-Body1">Server Events</td><td class="TableStyle-Basic-BodyA-Column1-Body1">Using Server Events you can configure this service to trigger or process server side events. For detailed information, refer <a href="ServerEvents.html">Server Events</a>.</td></tr></tbody></table>
+    <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url]('../Resources/TableStyles/Basic.css');" class="TableStyle-Basic" cellspacing="0"><colgroup><col class="TableStyle-Basic-Column-Column1" style="width: 174px;"> <col class="TableStyle-Basic-Column-Column1"></colgroup><tbody><tr class="TableStyle-Basic-Body-Body1"><td class="TableStyle-Basic-BodyE-Column1-Body1">Custom Code Invocation</td><td class="TableStyle-Basic-BodyD-Column1-Body1">You can add pre and post processing logic to services to modify the request inputs. When you test, the services details of various stages in the service execution are presented to you for better debugging. All options in the Advanced section are optional. For more details, refer to <a href="Java_Preprocessor_Postprocessor_.html" target="_blank">Preprocessor and Postprocessor</a>.</td></tr><tr class="TableStyle-Basic-Body-Body1"><td class="TableStyle-Basic-BodyE-Column1-Body1">Additional Configuration Properties</td><td class="TableStyle-Basic-BodyD-Column1-Body1">Additional Configuration Properties allows you to configure service call time out cache response. For information on different types of configuration properties, refer <a href="Java_Preprocessor_Postprocessor_.html#timeout_cachable" target="_blank">Properties</a>.</td></tr><tr class="TableStyle-Basic-Body-Body1"><td class="TableStyle-Basic-BodyB-Column1-Body1">Front-end API</td><td class="TableStyle-Basic-BodyA-Column1-Body1">Front-end API allows you map your endpoint ](or) backend URL of an operation to a front-end URL. For detailed information, refer Custom <a href="FrontEndAPI.html" target="_blank">Front-end URL</a>.</td></tr><tr class="TableStyle-Basic-Body-Body1"><td class="TableStyle-Basic-BodyB-Column1-Body1">Server Events</td><td class="TableStyle-Basic-BodyA-Column1-Body1">Using Server Events you can configure this service to trigger or process server side events. For detailed information, refer <a href="ServerEvents.html">Server Events</a>.</td></tr></tbody></table>
     
     > **_Note:_** All options in the **Advanced** section for operations are optional.
     

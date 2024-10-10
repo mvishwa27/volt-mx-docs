@@ -3,7 +3,7 @@
 
 ## <a name="Foundry_Reporting"></a>Configure Foundry Reporting and Analytics
 
-[JasperReports Server Professional Edition](https://www.jaspersoft.com/) is a prerequisite to configuring Reporting and Analytics on Foundry. After you successfully set up the JasperReports Server, refer to the [Volt MX Analytics and Reporting Installation Guide](https://opensource.hcltechsw.com/volt-mx-docs/docs/documentation/Foundry/voltmx_analytics_reporting/Content/homepage.html).
+[JasperReports Server Professional Edition](https://www.jaspersoft.com/) is a prerequisite to configuring Reporting and Analytics on Foundry. After you successfully set up the JasperReports Server, refer to the [Volt MX Analytics and Reporting Installation Guide](https://opensource.hcltechsw.com/volt-mx-docs/docs/documentation/Foundry/voltmx_analytics_reporting/Content/homepage.md).
 
 ## <a name="Logging"></a>Logging Considerations
 
@@ -19,12 +19,12 @@ You can use CloudWatch Container Insights to manage metrics and logs from your c
 
 CloudWatch collects metrics for resources such as CPU, memory, disk, and network. Container Insights also provides diagnostics such as container restart failures, which can help you isolate issues and resolve them quickly. You can also set alarms on the metrics that are collected by Container Insights. For more information, refer to following documents.
 
-*   [Container Insights Prerequisites](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Container-Insights-prerequisites.html)
-*   [Set Up the CloudWatch Agent to Collect Cluster Metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Container-Insights-setup-metrics.html)
+*   [Container Insights Prerequisites](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Container-Insights-prerequisites.md)
+*   [Set Up the CloudWatch Agent to Collect Cluster Metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Container-Insights-setup-metrics.md)
 
 ## <a name="Caching"></a>Caching Considerations
 
-Amazon provides the [ElastiCache](https://aws.amazon.com/elasticache/) service if your application needs a caching service. For production grade deployments, Volt MX recommends that you use caching to reduce load on your Foundry run-time services such as Integration and Identity. For information about setting up ElastiCache, refer to the [ElastiCache for Memcached User Guide](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/WhatIs.html).
+Amazon provides the [ElastiCache](https://aws.amazon.com/elasticache/) service if your application needs a caching service. For production grade deployments, Volt MX recommends that you use caching to reduce load on your Foundry run-time services such as Integration and Identity. For information about setting up ElastiCache, refer to the [ElastiCache for Memcached User Guide](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/WhatIs.md).
 
 After you complete the setup, edit the Identity and Integration configmaps as described in the following sections to complete the configuration.
 
@@ -49,20 +49,21 @@ Append the following **–D** parameters to the `INTEGRATION_CUSTOM_JAVA_OPTS` v
 ![](Resources/Images/FoundryOnEKS_DB_Cache_Integration.png)
 
 
-## <a name="Encrypting"></a>Encrypt the Database Password
+## Encrypt the Database Password
 
-> ***Important:*** Encryption is only supported for Tomcat application servers.
+> **Important:** Encryption is only supported for Tomcat application servers.
 
-<span class="mc-variable MyVariables.DocName2 variable">Volt MX Foundry</span> provides a 256-bit AES/GCM/NoPadding encryption utility, which can be used to encrypt your database password. To encrypt your database password, follow these steps:
+Volt MX Foundry provides a 256-bit AES/GCM/NoPadding encryption utility, which can be used to encrypt your database password. To encrypt your database password, follow these steps:
 
 1.  After you download and extract the installation zip file, navigate to the `lib` folder.
 2.  From the `lib` folder, open a terminal (console), and then execute the following command:
 
-    <pre><code style="display:block;background-color:#eee;">java -jar EncryptionUtility.jar</code></pre>
-
+    ```
+    java -jar EncryptionUtility.jar</code></pre>
+    ```
 
 3.  In the **Enter Password to be Encrypted** field, type the password that is used to access your database.
 4.  In the **Enter Key to be Encrypted** field, type the key that must be used to encrypt the password.
 
-The console then displays the **Encrypted Password** and **Encrypted Key**. These values must be added to the `DB_PASS` and `DB_PASS_SECRET_KEY` parameters in the `config.properties` file. For more information, refer to [Database Details](configuration_and_setup.md#Database).
+The console then displays the **Encrypted Password** and **Encrypted Key**. These values must be added to the `DB_PASS` and `DB_PASS_SECRET_KEY` parameters in the `config.properties` file. For more information, refer to [Database Details](configuration_and_setup.html#Database).
 

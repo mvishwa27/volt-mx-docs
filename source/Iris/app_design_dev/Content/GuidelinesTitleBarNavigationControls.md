@@ -28,3 +28,5 @@ Page Title Header will be horizontally center-aligned and vertically middle-alig
 
 ![](Resources/Images/TitleBarsExamples_132x222.png)
 
+
+

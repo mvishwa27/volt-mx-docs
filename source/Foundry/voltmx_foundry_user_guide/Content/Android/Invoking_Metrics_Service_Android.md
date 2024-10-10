@@ -45,7 +45,7 @@ metricsClient.setUserId(mUserId);
 The **sendEvent** API allows a developer to send event details from an application to server for analytics and reporting purposes. The event data is added to a buffer and sent to server as per configuration values set by the developer using setEventConfig API.
 
 ```
- //Sample code to send reports
+  //Sample code to send reports
 String eventSubType = "<event-sub-type>";
 String formID = "<form-id>";
 String widgetID = "<widget-id>";
@@ -144,7 +144,7 @@ String mFlowTag = metricsClient.getFlowTag();
 The **reportError** API enables an app to report an error event to metrics server.
 
 ```
- //Sample code to reportError
+  //Sample code to reportError
 String errorcode = "<error-code>";
 String errorType = "<error-type>";
 String errorMessage = "<error-message>";
@@ -168,7 +168,7 @@ try {
 The **reportHandledException** API enables apps to report a handled exception event.
 
 ```
- //Sample code to send exception to metrics server
+  //Sample code to send exception to metrics server
 String exceptioncode = "<exception-code>";
 String exceptionType = "<exception-type>";
 String exceptionMessage = "<exception-message>";
@@ -192,7 +192,7 @@ try {
 The **setEventConfig** API takes the required values to set the event configuration values. When eventConfigType is - CONF\_TYPE\_BUFFER event autoFlushCount and maxBufferCount are considered.  
 
 ```
- //Sample code to setEventConfig
+  //Sample code to setEventConfig
 int autoFlushCount = 20;
 int maxBufferCount = 800;
 try {
