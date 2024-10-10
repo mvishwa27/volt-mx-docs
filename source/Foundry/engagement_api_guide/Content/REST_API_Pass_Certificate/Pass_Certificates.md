@@ -12,3 +12,8 @@ Pass Certificates includes the following REST APIs:
 *   [Modify Pass Certificate by ID](Modify_Pass_Certificate_By_Id.md)
 *   [Delete Pass Certificate](Delete_Pass_Certificate.md)
 *   [Apple Pass Intermediate Certificates](Apple_Pass_Intermediate_Certificates.md)
+
+
+**Revsions**
+
+*   9.2 Changeset-1
