@@ -1,6 +1,0 @@
-# voltmx_foundry_workflow:
-        - Volt Foundry Workflow:
-          - Overview: Foundry/voltmx_foundry_workflow/Content/Workflow.md
-          - Best Practices: Foundry/voltmx_foundry_workflow/Content/Workflow_BestPractices.md
-          - Object Triggered Workflow Implementation: Foundry/voltmx_foundry_workflow/Content/Workflow_Implementation.md
-          - Event Triggered Workflow Implementation: Foundry/voltmx_foundry_workflow/Content/EventsWorkflowImplementation.md

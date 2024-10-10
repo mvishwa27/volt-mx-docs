@@ -1,22 +1,23 @@
-site_name: HCL Volt MX Documentation V9.2
-site_url: https://opensource.hcltechsw.com/volt-mx-docs/docs/documentation
+site_name: HCL Volt MX Documentation
+site_url: https://opensource.hcltechsw.com/volt-mx-docs/
 docs_dir: source
+use_directory_urls: false
 # site_dir: docs
 # docs_dir: source/docs/documentation
 # dummy comment to get PR
-site_dir: docs/docs/documentation
-use_directory_urls: false
+# site_dir: docs/docs/documentation
+
 
 theme:
   name: material
   logo: assets/favicon.png
   features:
 #    - navigation.indexes
-    - navigation.instant
+     - navigation.instant
 #    - search.highlight
 #    - search.share
 #    - search.suggest
-  custom_dir: theme_overrides
+  custom_dir: theme_overrides/
   icon:
     repo: fontawesome/brands/github
   font:
@@ -34,11 +35,13 @@ markdown_extensions:
 #  - attr_list
 
 plugins:
-#  - section-index
   - search
+  - mike:
+      canonical_version: latest
+      alias_type: redirect
 
 # Copyright
-copyright: Copyright &copy; 2022, HCL Technologies Limited
+copyright: Copyright &copy; 2025, HCL Technologies Limited
 
 extra_css:
   - stylesheets/vmx_style.css
@@ -47,6 +50,9 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/HCL-TECH-SOFTWARE
+  version:
+      provider: mike
+      alias: true
 
 # Repository
 repo_url: https://github.com/HCL-TECH-SOFTWARE/volt-mx-docs
