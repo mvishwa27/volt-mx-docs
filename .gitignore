@@ -1,8 +1,0 @@
-*.DS_Store
-.DS_Store
-_site/
-.jekyll-metadata
-*-cache/
-/.vscode/settings.json
-/docs/95/docs/documentation/sitemap.xml.gz
-/docs/docs/documentation/sitemap.xml.gz
