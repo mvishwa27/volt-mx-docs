@@ -1,0 +1,662 @@
+<!-- Elements added to main will be displayed on all pages -->
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://mvishwa27.github.io/volt-mx-docs/latest/Iris/voltmx_ref_arch_api/Content/NavigationManager.html">
+      
+      
+      
+      <link rel="icon" href="../../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.1.18">
+    
+    
+      
+        <title>NavigationManager - HCL Volt MX Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.26e3688c.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/vmx_style.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#navigation-manager" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+<div class="content-types-banner">
+    <ul class="sub-nav">
+        <li class="home-link">
+            <a href="https://opensource.hcltechsw.com/volt-mx-docs/index.html"  class="sub-link ">Home</a>
+        </li>
+        <li>
+            <a href="https://opensource.hcltechsw.com/volt-mx-docs/docs/tutorials/Tutorials.html" class="sub-link">Tutorials</a>
+        </li>
+        <li>
+            <a href="https://opensource.hcltechsw.com/volt-mx-docs/docs/documentation/index.html" class="sub-link" id="docLink">Documentation</a>
+        </li>
+        <li>
+            <a href="https://support.hcltechsw.com/csm?id=kb_search&spa=1&kb_category=db382ff1db631c14a45ad9fcd3961936" title="Articles" class="sub-link">Articles</a>
+        </li>
+        <li>
+            <a href="https://hclsoftwareu.hcltechsw.com/#VoltMxLearningJourneys" title="Articles" class="sub-link">Software Academy</a>
+        </li>
+    </ul>
+</div>
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+          <aside class="md-banner md-banner--warning">
+            <div class="md-banner__inner md-grid md-typeset">
+              
+You're not viewing the latest version.
+<a href="../../../.."> 
+  <strong>Click here to go to latest version.</strong>
+</a>
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),outdated=__md_get("__outdated",sessionStorage);!0===outdated&&el&&(el.hidden=!1)</script>
+          </aside>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="HCL Volt MX Documentation" class="md-header__button md-logo" aria-label="HCL Volt MX Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            HCL Volt MX Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              NavigationManager
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/HCL-TECH-SOFTWARE/volt-mx-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    HCL-TECH-SOFTWARE/volt-mx-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="HCL Volt MX Documentation" class="md-nav__button md-logo" aria-label="HCL Volt MX Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/favicon.png" alt="logo">
+
+    </a>
+    HCL Volt MX Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/HCL-TECH-SOFTWARE/volt-mx-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    HCL-TECH-SOFTWARE/volt-mx-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+                  
+<li class="md-nav__item">
+  <a href="../../../index.html" class="md-nav__link">
+    Introducing Volt MX
+  </a>
+</li>
+  
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#navigation-manager" class="md-nav__link">
+    Navigation Manager
+  </a>
+  
+    <nav class="md-nav" aria-label="Navigation Manager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#forms-object" class="md-nav__link">
+    Forms Object
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-object" class="md-nav__link">
+    Application Object
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uimodules-object" class="md-nav__link">
+    UIModules Object
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>NavigationManager</h1>
+
+<h2 id="navigation-manager"><a id="navigation-manager"></a> Navigation Manager</h2>
+<p>Before the introduction of the Navigation Manager, form navigation was either from one-to-one (always to the same form) or one-to-many (conditional form navigation), where the action performed on the source form decides the target form that must be displayed. This approach where the current form decides the next form to be displayed means that there is a tightly-coupled UI centric form navigation which complicates the maintainability of the code as the developer must remember the entire app flow.</p>
+<p>The Navigation Manager introduces a new way of navigation between forms that can be used for inter-app and intra-app navigation. The Navigation Manager enables the concept of Model-driven navigation, where the entire navigation flow of the app resides in a single place called the Navigation Model. In the model-driven navigation, instead of the source form deciding the target form to be displayed, the target form is derived from the model that is configured in the destinationConfig parameter of the source form, that is present in the Navigation Model of the app. The model-driven navigation approach enhances the readability of the application flow and the maintainability of the application code.</p>
+<p>The Navigation Manager has two entities - the <strong>Navigation Model</strong> and the <strong>Navigation Controller</strong>, and can be used in both composite and independent micro apps. Each micro app has its own Navigation Model and Navigation Controller. The Navigation Model is a JSON representation of the high-level in-and-out flow of the application, and is derived from the <code>NavigationModel.json</code> file that contains information about the preconditions present in the App and the Form, and the destination configs of the Form Modules or UI Modules. You must define all the outgoing paths from a Form in the Navigation Model.</p>
+<p>The Navigation Controller is derived from the <code>NavigationController.js</code> file that contains information about callbacks that perform conditional navigation specific to the Forms. The Navigation Controller is mandatory in case of one-many form navigation.</p>
+<p>The <code>NavigationModel.json</code> file has the following three objects:</p>
+<ul>
+<li><a href="#forms-object">Forms Object</a></li>
+<li><a href="#application-object">Application Object</a></li>
+<li><a href="#uimodules-object">UIModules Object</a></li>
+</ul>
+<p>The Syntax of the <code>NavigationModel.json</code> file is as follows:</p>
+<pre><code> { 
+    &quot;Application&quot;: {
+      },
+    &quot;Forms&quot;: {
+      },
+    &quot;UIModules&quot; : {
+      }
+}
+</code></pre>
+<h3 id="forms-object">Forms Object</h3>
+<hr />
+<p>The Forms object contains a group of objects that each provide the metadata of individual forms present in the project. Each Form Object contains key-value pairs where the key is the friendly name of the form and the value contains the metadata of the form that provides information about the preconditions and destinations for the specific form.</p>
+<p>The Syntax of the <code>Forms</code> Object is as follows:</p>
+<pre><code>&quot;Forms&quot;: {  
+&quot;Form Friendly Name&quot;: {  
+    &quot;preConditionConfig&quot;: ['', ''],  
+    &quot;destinationConfig&quot;: {  
+      &quot;friendlyName&quot;: &quot;&quot;,  
+      &quot;appName&quot;: &quot;&quot;  
+    }  
+  }  
+}
+</code></pre>
+<details close="close">
+<p><summary>preConditionConfig</summary></p>
+<hr />
+<p>The preconditions of a Form are declared in the preConditionConfig list. The preConditionConfig list specifies a list of preconditions.</p>
+<p>During form navigation, if the target form has preconditions declared, the source form must include the preconditions as part of the navigation params object.</p>
+<p><strong>Syntax</strong></p>
+<p><code>"preConditionConfig" : [ ]</code></p>
+<p><strong>Input Parameters</strong></p>
+<p>None.</p>
+<p><strong>Example</strong></p>
+<p><code>"preConditionConfig" : [ "token" ]</code></p>
+<p><strong>Return Values</strong></p>
+<p>None.</p>
+<p><strong>Remarks</strong></p>
+<p>In case of intra-app navigation, if you use the voltmx.mvc.navigation API or the app service event or the postAppInit event for form navigation, the preconditions of a form are ignored. </p>
+</details>
+<details close="close">
+<p><summary id="destinationConfig">destinationConfig</summary></p>
+<hr />
+<p>The destination forms of a Form are declared in the destinationConfig object.</p>
+<p><strong>Syntax</strong></p>
+<p>In case of one-to-one navigation</p>
+<p><code>"destinationConfig" : { "appName" : "", "friendlyName" : ""}</code></p>
+<p>In case of one-to-many navigation</p>
+<p><code>"destinationConfig" : { "callback" : "" , "targetForms" : [ { "friendlyName" : "" } , { "friendlyName" : "" , "appName" : ""}] }</code></p>
+<p><strong>Input Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>appName</em> [String] [Mandatory]</td>
+<td>The name of the app in the project to which navigation must be done in case of inter-app navigation. <br/>In case of intra-app navigation, the appName is an optional parameter.</td>
+</tr>
+<tr>
+<td><em>friendlyName</em> [String] [Mandatory]</td>
+<td>The friendly name of the target form.</td>
+</tr>
+<tr>
+<td><em>callback</em> [String] [Mandatory]</td>
+<td>The callback parameter specifies the name of the function that must be fetched from the NavigationController. The value of the <strong>callbackModelConfig</strong> that is passed in the Navigation Manager APIs is passed to the callback function. The conditional logic is then framed on the value of <em>callbackModelConfig</em> in the callback function, and the <code>destinationConfig</code> is returned. <br/>The callback parameter is mandatory for one-to-many form navigation.</td>
+</tr>
+<tr>
+<td><em>targetForms</em> [Object] [Mandatory]</td>
+<td>An object that contains a list of target forms of the destinationConfig. The destination forms that are returned in the callback function must be present in the list of targetForms. <br/>The targetForms parameter is mandatory for one-to-many form navigation.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<pre><code>&quot;destinationConfig&quot; : { &quot;callback&quot; : &quot;&quot;  , &quot;targetForms&quot; : [  { &quot;friendlyName&quot; : &quot;Form1&quot; } , { &quot;friendlyName&quot; : &quot;Form2&quot; , &quot;appName&quot; : &quot;App2&quot;}] }
+</code></pre>
+<p><strong>Return Values</strong></p>
+<p>None.</p>
+<p><strong>Remarks</strong></p>
+<p>In case of one-to-one form navigation, you must specify the appName and friendlyName of the form in the destinationConfig object.</p>
+<p>In case of one-to-many form navigation, in addition to the appName and friendlyName of the form, you must specify the callback and targetForms parameter in the destinationConfig object.</p>
+<p>The function that is specified in the callback parameter must be present in the Navigation Controller, and it must return the destinationConfig object.</p>
+</details>
+<h3 id="application-object">Application Object</h3>
+<p>The preconditions of a micro app are configured in the Application Object. During app navigation, if the target app has preconditions declared, the source app must set the preconditions of the target app by using the Application Manager APIs. and include those preconditions as part of its app data. Therefore, before the navigation action is invoked, the source app must set the mandatory precondition of the target app by using the application manager APIs.</p>
+<p>The Syntax of the <code>Application</code> Object is as follows:</p>
+<pre><code>&quot;Application&quot;: {&quot;preConditionConfig&quot; : [ &quot;&quot; ]},
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong> Even if the source app does not set the mandatory preconditions of the target app, the navigation is successful if the target app already has the preconditions set in its app data (if the preconditions are already set by another micro app).</p>
+</blockquote>
+<details close="close">
+<p><summary>preConditionConfig</summary></p>
+<hr />
+<p>The preconditions of an app are declared in the preConditionConfig object.<br />
+The preConditionConfig object specifies a list of preconditions.</p>
+<p><strong>Syntax</strong></p>
+<p><code>"preConditionConfig" : [ ]</code></p>
+<p><strong>Input Parameters</strong></p>
+<p>None.</p>
+<p><strong>Example</strong></p>
+<pre><code>&quot;preConditionConfig&quot; : [ &quot;token&quot; ]
+</code></pre>
+<p><strong>Return Values</strong></p>
+<p>None.</p>
+<p><strong>Remarks</strong></p>
+<p>In case of inter-app navigation, if you use the voltmx.mvc.Navigation API or the app service event or the postAppInit event for form navigation, the preconditions of the app are ignored.</p>
+</details>
+<h3 id="uimodules-object">UIModules Object</h3>
+<p>The UIModules Object contains a group of objects that each provide the metadata of individual MDA modules. Each UIModules Object contains key-value pairs where the key is the name of the MDA module and the value contains the metadata of the MDA modules that provides information about the destinations of the specific MDA module.</p>
+<p>The Syntax of the <code>UIModules</code> Object is as follows:</p>
+<pre><code>&quot;UIModules&quot; : {
+&quot;&lt;Module Name&gt;&quot; : {&quot;destinationConfig&quot; : {&quot;friendlyName&quot; : &quot;&quot;}},
+&quot;&lt;Module Name&gt;&quot; : {&quot;destinationConfig&quot; : { &quot;callback&quot; : &quot;&quot;  , &quot;targetForms&quot; : [ { &quot;friendlyName&quot; : &quot;&quot; } , { &quot;friendlyName&quot; : &quot;&quot; , &quot;appName&quot; : &quot;&quot;}] }}
+}
+</code></pre>
+<details close="close">
+<p><summary>destinationConfig</summary></p>
+<hr />
+<p>The destination forms of a UI Module are declared in the destinationConfig object.</p>
+<p><strong>Syntax</strong></p>
+<p>In case of one-to-one navigation</p>
+<p><code>"destinationConfig" : { "appName" : "", "friendlyName" : ""}</code></p>
+<p>In case of one-to-many navigation</p>
+<p><code>"destinationConfig" : { "callback" : "" , "targetForms" : [ { "friendlyName" : "" } , { "friendlyName" : "" , "appName" : ""}] }</code></p>
+<p>Input Parameters</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>appName</em> [String] [Mandatory]</td>
+<td>The name of the app in the project to which navigation must be done in case of inter-app navigation. <br/>In case of intra-app navigation, the appName is an optional parameter.</td>
+</tr>
+<tr>
+<td><em>friendlyName</em> [String] [Mandatory]</td>
+<td>The friendly name of the target form.</td>
+</tr>
+<tr>
+<td><em>callback</em> [String] [Mandatory]</td>
+<td>The callback parameter specifies the name of the function that must be fetched from the NavigationController. The value of the <em>callbackModelConfig</em> that is passed in the Navigation Manager APIs is passed to the callback function. The conditional logic is then framed on the value of <em>callbackModelConfig</em> in the callback function, and the <a href="#destinationConfig">destinationConfig</a> is returned. <br/>The callback parameter is mandatory for one-to-many form navigation.</td>
+</tr>
+<tr>
+<td><em>targetForms</em> [Object] [Mandatory]</td>
+<td>An object that contains a list of target forms of the destinationConfig. The destination form that is returned in the callback function must be present in the list of targetForms. <br/>The targetForms parameter is mandatory for one-to-many form navigation.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<pre><code>&quot;destinationConfig&quot; : { &quot;callback&quot; : &quot;&quot;  , &quot;targetForms&quot; : [  { &quot;friendlyName&quot; : &quot;Form1&quot; } , { &quot;friendlyName&quot; : &quot;Form2&quot; , &quot;appName&quot; : &quot;App2&quot;}] }
+</code></pre>
+<p><strong>Return Values</strong></p>
+<p>None.</p>
+<p><strong>Remarks</strong></p>
+<p>In case of one-to-one form navigation, you must specify the appName and friendlyName of the form in the destinationConfig object.</p>
+<p>In case of one-to-many navigation, in addition to the appName and friendlyName of the form, you must specify the callback and targetForms parameter in the destinationConfig object.</p>
+<blockquote>
+<p><strong>Note:</strong> The function that is specified in the callback parameter must be present in the Navigation Controller, and it must return the destinationConfig object.</p>
+</blockquote>
+</details>
+<p>Here is a sample NavigationModel.json file:</p>
+<pre><code>define(&quot;Accounts/navigation/NavigationModel&quot;, {
+
+    &quot;Application&quot;: {
+        &quot;preConditionConfig&quot;: [&quot;token&quot;]
+    },
+
+    &quot;Forms&quot;: {
+
+        &quot;frmAccountSummary&quot;: {
+            &quot;preConditionConfig&quot;: ['accountID', 'profile'],
+            &quot;destinationConfig&quot;: {
+                &quot;friendlyName&quot;: &quot;frmAccountDetails&quot;,
+                &quot;appName&quot;: &quot;Accounts&quot;
+            }
+        },
+        &quot;frmAccountDetails&quot;: {
+            &quot;preConditionConfig&quot;: [ ],
+            &quot;destinationConfig&quot;: {
+                &quot;callback&quot;: &quot;handleFrmAccountDetails&quot;,
+                &quot;targetForms&quot;: [{
+                    &quot;friendlyName&quot;: &quot;frmProfile&quot;
+                }, {
+                    &quot;friendlyName&quot;: &quot;frmTransact&quot;,
+                    &quot;appName&quot;: &quot;Transactions&quot;
+                }]
+            }
+        }
+    },
+
+    &quot;UIModules&quot;: {
+
+        &quot;LoginUIModule&quot;: {
+            &quot;destinationConfig&quot;: {
+                &quot;friendlyName&quot;: &quot;frmDashboard&quot;
+            }
+        },
+
+        &quot;AccountsUIModule&quot;: {
+            &quot;destinationConfig&quot;: {
+                &quot;callback&quot;: &quot;fun1&quot;,
+                &quot;targetForms&quot;: [{
+                    &quot;friendlyName&quot;: &quot;frmProfile&quot;
+                }, {
+                    &quot;friendlyName&quot;: &quot;frmTransact&quot;,
+                    &quot;appName&quot;: &quot;Transactions&quot;
+                }]
+            }
+        }
+    }
+
+});
+</code></pre>
+<p>Here is a sample NavigationController.js file:</p>
+<pre><code>define(&quot;Accounts/navigation/NavigationController&quot;, {
+
+    &quot;handleFrmAccountDetails&quot;: function(data) {
+
+        if (data != null) {
+
+            if (data.viewProfile == true) {
+                return {
+                    &quot;friendlyName&quot;: &quot;frmProfile&quot;,
+                    &quot;appName&quot;: &quot;Accounts&quot;
+                };
+            } else if (data.viewTransactions == true) {
+                return {
+                    &quot;friendlyName&quot;: &quot;frmTransact&quot;,
+                    &quot;appName&quot;: &quot;Transcations&quot;
+                };
+            } else {
+                return {
+                    &quot;friendlyName&quot;: &quot;frmAccountSummary&quot;
+                }
+            }
+
+        }
+        return null
+    }
+
+});
+</code></pre>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2021 - 2025, HCL America, Inc. | <a href="https://hcltechsw.com/wps/portal/legal/privacy">Privacy Statement</a> | <a href="https://apc01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.hcltechsw.com%2Fwps%2Fportal%2Flegal%2Fterms-use&data=04%7C01%7Csuresh.chenji%40hcl.com%7Ca77ebddc51574aff8c6c08d8f056542d%7C189de737c93a4f5a8b686f4ca9941912%7C0%7C0%7C637523600856805537%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=vLnT466NGuIbvQ0nEwfn2qdXeuhHb6XOnh1pibATDI4%3D&reserved=0">Terms of Use</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+<div class="md-social">
+  <ul class="social-nav">
+    <li><a href="https://www.facebook.com/HCLDigital" class="facebook" target="_blank">Facebook</a></li>
+    <li><a href="https://www.linkedin.com/company/hclsoftware" class="linkedin" target="_blank">LinkedIn</a></li>
+    <li><a href="https://twitter.com/HCLDigital"  class="twitter" target="_blank">Twitter</a></li>
+    <li><a href="https://www.youtube.com/HCLDigitalSolutions" class="youtube" target="_blank">Youtube</a></li>
+    <li>
+      <a href="https://github.com/HCL-TECH-SOFTWARE" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    </li>
+  </ul>    
+</div>
+  </div>
+  <div class="md-footer-meta__inner md-grid">
+  <span class="md-footer__git_legacy">Please report problems with this documentation by <a class="announcement__link" href="https://github.com/HCL-TECH-SOFTWARE/volt-mx-docs/issues">opening issues in Github</a>.</span>
+  <span class="legacy-link md-footer__git_legacy">Can't find a topic? Check the legacy documentation <a class="announcement__link" href="https://opensource.hcltechsw.com/Volt-MX-Documentation-Archive/docs/documentation/" target="_blank">here</a>.</span>
+</span>
+    </div>
+</div>
+</footer>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant"], "search": "../../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+    
+  </body>
+</html>

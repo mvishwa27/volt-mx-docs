@@ -1,0 +1,2404 @@
+<!-- Elements added to main will be displayed on all pages -->
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://mvishwa27.github.io/volt-mx-docs/latest/Iris/iris_user_guide/Content/AndroidWear.html">
+      
+      
+        <link rel="prev" href="Glances.html">
+      
+      
+        <link rel="next" href="PopulatingWidgets.html">
+      
+      <link rel="icon" href="../../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.1.18">
+    
+    
+      
+        <title>Android Wear - HCL Volt MX Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.26e3688c.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/vmx_style.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#android-wear" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+<div class="content-types-banner">
+    <ul class="sub-nav">
+        <li class="home-link">
+            <a href="https://opensource.hcltechsw.com/volt-mx-docs/index.html"  class="sub-link ">Home</a>
+        </li>
+        <li>
+            <a href="https://opensource.hcltechsw.com/volt-mx-docs/docs/tutorials/Tutorials.html" class="sub-link">Tutorials</a>
+        </li>
+        <li>
+            <a href="https://opensource.hcltechsw.com/volt-mx-docs/docs/documentation/index.html" class="sub-link" id="docLink">Documentation</a>
+        </li>
+        <li>
+            <a href="https://support.hcltechsw.com/csm?id=kb_search&spa=1&kb_category=db382ff1db631c14a45ad9fcd3961936" title="Articles" class="sub-link">Articles</a>
+        </li>
+        <li>
+            <a href="https://hclsoftwareu.hcltechsw.com/#VoltMxLearningJourneys" title="Articles" class="sub-link">Software Academy</a>
+        </li>
+    </ul>
+</div>
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+          <aside class="md-banner md-banner--warning">
+            <div class="md-banner__inner md-grid md-typeset">
+              
+You're not viewing the latest version.
+<a href="../../../.."> 
+  <strong>Click here to go to latest version.</strong>
+</a>
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),outdated=__md_get("__outdated",sessionStorage);!0===outdated&&el&&(el.hidden=!1)</script>
+          </aside>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="HCL Volt MX Documentation" class="md-header__button md-logo" aria-label="HCL Volt MX Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            HCL Volt MX Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Android Wear
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/HCL-TECH-SOFTWARE/volt-mx-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    HCL-TECH-SOFTWARE/volt-mx-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="HCL Volt MX Documentation" class="md-nav__button md-logo" aria-label="HCL Volt MX Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/favicon.png" alt="logo">
+
+    </a>
+    HCL Volt MX Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/HCL-TECH-SOFTWARE/volt-mx-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    HCL-TECH-SOFTWARE/volt-mx-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+                 
+  
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1"
+    type="checkbox"
+    id="__nav_1"
+    checked
+  />
+             
+  <nav
+    class="md-nav md-nested-nav"
+    aria-label="Introducing Volt MX"
+    data-md-level="1"
+  >
+    <label class="md-nav__title" for="__nav_1">
+      <span class="md-nav__icon md-icon"></span>
+      Introducing Volt MX
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+       
+                
+<li class="md-nav__item">
+  <a href="../../../index.html" class="md-nav__link">
+    Introducing Volt MX
+  </a>
+</li>
+    
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_2"
+    type="checkbox"
+    id="__nav_1_2"
+    
+  />
+                           
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../../Whats_New_Main_Page.html"> What&apos;s New </a>
+    <label for="__nav_1_2">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+                
+<li class="md-nav__item">
+  <a href="../../../VMX_release_notes.html" class="md-nav__link">
+    Release Notes
+  </a>
+</li>
+    
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_4"
+    type="checkbox"
+    id="__nav_1_4"
+    
+  />
+                  
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../app_platform/Content/AppPlatform_Overview.html"> App Platform </a>
+    <label for="__nav_1_4">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_5"
+    type="checkbox"
+    id="__nav_1_5"
+    
+  />
+                                                            
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../../tutorials/Tutorials.html"> Tutorials </a>
+    <label for="__nav_1_5">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+                
+<li class="md-nav__item">
+  <a href="../../../Foundry/installationGuides.html" class="md-nav__link">
+    Installation Guides
+  </a>
+</li>
+    
+               
+  
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7"
+    type="checkbox"
+    id="__nav_1_7"
+    checked
+  />
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../voltmxIrisFundamentals.html"> Iris </a>
+    <label for="__nav_1_7">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+  <nav
+    class="md-nav md-nested-nav"
+    aria-label="Iris"
+    data-md-level="2"
+  >
+    <label class="md-nav__title" for="__nav_1_7">
+      <span class="md-nav__icon md-icon"></span>
+      Iris
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+       
+                
+<li class="md-nav__item">
+  <a href="../../voltmxIrisFundamentals.html" class="md-nav__link">
+    Fundamentals
+  </a>
+</li>
+    
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_2"
+    type="checkbox"
+    id="__nav_1_7_2"
+    
+  />
+                                                                                       
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../installing_iris.html"> Installing Iris </a>
+    <label for="__nav_1_7_2">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_3"
+    type="checkbox"
+    id="__nav_1_7_3"
+    
+  />
+                                                                                                                  
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../iris_tutorials/Content/Introduction.html"> Iris tutorials </a>
+    <label for="__nav_1_7_3">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+               
+  
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_4"
+    type="checkbox"
+    id="__nav_1_7_4"
+    checked
+  />
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="Introduction.html"> Iris User Guide </a>
+    <label for="__nav_1_7_4">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+  <nav
+    class="md-nav md-nested-nav"
+    aria-label="Iris User Guide"
+    data-md-level="3"
+  >
+    <label class="md-nav__title" for="__nav_1_7_4">
+      <span class="md-nav__icon md-icon"></span>
+      Iris User Guide
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+       
+                
+<li class="md-nav__item">
+  <a href="Introduction.html" class="md-nav__link">
+    Introduction
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Mobile_Channels.html" class="md-nav__link">
+    Supported Digital Channels
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Hikes.html" class="md-nav__link">
+    Hikes
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Third-Party_Licenses.html" class="md-nav__link">
+    Third-Party Licenses
+  </a>
+</li>
+    
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_4_5"
+    type="checkbox"
+    id="__nav_1_7_4_5"
+    
+  />
+                                                                                                                  
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="Part_I__Overview.html"> Configuring Your Computer </a>
+    <label for="__nav_1_7_4_5">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+               
+  
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_4_6"
+    type="checkbox"
+    id="__nav_1_7_4_6"
+    checked
+  />
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="Part_II_CreatingAnApplication.html"> Designing an Application </a>
+    <label for="__nav_1_7_4_6">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+  <nav
+    class="md-nav md-nested-nav"
+    aria-label="Designing an Application"
+    data-md-level="4"
+  >
+    <label class="md-nav__title" for="__nav_1_7_4_6">
+      <span class="md-nav__icon md-icon"></span>
+      Designing an Application
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+       
+                
+<li class="md-nav__item">
+  <a href="Part_II_CreatingAnApplication.html" class="md-nav__link">
+    Overview
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="appUserInterface.html" class="md-nav__link">
+    App User Interface
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="dataBackEndIntergration.html" class="md-nav__link">
+    Data and Backend Integration
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="webAppDevelopment.html" class="md-nav__link">
+    Web App Development
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="TypesOfApplications.html" class="md-nav__link">
+    Types of Applications
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Ensuring_You_Have_All_Needed_Resources.html" class="md-nav__link">
+    Ensure You Have All the Resources You Need
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="PlanningYourMobileApp.html" class="md-nav__link">
+    Plan Your Mobile App
+  </a>
+</li>
+    
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_4_6_8"
+    type="checkbox"
+    id="__nav_1_7_4_6_8"
+    
+  />
+                                                 
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="CreateMigrateOrImportProject.html"> Create, Migrate, or Import a Project </a>
+    <label for="__nav_1_7_4_6_8">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+                
+<li class="md-nav__item">
+  <a href="Create_the_Storyboard_of_your_App.html" class="md-nav__link">
+    Create the Storyboard of your App
+  </a>
+</li>
+    
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_4_6_10"
+    type="checkbox"
+    id="__nav_1_7_4_6_10"
+    
+  />
+                              
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="ExportImportResources.html"> Export and Import Resources </a>
+    <label for="__nav_1_7_4_6_10">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+               
+  
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_4_6_11"
+    type="checkbox"
+    id="__nav_1_7_4_6_11"
+    checked
+  />
+                                     
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="Adding_Forms_to_a_New_Application.html"> Create Wearables Screens </a>
+    <label for="__nav_1_7_4_6_11">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+  <nav
+    class="md-nav md-nested-nav"
+    aria-label="Create Wearables Screens"
+    data-md-level="5"
+  >
+    <label class="md-nav__title" for="__nav_1_7_4_6_11">
+      <span class="md-nav__icon md-icon"></span>
+      Create Wearables Screens
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+       
+                
+<li class="md-nav__item">
+  <a href="Adding_Forms_to_a_New_Application.html" class="md-nav__link">
+    Overview
+  </a>
+</li>
+    
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_4_6_11_2"
+    type="checkbox"
+    id="__nav_1_7_4_6_11_2"
+    
+  />
+                           
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="Watch.html"> Apple Watch </a>
+    <label for="__nav_1_7_4_6_11_2">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+                
+<li class="md-nav__item md-nav__item--active">
+   
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="toc"
+    type="checkbox"
+    id="__toc"
+  />
+
+        
+  <label class="md-nav__link md-nav__link--active" for="__toc">
+    Android Wear
+    <span class="md-nav__icon md-icon"></span>
+  </label>
+  
+  <a href="AndroidWear.html" class="md-nav__link md-nav__link--active">
+    Android Wear
+  </a>
+
+    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#forms" class="md-nav__link">
+    Forms
+  </a>
+  
+    <nav class="md-nav" aria-label="Forms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-an-android-wear-form" class="md-nav__link">
+    Add an Android Wear Form
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mark-as-startup" class="md-nav__link">
+    Mark as StartUp
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-a-widget-to-a-form" class="md-nav__link">
+    Add a Widget to a Form
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#duplicate-a-form" class="md-nav__link">
+    Duplicate a Form
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-a-form" class="md-nav__link">
+    Delete a Form
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#open-the-assets-folder" class="md-nav__link">
+    Open the Assets Folder
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#form-properties" class="md-nav__link">
+    Form Properties
+  </a>
+  
+    <nav class="md-nav" aria-label="Form Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#look" class="md-nav__link">
+    Look
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skin" class="md-nav__link">
+    Skin
+  </a>
+  
+    <nav class="md-nav" aria-label="Skin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#normal" class="md-nav__link">
+    Normal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#menu-normal" class="md-nav__link">
+    Menu Normal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#menu-focus" class="md-nav__link">
+    Menu Focus
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#form" class="md-nav__link">
+    Form
+  </a>
+  
+    <nav class="md-nav" aria-label="Form">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general" class="md-nav__link">
+    General
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#android-wear-os" class="md-nav__link">
+    Android Wear OS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#action" class="md-nav__link">
+    Action
+  </a>
+  
+    <nav class="md-nav" aria-label="Action">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general_1" class="md-nav__link">
+    General
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#android-wear-os_1" class="md-nav__link">
+    Android Wear OS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#review" class="md-nav__link">
+    Review
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+  
+</li>
+
+   
+    </ul>
+  </nav>
+  
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_4_6_12"
+    type="checkbox"
+    id="__nav_1_7_4_6_12"
+    
+  />
+                                                                                                                                                                                           
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="PopulatingWidgets.html"> Populate Screens with Widgets </a>
+    <label for="__nav_1_7_4_6_12">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+                
+<li class="md-nav__item">
+  <a href="OrganizingAppElementsInGroups.html" class="md-nav__link">
+    Organizing Application Elements
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="AddCustomCSSCodeToSPAApp.html" class="md-nav__link">
+    Add Custom CSS Code to an SPA App
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="AddLocalHTMLContent.html" class="md-nav__link">
+    Add Local HTML Content
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="AddALocalDatabaseToAnApp.html" class="md-nav__link">
+    Add a Local Database to an App
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="CreateCordovaApplications.html" class="md-nav__link">
+    Create Cordova Applications
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="SetAppLifecycleEvents.html" class="md-nav__link">
+    Set App Lifecycle Events
+  </a>
+</li>
+    
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_4_6_19"
+    type="checkbox"
+    id="__nav_1_7_4_6_19"
+    
+  />
+                        
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="UsingNativeFunctionAPIsAndWidgets.html"> Using Native Function APIs and Widgets </a>
+    <label for="__nav_1_7_4_6_19">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_4_6_20"
+    type="checkbox"
+    id="__nav_1_7_4_6_20"
+    
+  />
+                                                                     
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="working_with_Action_Editor.html"> Add Actions </a>
+    <label for="__nav_1_7_4_6_20">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_4_6_21"
+    type="checkbox"
+    id="__nav_1_7_4_6_21"
+    
+  />
+                                                          
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="Customizing_the_Look_and_Feel_with_Skins.html"> Understanding Skins </a>
+    <label for="__nav_1_7_4_6_21">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_4_6_22"
+    type="checkbox"
+    id="__nav_1_7_4_6_22"
+    
+  />
+                                    
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="Using_Themes_Applying_a_Collection_of_Skins_as_a_Group.html"> Understanding Themes </a>
+    <label for="__nav_1_7_4_6_22">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+                
+<li class="md-nav__item">
+  <a href="Templates.html" class="md-nav__link">
+    Using Templates
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="FormTemplates.html" class="md-nav__link">
+    Create and Use Form Templates
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="ResponsiveGridLayout.html" class="md-nav__link">
+    Responsive Grid Layout
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Responsive_Design_8_2.html" class="md-nav__link">
+    Design a Responsive Web App
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="ProgressiveWebApp.html" class="md-nav__link">
+    Design a Progressive Web App
+  </a>
+</li>
+    
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_4_6_28"
+    type="checkbox"
+    id="__nav_1_7_4_6_28"
+    
+  />
+                              
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="Adding_and_Managing_Images.html"> Add and Manage Images and Other Media </a>
+    <label for="__nav_1_7_4_6_28">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+                
+<li class="md-nav__item">
+  <a href="RefreshTheProject.html" class="md-nav__link">
+    Refresh the Project
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="File_Update_Notification.html" class="md-nav__link">
+    File Update Notification
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="OpenAnExternalFile.html" class="md-nav__link">
+    Open an External File
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="OpenConsoleLogs.html#open-console-logs" class="md-nav__link">
+    Open Console Logs
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Forking.html" class="md-nav__link">
+    Forking
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Project_Properties_in_VoltMX_Iris.html" class="md-nav__link">
+    Configuring Project Settings
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Native_App_Properties.html" class="md-nav__link">
+    Set Native App Properties
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="AndroidManifest_File.html" class="md-nav__link">
+    The Android Manifest File
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Global_Variables_and_Data_Store_Keys.html" class="md-nav__link">
+    Add Global Variables
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Invoke_Sublime_Text_from_Iris.html" class="md-nav__link">
+    Invoke Sublime Text from Iris
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="FindAndReplace.html" class="md-nav__link">
+    Find and Replace
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="CapProdReqsWithNotes.html" class="md-nav__link">
+    Capture Product Requirements with Notes
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="AddCommentsToForms.html" class="md-nav__link">
+    Add Comments to Forms
+  </a>
+</li>
+    
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_4_6_42"
+    type="checkbox"
+    id="__nav_1_7_4_6_42"
+    
+  />
+                                                            
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="TimeAndEffortSavers.html"> Time and Effort Savers </a>
+    <label for="__nav_1_7_4_6_42">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+    </ul>
+  </nav>
+  
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_4_7"
+    type="checkbox"
+    id="__nav_1_7_4_7"
+    
+  />
+                           
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="C_DesigningWorkingWithComponents.html"> Creating Applications with Components </a>
+    <label for="__nav_1_7_4_7">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_4_8"
+    type="checkbox"
+    id="__nav_1_7_4_8"
+    
+  />
+                                                                                                                                     
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="PartIII_Adding_functionality.html"> Adding Functionality </a>
+    <label for="__nav_1_7_4_8">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_4_9"
+    type="checkbox"
+    id="__nav_1_7_4_9"
+    
+  />
+                                                                                       
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="BuildingAndViewAnApp.html"> Building and Viewing an Application </a>
+    <label for="__nav_1_7_4_9">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_4_10"
+    type="checkbox"
+    id="__nav_1_7_4_10"
+    
+  />
+                                    
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="TestingandDebugginganApplication.html"> Testing and Debugging an Application </a>
+    <label for="__nav_1_7_4_10">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_4_11"
+    type="checkbox"
+    id="__nav_1_7_4_11"
+    
+  />
+                     
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="Internationalization.html"> Appendix A&colon; Internationalization </a>
+    <label for="__nav_1_7_4_11">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+                
+<li class="md-nav__item">
+  <a href="Inputs_to_Android_Application_Developers.html" class="md-nav__link">
+    Appendix B&colon; Android Build Environment and Configurations
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Generating_Map_Keys.html" class="md-nav__link">
+    Appendix C&colon; Generating and Configuring Map API Keys
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="AppServiceEvent.html" class="md-nav__link">
+    Appendix D&colon; The App Service Event
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="CameraAccessAndroidBrowser.html" class="md-nav__link">
+    Appendix E&colon; Camera Access in Android Browser
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Support_for_iPhoneX.html" class="md-nav__link">
+    Appendix F&colon; Support for iPhone X
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Universal_Links.html" class="md-nav__link">
+    Appendix G&colon; Universal Links iOS
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="FAQs.html" class="md-nav__link">
+    Frequently Asked Questions
+  </a>
+</li>
+    
+    </ul>
+  </nav>
+  
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_5"
+    type="checkbox"
+    id="__nav_1_7_5"
+    
+  />
+                                                                                                                                                                                                                                                                                                                                                 
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../app_design_dev/Content/homepage.html"> Application Design and Development Guidelines </a>
+    <label for="__nav_1_7_5">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_6"
+    type="checkbox"
+    id="__nav_1_7_6"
+    
+  />
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../iris_api_dev_guide/content/introduction.html"> Volt Iris API Developers Guide </a>
+    <label for="__nav_1_7_6">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_7"
+    type="checkbox"
+    id="__nav_1_7_7"
+    
+  />
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../iris_nf_api_dev_guide/content/native_function_api_developers__guide.html"> Native Function API Developers Guide </a>
+    <label for="__nav_1_7_7">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_8"
+    type="checkbox"
+    id="__nav_1_7_8"
+    
+  />
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../iris_widget_prog_guide/Content/Overview.html"> Iris Widget Programmer Guide </a>
+    <label for="__nav_1_7_8">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_9"
+    type="checkbox"
+    id="__nav_1_7_9"
+    
+  />
+                                                                                                
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../iris_wearables_dev_guide/content/homehtml.html"> Iris Wearables Developer Guide </a>
+    <label for="__nav_1_7_9">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_10"
+    type="checkbox"
+    id="__nav_1_7_10"
+    
+  />
+                                           
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../iris_app_viewer/Content/Overview.html"> Using the Volt MX App </a>
+    <label for="__nav_1_7_10">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_11"
+    type="checkbox"
+    id="__nav_1_7_11"
+    
+  />
+                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../voltmx_ref_arch_api/Content/VoltMX_Reference_Architecture_Guide.html"> Volt MX Reference Architecture Guide </a>
+    <label for="__nav_1_7_11">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+    </ul>
+  </nav>
+  
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_8"
+    type="checkbox"
+    id="__nav_1_8"
+    
+  />
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../../Foundry/voltmxFoundryFundamentals.html"> Foundry </a>
+    <label for="__nav_1_8">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+    </ul>
+  </nav>
+  
+</li>
+
+ 
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#forms" class="md-nav__link">
+    Forms
+  </a>
+  
+    <nav class="md-nav" aria-label="Forms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-an-android-wear-form" class="md-nav__link">
+    Add an Android Wear Form
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mark-as-startup" class="md-nav__link">
+    Mark as StartUp
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-a-widget-to-a-form" class="md-nav__link">
+    Add a Widget to a Form
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#duplicate-a-form" class="md-nav__link">
+    Duplicate a Form
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-a-form" class="md-nav__link">
+    Delete a Form
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#open-the-assets-folder" class="md-nav__link">
+    Open the Assets Folder
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#form-properties" class="md-nav__link">
+    Form Properties
+  </a>
+  
+    <nav class="md-nav" aria-label="Form Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#look" class="md-nav__link">
+    Look
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skin" class="md-nav__link">
+    Skin
+  </a>
+  
+    <nav class="md-nav" aria-label="Skin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#normal" class="md-nav__link">
+    Normal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#menu-normal" class="md-nav__link">
+    Menu Normal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#menu-focus" class="md-nav__link">
+    Menu Focus
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#form" class="md-nav__link">
+    Form
+  </a>
+  
+    <nav class="md-nav" aria-label="Form">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general" class="md-nav__link">
+    General
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#android-wear-os" class="md-nav__link">
+    Android Wear OS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#action" class="md-nav__link">
+    Action
+  </a>
+  
+    <nav class="md-nav" aria-label="Action">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general_1" class="md-nav__link">
+    General
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#android-wear-os_1" class="md-nav__link">
+    Android Wear OS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#review" class="md-nav__link">
+    Review
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="android-wear">Android Wear</h1>
+<p>Android Wear (now called Wear OS) is a version of Google's Android Operating system designed for smart watches and other wearables. Android Wear pairs with devices running on Android 4.3 or newer and iOS version 8.2 or newer phones. You can use Android Wear to perform functions such as calling, text messaging, and receiving notifications. Watch face styles include round and square. Volt MX Iris supports Sony SmartWatch 3 (320 x 320), Android Wear (400 x 400), and Android Wear (480 x 480).</p>
+<p>Ensure that you configured Android Wear properties in Project Settings. For more information, see <a href="AndroidWear_Properties.html">Android Wear Properties</a>.</p>
+<p>The following are the main features of an Android Wear:</p>
+<ul>
+<li><a href="#forms">Forms</a></li>
+<li><a href="#form-properties">Form Properties</a></li>
+</ul>
+<h2 id="forms">Forms</h2>
+<p>A form is the starting point for any application and is the top most container. A form can contain any number of widgets but cannot contain another form.</p>
+<p>Your Android Wear app can consist of multiple forms, and you can move from one form to another using a couple of different methods. You can use an action sequence, such as assigning the <strong>Navigate to Form</strong> action to a button so that, when it is clicked, it displays a different form.</p>
+<h4 id="add-an-android-wear-form">Add an Android Wear Form</h4>
+<p><strong>To add an Android Wear form to the Iris canvas, follow these steps:</strong></p>
+<ol>
+<li>Open Volt MX Iris.</li>
+<li>From the <strong>Project</strong> menu, select <strong>New Project</strong> or <strong>Open</strong> &gt; &lt;<em>your Project name</em>&gt;.<br />
+    Your project opens.</li>
+<li>In the Project tab, expand the <strong>Wearables</strong> folder.<br />
+    The Wearables folder expands displaying its contents.</li>
+<li>Expand the <strong>Android Wear</strong> folder.<br />
+    The Android wear folder expands displaying its contents.</li>
+<li>Click on the down-arrow next to <strong>Forms</strong>.<br />
+    A list appears.</li>
+<li>Select <strong>New Form</strong> from the list.<br />
+    A new form is created with a default name.</li>
+<li>If you want to rename the form, click on the down-arrow next to the form and then click <strong>Rename</strong>.<br />
+    Rename the form.</li>
+</ol>
+<h4 id="mark-as-startup">Mark as StartUp</h4>
+<p>Mark as StartUp functionality is used to make a form function as the app's start up form. The form that is a marked as start up is the first form to appear after the application is loaded.</p>
+<p><strong>To mark a form as the start up form, follow these steps:</strong></p>
+<ol>
+<li>In your Iris project, in the Project tab, expand the <strong>Wearables</strong> folder.</li>
+<li>Expand the <strong>Android Wear</strong> folder.<br />
+    The Android wear folder expands displaying its contents.</li>
+<li>Expand the <strong>Forms</strong> folder.<br />
+    All forms available in the folder appear.</li>
+<li>From the list, select the form you want to choose as the startup form.</li>
+<li>Click on the down-arrow next to the form and select <strong>Mark as StartUp</strong>.</li>
+</ol>
+<blockquote>
+<p><strong><em>Note:</em></strong> By default, the first form is considered as the start up form until another form is specifically marked as start up.</p>
+</blockquote>
+<h4 id="add-a-widget-to-a-form">Add a Widget to a Form</h4>
+<p>To add a widget to a form, do the following:</p>
+<ol>
+<li>From the <strong>Default Library</strong> pane of Volt MX Iris, drag the required widget and drop it on a form on the Iris Canvas.</li>
+<li>A new widget with a default name/ID is added to the form.</li>
+<li>You may choose to rename the widget by changing its <strong>ID</strong> in the <strong>Look</strong> tab under the <strong>Properties</strong> pane of Volt MX Iris or right-click the widget name in the <strong>Project</strong> tab and then click <strong>Rename</strong>.</li>
+<li>Save the form.</li>
+</ol>
+<p>The following widgets are supported on an Android Wear form:</p>
+<table style="mc-table-style: url('Resources/TableStyles/Basic.css');margin-left: 0;margin-right: auto;width: 532px;" class="TableStyle-Basic" cellspacing="0"><colgroup><col style="width: 114px;" class="TableStyle-Basic-Column-Column1"> <col style="width: 146px;" class="TableStyle-Basic-Column-Column1"> <col style="width: 129px;" class="TableStyle-Basic-Column-Column1"> <col style="width: 139px;" class="TableStyle-Basic-Column-Column1"></colgroup><tbody><tr class="TableStyle-Basic-Body-Body1" data-mc-conditions=""><td class="TableStyle-Basic-BodyE-Column1-Body1">FlexContainer</td><td class="TableStyle-Basic-BodyE-Column1-Body1">FlexScrollContainer</td><td class="TableStyle-Basic-BodyE-Column1-Body1">Tab</td><td class="TableStyle-Basic-BodyD-Column1-Body1">TabPane</td></tr><tr class="TableStyle-Basic-Body-Body1" data-mc-conditions=""><td class="TableStyle-Basic-BodyE-Column1-Body1">Button</td><td class="TableStyle-Basic-BodyE-Column1-Body1">Calendar</td><td class="TableStyle-Basic-BodyE-Column1-Body1">CheckBoxGroup</td><td class="TableStyle-Basic-BodyD-Column1-Body1">DataGrid</td></tr><tr class="TableStyle-Basic-Body-Body1" data-mc-conditions=""><td class="TableStyle-Basic-BodyE-Column1-Body1">Image</td><td class="TableStyle-Basic-BodyE-Column1-Body1">Label</td><td class="TableStyle-Basic-BodyE-Column1-Body1">Listbox</td><td class="TableStyle-Basic-BodyD-Column1-Body1">RadioButtonGroup</td></tr><tr class="TableStyle-Basic-Body-Body1" data-mc-conditions=""><td class="TableStyle-Basic-BodyE-Column1-Body1">RichText</td><td class="TableStyle-Basic-BodyE-Column1-Body1">Slider</td><td class="TableStyle-Basic-BodyE-Column1-Body1">TextArea</td><td class="TableStyle-Basic-BodyD-Column1-Body1">TextBox</td></tr><tr class="TableStyle-Basic-Body-Body1" data-mc-conditions=""><td class="TableStyle-Basic-BodyE-Column1-Body1">Map</td><td class="TableStyle-Basic-BodyE-Column1-Body1">Phone</td><td class="TableStyle-Basic-BodyE-Column1-Body1">PickerView</td><td class="TableStyle-Basic-BodyD-Column1-Body1">Segment</td></tr><tr class="TableStyle-Basic-Body-Body1" data-mc-conditions=""><td class="TableStyle-Basic-BodyB-Column1-Body1">Switch</td><td class="TableStyle-Basic-BodyB-Column1-Body1">Video</td><td class="TableStyle-Basic-BodyB-Column1-Body1">&nbsp;</td><td class="TableStyle-Basic-BodyA-Column1-Body1">&nbsp;</td></tr></tbody></table>
+
+<h4 id="duplicate-a-form">Duplicate a Form</h4>
+<p>When you want to have a form that is similar to an existing form, you can duplicate the required form and reuse it.</p>
+<p>To duplicate a form, do the following:</p>
+<ol>
+<li>Click on the down-arrow next to the form you want to duplicate.<br />
+    A drop down menu appears.</li>
+<li>From that drop down menu click on <strong>Duplicate</strong>.</li>
+<li>A duplicate form with a default name is created.</li>
+<li>If you want to rename the form, click on the down-arrow next to the form and then click <strong>Rename</strong>.<br />
+    Rename the form.</li>
+</ol>
+<h4 id="delete-a-form">Delete a Form</h4>
+<p>When you no longer require a form, you can delete it.</p>
+<p>To delete a form, do the following:</p>
+<ol>
+<li>Click on the down-arrow next to the form that you want to delete.<br />
+    A drop down menu appears.</li>
+<li>Click on <strong>Delete</strong> from that drop down.<br />
+    A deletion confirmation alert appears.</li>
+<li>Click <strong>OK</strong> on the alert to delete the form.</li>
+</ol>
+<h4 id="open-the-assets-folder">Open the Assets Folder</h4>
+<p><strong>To navigate to the location where the form assets are available on your computer, do the following:</strong></p>
+<ol>
+<li>Click on the down-arrow next to the form whose assets folder you want to view.<br />
+    A drop down menu appears.</li>
+<li>Select <strong>Resource Location</strong> from that drop down.<br />
+    The Windows Explorer or Finder where the form assets are located appears.</li>
+</ol>
+<h2 id="form-properties">Form Properties</h2>
+<p>You can customize the following properties of a form:</p>
+<ul>
+<li><a href="#look">Look</a></li>
+<li><a href="#skin">Skin</a></li>
+<li><a href="#form">Form</a></li>
+<li><a href="#action">Action</a></li>
+<li><a href="#review">Review</a></li>
+</ul>
+<h4 id="look">Look</h4>
+<p>On the Look tab, you set properties that control the way a form appears on an app. The following are the major properties you can condition for a form:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Definition</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>It is the unique identifier of the form.</td>
+<td>When a form is added, the system assigns a unique ID (or name). You can rename the form ID if required.</td>
+</tr>
+<tr>
+<td><strong>Render</strong></td>
+<td>This property defines if a form should appear on a specific platform.</td>
+<td>By default, a form is rendered for all the platforms. If you do not want to render a form for a specific platform, click the <strong>Edit</strong> button against the <strong>Render</strong> to open the <strong>Render Platforms</strong> dialog box. Clear the platform check box for which you do not want to render the form.</td>
+</tr>
+<tr>
+<td><strong>Friendly Name</strong></td>
+<td>The friendly name of the form is the name that the <a href="../../voltmx_ref_arch_api/Content/Navigation_Object.html">Navigation</a> object is to be created for.</td>
+<td>You can give any friendly name to the form here.</td>
+</tr>
+<tr>
+<td><strong>Controller</strong></td>
+<td>The code for the FormController object is created by the code generation tool for you. It communicates with both the models for the data sources and the viewmodels for the forms.</td>
+<td>You can choose which FormControllers actions you want to link to this form. Click the <strong>...</strong> button against the <strong>Controller</strong> to open the <strong>Switch Controller</strong> dialog box.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="skin">Skin</h4>
+<p>On this tab, you define properties such as background color, borders, and shadows for a form. For an Android Wear form, you can define a skin its <strong>Normal</strong>, <strong>Menu Normal</strong>, and <strong>Menu Focus</strong> state. You can copy, paste, assign and duplicate any of these skins.</p>
+<p>For more information on skin properties, see <a href="Customizing_the_Look_and_Feel_with_Skins.html">Understanding Skins and Themes</a>.</p>
+<h5 id="normal">Normal</h5>
+<p>Under the <strong>Normal</strong> tab the properties we have are:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Definition</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>General</strong></td>
+<td>The name of the skin(s) is stored here.</td>
+<td>You can fork a skin and apply whichever one you choose</td>
+</tr>
+<tr>
+<td><strong>Background</strong></td>
+<td>The background of the form can be customized here.</td>
+<td>You can choose the type of gradient, color, and preferred opacity of the background.</td>
+</tr>
+<tr>
+<td><strong>Border</strong></td>
+<td>This feature helps apply a border to the form.</td>
+<td>You can choose the size, type of gradient, color, opacity, and style of the border.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="menu-normal">Menu Normal</h5>
+<p>After we tick the <strong>Enable</strong> checkbox, all the properties can be edited.</p>
+<p>Under the <strong>Menu Normal</strong> tab the properties we have are:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Definition</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>General</strong></td>
+<td>The name of the skin(s) is stored here.</td>
+<td>You can fork a skin and apply whichever one you choose</td>
+</tr>
+<tr>
+<td><strong>Background</strong></td>
+<td>The background of the form can be customized here.</td>
+<td>You can choose the type of gradient, color, and preferred opacity of the background.</td>
+</tr>
+<tr>
+<td><strong>Border</strong></td>
+<td>This feature helps apply a border to the form.</td>
+<td>You can choose the size, type of gradient, color, opacity, and style of the border.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="menu-focus">Menu Focus</h5>
+<p>After we tick the <strong>Enable</strong> check box all the properties can be edited.</p>
+<p>Under the <strong>Menu Focus</strong> tab the properties we have are:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Definition</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>General</strong></td>
+<td>The name of the skin(s) is stored here.</td>
+<td>You can fork a skin and apply whichever one you choose</td>
+</tr>
+<tr>
+<td><strong>Background</strong></td>
+<td>The background of the form can be customized here.</td>
+<td>You can choose the type of gradient, color, and preferred opacity of the background.</td>
+</tr>
+<tr>
+<td><strong>Border</strong></td>
+<td>This feature helps apply a border to the form.</td>
+<td>You can choose the size, type of gradient, color, opacity, and style of the border.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="form">Form</h4>
+<p>On this tab, you set properties that are common for all the platforms and also, set properties that are unique to a platform.</p>
+<h5 id="general">General</h5>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Definition</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Enable Idle Timeout</strong></td>
+<td>This property is used if the user has been idle on a form for a specific period of time.</td>
+<td>You can select <strong>On</strong> or <strong>Off</strong> for this property using the radio buttons provided.</td>
+</tr>
+<tr>
+<td><strong>Transition: IN</strong></td>
+<td>Specifies how the form appears on the screen. You can choose a transition effect out of 11 available transitions.</td>
+<td>Click the <strong>Edit</strong> button against the <strong>Transition: IN</strong> to open the <strong>Transition: IN</strong> dialog box. Select the preferred Transition event from the drop-down.</td>
+</tr>
+<tr>
+<td><strong>Transition: OUT</strong></td>
+<td>Specifies how the form moves away from the screen. You can choose a transition effect out of 11 available transitions.</td>
+<td>Click the <strong>Edit</strong> button against the <strong>Transition: OUT</strong> to open the <strong>Transition: OUT</strong> dialog box. Select the preferred Transition event from the drop-down.</td>
+</tr>
+<tr>
+<td><strong>Title</strong></td>
+<td>Specifies the title of the Form.</td>
+<td>Enter a tile for the Form.</td>
+</tr>
+<tr>
+<td><strong>Retain Scroll Position</strong></td>
+<td>Specifies if the Form must remember the scroll position when the user revisits the Form.</td>
+<td>You can select <strong>On</strong> or <strong>Off</strong> for this property using the radio buttons provided.</td>
+</tr>
+<tr>
+<td><strong>Header Overlap</strong></td>
+<td>Specifies if the header must overlap the form. If this field is selected, the form scrolls behind the header background and a part of the header background is transparent.</td>
+<td>You can select <strong>On</strong> or <strong>Off</strong> for this property using the radio buttons provided. Click the <strong>...</strong> button against the <strong>Header Overlap</strong> to open the <strong>Header Overlap</strong> dialog box and choose the platforms for which you want this property to work.</td>
+</tr>
+<tr>
+<td><strong>Footer Overlap</strong></td>
+<td>Specifies if the footer must overlap the form. If this field is selected, the form scrolls behind the footer background and a part of the footer background is transparent.</td>
+<td>You can select <strong>On</strong> or <strong>Off</strong> for this property using the radio buttons provided. Click the <strong>...</strong> button against the <strong>Footer Overlap</strong> to open the <strong>Footer Overlap</strong> dialog box and choose the platforms for which you want this property to work.</td>
+</tr>
+<tr>
+<td><strong>Layout Type</strong></td>
+<td>Specifies if the arrangement of the widgets either in free form or vertical direction.</td>
+<td>Choose any layout type from <strong>Free Form</strong> or <strong>Flow Vertical</strong>.</td>
+</tr>
+<tr>
+<td><strong>Enable Scrolling</strong></td>
+<td>Specifies whether the scrolling is enabled on the flex container or not.</td>
+<td>You can select <strong>On</strong> or <strong>Off</strong> for this property using the radio buttons provided.</td>
+</tr>
+<tr>
+<td><strong>Bounces</strong></td>
+<td>Specifies whether the scroll view bounces past the edge of the content and back again.</td>
+<td>You can select <strong>On</strong> or <strong>Off</strong> for this property using the radio buttons provided.</td>
+</tr>
+<tr>
+<td><strong>Horizontal Bounce</strong></td>
+<td>Specifies whether the scroll bounce is enabled or disabled in the horizontal direction.</td>
+<td>You can select <strong>On</strong> or <strong>Off</strong> for this property using the radio buttons provided.</td>
+</tr>
+<tr>
+<td><strong>Vertical Bounce</strong></td>
+<td>Specifies whether the scroll bounce is enabled or disabled in the vertical direction.</td>
+<td>You can select <strong>On</strong> or <strong>Off</strong> for this property using the radio buttons provided.</td>
+</tr>
+<tr>
+<td><strong>Vertical Scroll Indicator</strong></td>
+<td>Specifies whether the scroll indicator must be shown or not in the vertical direction.</td>
+<td>You can select <strong>On</strong> or <strong>Off</strong> for this property using the radio buttons provided.</td>
+</tr>
+<tr>
+<td><strong>Paging</strong></td>
+<td>Specifies the whether the paging is enabled for the container. If this property is set to true, the scroll view stops on multiples of the scroll view's bounds when the user scrolls.</td>
+<td>You can select <strong>On</strong> or <strong>Off</strong> for this property using the radio buttons provided. By default, it is <strong>Off</strong>.</td>
+</tr>
+<tr>
+<td><strong>Content Offset X</strong></td>
+<td>Specifies the X coordinate of the top-left scrollable region. When the value is set, the container scrolls even if the scrolling is disabled. This will always return the value that you set, but never reflects the actual computed offset.</td>
+<td>You can specify the coordinates using <strong>Dp</strong>, <strong>Px</strong>, and <strong>%</strong> units. The default unit is <strong>Dp</strong>.</td>
+</tr>
+<tr>
+<td><strong>Content Offset Y</strong></td>
+<td>Specifies the Y coordinate of the top-left scrollable region. When the value is set, the container scrolls even if the scrolling is disabled. This will always return the value that you set, but never reflects the actual computed offset.</td>
+<td>You can specify the coordinates using <strong>Dp</strong>, <strong>Px</strong>, and <strong>%</strong> units. The default unit is <strong>Dp</strong>.</td>
+</tr>
+<tr>
+<td><strong>Content Size Width</strong></td>
+<td>Specifies the width of the flex container to accommodate all the widgets placed in it. This will returns the values that you set, but never reflects the actual computed content size.</td>
+<td>You can specify the coordinates using <strong>Dp</strong>, <strong>Px</strong>, and <strong>%</strong> units. The default unit is <strong>Dp</strong>.</td>
+</tr>
+<tr>
+<td><strong>Content Size Height</strong></td>
+<td>Specifies the height of the container to accommodate all the widgets placed in it. This will returns the values that you set, but never reflects the actual computed content size.</td>
+<td>You can specify the coordinates using <strong>Dp</strong>, <strong>Px</strong>, and <strong>%</strong> units. The default unit is <strong>Dp</strong>.</td>
+</tr>
+<tr>
+<td><strong>Snap to Grid</strong></td>
+<td>When turned On, this feature sets default positions that a widget will move on drag (or any other) action by a user into the Android Wear layout automatically.</td>
+<td>You can select <strong>On</strong> or <strong>Off</strong> for this property using the radio buttons provided.</td>
+</tr>
+<tr>
+<td><strong>Snap Grid Size</strong></td>
+<td>When turned On, this feature sets default positions that a widget will move on drag (or any other) action by a user. you can specify the grid size using this feature.</td>
+<td>You can specify the number of the size.</td>
+</tr>
+<tr>
+<td><strong>Default Unit</strong></td>
+<td>Specifies the unit that will be used as the default unit value throughout the form properties.</td>
+<td>You can choose between <strong>Dp</strong>, <strong>Px</strong>, and <strong>%</strong>.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="android-wear-os">Android Wear OS</h5>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Definition</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Soft Input Mode</strong></td>
+<td>This property defines how the main Form interacts with the window containing the on-screen soft keyboard. It determines the adjustments made to the Form whether it is resized smaller to make room for the soft keyboard or whether its contents pan to make the current focus visible when part of the Form is covered by the soft keyboard.  </td>
+<td>You can choose between <strong>Adjust-Pan</strong> and <strong>Adjust-Resize</strong>. <strong>FORM_ADJUST_RESIZE</strong>: Specifies the form is resized and when you click or start typing within the widget which requires an input, the form scrolls up and the widget which requires an input is not overlapped by the keypad or footer. <strong>FORM_ADJUST_PAN</strong>: Specifies the widget which requires an input is placed at the bottom of the popup is overlapped by the keypad. The main Form is not resized to make room for the soft keyboard. Rather, the contents of the Form are automatically panned so that the current focus is never obscured by the keyboard and users can always see what they are typing. This is generally less desirable than resizing, because the user may need to close the soft keyboard to get at and interact with obscured parts of the Form.</td>
+</tr>
+<tr>
+<td><strong>Dismiss on Edge Swipe</strong></td>
+<td>Using this feature, you can enable or disable dismissing forms by swiping at the edge.</td>
+<td>You can turn it <strong>On</strong> or <strong>Off</strong>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="action">Action</h3>
+<h5 id="general_1">General</h5>
+<p>On this tab, you define the events that are executed when an action is run. For a notification, you can run the following actions:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Definition</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>init</strong></td>
+<td>This action allows you initialize your interface controller.</td>
+<td>Click <strong>Edit</strong> to add actions.</td>
+</tr>
+<tr>
+<td><strong>preShow</strong></td>
+<td>This action allows you to customize an event which is triggered every time a form is to be displayed.</td>
+<td>Click <strong>Edit</strong> to add actions.</td>
+</tr>
+<tr>
+<td><strong>postShow</strong></td>
+<td>This action allows you to customize an event which is triggered every time after a form is displayed.</td>
+<td>Click <strong>Edit</strong> to add actions.</td>
+</tr>
+<tr>
+<td><strong>onHide</strong></td>
+<td>This action allows you to customize an event which is triggered when a form goes completely out of view.</td>
+<td>Click <strong>Edit</strong> to add actions.</td>
+</tr>
+<tr>
+<td><strong>onDestroy</strong></td>
+<td>This action allows you to customize an event which is triggered when the Form is destroyed.</td>
+<td>Click <strong>Edit</strong> to add actions.</td>
+</tr>
+<tr>
+<td><strong>onTouchStart</strong></td>
+<td>This action allows you to customize an event which is triggered once the user touches the touch surface.</td>
+<td>Click <strong>Edit</strong> to add actions.</td>
+</tr>
+<tr>
+<td><strong>onTouchMove</strong></td>
+<td>This action allows you to customize an event which is triggered once the user's touch moves on the touch surface.</td>
+<td>Click <strong>Edit</strong> to add actions.</td>
+</tr>
+<tr>
+<td><strong>onTouchEnd</strong></td>
+<td>This action allows you to customize an event which is triggered once the user's touch is released from the touch surface.</td>
+<td>Click <strong>Edit</strong> to add actions.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="android-wear-os_1">Android Wear OS</h5>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Definition</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>onDeviceMenu</strong></td>
+<td>This action allows you to customize an event which is triggered once the user accesses the device menu.</td>
+<td>Click <strong>Edit</strong> to add actions.</td>
+</tr>
+<tr>
+<td><strong>onDeviceBack</strong></td>
+<td>This action allows you to customize an event which is triggered once the user uses the back button on the device menu.</td>
+<td>Click <strong>Edit</strong> to add actions.</td>
+</tr>
+<tr>
+<td><strong>onOrientationChange</strong></td>
+<td>This action allows you to customize an event which is triggered when there is a change in orientation of the form.</td>
+<td>Click <strong>Edit</strong> to add actions.</td>
+</tr>
+<tr>
+<td><strong>onActionBarBack</strong></td>
+<td>This action allows you to customize an event which is triggered once the user uses the back button on the action bar.</td>
+<td>It is enabled only when the onActionBarBack callback is registered on form and the showActionBarIcon is set to true. Click <strong>Edit</strong> to add actions.  </td>
+</tr>
+</tbody>
+</table>
+<p>For more information on using these actions, see the topic, <a href="working_with_Action_Editor.html">Add Actions</a>.</p>
+<h4 id="review">Review</h4>
+<p>This tab can be used to add Notes and Comments to the selected form.</p>
+<p>You can search for the notes written about a form by typing its name in the <strong>Search</strong> box.</p>
+<p>You can expand, contract, add, and delete notes.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2021 - 2025, HCL America, Inc. | <a href="https://hcltechsw.com/wps/portal/legal/privacy">Privacy Statement</a> | <a href="https://apc01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.hcltechsw.com%2Fwps%2Fportal%2Flegal%2Fterms-use&data=04%7C01%7Csuresh.chenji%40hcl.com%7Ca77ebddc51574aff8c6c08d8f056542d%7C189de737c93a4f5a8b686f4ca9941912%7C0%7C0%7C637523600856805537%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=vLnT466NGuIbvQ0nEwfn2qdXeuhHb6XOnh1pibATDI4%3D&reserved=0">Terms of Use</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+<div class="md-social">
+  <ul class="social-nav">
+    <li><a href="https://www.facebook.com/HCLDigital" class="facebook" target="_blank">Facebook</a></li>
+    <li><a href="https://www.linkedin.com/company/hclsoftware" class="linkedin" target="_blank">LinkedIn</a></li>
+    <li><a href="https://twitter.com/HCLDigital"  class="twitter" target="_blank">Twitter</a></li>
+    <li><a href="https://www.youtube.com/HCLDigitalSolutions" class="youtube" target="_blank">Youtube</a></li>
+    <li>
+      <a href="https://github.com/HCL-TECH-SOFTWARE" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    </li>
+  </ul>    
+</div>
+  </div>
+  <div class="md-footer-meta__inner md-grid">
+  <span class="md-footer__git_legacy">Please report problems with this documentation by <a class="announcement__link" href="https://github.com/HCL-TECH-SOFTWARE/volt-mx-docs/issues">opening issues in Github</a>.</span>
+  <span class="legacy-link md-footer__git_legacy">Can't find a topic? Check the legacy documentation <a class="announcement__link" href="https://opensource.hcltechsw.com/Volt-MX-Documentation-Archive/docs/documentation/" target="_blank">here</a>.</span>
+</span>
+    </div>
+</div>
+</footer>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant"], "search": "../../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+    
+  </body>
+</html>

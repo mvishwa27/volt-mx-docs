@@ -1,0 +1,2388 @@
+<!-- Elements added to main will be displayed on all pages -->
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://mvishwa27.github.io/volt-mx-docs/latest/Foundry/voltmx_foundry_user_guide/Content/CI_with_Foundry_APIs.html">
+      
+      
+        <link rel="prev" href="../../heradlessAndContinuousIntegration.html">
+      
+      
+        <link rel="next" href="CI_NativeUploadPublish.html">
+      
+      <link rel="icon" href="../../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.1.18">
+    
+    
+      
+        <title>Continuous Integration with Foundry APIs - HCL Volt MX Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.26e3688c.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/vmx_style.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#continuous-integration-with-volt-mx-foundry-apis" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+<div class="content-types-banner">
+    <ul class="sub-nav">
+        <li class="home-link">
+            <a href="https://opensource.hcltechsw.com/volt-mx-docs/index.html"  class="sub-link ">Home</a>
+        </li>
+        <li>
+            <a href="https://opensource.hcltechsw.com/volt-mx-docs/docs/tutorials/Tutorials.html" class="sub-link">Tutorials</a>
+        </li>
+        <li>
+            <a href="https://opensource.hcltechsw.com/volt-mx-docs/docs/documentation/index.html" class="sub-link" id="docLink">Documentation</a>
+        </li>
+        <li>
+            <a href="https://support.hcltechsw.com/csm?id=kb_search&spa=1&kb_category=db382ff1db631c14a45ad9fcd3961936" title="Articles" class="sub-link">Articles</a>
+        </li>
+        <li>
+            <a href="https://hclsoftwareu.hcltechsw.com/#VoltMxLearningJourneys" title="Articles" class="sub-link">Software Academy</a>
+        </li>
+    </ul>
+</div>
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+          <aside class="md-banner md-banner--warning">
+            <div class="md-banner__inner md-grid md-typeset">
+              
+You're not viewing the latest version.
+<a href="../../../.."> 
+  <strong>Click here to go to latest version.</strong>
+</a>
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),outdated=__md_get("__outdated",sessionStorage);!0===outdated&&el&&(el.hidden=!1)</script>
+          </aside>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="HCL Volt MX Documentation" class="md-header__button md-logo" aria-label="HCL Volt MX Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            HCL Volt MX Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Continuous Integration with Foundry APIs
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/HCL-TECH-SOFTWARE/volt-mx-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    HCL-TECH-SOFTWARE/volt-mx-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="HCL Volt MX Documentation" class="md-nav__button md-logo" aria-label="HCL Volt MX Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/favicon.png" alt="logo">
+
+    </a>
+    HCL Volt MX Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/HCL-TECH-SOFTWARE/volt-mx-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    HCL-TECH-SOFTWARE/volt-mx-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+                 
+  
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1"
+    type="checkbox"
+    id="__nav_1"
+    checked
+  />
+             
+  <nav
+    class="md-nav md-nested-nav"
+    aria-label="Introducing Volt MX"
+    data-md-level="1"
+  >
+    <label class="md-nav__title" for="__nav_1">
+      <span class="md-nav__icon md-icon"></span>
+      Introducing Volt MX
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+       
+                
+<li class="md-nav__item">
+  <a href="../../../index.html" class="md-nav__link">
+    Introducing Volt MX
+  </a>
+</li>
+    
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_2"
+    type="checkbox"
+    id="__nav_1_2"
+    
+  />
+                           
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../../Whats_New_Main_Page.html"> What&apos;s New </a>
+    <label for="__nav_1_2">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+                
+<li class="md-nav__item">
+  <a href="../../../VMX_release_notes.html" class="md-nav__link">
+    Release Notes
+  </a>
+</li>
+    
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_4"
+    type="checkbox"
+    id="__nav_1_4"
+    
+  />
+                  
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../../Iris/app_platform/Content/AppPlatform_Overview.html"> App Platform </a>
+    <label for="__nav_1_4">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_5"
+    type="checkbox"
+    id="__nav_1_5"
+    
+  />
+                                                            
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../../tutorials/Tutorials.html"> Tutorials </a>
+    <label for="__nav_1_5">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+                
+<li class="md-nav__item">
+  <a href="../../installationGuides.html" class="md-nav__link">
+    Installation Guides
+  </a>
+</li>
+    
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7"
+    type="checkbox"
+    id="__nav_1_7"
+    
+  />
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../../Iris/voltmxIrisFundamentals.html"> Iris </a>
+    <label for="__nav_1_7">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+               
+  
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_8"
+    type="checkbox"
+    id="__nav_1_8"
+    checked
+  />
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../voltmxFoundryFundamentals.html"> Foundry </a>
+    <label for="__nav_1_8">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+  <nav
+    class="md-nav md-nested-nav"
+    aria-label="Foundry"
+    data-md-level="2"
+  >
+    <label class="md-nav__title" for="__nav_1_8">
+      <span class="md-nav__icon md-icon"></span>
+      Foundry
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+       
+                
+<li class="md-nav__item">
+  <a href="../../voltmxFoundryFundamentals.html" class="md-nav__link">
+    Fundamentals
+  </a>
+</li>
+    
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_8_2"
+    type="checkbox"
+    id="__nav_1_8_2"
+    
+  />
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../installing_foundry.html"> Installing Foundry </a>
+    <label for="__nav_1_8_2">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+               
+  
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_8_3"
+    type="checkbox"
+    id="__nav_1_8_3"
+    checked
+  />
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="Introduction.html"> Volt MX Foundry User Guide </a>
+    <label for="__nav_1_8_3">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+  <nav
+    class="md-nav md-nested-nav"
+    aria-label="Volt MX Foundry User Guide"
+    data-md-level="3"
+  >
+    <label class="md-nav__title" for="__nav_1_8_3">
+      <span class="md-nav__icon md-icon"></span>
+      Volt MX Foundry User Guide
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+       
+                
+<li class="md-nav__item">
+  <a href="Introduction.html" class="md-nav__link">
+    Overview
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Preface.html" class="md-nav__link">
+    Preface
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="../../foundrySDKs.html" class="md-nav__link">
+    Foundry SDKs
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Accessing_VoltMX_MBaaS_Portal.html" class="md-nav__link">
+    Accessing Volt MX Foundry Console - Volt MX Cloud
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Environments-Cloud.html" class="md-nav__link">
+    Environments - Volt MX Cloud
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Account_Settings_User_ACLs.html" class="md-nav__link">
+    Default Access Control Lists (ACLs) on New Apps and Services
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="UpgradeCloud.html" class="md-nav__link">
+    Volt MX Foundry Updates on Cloud
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="How_to_access_VoltMX_Foundry_Portal_on-Prem.html" class="md-nav__link">
+    Accessing Volt MX Foundry Console - On-Premises
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Environments.html" class="md-nav__link">
+    Environments - On-Premises
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Published_Apps-Environments.html" class="md-nav__link">
+    Viewing Applications Published to a Runtime Environment
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Features.html" class="md-nav__link">
+    Features
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Adding_Applications.html" class="md-nav__link">
+    Apps - How to Add Applications
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="ConsoleAccessControl.html" class="md-nav__link">
+    Console Access Control
+  </a>
+</li>
+    
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_8_3_14"
+    type="checkbox"
+    id="__nav_1_8_3_14"
+    
+  />
+                            
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="API_Management.html"> APIs in API Management </a>
+    <label for="__nav_1_8_3_14">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+                
+<li class="md-nav__item">
+  <a href="API_Versioning.html" class="md-nav__link">
+    API Versioning
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="App_Versioning.html" class="md-nav__link">
+    Application Versioning
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="CustomDataConfig.html" class="md-nav__link">
+    Custom Data Adapters on Volt MX Foundry
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="JAR_Management.html" class="md-nav__link">
+    Managing JAR Files
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="CLI_Analytics.html" class="md-nav__link">
+    Analytics for Third-party Client App Binaries
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Export-Import_Apps.html" class="md-nav__link">
+    Exporting and Importing an Application
+  </a>
+</li>
+    
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_8_3_21"
+    type="checkbox"
+    id="__nav_1_8_3_21"
+    
+  />
+                                                                                                         
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="Identity.html"> Identity </a>
+    <label for="__nav_1_8_3_21">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_8_3_22"
+    type="checkbox"
+    id="__nav_1_8_3_22"
+    
+  />
+                        
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="Legacy_Serivces.html"> Legacy Services </a>
+    <label for="__nav_1_8_3_22">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_8_3_23"
+    type="checkbox"
+    id="__nav_1_8_3_23"
+    
+  />
+                                                                                                                                                               
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="Services.html"> Integration </a>
+    <label for="__nav_1_8_3_23">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_8_3_24"
+    type="checkbox"
+    id="__nav_1_8_3_24"
+    
+  />
+                        
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="Orchestration.html"> Orchestration </a>
+    <label for="__nav_1_8_3_24">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_8_3_25"
+    type="checkbox"
+    id="__nav_1_8_3_25"
+    
+  />
+                                                                                        
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="Objectservices.html"> Object Services </a>
+    <label for="__nav_1_8_3_25">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+                
+<li class="md-nav__item">
+  <a href="offline_Sync.html" class="md-nav__link">
+    Offline Enablement
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Legacy_Sync.html" class="md-nav__link">
+    Legacy Sync
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="VoltMXDevPortal.html" class="md-nav__link">
+    Developer Portal
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Logic_in_Apps.html" class="md-nav__link">
+    Logic
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Rules_as_a_Service.html" class="md-nav__link">
+    Rules as a Service
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Engagement.html" class="md-nav__link">
+    Engagement
+  </a>
+</li>
+    
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_8_3_32"
+    type="checkbox"
+    id="__nav_1_8_3_32"
+    
+  />
+                                               
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="Manage_Client_App_Assets.html"> Manage Client App Assets </a>
+    <label for="__nav_1_8_3_32">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+                
+<li class="md-nav__item">
+  <a href="EnterpriseAppStore.html" class="md-nav__link">
+    Volt MX Enterprise App Store Service for Digital App Distribution
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="PushNotificationsEas.html" class="md-nav__link">
+    Sending Push Notification to EAS
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="AppVersionUpgradePolicyEAS.html" class="md-nav__link">
+    Checking App Versions in EAS
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="EAS_NativeApp_Walk-through.html" class="md-nav__link">
+    Walk-through of Volt MX Enterprise App Store (EAS) Source Application
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="KnownIssuesEAS.html" class="md-nav__link">
+    Known Issues - EAS
+  </a>
+</li>
+    
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_8_3_38"
+    type="checkbox"
+    id="__nav_1_8_3_38"
+    
+  />
+                                           
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="Publish.html"> Publish </a>
+    <label for="__nav_1_8_3_38">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+                
+<li class="md-nav__item">
+  <a href="AppPromotion.html" class="md-nav__link">
+    Promoting a Deployment Package
+  </a>
+</li>
+    
+               
+  
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_8_3_40"
+    type="checkbox"
+    id="__nav_1_8_3_40"
+    checked
+  />
+                                             
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="CI_Foundry.html"> Volt MX Foundry Command Line Utility - Continuous Integration </a>
+    <label for="__nav_1_8_3_40">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+  <nav
+    class="md-nav md-nested-nav"
+    aria-label="Volt MX Foundry Command Line Utility - Continuous Integration"
+    data-md-level="4"
+  >
+    <label class="md-nav__title" for="__nav_1_8_3_40">
+      <span class="md-nav__icon md-icon"></span>
+      Volt MX Foundry Command Line Utility - Continuous Integration
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+       
+                
+<li class="md-nav__item">
+  <a href="CI_Foundry.html" class="md-nav__link">
+    Continuous Integration with Volt MX Foundry
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="../../heradlessAndContinuousIntegration.html" class="md-nav__link">
+    Headless and Continuous Integration Build
+  </a>
+</li>
+    
+                
+<li class="md-nav__item md-nav__item--active">
+   
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="toc"
+    type="checkbox"
+    id="__toc"
+  />
+
+      
+  <label class="md-nav__link md-nav__link--active" for="__toc">
+    Continuous Integration with Foundry APIs
+    <span class="md-nav__icon md-icon"></span>
+  </label>
+  
+  <a href="CI_with_Foundry_APIs.html" class="md-nav__link md-nav__link--active">
+    Continuous Integration with Foundry APIs
+  </a>
+
+    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#continuous-integration-with-volt-mx-foundry-apis" class="md-nav__link">
+    Continuous Integration with Volt MX Foundry APIs
+  </a>
+  
+    <nav class="md-nav" aria-label="Continuous Integration with Volt MX Foundry APIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fetch-the-auth-token" class="md-nav__link">
+    Fetch the Auth Token
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#export-an-app" class="md-nav__link">
+    Export an App
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import-an-app" class="md-nav__link">
+    Import an App
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publish-via-apis" class="md-nav__link">
+    Publish via APIs
+  </a>
+  
+    <nav class="md-nav" aria-label="Publish via APIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fetch-environment-globally-unique-identifier-guid" class="md-nav__link">
+    Fetch Environment Globally Unique Identifier (GUID)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fetch-app-globally-unique-identifier-guid" class="md-nav__link">
+    Fetch App Globally Unique Identifier (GUID)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publish-a-volt-mx-foundry-app-via-api" class="md-nav__link">
+    Publish a Volt MX Foundry App via API
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initiate-publish" class="md-nav__link">
+    Initiate Publish
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continue-publish" class="md-nav__link">
+    Continue Publish
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unpublish" class="md-nav__link">
+    Unpublish
+  </a>
+  
+    <nav class="md-nav" aria-label="Unpublish">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initiate-unpublish" class="md-nav__link">
+    Initiate Unpublish
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continue-unpublish" class="md-nav__link">
+    Continue Unpublish
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+  
+</li>
+
+   
+                
+<li class="md-nav__item">
+  <a href="CI_NativeUploadPublish.html" class="md-nav__link">
+    CI_NativeBinary Upload and Publish
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="CI_CloudBuild.html" class="md-nav__link">
+    CI Cloud Build
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="MFA_for_CLI.html" class="md-nav__link">
+    Support for Multi-Factor Authentication from MFCLI
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Export_Import_Custom_Reports_Dashboards_MFCLI.html" class="md-nav__link">
+    Export and Import Custom Reports and Custom Dashboards through MFCLI
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Export_Import_Configuration_Parameters_AppServices_MFCLI.html" class="md-nav__link">
+    Export and Import Configurable Parameters for App Services through MFCLI
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Lock_Unlock_Fields_ObjectServices_MFCLI.html" class="md-nav__link">
+    Configuring Read-only Fields for Object Services through MFCLI
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Merge_Templates_using_MFCLI.html" class="md-nav__link">
+    Merge Templates using MFCLI
+  </a>
+</li>
+    
+    </ul>
+  </nav>
+  
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_8_3_41"
+    type="checkbox"
+    id="__nav_1_8_3_41"
+    
+  />
+                                                                                                                                                                                                                                                                                                                                                     
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="Foundry_SDKs.html"> SDKs </a>
+    <label for="__nav_1_8_3_41">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+                
+<li class="md-nav__item">
+  <a href="Settings_Cloud.html" class="md-nav__link">
+    Settings - Cloud
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Settings.html" class="md-nav__link">
+    Settings - On-premises
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Reports.html" class="md-nav__link">
+    Reports
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Support.html" class="md-nav__link">
+    Support
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Telemetry.html" class="md-nav__link">
+    Telemetry
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Samples/Samples.html" class="md-nav__link">
+    Tutorials
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Appendix_-_Sync_Strategy.html" class="md-nav__link">
+    Appendix - Sync Strategy
+  </a>
+</li>
+    
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_8_3_49"
+    type="checkbox"
+    id="__nav_1_8_3_49"
+    
+  />
+                     
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="Appendix_-_App_Services.html"> Appendix - App Services </a>
+    <label for="__nav_1_8_3_49">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+                
+<li class="md-nav__item">
+  <a href="Appendix_-_FAQs.html" class="md-nav__link">
+    Appendix - Frequently Asked Questions (FAQs
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Limitations.html" class="md-nav__link">
+    Limitations
+  </a>
+</li>
+    
+    </ul>
+  </nav>
+  
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_8_4"
+    type="checkbox"
+    id="__nav_1_8_4"
+    
+  />
+                     
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../KF_Services_OAuth_Sample/Content/KF_Services_OAuth_Sample.html"> OAuth Sample App Guide </a>
+    <label for="__nav_1_8_4">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_8_5"
+    type="checkbox"
+    id="__nav_1_8_5"
+    
+  />
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../integration_services.html"> Integration Services </a>
+    <label for="__nav_1_8_5">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_8_6"
+    type="checkbox"
+    id="__nav_1_8_6"
+    
+  />
+                                                                                                                                                                                                                                                                                                                            
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../administering_foundry.html"> Administering Foundry </a>
+    <label for="__nav_1_8_6">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_8_7"
+    type="checkbox"
+    id="__nav_1_8_7"
+    
+  />
+                                                                                                                       
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../vmf_integrationservice_admin_console_userguide/Content/App_Services_User_Guide.html"> App Services Console User Guide </a>
+    <label for="__nav_1_8_7">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_8_8"
+    type="checkbox"
+    id="__nav_1_8_8"
+    
+  />
+                                                                                                                                                                                                       
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../voltmx_appfactory_user_guide/Content/Introduction.html"> App Factory User Guide </a>
+    <label for="__nav_1_8_8">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_8_9"
+    type="checkbox"
+    id="__nav_1_8_9"
+    
+  />
+                                                                                                                                   
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../voltmx_Foundry_deployment_guide/Content/Introduction.html"> Volt MX Foundry Deployment Guide </a>
+    <label for="__nav_1_8_9">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+                
+<li class="md-nav__item">
+  <a href="../../VoltMX_Analytics_Cloud_FAQs/Content/VoltMX_Analytics_Cloud_FAQs.html" class="md-nav__link">
+    Volt MX Analytics & Reporting Cloud FAQs
+  </a>
+</li>
+    
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_8_11"
+    type="checkbox"
+    id="__nav_1_8_11"
+    
+  />
+                                     
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../vmfintegrationservice_troubleshooting_guide/Content/Integration_Services_Troubleshooting_Guide.html"> Integration Services Troubleshooting Guide </a>
+    <label for="__nav_1_8_11">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+    </ul>
+  </nav>
+  
+</li>
+
+   
+    </ul>
+  </nav>
+  
+</li>
+
+ 
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#continuous-integration-with-volt-mx-foundry-apis" class="md-nav__link">
+    Continuous Integration with Volt MX Foundry APIs
+  </a>
+  
+    <nav class="md-nav" aria-label="Continuous Integration with Volt MX Foundry APIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fetch-the-auth-token" class="md-nav__link">
+    Fetch the Auth Token
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#export-an-app" class="md-nav__link">
+    Export an App
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import-an-app" class="md-nav__link">
+    Import an App
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publish-via-apis" class="md-nav__link">
+    Publish via APIs
+  </a>
+  
+    <nav class="md-nav" aria-label="Publish via APIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fetch-environment-globally-unique-identifier-guid" class="md-nav__link">
+    Fetch Environment Globally Unique Identifier (GUID)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fetch-app-globally-unique-identifier-guid" class="md-nav__link">
+    Fetch App Globally Unique Identifier (GUID)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publish-a-volt-mx-foundry-app-via-api" class="md-nav__link">
+    Publish a Volt MX Foundry App via API
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initiate-publish" class="md-nav__link">
+    Initiate Publish
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continue-publish" class="md-nav__link">
+    Continue Publish
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unpublish" class="md-nav__link">
+    Unpublish
+  </a>
+  
+    <nav class="md-nav" aria-label="Unpublish">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initiate-unpublish" class="md-nav__link">
+    Initiate Unpublish
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continue-unpublish" class="md-nav__link">
+    Continue Unpublish
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Continuous Integration with Foundry APIs</h1>
+
+<p>User Guide: <a href="CI_Foundry.html">VoltMX Foundry Command Line Utility - Continuous Integration</a> &gt; Continuous Integration with Foundry APIs</p>
+<h2 id="continuous-integration-with-volt-mx-foundry-apis">Continuous Integration with Volt MX Foundry APIs</h2>
+<p>In the section, you can learn about the Continuous Integration (CI) capabilities by using APIs supported by Volt MX Foundry. Without using Volt MX Foundry Console, developers can automate the process of importing an app, exporting an app, and publishing an app by using APIs supported in CI. The details of the APIs are captured in the subsequent sections.</p>
+<p>The following are two ways of publishing apps in Volt MX Foundry:</p>
+<ul>
+<li>Using <a href="Publish.html">Publish Apps in Volt MX Foundry Console</a>.</li>
+<li>
+<p>Using script by calling publish APIs through a command line interface (CLI) - for example, cURL or a .Java file.</p>
+<blockquote>
+<p><strong><em>Note:</em></strong>  cURL - a command line tool for getting or sending files using URL syntax. The user guide uses the cURL command to represent a mobile device making HTTPS API calls to a Volt MX Foundry environment. cURL is typically pre-installed on Linux and Mac systems. For Windows, go to <a href="http://curl.haxx.se/download.html">http://curl.haxx.se/download.html</a>, download cURL, and the SSL libraries required to connect to HTTPS URLs. For cURL commands and documentation, refer to <a href="http://curl.haxx.se/docs/">http://curl.haxx.se/docs/</a></p>
+<p><strong><em>Important:</em></strong>  All the publish APIs in this section are auth protected.</p>
+</blockquote>
+</li>
+</ul>
+<p>The following APIs are supported for continuous integration of an app:</p>
+<ol>
+<li><a href="#fetch-the-auth-token">Fetch the Auth Token - Get Authentication Token Information via API</a></li>
+<li><a href="#export-an-app">Export and App - Export the Volt MX Foundry App From Console via API</a></li>
+<li><a href="#import-an-app">Import an App - Import a Volt MX Foundry App (.zip file) via API</a></li>
+<li><a href="#publish-via-apis">Publish via API</a></li>
+</ol>
+<h3 id="fetch-the-auth-token"><strong>Fetch the Auth Token</strong></h3>
+<p>To fetch the claims token, invoke the Auth service login API and extract the “claims_token”.”value” from the response.</p>
+<p>The API helps you log in as a management user and get back session token that can be used for invoking management APIs.</p>
+<p>A successful response includes a session token.</p>
+<p>If a user's credentials are incorrect, the log-in fails, and the system generates an HTTP 401 error.</p>
+<p><strong>Signature</strong></p>
+<pre><code> https://accounts.auth.voltmxcloud.com/login
+</code></pre>
+<p><strong>Sample cURL Script</strong></p>
+<pre><code>
+token=&quot;$(curl -H &quot;Accept: application/json&quot; --data &quot;userid=[abc@voltmx.com]&amp;password=[pwd]&quot; -X POST &quot;https://accounts.auth.voltmxcloud.com/login&quot; | awk -F 'claims_token.*?value&quot;:&quot;' '{print $2}' | awk -F '&quot;,' '{print $1}')&quot;
+
+</code></pre>
+<p><strong>Method</strong></p>
+<p>POST</p>
+<p><strong>Request Headers</strong></p>
+<p>Form post parameters</p>
+<ul>
+<li>userid={user id}</li>
+<li>password={password}</li>
+</ul>
+<p><strong>Sample Response:</strong></p>
+<pre><code> Login Success Response (HTTP Response Code 200 OK):
+{
+    &quot;profile&quot;: {
+        &quot;email&quot;: &quot;&quot;,
+        &quot;userid&quot;: &quot;&quot;,
+        &quot;firstname&quot;: &quot;&quot;,
+        &quot;lastname&quot;: &quot;&quot;
+    },
+    &quot;refresh_token&quot;: &quot;{refresh_token}&quot;, 
+    &quot;claims_token&quot;: {
+        &quot;value&quot;: &quot;{session_token}&quot;,
+        &quot;exp&quot;: 1402941484000 /* expiry time of session in seconds since epoch */
+    }
+}
+
+Sample error response: (HTTP Response Code 401 Unauthorized):
+{
+    &quot;domain&quot;: &quot;AUTH&quot;,
+    &quot;code&quot;: -4,
+    &quot;mfcode&quot;: &quot;Auth-4&quot;,
+    &quot;message&quot;: &quot;Invalid User Credentials&quot;,
+    &quot;details&quot;: {
+        &quot;message&quot;: &quot;Invalid User Credentials&quot;,
+        &quot;errcode&quot;: 0,
+        &quot;errmsg&quot;: &quot;Invalid User Credentials&quot;
+    },
+    &quot;requestid&quot;: &quot;77cf1b1b-3bc5-4d73-84ec-806dcd60cf56&quot;,
+    &quot;httpstatus&quot;: &quot;Unauthorized&quot;
+}
+
+</code></pre>
+<h3 id="export-an-app"><strong>Export an App</strong></h3>
+<p>The Apps Export API helps you export all the services and properties of Volt MX Foundry custom application from a specified workspace.</p>
+<p>When you call the Apps Export API, the system exports the application in <a href="Export-Import_Apps.html#folder-structure-of-an-exported-app">Export app structure</a>.</p>
+<p><strong>Signature</strong></p>
+<pre><code> https:// {workspaceid}.workspace.voltmxcloud.com/api/v1/ws/{workspaceid}/apps/export?appName={appName}
+</code></pre>
+<p><strong>Sample cURL Script</strong></p>
+<pre><code>
+token=&quot;$(curl -H &quot;Accept: application/json&quot; --data &quot;userid=[abc@voltmx.com]&amp;password=[pwd]&quot; -X POST &quot;https://accounts.auth.voltmxcloud.com/login&quot; | awk -F 'claims_token.*?value&quot;:&quot;' '{print $2}' | awk -F '&quot;,' '{print $1}')&quot;
+</code></pre>
+<p><strong>Method</strong></p>
+<p>GET</p>
+<p><strong>Request Query Parameters (Mandatory)</strong></p>
+<ul>
+<li>workspaceid : The accounts that can be accessed by a user are listed in the top right corner of Volt MX Foundry Console. The workspaceid is the account ID that corresponds to the selected account.</li>
+<li>appName : { Name of the Volt MX Foundry custom application that a user wants to export}</li>
+</ul>
+<p><strong>Request Headers Parameters (Mandatory)</strong></p>
+<p>X-VoltMX-Authorization : {Auth Service Token}</p>
+<p><strong>Response:</strong></p>
+<ul>
+<li><strong>Sample Success Response</strong>:</li>
+</ul>
+<pre><code>HTTP 200 OK
+</code></pre>
+<ul>
+<li>
+<p><strong>Sample Success Response Body</strong>:
+<code>The export API returns a zip stream that can be converted to a required .zip file. For more details, refer to <a href="Export-Import_Apps.html#folder-structure-of-an-exported-app">Export app structure</a></code></p>
+</li>
+<li>
+<p><strong>Sample Failure Response - if a user does not have access to the workspace</strong>:</p>
+</li>
+</ul>
+<pre><code>HTTP 401 Unauthorized
+</code></pre>
+<ul>
+<li><strong>Sample Failure Response - if export failed due to an internal failure</strong>:</li>
+</ul>
+<pre><code>HTTP 500 Internal Server Error
+</code></pre>
+<ul>
+<li><strong>Failure Response Body Format</strong>:</li>
+</ul>
+<pre><code>{ 
+&quot;domain&quot;: &quot;WAAS&quot; 
+&quot;code&quot;: [error-code], /* a number/string based on the domain */ 
+&quot;message&quot;: &quot;Message&quot;, 
+&quot;details&quot;: [Details of Error Message], 
+&quot;httpstatus&quot;: &quot;[Http Status String]&quot; 
+}  
+
+</code></pre>
+<ul>
+<li><strong>Example Failure Response Body</strong>:</li>
+</ul>
+<pre><code>{
+    &quot;domain&quot;: &quot;WAAS&quot;,
+    &quot;code&quot;: -9,
+    &quot;message&quot;: &quot;Invalid App Credentials&quot;,
+    &quot;details&quot;: {
+        &quot;message&quot;: &quot;Invalid App Credentials&quot;,
+        &quot;errcode&quot;: 0,
+        &quot;errmsg&quot;: null
+    },
+    &quot;httpstatus&quot;: &quot;Unauthorized&quot;
+}
+
+</code></pre>
+<h3 id="import-an-app"><strong>Import an App</strong></h3>
+<p>The App Import API in Workspace service imports the App configuration in the package in a zip file (application zip). An application zip has app configuration, services, and messaging configuration. While importing, if these details are already present in the app, these details will be updated. Otherwise, these details are created.</p>
+<p><strong>Signature</strong></p>
+<pre><code> https:// {workspaceid}.workspace.voltmxcloud.com/api/v1/ws/{workspaceid}/apps/import?appName={appName}
+</code></pre>
+<p><strong>Sample cURL Script</strong></p>
+<pre><code>
+curl -F &quot;appZip=@C:/Users/KH1895/Desktop/file.zip&quot; -H &quot;X-VoltMX-Authorization:[auth token]&quot; -X POST &quot; https:// [workspaceid].workspace.voltmxcloud.com/api/v1/ws/[workspaceid]/apps/import&quot;
+
+curl -F &quot;appZip=@C:/Users/KH1895/Desktop/file.zip&quot; -H &quot;X-VoltMX-Authorization:[auth token]&quot; -X POST &quot; https:// [workspaceid].workspace.voltmxcloud.com/api/v1/ws/[workspaceid]/apps/import?appName=[app name]&amp;suppressWarnings=true&quot;
+
+</code></pre>
+<p><strong>Method</strong></p>
+<p>POST</p>
+<p><strong>Request Query Parameters (Mandatory)</strong></p>
+<ul>
+<li>workspaceid : The accounts that can be accessed by a user are listed in the top right corner of Volt MX Foundry Console. The Account ID corresponds to the selected account.</li>
+</ul>
+<p>Request Query Parameters (Optional)</p>
+<ul>
+<li>appName : Name of the Volt MX Foundry custom application the user wants to create or update.</li>
+<li>suppressWarnings : When importing apps with identity services, the identity services are not imported if <code>suppressWarnings</code> flag is not set. The required services must be first created or updated manually and then the app needs to be imported. The query param must be set to true (suppressWarnings=true) when importing apps. When <code>suppressWarning</code> is true and if an identity provider exists in the workspace, the existing provider is linked to the app. Otherwise, the import fails.</li>
+</ul>
+<p><strong>Request Headers (Mandatory)</strong></p>
+<p>X-VoltMX-Authorization : {Auth Service Token}</p>
+<p><strong>Request Body</strong></p>
+<pre><code> Content-Type : multipart/form-data
+{
+   &quot;appZip&quot; : &lt; Zip file content of the app. The zip file needs to be in this format &gt;
+}
+
+</code></pre>
+<p><strong>Response</strong></p>
+<ul>
+<li><strong>Sample Success Response</strong>:</li>
+</ul>
+<pre><code> HTTP 200 OK
+</code></pre>
+<ul>
+<li>
+<p><strong>Sample Success Response Body</strong>:</p>
+<p>Returns the details of an app that is imported into the workspace in the following format:</p>
+</li>
+</ul>
+<pre><code> appBaseUrl - &lt;baseurl&gt;/api/v1/ws/{workspace id}/apps/{app id}  
+
+    { 
+         &quot;id&quot;: &quot;&lt;app id&gt;&quot;,
+          &quot;type&quot;: &quot;&lt;type of app&gt;&quot;,
+           &quot;name&quot;: &quot;&lt;app name&gt;&quot;,
+           &quot;icon&quot;: &quot;&lt;app icon&gt;&quot;,
+            &quot;description&quot;: &quot;&lt;app description&gt;&quot;,
+            &quot;created_at&quot;: &quot;&lt;time of creation of app&gt;&quot;, 
+            &quot;created_by&quot;: &quot;&lt;puid of the owner who created the app&gt;&quot;, 
+            &quot;updated_at&quot;: &quot;&lt;time of updation of app&gt;&quot;,
+            &quot;updated_by&quot;: &quot;&lt;puid of the owner who updated the app&gt;&quot;, 
+            &quot;_links&quot;:
+             { 
+                 …
+             } 
+    }
+
+</code></pre>
+<ul>
+<li><strong>Sample Failure Response - if a user does not have access to the workspace</strong>:</li>
+</ul>
+<pre><code> HTTP 401 Unauthorized
+</code></pre>
+<ul>
+<li><strong>Sample Failure Response - if export failed due to an internal failure</strong>:</li>
+</ul>
+<pre><code> HTTP 500 Internal Server Error
+</code></pre>
+<ul>
+<li><strong>Failure Response Body Format</strong>:</li>
+</ul>
+<pre><code> { 
+    &quot;domain&quot;: &quot;WAAS&quot; 
+    &quot;code&quot;: [error-code], /* a number/string based on the domain */ 
+    &quot;message&quot;: &quot;Message&quot;, 
+    &quot;details&quot;: [Details of Error Message], 
+    &quot;httpstatus&quot;: &quot;[Http Status String]&quot; 
+    }
+
+</code></pre>
+<ul>
+<li><strong>Example Failure Response Body</strong>:</li>
+</ul>
+<pre><code> {
+        &quot;domain&quot;: &quot;WAAS&quot;,
+        &quot;code&quot;: -9,
+        &quot;message&quot;: &quot;Invalid App Credentials&quot;,
+        &quot;details&quot;: {
+            &quot;message&quot;: &quot;Invalid App Credentials&quot;,
+            &quot;errcode&quot;: 0,
+            &quot;errmsg&quot;: null
+        },
+        &quot;httpstatus&quot;: &quot;Unauthorized&quot;
+    }
+
+</code></pre>
+<h3 id="publish-via-apis"><strong>Publish via APIs</strong></h3>
+<p>Publishing a Volt MX Foundry app is a multi-step workflow. During publishing an app, the <code>next_step</code> object in the response of the publish API decides whether the next step to be executed.</p>
+<ol>
+<li><a href="#fetch-environment-globally-unique-identifier-guid">Fetch Environment GUID of an Environment via API</a></li>
+<li><a href="#fetch-app-globally-unique-identifier-guid">Fetch App ID of the Imported Volt MX Foundry App via API</a></li>
+<li>
+<p><a href="#publish-a-foundry-app-via-api">Publish a Volt MX Foundry App via API</a></p>
+<ul>
+<li><a href="#initiate-publish">Initiate Publish</a></li>
+<li><a href="#continue-publish">Continue Publish</a></li>
+<li>
+<p><a href="#unpublish">Unpublish a Volt MX Foundry App via API</a></p>
+</li>
+<li>
+<p><a href="#initiate-unpublish">Initiate Unpublish</a></p>
+</li>
+<li><a href="#continue-unpublish">Continue Unpublish</a></li>
+</ul>
+</li>
+</ol>
+<h4 id="fetch-environment-globally-unique-identifier-guid">Fetch Environment Globally Unique Identifier (GUID)</h4>
+<p>To publish or unpublish an app to or from an environment, the environment must be uniquely identified through a GUID. To retrieve a GUID of an environment, call the following API and extract the “environment_guid” of the relevant one.</p>
+<p>The API fetches the details of the environments that a user can access.</p>
+<p>The <code>environment_guid</code> value retrieved from the response of the API and will be used for publishing or unpublishing an app.</p>
+<p><strong>Signature</strong></p>
+<pre><code> https://manage.hclvoltmx.com/api/v1_0/environments
+</code></pre>
+<p><strong>Method</strong></p>
+<p>GET</p>
+<p><strong>Request Headers Parameters (Mandatory)</strong></p>
+<ul>
+<li>X-VoltMX-Authorization : {Auth Service Token}</li>
+<li>Accept : {application/json}</li>
+</ul>
+<p><strong>Response:</strong></p>
+<ul>
+<li><strong>Sample Success Response</strong>:</li>
+</ul>
+<pre><code> HTTP 200 OK
+</code></pre>
+<ul>
+<li><strong>Sample Success Response Body</strong>:</li>
+</ul>
+<pre><code> [
+        {
+            &quot;environment_guid&quot;: &quot;b8ee8e32-ca1e-471d-b737-cf792b182712&quot;,
+            &quot;name&quot;: &quot;mbaas&quot;,
+            …
+        },
+        {
+            &quot;environment_guid&quot;: &quot;60ebcf2f-e327-492e-92ae-e5914ecfeeed&quot;,
+            &quot;name&quot;: &quot;reconfig&quot;,
+            …
+        },
+        …
+    ]
+
+</code></pre>
+<ul>
+<li><strong>Sample Failure Response - if a user does not have access to the workspace</strong>:</li>
+</ul>
+<pre><code> HTTP 401 Unauthorized
+</code></pre>
+<h4 id="fetch-app-globally-unique-identifier-guid">Fetch App Globally Unique Identifier (GUID)</h4>
+<p>This API fetches the list of apps.</p>
+<p><strong>Signature</strong></p>
+<pre><code> https://{workspaceid}.workspace.voltmxcloud.com/api/v1/ws/{workspaceid}/apps
+</code></pre>
+<p><strong>Method</strong></p>
+<p>GET</p>
+<p><strong>Request Query Parameters (Mandatory)</strong></p>
+<ul>
+<li>workspaceid : The accounts that can be accessed by a user are listed in the top right corner of Volt MX Foundry Console. The Account ID corresponds to the selected account.</li>
+</ul>
+<p>Request Headers Parameters (Mandatory)</p>
+<ul>
+<li>X-VoltMX-Authorization : {Auth Service Token}</li>
+<li>Accept : {application/json}</li>
+</ul>
+<p><strong>Response:</strong></p>
+<ul>
+<li><strong>Sample Success Response</strong>:</li>
+</ul>
+<pre><code> HTTP 200 OK
+</code></pre>
+<ul>
+<li><strong>Sample Success Response Body</strong>:</li>
+</ul>
+<pre><code> Returns list of Volt MX Foundry custom apps in the specified workspace.  
+    {
+     [
+      { 
+           &quot;id&quot;: &quot;&lt;app id&gt;&quot;,
+           &quot;type&quot;: &quot;&lt;type of app&gt;&quot;,
+           &quot;name&quot;: &quot;&lt;app name&gt;&quot;,
+           &quot;description&quot;: &quot;&lt;app description&gt;&quot;,
+            &quot;created_at&quot;: &quot;&lt;time of creation of app&gt;&quot;, 
+            &quot;created_by&quot;: &quot;&lt;puid of the owner who created the app&gt;&quot;, 
+            &quot;updated_at&quot;: &quot;&lt;time of updation of app&gt;&quot;,
+            &quot;updated_by&quot;: &quot;&lt;puid of the owner who updated the app&gt;&quot;, 
+            &quot;_links&quot;:
+             { 
+                  …
+             } 
+        }
+      ],
+      &quot;count&quot;: &quot;&lt; number of custom Volt MX Foundry apps returned in this API call &gt;&quot;,
+      &quot;page&quot;: &lt; page number &gt;,
+      &quot;_links&quot;: {
+              …
+        },
+        &quot;totalcount&quot;: &quot;&lt; total number of custom Volt MX Foundry apps in the workspace &gt;&quot;,
+        &quot;pagesize&quot;: &lt;page size&gt;
+    }
+
+</code></pre>
+<ul>
+<li><strong>Sample Failure Response - if a user does not have access to the workspace</strong>:</li>
+</ul>
+<pre><code> HTTP 401 Unauthorized
+</code></pre>
+<ul>
+<li><strong>Sample Failure Response - if export failed due to an internal failure</strong>:</li>
+</ul>
+<pre><code> HTTP 500 Internal Server Error
+</code></pre>
+<ul>
+<li><strong>Failure Response Body Format</strong>:</li>
+</ul>
+<pre><code> {
+    &quot;domain&quot;: &quot;WAAS&quot; 
+    &quot;code&quot;: [error-code], /* a number/string based on the domain */ 
+    &quot;message&quot;: &quot;Message&quot;, 
+    &quot;details&quot;: [Details of Error Message], 
+    &quot;httpstatus&quot;: &quot;[Http Status String]&quot; 
+    } 
+
+</code></pre>
+<ul>
+<li><strong>Example Failure Response Body</strong>:</li>
+</ul>
+<pre><code> {
+        &quot;domain&quot;: &quot;WAAS&quot;,
+        &quot;code&quot;: -9,
+        &quot;message&quot;: &quot;Invalid App Credentials&quot;,
+        &quot;details&quot;: {
+            &quot;message&quot;: &quot;Invalid App Credentials&quot;,
+            &quot;errcode&quot;: 0,
+            &quot;errmsg&quot;: null
+        },
+        &quot;httpstatus&quot;: &quot;Unauthorized&quot;
+    }
+
+</code></pre>
+<h4 id="publish-a-volt-mx-foundry-app-via-api">Publish a Volt MX Foundry App via API</h4>
+<h4 id="initiate-publish">Initiate Publish</h4>
+<p>The API helps you start publishing the services inside the application to an environment with the environment  <code>id {env_guid}</code>  that you received. For more details on how to get the environment  <code>ID</code>, refer to <a href="#fetch-environment-globally-unique-identifier-guid">Fetch Environment GUID</a>.</p>
+<p>When you call this API, the system starts publishing the app, and locks the app from publishing by different users until the publish completes or fails.</p>
+<p><strong>Signature</strong></p>
+<pre><code> https://api.voltmx.com/api/v1_0/environments/{env_guid}/publish
+</code></pre>
+<p><strong>Method</strong></p>
+<p>POST</p>
+<p><strong>Request Headers (Mandatory)</strong></p>
+<ul>
+<li>X-VoltMX-Authorization : {Auth Service Token}</li>
+<li>Content-Type : {application/json or application/x-www-form-urlencoded}</li>
+<li>Accept : {application/json}</li>
+<li>Referer : <a href="https://manage.hclvoltmx.com/">https://manage.hclvoltmx.com</a> (The refer generates the URL required for next step of publishing.)</li>
+</ul>
+<p><strong>Request Headers (Optional)</strong></p>
+<ul>
+<li>X-VoltMX-RequestId : {Request Id}</li>
+<li>X-HTTP-Method-Override</li>
+</ul>
+<p><strong>Request Body</strong></p>
+<pre><code> Mandatory  
+
+app_id : Id of the Application to be published. For details on how to fetch the app id, refer to [Fetch App ID](#fetch-app-globally-unique-identifier-guid)
+</code></pre>
+<pre><code>
+Optional  
+
+action : release\_lock (This action releases the previous locks on the app before attempting publish). If the action parameter is not provided, the value will be set to start by default.
+</code></pre>
+<p><strong>Response</strong></p>
+<ul>
+<li><strong>Sample Success Response</strong>:</li>
+</ul>
+<pre><code> HTTP 201 CREATED
+</code></pre>
+<ul>
+<li><strong>Sample Success Response Headers</strong>:</li>
+</ul>
+<pre><code> “Set-Cookie” : “&lt;Cookies value&gt;”
+</code></pre>
+<ul>
+<li><strong>Sample Success Response Body</strong>:</li>
+</ul>
+<pre><code>
+    {
+        “_links” : {
+            “self” : {
+                “href” : “https://accounts.voltmx.com/api/v1_0/environments/env_guid/publish/apps/{publish_id}”
+            }
+        }
+        &quot;status&quot; : true,
+        &quot;message&quot; : &quot;Success&quot;,
+        &quot;publish_id&quot; : &quot;&lt;GUID&gt;&quot;,
+        &quot;next_step&quot; : true,
+        &quot;next_step_description&quot; : &quot;&lt;Message&gt;&quot;
+    }
+
+</code></pre>
+<ul>
+<li><strong>Sample Failure Response - if a user does not have access to the workspace</strong>:</li>
+</ul>
+<pre><code> HTTP 401 Unauthorized
+</code></pre>
+<ul>
+<li><strong>Sample Failure Response - if export failed due to an internal failure</strong>:</li>
+</ul>
+<pre><code> HTTP 500 Internal Server Error
+</code></pre>
+<ul>
+<li><strong>Sample Failure Response Body</strong>:</li>
+</ul>
+<pre><code> {
+    &quot;domain&quot;: &quot;accounts&quot;
+    &quot;mfcode&quot;: [error-code], /* a number/string based on the domain */
+    &quot;message&quot;: &quot;Message&quot;,
+    &quot;details&quot;: [Details of Error Message],
+        &quot;requestid&quot;: “Request Id”
+    &quot;httpstatus&quot;: &quot;[Http Status String]&quot;
+    }
+
+</code></pre>
+<blockquote>
+<p><strong><em>Note:</em></strong>  After a successful response from the initiate publish operation API, users must call the following PUT request. The PUT API should contain a header <code>Cookie</code> with the value from <code>Set-Cookie</code> header of the API response.</p>
+</blockquote>
+<h4 id="continue-publish">Continue Publish</h4>
+<p>The API helps you continue publishing the services inside the application to an environment with the <code>id {env_guid}</code>  a user can access. For more details on how to get the <code>id {env_guid}</code>, refer to <a href="#fetch-environment-globally-unique-identifier-guid">Fetch Environment GUID</a>.</p>
+<p><strong>Signature</strong></p>
+<pre><code> https://api.voltmx.com/api/v1_0/environments/{env_guid}/publish/{publish_id}
+</code></pre>
+<p><strong>Method</strong></p>
+<p>PUT</p>
+<p><strong>Request Headers (Mandatory)</strong></p>
+<ul>
+<li>X-VoltMX-Authorization : {Auth Service Token}</li>
+<li>Content-Type : {application/json or application/x-www-form-urlencoded}</li>
+<li>Accept : {application/json}</li>
+<li><strong>Cookie : {Value from Set-Cookie header in the response of POST /publish API}<br />
+</strong>You can get the set-cookie header from the Initiate Publish APIs</li>
+<li>Referer : <a href="https://manage.hclvoltmx.com/">https://manage.hclvoltmx.com</a> (The refer generates the URL required for next step of publishing.)</li>
+</ul>
+<p><strong>Request Headers (Optional)</strong></p>
+<ul>
+<li>X-VoltMX-RequestId : {Request Id}</li>
+<li>X-HTTP-Method-Override</li>
+</ul>
+<p><strong>Request Body</strong></p>
+<pre><code>
+Optional  
+
+action : cancel  | continue ( Default value is “continue” )
+</code></pre>
+<p><strong>Response</strong></p>
+<ul>
+<li><strong>Sample Success Response</strong>:</li>
+</ul>
+<pre><code> HTTP 200 OK
+</code></pre>
+<ul>
+<li><strong>Sample Success Response Body</strong>:</li>
+</ul>
+<pre><code>
+    {
+        “_links” : {
+            “self” : {
+                “href” : “https://accounts.voltmx.com/api/v1_0/environments/env_guid/publish/apps/{publish_id}”
+            }
+        }
+        &quot;status&quot; : true,
+        &quot;message&quot; : &quot;Success&quot;,
+        &quot;publish_id&quot; : &quot;&lt;GUID&gt;&quot;,
+        &quot;next_step&quot; : true,
+        &quot;next_step_description&quot; : &quot;&lt;Message&gt;&quot;
+    }
+
+</code></pre>
+<ul>
+<li><strong>Sample Failure Response - if a user does not have access to the workspace</strong>:</li>
+</ul>
+<pre><code> HTTP 401 Unauthorized
+</code></pre>
+<ul>
+<li><strong>Sample Failure Response - if export failed due to an internal failure</strong>:</li>
+</ul>
+<pre><code> HTTP 500 Internal Server Error
+</code></pre>
+<ul>
+<li><strong>Sample Failure Response Body</strong>:</li>
+</ul>
+<pre><code>
+    {
+    &quot;domain&quot;: &quot;accounts&quot;
+    &quot;mfcode&quot;: [error-code], /* a number/string based on the domain */
+    &quot;message&quot;: &quot;Message&quot;,
+    &quot;details&quot;: [Details of Error Message],
+        &quot;requestid&quot;: “Request Id”
+    &quot;httpstatus&quot;: &quot;[Http Status String]&quot;
+    }
+
+</code></pre>
+<h3 id="unpublish">Unpublish</h3>
+<p>Similar to publish, unpublishing of a Volt MX Foundry app is a multi-step workflow. During unpublishing an app, the <code>next_step</code> object in the response of the unpublish API decides whether the next step to be executed.</p>
+<h4 id="initiate-unpublish">Initiate Unpublish</h4>
+<p><strong>Signature</strong></p>
+<pre><code> https://api.voltmx.com/api/v1_0/environments/{env_guid}/unpublish
+</code></pre>
+<p><strong>Method</strong></p>
+<p>POST</p>
+<p><strong>Request Headers (Mandatory)</strong></p>
+<ul>
+<li>X-VoltMX-Authorization : {Auth Service Token}</li>
+<li>Content-Type : {application/json or application/x-www-form-urlencoded}</li>
+<li>Accept : {application/json}</li>
+<li>Referer : <a href="https://manage.hclvoltmx.com/">https://manage.hclvoltmx.com</a> (The refer generates the URL required for next step of unpublishing.)</li>
+</ul>
+<p><strong>Request Headers (Optional)</strong></p>
+<ul>
+<li>X-VoltMX-RequestId : {Request Id}</li>
+<li>X-HTTP-Method-Override</li>
+</ul>
+<p><strong>Request Body</strong></p>
+<pre><code>
+Mandatory  
+
+app_id : Id of the Application to be published. For details on how to fetch the app id, refer to [Fetch App ID](#fetch-app-globally-unique-identifier-guid)
+</code></pre>
+<pre><code>
+Optional  
+
+action : release\_lock (This action releases the previous locks on the app before attempting publish). If the action parameter is not provided, the value will be set to unpublish by default.
+</code></pre>
+<p><strong>Response</strong></p>
+<ul>
+<li><strong>Sample Success Response</strong>:</li>
+</ul>
+<pre><code> HTTP 201 CREATED
+</code></pre>
+<ul>
+<li><strong>Sample Success Response Headers</strong>:</li>
+</ul>
+<pre><code> “Set-Cookie” : “&lt;Cookies&gt;”
+</code></pre>
+<ul>
+<li><strong>Sample Success Response Body</strong>:</li>
+</ul>
+<pre><code>
+    {
+        “_links” : {
+            “self” : {
+                “href” : “https://accounts.voltmx.com/api/v1_0/environments/env_guid/unpublish/apps/{publish_id}”
+            }
+        }
+        &quot;status&quot; : true,
+        &quot;message&quot; : &quot;Success&quot;,
+        &quot;publish_id&quot; : &quot;&lt;GUID&gt;&quot;,
+        &quot;next_step&quot; : true,
+        &quot;next_step_description&quot; : &quot;&lt;Message&gt;&quot;
+    }
+
+</code></pre>
+<ul>
+<li><strong>Sample Failure Response - if a user does not have access to the workspace</strong>:</li>
+</ul>
+<pre><code> HTTP 401 Unauthorized
+</code></pre>
+<ul>
+<li><strong>Sample Failure Response - if export failed due to an internal failure</strong>:</li>
+</ul>
+<pre><code> HTTP 500 Internal Server Error
+</code></pre>
+<ul>
+<li><strong>Sample Failure Response Body</strong>:</li>
+</ul>
+<pre><code>
+    {
+    &quot;domain&quot;: &quot;accounts&quot;
+    &quot;mfcode&quot;: [error-code], /* a number/string based on the domain */
+    &quot;message&quot;: &quot;Message&quot;,
+    &quot;details&quot;: [Details of Error Message],
+        &quot;requestid&quot;: “Request Id”
+    &quot;httpstatus&quot;: &quot;[Http Status String]&quot;
+    }
+</code></pre>
+<blockquote>
+<p><strong><em>Note:</em></strong>  After a successful response from the initiate unpublish operation API, users must call the following "PUT" API. The PUT API should contain a header <code>Cookie</code> with the value from the <code>Set-Cookie</code> header of the API response.</p>
+</blockquote>
+<h4 id="continue-unpublish">Continue Unpublish</h4>
+<p>The API helps you to continue unpublishing the services inside the application to an environment with the <code>id {env_guid}</code> that the user can access. For more details on how to get the  <code>id {env_guid}</code>, refer to <a href="#fetch-environment-globally-unique-identifier-guid">Fetch Environment GUID</a>.</p>
+<p><strong>Signature</strong></p>
+<pre><code> https://api.voltmx.com/api/v1_0/environments/{env_guid}/unpublish/{publish_id}
+</code></pre>
+<p><strong>Method</strong></p>
+<p>PUT</p>
+<p><strong>Request Headers (Mandatory)</strong></p>
+<ul>
+<li>X-VoltMX-Authorization : {Auth Service Token}</li>
+<li>Content-Type : {application/json or application/x-www-form-urlencoded}</li>
+<li>Accept : {application/json}</li>
+<li>Cookie : {Value from Set-Cookie header in the response of POST /unpublish API}</li>
+<li>Referer : <a href="https://manage.hclvoltmx.com/">https://manage.hclvoltmx.com</a> (The refer generates the URL required for next step of unpublishing.)</li>
+</ul>
+<p><strong>Request Headers (Optional)</strong></p>
+<ul>
+<li>X-VoltMX-RequestId : {Request Id}</li>
+<li>X-HTTP-Method-Override</li>
+</ul>
+<p><strong>Request Body</strong></p>
+<pre><code>
+Optional  
+
+action : cancel  | continue ( Default value is “continue” )
+</code></pre>
+<p><strong>Response</strong></p>
+<ul>
+<li><strong>Sample Success Response</strong>:</li>
+</ul>
+<pre><code> HTTP 200 OK
+</code></pre>
+<ul>
+<li><strong>Sample Success Response Body</strong>:</li>
+</ul>
+<pre><code>
+    {
+        “_links” : {
+            “self” : {
+                “href” : “https://accounts.voltmx.com/api/v1_0/environments/env_guid/unpublish/apps/{publish_id}”
+            }
+        }
+        &quot;status&quot; : true,
+        &quot;message&quot; : &quot;Success&quot;,
+        &quot;publish_id&quot; : &quot;&lt;GUID&gt;&quot;,
+        &quot;next_step&quot; : true,
+        &quot;next_step_description&quot; : &quot;&lt;Message&gt;&quot;
+    }
+
+</code></pre>
+<ul>
+<li><strong>Sample Failure Response - if a user does not have access to the workspace</strong>:</li>
+</ul>
+<pre><code> HTTP 401 Unauthorized
+</code></pre>
+<ul>
+<li><strong>Sample Failure Response - if export failed due to an internal failure</strong>:</li>
+</ul>
+<pre><code> HTTP 500 Internal Server Error
+</code></pre>
+<ul>
+<li><strong>Sample Failure Response Body</strong>:</li>
+</ul>
+<pre><code>
+    {
+    &quot;domain&quot;: &quot;accounts&quot;
+    &quot;mfcode&quot;: [error-code], /* a number/string based on the domain */
+    &quot;message&quot;: &quot;Message&quot;,
+    &quot;details&quot;: [Details of Error Message],
+        &quot;requestid&quot;: “Request Id”
+    &quot;httpstatus&quot;: &quot;[Http Status String]&quot;
+    }
+</code></pre>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2021 - 2025, HCL America, Inc. | <a href="https://hcltechsw.com/wps/portal/legal/privacy">Privacy Statement</a> | <a href="https://apc01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.hcltechsw.com%2Fwps%2Fportal%2Flegal%2Fterms-use&data=04%7C01%7Csuresh.chenji%40hcl.com%7Ca77ebddc51574aff8c6c08d8f056542d%7C189de737c93a4f5a8b686f4ca9941912%7C0%7C0%7C637523600856805537%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=vLnT466NGuIbvQ0nEwfn2qdXeuhHb6XOnh1pibATDI4%3D&reserved=0">Terms of Use</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+<div class="md-social">
+  <ul class="social-nav">
+    <li><a href="https://www.facebook.com/HCLDigital" class="facebook" target="_blank">Facebook</a></li>
+    <li><a href="https://www.linkedin.com/company/hclsoftware" class="linkedin" target="_blank">LinkedIn</a></li>
+    <li><a href="https://twitter.com/HCLDigital"  class="twitter" target="_blank">Twitter</a></li>
+    <li><a href="https://www.youtube.com/HCLDigitalSolutions" class="youtube" target="_blank">Youtube</a></li>
+    <li>
+      <a href="https://github.com/HCL-TECH-SOFTWARE" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    </li>
+  </ul>    
+</div>
+  </div>
+  <div class="md-footer-meta__inner md-grid">
+  <span class="md-footer__git_legacy">Please report problems with this documentation by <a class="announcement__link" href="https://github.com/HCL-TECH-SOFTWARE/volt-mx-docs/issues">opening issues in Github</a>.</span>
+  <span class="legacy-link md-footer__git_legacy">Can't find a topic? Check the legacy documentation <a class="announcement__link" href="https://opensource.hcltechsw.com/Volt-MX-Documentation-Archive/docs/documentation/" target="_blank">here</a>.</span>
+</span>
+    </div>
+</div>
+</footer>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant"], "search": "../../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+    
+  </body>
+</html>

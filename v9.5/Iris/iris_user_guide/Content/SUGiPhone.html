@@ -1,0 +1,1506 @@
+<!-- Elements added to main will be displayed on all pages -->
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://mvishwa27.github.io/volt-mx-docs/latest/Iris/iris_user_guide/Content/SUGiPhone.html">
+      
+      
+        <link rel="prev" href="Platform_SDKs.html">
+      
+      
+        <link rel="next" href="SUG_Android.html">
+      
+      <link rel="icon" href="../../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.1.18">
+    
+    
+      
+        <title>iOS SDK and simulator - HCL Volt MX Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.26e3688c.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/vmx_style.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ios-sdk-and-emulator" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+<div class="content-types-banner">
+    <ul class="sub-nav">
+        <li class="home-link">
+            <a href="https://opensource.hcltechsw.com/volt-mx-docs/index.html"  class="sub-link ">Home</a>
+        </li>
+        <li>
+            <a href="https://opensource.hcltechsw.com/volt-mx-docs/docs/tutorials/Tutorials.html" class="sub-link">Tutorials</a>
+        </li>
+        <li>
+            <a href="https://opensource.hcltechsw.com/volt-mx-docs/docs/documentation/index.html" class="sub-link" id="docLink">Documentation</a>
+        </li>
+        <li>
+            <a href="https://support.hcltechsw.com/csm?id=kb_search&spa=1&kb_category=db382ff1db631c14a45ad9fcd3961936" title="Articles" class="sub-link">Articles</a>
+        </li>
+        <li>
+            <a href="https://hclsoftwareu.hcltechsw.com/#VoltMxLearningJourneys" title="Articles" class="sub-link">Software Academy</a>
+        </li>
+    </ul>
+</div>
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+          <aside class="md-banner md-banner--warning">
+            <div class="md-banner__inner md-grid md-typeset">
+              
+You're not viewing the latest version.
+<a href="../../../.."> 
+  <strong>Click here to go to latest version.</strong>
+</a>
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),outdated=__md_get("__outdated",sessionStorage);!0===outdated&&el&&(el.hidden=!1)</script>
+          </aside>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="HCL Volt MX Documentation" class="md-header__button md-logo" aria-label="HCL Volt MX Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            HCL Volt MX Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              iOS SDK and simulator
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/HCL-TECH-SOFTWARE/volt-mx-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    HCL-TECH-SOFTWARE/volt-mx-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="HCL Volt MX Documentation" class="md-nav__button md-logo" aria-label="HCL Volt MX Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/favicon.png" alt="logo">
+
+    </a>
+    HCL Volt MX Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/HCL-TECH-SOFTWARE/volt-mx-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    HCL-TECH-SOFTWARE/volt-mx-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+                 
+  
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1"
+    type="checkbox"
+    id="__nav_1"
+    checked
+  />
+             
+  <nav
+    class="md-nav md-nested-nav"
+    aria-label="Introducing Volt MX"
+    data-md-level="1"
+  >
+    <label class="md-nav__title" for="__nav_1">
+      <span class="md-nav__icon md-icon"></span>
+      Introducing Volt MX
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+       
+                
+<li class="md-nav__item">
+  <a href="../../../index.html" class="md-nav__link">
+    Introducing Volt MX
+  </a>
+</li>
+    
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_2"
+    type="checkbox"
+    id="__nav_1_2"
+    
+  />
+                           
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../../Whats_New_Main_Page.html"> What&apos;s New </a>
+    <label for="__nav_1_2">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+                
+<li class="md-nav__item">
+  <a href="../../../VMX_release_notes.html" class="md-nav__link">
+    Release Notes
+  </a>
+</li>
+    
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_4"
+    type="checkbox"
+    id="__nav_1_4"
+    
+  />
+                  
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../app_platform/Content/AppPlatform_Overview.html"> App Platform </a>
+    <label for="__nav_1_4">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_5"
+    type="checkbox"
+    id="__nav_1_5"
+    
+  />
+                                                            
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../../tutorials/Tutorials.html"> Tutorials </a>
+    <label for="__nav_1_5">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+                
+<li class="md-nav__item">
+  <a href="../../../Foundry/installationGuides.html" class="md-nav__link">
+    Installation Guides
+  </a>
+</li>
+    
+               
+  
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7"
+    type="checkbox"
+    id="__nav_1_7"
+    checked
+  />
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../voltmxIrisFundamentals.html"> Iris </a>
+    <label for="__nav_1_7">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+  <nav
+    class="md-nav md-nested-nav"
+    aria-label="Iris"
+    data-md-level="2"
+  >
+    <label class="md-nav__title" for="__nav_1_7">
+      <span class="md-nav__icon md-icon"></span>
+      Iris
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+       
+                
+<li class="md-nav__item">
+  <a href="../../voltmxIrisFundamentals.html" class="md-nav__link">
+    Fundamentals
+  </a>
+</li>
+    
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_2"
+    type="checkbox"
+    id="__nav_1_7_2"
+    
+  />
+                                                                                       
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../installing_iris.html"> Installing Iris </a>
+    <label for="__nav_1_7_2">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_3"
+    type="checkbox"
+    id="__nav_1_7_3"
+    
+  />
+                                                                                                                  
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../iris_tutorials/Content/Introduction.html"> Iris tutorials </a>
+    <label for="__nav_1_7_3">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+               
+  
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_4"
+    type="checkbox"
+    id="__nav_1_7_4"
+    checked
+  />
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="Introduction.html"> Iris User Guide </a>
+    <label for="__nav_1_7_4">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+  <nav
+    class="md-nav md-nested-nav"
+    aria-label="Iris User Guide"
+    data-md-level="3"
+  >
+    <label class="md-nav__title" for="__nav_1_7_4">
+      <span class="md-nav__icon md-icon"></span>
+      Iris User Guide
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+       
+                
+<li class="md-nav__item">
+  <a href="Introduction.html" class="md-nav__link">
+    Introduction
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Mobile_Channels.html" class="md-nav__link">
+    Supported Digital Channels
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Hikes.html" class="md-nav__link">
+    Hikes
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Third-Party_Licenses.html" class="md-nav__link">
+    Third-Party Licenses
+  </a>
+</li>
+    
+               
+  
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_4_5"
+    type="checkbox"
+    id="__nav_1_7_4_5"
+    checked
+  />
+                                                                                                                  
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="Part_I__Overview.html"> Configuring Your Computer </a>
+    <label for="__nav_1_7_4_5">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+  <nav
+    class="md-nav md-nested-nav"
+    aria-label="Configuring Your Computer"
+    data-md-level="4"
+  >
+    <label class="md-nav__title" for="__nav_1_7_4_5">
+      <span class="md-nav__icon md-icon"></span>
+      Configuring Your Computer
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+       
+                
+<li class="md-nav__item">
+  <a href="Part_I__Overview.html" class="md-nav__link">
+    Overview
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="HardwareReqs.html" class="md-nav__link">
+    Hardware and Software Requirements
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="SUGinstallVoltMXStudio.html" class="md-nav__link">
+    Install Volt MX Iris
+  </a>
+</li>
+    
+               
+  
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_4_5_4"
+    type="checkbox"
+    id="__nav_1_7_4_5_4"
+    checked
+  />
+                                                    
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="Platform_SDKs.html"> Install platform SDKs and their emulators </a>
+    <label for="__nav_1_7_4_5_4">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+  <nav
+    class="md-nav md-nested-nav"
+    aria-label="Install platform SDKs and their emulators"
+    data-md-level="5"
+  >
+    <label class="md-nav__title" for="__nav_1_7_4_5_4">
+      <span class="md-nav__icon md-icon"></span>
+      Install platform SDKs and their emulators
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+       
+                
+<li class="md-nav__item">
+  <a href="Platform_SDKs.html" class="md-nav__link">
+    Platform SDKs
+  </a>
+</li>
+    
+                
+<li class="md-nav__item md-nav__item--active">
+   
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="toc"
+    type="checkbox"
+    id="__toc"
+  />
+
+        
+  <label class="md-nav__link md-nav__link--active" for="__toc">
+    iOS SDK and simulator
+    <span class="md-nav__icon md-icon"></span>
+  </label>
+  
+  <a href="SUGiPhone.html" class="md-nav__link md-nav__link--active">
+    iOS SDK and simulator
+  </a>
+
+    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#confirm-your-system-meets-ios-development-requirements" class="md-nav__link">
+    Confirm your system meets iOS development requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#download-and-install-java-se-7-runtime" class="md-nav__link">
+    Download and install Java SE 7 Runtime
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#download-install-and-configure-xcode" class="md-nav__link">
+    Download, Install, and Configure XCode
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#launch-the-app-using-run-on-my-device-or-the-emulator-menu" class="md-nav__link">
+    Launch the App Using Run on My Device or the Emulator Menu
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#launch-the-app-post-successful-build" class="md-nav__link">
+    Launch the App Post Successful Build
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    Limitations
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+  
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_4_5_4_3"
+    type="checkbox"
+    id="__nav_1_7_4_5_4_3"
+    
+  />
+                                       
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="SUG_Android.html"> Android SDK </a>
+    <label for="__nav_1_7_4_5_4_3">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+                
+<li class="md-nav__item">
+  <a href="SUGWindows_Mobile.html" class="md-nav__link">
+    Windows Phone and Tablet
+  </a>
+</li>
+    
+    </ul>
+  </nav>
+  
+</li>
+
+   
+                
+<li class="md-nav__item">
+  <a href="AllowAnonymousUsageDataCollection.html" class="md-nav__link">
+    Allow Anonymous Usage Data Collection
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="UseProxyServer.html" class="md-nav__link">
+    Use a Proxy Server
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="LogInUsingCustAuth.html" class="md-nav__link">
+    Modify Cloud Configuration
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Workspace.html" class="md-nav__link">
+    Workspaces&colon; Repositories for Your Projects
+  </a>
+</li>
+    
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_4_5_9"
+    type="checkbox"
+    id="__nav_1_7_4_5_9"
+    
+  />
+                                       
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="VoltMXDefaultPerspective.html"> The Volt MX Iris default perspective </a>
+    <label for="__nav_1_7_4_5_9">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+                
+<li class="md-nav__item">
+  <a href="CheckForUpdates.html" class="md-nav__link">
+    Check for Updates
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Collab.html" class="md-nav__link">
+    Collab
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Version_Control.html" class="md-nav__link">
+    Version Control
+  </a>
+</li>
+    
+    </ul>
+  </nav>
+  
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_4_6"
+    type="checkbox"
+    id="__nav_1_7_4_6"
+    
+  />
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="Part_II_CreatingAnApplication.html"> Designing an Application </a>
+    <label for="__nav_1_7_4_6">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_4_7"
+    type="checkbox"
+    id="__nav_1_7_4_7"
+    
+  />
+                           
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="C_DesigningWorkingWithComponents.html"> Creating Applications with Components </a>
+    <label for="__nav_1_7_4_7">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_4_8"
+    type="checkbox"
+    id="__nav_1_7_4_8"
+    
+  />
+                                                                                                                                     
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="PartIII_Adding_functionality.html"> Adding Functionality </a>
+    <label for="__nav_1_7_4_8">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_4_9"
+    type="checkbox"
+    id="__nav_1_7_4_9"
+    
+  />
+                                                                                       
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="BuildingAndViewAnApp.html"> Building and Viewing an Application </a>
+    <label for="__nav_1_7_4_9">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_4_10"
+    type="checkbox"
+    id="__nav_1_7_4_10"
+    
+  />
+                                    
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="TestingandDebugginganApplication.html"> Testing and Debugging an Application </a>
+    <label for="__nav_1_7_4_10">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_4_11"
+    type="checkbox"
+    id="__nav_1_7_4_11"
+    
+  />
+                     
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="Internationalization.html"> Appendix A&colon; Internationalization </a>
+    <label for="__nav_1_7_4_11">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+                
+<li class="md-nav__item">
+  <a href="Inputs_to_Android_Application_Developers.html" class="md-nav__link">
+    Appendix B&colon; Android Build Environment and Configurations
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Generating_Map_Keys.html" class="md-nav__link">
+    Appendix C&colon; Generating and Configuring Map API Keys
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="AppServiceEvent.html" class="md-nav__link">
+    Appendix D&colon; The App Service Event
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="CameraAccessAndroidBrowser.html" class="md-nav__link">
+    Appendix E&colon; Camera Access in Android Browser
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Support_for_iPhoneX.html" class="md-nav__link">
+    Appendix F&colon; Support for iPhone X
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="Universal_Links.html" class="md-nav__link">
+    Appendix G&colon; Universal Links iOS
+  </a>
+</li>
+    
+                
+<li class="md-nav__item">
+  <a href="FAQs.html" class="md-nav__link">
+    Frequently Asked Questions
+  </a>
+</li>
+    
+    </ul>
+  </nav>
+  
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_5"
+    type="checkbox"
+    id="__nav_1_7_5"
+    
+  />
+                                                                                                                                                                                                                                                                                                                                                 
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../app_design_dev/Content/homepage.html"> Application Design and Development Guidelines </a>
+    <label for="__nav_1_7_5">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_6"
+    type="checkbox"
+    id="__nav_1_7_6"
+    
+  />
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../iris_api_dev_guide/content/introduction.html"> Volt Iris API Developers Guide </a>
+    <label for="__nav_1_7_6">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_7"
+    type="checkbox"
+    id="__nav_1_7_7"
+    
+  />
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../iris_nf_api_dev_guide/content/native_function_api_developers__guide.html"> Native Function API Developers Guide </a>
+    <label for="__nav_1_7_7">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_8"
+    type="checkbox"
+    id="__nav_1_7_8"
+    
+  />
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../iris_widget_prog_guide/Content/Overview.html"> Iris Widget Programmer Guide </a>
+    <label for="__nav_1_7_8">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_9"
+    type="checkbox"
+    id="__nav_1_7_9"
+    
+  />
+                                                                                                
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../iris_wearables_dev_guide/content/homehtml.html"> Iris Wearables Developer Guide </a>
+    <label for="__nav_1_7_9">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_10"
+    type="checkbox"
+    id="__nav_1_7_10"
+    
+  />
+                                           
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../iris_app_viewer/Content/Overview.html"> Using the Volt MX App </a>
+    <label for="__nav_1_7_10">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_7_11"
+    type="checkbox"
+    id="__nav_1_7_11"
+    
+  />
+                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../voltmx_ref_arch_api/Content/VoltMX_Reference_Architecture_Guide.html"> Volt MX Reference Architecture Guide </a>
+    <label for="__nav_1_7_11">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+    </ul>
+  </nav>
+  
+</li>
+
+   
+             
+  
+<li class="md-nav__item md-nav__item--nested">
+    
+  <input
+    class="md-nav__toggle md-toggle"
+    data-md-toggle="__nav_1_8"
+    type="checkbox"
+    id="__nav_1_8"
+    
+  />
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+
+  <div class="md-nav__link md-nav__link--index">
+    <a href="../../../Foundry/voltmxFoundryFundamentals.html"> Foundry </a>
+    <label for="__nav_1_8">
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+  </div>
+
+      
+</li>
+
+   
+    </ul>
+  </nav>
+  
+</li>
+
+ 
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#confirm-your-system-meets-ios-development-requirements" class="md-nav__link">
+    Confirm your system meets iOS development requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#download-and-install-java-se-7-runtime" class="md-nav__link">
+    Download and install Java SE 7 Runtime
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#download-install-and-configure-xcode" class="md-nav__link">
+    Download, Install, and Configure XCode
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#launch-the-app-using-run-on-my-device-or-the-emulator-menu" class="md-nav__link">
+    Launch the App Using Run on My Device or the Emulator Menu
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#launch-the-app-post-successful-build" class="md-nav__link">
+    Launch the App Post Successful Build
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    Limitations
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="ios-sdk-and-emulator">iOS SDK and Emulator</h1>
+<p>Building and testing iOS applications in Volt MX Iris requires two primary resources: Java SE 7 runtime, which is required by Eclipse, the hosting application of Volt MX Iris; and XCode, the SDK for iOS and Mac OS. You are prompted to install these two resources the first time you launch Volt MX Iris.</p>
+<p>In Volt MX Iris V9 SP2 GA version, you can view the list of emulators within Iris and run your apps on the emulators directly from Iris. When you open any project in Iris, you can view emulators from the Build menu. Previously, if you wanted to preview an app, you had to create a binary file, install it on a device, and then launch the application. With this new capability to view the emulators within Iris, you can skip the process of creating a binary and installing it directly on the device/emulators. You can now directly go to the last step of launching the app in an emulator to view the app in action.</p>
+<p>You cannot create the emulators directly within Volt MX Iris. However, you can view the emulators on the system using XCode (emulators). So, before you get started with using the emulators, you must first ensure that you have a few emulators configured in XCode.</p>
+<blockquote>
+<p><strong><em>Note:</em></strong> iOS-related code and applications can only be developed on a Mac OS computer.</p>
+</blockquote>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Volt MX Iris V9 SP2 GA or later</li>
+<li>
+<p>Access to a Volt MX Cloud account</p>
+</li>
+<li>
+<p>Install XCode on your Mac</p>
+</li>
+<li>Configured Emulators in the XCode, Ensure that you launch the Emulator via XCode</li>
+</ul>
+<p>For information on how to create emulators, see Apple <a href="https://developer.apple.com/documentation/xcode/running_your_app_in_the_simulator_or_on_a_device">documentation</a>.</p>
+<p>In all, getting your system set up to build and test iOS applications in Volt MX Iris involves The following tasks.</p>
+<ol>
+<li><a href="#confirm-your-system-meets-ios-development-requirements">Confirm your system meets iOS development requirements</a></li>
+<li><a href="#download-and-install-java-se-7-runtime">Download and install Java SE 7 runtime</a></li>
+<li><a href="#download-install-and-configure-xcode">Download, install, and configure XCode</a></li>
+<li>
+<p><a href="#launch-the-app-using-run-on-my-device-or-the-emulator-menu">Launch the app using Run on my Device or the Emulator Menu</a></p>
+</li>
+<li>
+<p><a href="#launch-the-app-post-successful-build">Launch the app from the Post Successful Build</a></p>
+</li>
+</ol>
+<h2 id="confirm-your-system-meets-ios-development-requirements">Confirm your system meets iOS development requirements</h2>
+<p>To develop for the iOS platform and run its emulators, your computer needs to meet certain hardware and software requirements.</p>
+<ul>
+<li>Apple computer with a x86-64 CPU (64-bit Intel Core 2 Duo, Intel Core i3, Intel Core i5, Intel Core i7, or Xeon processor.)</li>
+<li>150 GB of internal storage</li>
+<li>4 GB of memory</li>
+<li>Network interface card</li>
+<li>Mac OS Catalina version 10.15.6 and higher</li>
+</ul>
+<h2 id="download-and-install-java-se-7-runtime">Download and install Java SE 7 Runtime</h2>
+<p>Eclipse, the integrated development environment (IDE) application, requires Java SE 7 to run, but it is not automatically installed when you install Volt MX Iris. You are prompted to install it when you first launch Volt MX Iris.</p>
+<p>To download and install Java SE 7, do the following:</p>
+<ol>
+<li>Launch Volt MX Iris. By default it is installed in the Applications folder.</li>
+<li>As Eclipse and Volt MX Iris load, a dialog box displays informing you that Java SE 7 runtime is required. Click <strong>More info</strong> to launch the Apple download site for Java SE 7 runtime.</li>
+<li>The Apple Support website opens in the Safari web browser. Follow the prompts to download Java SE 7 runtime. It will likely have an alternate name, such as Java for OS X.</li>
+<li>Once the download package has downloaded to your Mac, open the <em>Downloads</em> folder, and double-click the file you just downloaded.</li>
+<li>Follow the prompts to install Java SE 7 runtime.</li>
+</ol>
+<h2 id="download-install-and-configure-xcode">Download, Install, and Configure XCode</h2>
+<p>XCode, the Apple SDK for creating iOS apps, contains the simulators you need to emulate iOS devices in Volt MX Iris. However, it is not automatically installed when you install Volt MX Iris. It is imperative to install XCode before working with Volt MX Iris. Volt MX Iris supports XCode 12.5 and XCode 13.</p>
+<p>To download, install, and configure XCode, do the following:</p>
+<ol>
+<li>In a browser, navigate to the <a href="https://developer.apple.com/downloads/index.action">Apple Developer site</a>, and log in to your Apple developer account. If you do not have one, create one.</li>
+<li>Navigate to the <a href="https://developer.apple.com/downloads/index.action">Apple developer download page</a>. The URL is as follows:<br />
+<code>https://developer.apple.com/downloads/index.action</code></li>
+<li>
+<p>From the list of downloads, double-click the listing of the version of XCode you want to download, and then click the listed .dmg file to initiate the download.</p>
+</li>
+<li>
+<p>Once the download package has downloaded to your Mac, open the <em>Downloads</em> folder, double-click the file you just downloaded, and then follow the prompts to install XCode.</p>
+</li>
+<li>
+<p>When XCode has finished installing, launch it. To do so, open the <em>Applications</em> folder, and then click <strong>XCode</strong>.</p>
+<blockquote>
+<p><strong><em>Important:</em></strong> It is imperative that you launch XCode so that it runs its initialization and configuration routines. Until it does so, you cannot use iOS simulators in Volt MX Iris.</p>
+</blockquote>
+</li>
+<li>
+<p>Once it has finished its automated configuration, quit XCode.</p>
+</li>
+</ol>
+<h2 id="launch-the-app-using-run-on-my-device-or-the-emulator-menu">Launch the App Using Run on My Device or the Emulator Menu</h2>
+<ol>
+<li>Open your application project in Volt MX Iris.<br />
+    The application opens in the default view.</li>
+<li>
+<p>From the <strong>Build</strong> menu, select <strong>Build Native Local/Build and Publish Native</strong>.<br />
+    The Build Native Local/Build and Publish Native window appears.</p>
+<blockquote>
+<p><strong><em>Note:</em></strong> For iOS, Launching an Emulator is not supported through the Build and Publish Native option.</p>
+</blockquote>
+</li>
+<li>
+<p>From the <strong>Post Build Action</strong> drop-down list, select <strong>Run on my Device/Emulator</strong>.<br />
+    A new category <strong>Configured Devices &amp; Emulators</strong> appears.<br />
+    The <strong>Configured Devices &amp; Emulators</strong> window displays available devices and emulators. Mobile Emulators appear under the Mobile section, and Tablet Emulators appear below the Tablets section.  </p>
+<p><img alt="" src="Resources/Images/Emulators_AVDs1.png" />
+4.  Select the Emulator on which you want to test the app.
+5.  Click <strong>Build</strong>.<br />
+The application generates and automatically opens on the devices or the emulators that are selected before. A message Application launched successfully on the device appears.
+6.  Click <strong>OK</strong>.</p>
+</li>
+</ol>
+<p>There are two other options in this window that you can use.</p>
+<ul>
+<li><strong>Refresh</strong>: If you connect your device to the system after selecting the post-build action, use the Refresh option to refresh the list of connected devices and Emulators.</li>
+<li><strong>Clear History</strong>: Use the Clear History option to remove old entries of devices and emulators that are not available on the system.</li>
+</ul>
+<h2 id="launch-the-app-post-successful-build">Launch the App Post Successful Build</h2>
+<ol>
+<li>Open your application project in Volt MX Iris.<br />
+    The application opens in the default view.</li>
+<li>From the main menu, navigate to Build, select <strong>Build Native Local</strong>.<br />
+    The Build Native Local window appears.</li>
+<li>From <strong>the</strong> Post Build Action drop-down list, select <strong>Generate Native App or Run on my Device/Emulator</strong>.</li>
+<li>From the <strong>Platforms and Channels</strong> section, choose the channels you want to build the app.</li>
+<li>
+<p>Click <strong>Build</strong>.<br />
+    Once the build is complete, details of the generated binaries appear in the Build.  </p>
+<p>If you select <strong>Run on my Device/Emulator</strong> under the Post Build Action tab, the application installs and runs on the selected emulator.  </p>
+<p>If you select <strong>Generate Native App</strong> under the Post Build Action tab, then Volt MX Iris builds the app, you should run the application manually.
+6.  Under the <strong>Build</strong> tab, you can see two sections: General and Mobile. Launch Emulators appear under the General, and Mobile platforms appear under Mobile. The mobile platform list appears based on your selection from the Build Native Local tab. This includes devices, emulators, and AVDs.  </p>
+<p><img alt="" src="Resources/Images/Emulators_AVDs3_672x241.png" />
+7.  Click <strong>Run</strong> to launch the app on your device/emulator.</p>
+</li>
+</ol>
+<h2 id="limitations">Limitations</h2>
+<p><strong>iOS emulators on Windows</strong></p>
+<ul>
+<li>When you select Run on Device/Emulator from the Post Build Action list, Volt MX Iris fetches the list of emulators from the cached data. The list is available in the location <code>users/username/iris/irisdata/devices/.devices</code></li>
+<li>If you provide details about the MAC in the Volt MX Iris, the build process takes some time to launch the emulators as you are accessing the MAC using the remote connection.</li>
+<li>Click on the refresh button available on the pop up to fetch the current list of emulators.</li>
+<li>If you do not provide any MAC details, Volt MX Iris does not display any emulators.</li>
+</ul>
+<blockquote>
+<p><strong><em>Note:</em></strong> If you want to add the MAC details in the Volt MX Iris. From the Edit menu, click Preferences, and from the Iris Preferences window, click Mac Details. Fill the Mac details on the provided Text boxes.</p>
+</blockquote>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2021 - 2025, HCL America, Inc. | <a href="https://hcltechsw.com/wps/portal/legal/privacy">Privacy Statement</a> | <a href="https://apc01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.hcltechsw.com%2Fwps%2Fportal%2Flegal%2Fterms-use&data=04%7C01%7Csuresh.chenji%40hcl.com%7Ca77ebddc51574aff8c6c08d8f056542d%7C189de737c93a4f5a8b686f4ca9941912%7C0%7C0%7C637523600856805537%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=vLnT466NGuIbvQ0nEwfn2qdXeuhHb6XOnh1pibATDI4%3D&reserved=0">Terms of Use</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+<div class="md-social">
+  <ul class="social-nav">
+    <li><a href="https://www.facebook.com/HCLDigital" class="facebook" target="_blank">Facebook</a></li>
+    <li><a href="https://www.linkedin.com/company/hclsoftware" class="linkedin" target="_blank">LinkedIn</a></li>
+    <li><a href="https://twitter.com/HCLDigital"  class="twitter" target="_blank">Twitter</a></li>
+    <li><a href="https://www.youtube.com/HCLDigitalSolutions" class="youtube" target="_blank">Youtube</a></li>
+    <li>
+      <a href="https://github.com/HCL-TECH-SOFTWARE" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    </li>
+  </ul>    
+</div>
+  </div>
+  <div class="md-footer-meta__inner md-grid">
+  <span class="md-footer__git_legacy">Please report problems with this documentation by <a class="announcement__link" href="https://github.com/HCL-TECH-SOFTWARE/volt-mx-docs/issues">opening issues in Github</a>.</span>
+  <span class="legacy-link md-footer__git_legacy">Can't find a topic? Check the legacy documentation <a class="announcement__link" href="https://opensource.hcltechsw.com/Volt-MX-Documentation-Archive/docs/documentation/" target="_blank">here</a>.</span>
+</span>
+    </div>
+</div>
+</footer>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant"], "search": "../../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+    
+  </body>
+</html>
