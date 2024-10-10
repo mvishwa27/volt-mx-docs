@@ -18,3 +18,4 @@ Pass Certificates includes the following REST APIs:
 
 *   9.2 Changeset-1
 *   9.2 Changeset-2
+*   9.2 Changeset-3
